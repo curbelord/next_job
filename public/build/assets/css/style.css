@@ -1,0 +1,67 @@
+footer{
+    background-color: #373A37;
+    color: #FFF;
+}
+
+#container_footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: 0px auto;
+}
+
+#container_rrss_footer{
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 50px);
+    justify-content: center;
+    grid-gap: 25px;
+    width: 80%;
+    margin: 50px auto;
+}
+
+.icono_rrss_footer, #logo_footer{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#icono_facebook{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background-image: url('../img/icono_facebook.svg');
+}
+
+#icono_instagram{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background-image: url('../img/icono_instagram.svg');
+}
+
+#icono_twitter{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background-image: url('../img/icono_twitter.svg');
+}
+
+#icono_youtube{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background-image: url('../img/icono_youtube.svg');
+}
+
+#logo_footer{
+    width: 100px;
+    height: 50px;
+    background-image: url('../img/logo_next_job_ext.svg');
+}
+
+#container_copyright_footer{
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+#container_copyright_footer p{
+    text-align: center;
+}
