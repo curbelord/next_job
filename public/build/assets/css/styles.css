@@ -1,0 +1,188 @@
+:root {
+    --negro: #000000;
+    --gris: #D8D8D8;
+    --azul: #2FB9CE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu {
+    font-family: "Manrope", sans-serif;
+}
+
+.menu ul {
+    display: grid;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    grid-template-columns: repeat(12, 1fr);
+    color: black;
+    justify-content: center;
+    padding: 1em 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--negro);
+}
+
+.contenedor_vector {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.vector_borde_gris {
+    height: 3px;
+    background-color: var(--gris);
+    grid-column: 1 / 10;
+}
+
+.vector_borde_azul {
+    height: .75em;
+    background-color: var(--azul);
+    grid-column: 10 / 13;
+    position: relative; /* Permite posicionar el pico */
+    
+    /* Crea el pico */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -9px; /* Ajusta la posición del pico */
+      border-width: 0 9px .75em 0;
+      border-style: solid;
+      border-color: transparent var(--azul) transparent transparent;
+    }
+}
+
+.logo_no_extendido, .icono_menu {
+    display: none;
+}
+
+.logo {
+    grid-column: 2 ;
+    height: 17px;
+}
+
+.empleo {
+    grid-column: 3 ;
+}
+
+.empresas {
+    grid-column: 4;
+}
+
+.acceder {
+    grid-column: 11;
+}
+  
+@media (max-width: 1000px) {
+
+    .menu ul {
+        grid-template-columns: repeat(10, 1fr);
+    }
+
+    .logo {
+        grid-column: 2 ;
+    }
+    
+    .empleo {
+        grid-column: 3 ;
+    }
+    
+    .empresas {
+        grid-column: 4;
+    }
+    
+    .acceder {
+        grid-column: 9;
+    }
+
+    .contenedor_vector {
+        grid-template-columns: repeat(10, 1fr);
+    }
+
+    .vector_borde_gris {
+        grid-column: 1 / 8;
+    }
+
+    .vector_borde_azul {
+        grid-column: 8 / 11;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .menu ul {
+        grid-template-columns: repeat(9, 1fr);
+    }
+
+    .logo {
+        grid-column: 2;
+    }
+    
+    .empleo {
+        grid-column: 3;
+    }
+    
+    .empresas {
+        grid-column: 4;
+    }
+    
+    .acceder {
+        grid-column: 8;
+    }
+
+    .contenedor_vector {
+        grid-template-columns: repeat(9, 1fr);
+    }
+
+    .vector_borde_gris {
+        grid-column: 1 / 7;
+    }
+
+    .vector_borde_azul {
+        grid-column: 7 / 10;
+    }
+
+}
+
+@media (max-width: 720px) {
+
+    .icono_menu {
+        display: block;
+    }
+
+    .empleo, .empresas, .acceder {
+        display: none;
+    }
+
+    .icono_menu {
+        color: var(--gris);
+        grid-column: 8;
+    }
+
+}
+
+@media (max-width: 500px) {
+    
+    .logo {
+        height: 40px;
+    }
+
+    .logo_no_extendido {
+        display: block;
+    }
+
+    .logo_extendido {
+        display: none;
+    }
+}

@@ -35,5 +35,10 @@ Route::get('/footer', function (){
 Route::get('/cambio', function (){
     return view('cambio');
 });
+           
+Route::get('/header', function (){
+    return view('header');
+
+});
 
 require __DIR__.'/auth.php';
