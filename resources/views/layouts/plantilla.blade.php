@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
 
         <title>@yield('title')</title>
+
+        @yield('style')
     </head>
 
     <body>
