@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('principal');
+});
+
+Route::get('/descripcion', function (){
+    return view('offer_description');
 });
 
 Route::get('/dashboard', function () {
@@ -26,19 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::get('/footer', function (){
-    return view('footer');
-});
-
-Route::get('/cambio', function (){
-    return view('cambio');
-});
-           
-Route::get('/header', function (){
-    return view('header');
-
 });
 
 require __DIR__.'/auth.php';

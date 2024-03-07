@@ -83,6 +83,27 @@
 .acceder {
     grid-column: 11;
 }
+
+.contenedor_estudios_experiencia, .contenedor_estudios_experiencia * {
+    border: 1px solid black;
+}
+
+
+#Estudios, #Experiencia {
+    width: 300px;
+}
+
+.contenedor_input {
+    margin: 2em;
+    background-color: var(--gris);
+    border-radius: 10px;
+}
+
+.contenedor_estudios_experiencia input {
+    border: 2px solid var(--azul);
+    border-radius: 5px;
+    padding: .5em;
+}
   
 @media (max-width: 1000px) {
 
