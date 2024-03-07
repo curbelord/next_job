@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('principal');
 });
 
 Route::get('/dashboard', function () {
@@ -30,10 +30,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/footer', function (){
     return view('footer');
-});
-
-Route::get('/header', function (){
-    return view('header');
 });
 
 Route::get('/estudios_experiencia', function (){
