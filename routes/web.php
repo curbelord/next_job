@@ -41,4 +41,8 @@ Route::get('/header', function (){
 
 });
 
+Route::get('/estudios_experiencia', function (){
+    return view('estudios_experiencia');
+});
+
 require __DIR__.'/auth.php';
