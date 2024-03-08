@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OfertasController;
+use App\Http\Controllers\EmpresasController;
+use App\Http\Controllers\EmpresaBuscadaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +23,7 @@ Route::get('/', function () {
 
 Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('ofertas');
 
-
-Route::get('/empresas', function () {
-    return view('empresas');
-});
+Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
 
 Route::get('/registrar-empresa', function () {
     return view('registrar_empresa');
@@ -55,9 +54,8 @@ Route::get('/info-proceso', function (){
 
 });
 
-Route::get('/empresa-buscada', function (){
-    return view('empresa_buscada');
-});
+Route::get('/empresa-buscada', [EmpresaBuscadaController::class, 'mostrar'])->name('empresa-buscada');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
