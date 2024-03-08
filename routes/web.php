@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('principal');
 });
 
+Route::get('/ofertas', function () {
+    return view('ofertas');
+});
+
 Route::get('/descripcion', function (){
     return view('offer_description');
 });
