@@ -15,7 +15,7 @@
                 </div>
                 <div id="container_texto_datos">
                     <div id="titulo_oferta">
-                        <h1>Título oferta</h1>
+                        <h1>Título ofertaaa esto es una prueba para ver el funcionamiento del scroll del título en la página de descripción de oferta</h1>
                     </div>
                     <div id="nombre_empresa">
                         <p>Nombre empresa</p>
@@ -56,7 +56,7 @@
 
         </div>
 
-        <div id="container_descripcion">
+        <div id="container_descripcion_cuestionario">
             <div id="subcontainer_descripcion">
                 <div id="titulo_descripcion">
                     <h3>Descripción</h3>
@@ -67,6 +67,26 @@
                     Phasellus consectetur urna eu diam auctor, sed volutpat tortor  vestibulum. Pellentesque egestas turpis est, vitae interdum nisi iaculis  id. Pellentesque porta quam et quam molestie, nec sagittis erat  lacinia. Vivamus viverra viverra ultricies. Pellentesque dapibus orci  non diam fermentum dignissim. Sed placerat ac erat ut aliquam. Curabitur  hendrerit vulputate tellus, at rhoncus nibh elementum sodales. Integer  egestas enim non leo semper volutpat. Pellentesque luctus odio in  vehicula scelerisque. Quisque enim nulla, ultricies quis ex sit amet,  rutrum ornare ex.
 
                     Sed scelerisque, ante id maximus interdum, massa mi porttitor turpis,  quis consequat massa risus finibus diam. Nunc non erat fermentum,  feugiat mauris vitae, volutpat mi. Vestibulum ante ipsum primis in  faucibus orci luctus et ultrices posuere cubilia curae; Aenean varius  leo non ullamcorper interdum. Integer orci ante, lobortis placerat  vestibulum tempus.</p>
+                </div>
+            </div>
+            <div id="subcontainer_cuestionario">
+                <div id="titulo_cuestionario">
+                    <h3>Cuestionario</h3>
+                </div>
+                <div id="cuerpo_cuestionario">
+                    <div id="cuestionario_fila_1">
+                        <div id="cantidad_preguntas">
+                            <p>Cantidad preguntas</p>
+                        </div>
+                        <div id="tipo_preguntas">
+                            <p>Tipo preguntas</p>
+                        </div>
+                    </div>
+                    <div id="cuestionario_fila_2">
+                        <div id="tiempo_aproximado">
+                            <p>Tiempo aproximado</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
