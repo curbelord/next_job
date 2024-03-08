@@ -55,7 +55,7 @@
 }
 
 #titulo_oferta h1{
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 #nombre_empresa p{
@@ -89,6 +89,7 @@
 #subcontainer_ultimo_cambio p{
     color: #FFF;
     font-weight: bold;
+    font-size: 1.1em;
 }
 
 
@@ -114,7 +115,7 @@
 }
 
 #titulo_estado_candidatura h3{
-    font-size: 1.7em;
+    font-size: 1.5em;
     margin-bottom: 30px;
 }
 
@@ -258,7 +259,7 @@
     /* Estado de candidatura */
 
     #titulo_estado_candidatura h3{
-        font-size: 1.2em;
+        font-size: 1.3em;
         margin-bottom: 30px;
     }
 }

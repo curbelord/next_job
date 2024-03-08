@@ -4,6 +4,8 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleProcessInfo.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCambio.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleSeparacionCambio.css') }}">
 @endsection
 
 @section('content')
@@ -33,8 +35,13 @@
 
         <div id="container_cambios">
             @for ($i = 0; $i < 3; $i++)
-                @component('cambio')
+                @component('components.cambio')
                 @endcomponent
+
+                @if(($i + 1) != 3)
+                    @component('components.separacion_cambio')
+                    @endcomponent
+                @endif
             @endfor
 
             <div id="container_estado_candidatura">
