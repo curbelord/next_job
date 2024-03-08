@@ -30,6 +30,10 @@ Route::get('/registrar-empresa', function () {
     return view('registrar_empresa');
 });
 
+Route::get('/vincular-empresa', function () {
+    return view('vincular_empresa');
+});
+
 Route::get('/descripcion', function (){
     return view('offer_description');
 });
