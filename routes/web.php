@@ -36,6 +36,10 @@ Route::get('/registro', function (){
 
 Route::get('/inicio-de-sesion', function (){
     return view('inicio_de_sesion');
+
+Route::get('/info-proceso', function (){
+    return view('process_info');
+
 });
 
 Route::get('/dashboard', function () {

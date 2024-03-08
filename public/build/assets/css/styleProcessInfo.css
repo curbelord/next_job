@@ -1,0 +1,264 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: start;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, auto);
+    margin: 100px 0px;
+}
+
+
+/* Sección 1 */
+
+/* Datos proceso */
+
+#container_datos_proceso{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 150px;
+    grid-column: 3 / 11;
+    grid-row: 1 / 2;
+}
+
+#container_imagen{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+#imagen_empresa{
+    width: 150px;
+    height: 150px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+#container_texto_datos{
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-left: 50px;
+}
+
+#container_texto_datos div{
+    width: 100%;
+}
+
+#nombre_empresa, #centro_trabajo{
+    margin-top: -20px;
+}
+
+#titulo_oferta h1{
+    font-size: 2em;
+}
+
+#nombre_empresa p{
+    font-size: 1.3em;
+}
+
+#centro_trabajo p{
+    font-size: 1.1em;
+}
+
+
+/* Vector división */
+
+#container_ultimo_cambio{
+    grid-column: 2 / 12;
+    grid-row: 2 / 3;
+}
+
+#subcontainer_ultimo_cambio{
+    display: flex;
+    background-image: url('../img/vector_division.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: start start;
+    height: 50px;
+    width: 100%;
+    padding-left: 20px;
+    align-items: center;
+}
+
+#subcontainer_ultimo_cambio p{
+    color: #FFF;
+    font-weight: bold;
+}
+
+
+/* Información de cambios */
+
+#container_cambios{
+    grid-column: 2 / 12;
+    grid-row: 3 / 4;
+    margin-top: 100px;
+    padding: 35px;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+}
+
+
+/* Estado de candidatura */
+
+#container_estado_candidatura{
+    padding: 35px;
+    margin-top: 25px;
+    background-color: #FFF;
+    border-radius: 10px;
+}
+
+#titulo_estado_candidatura h3{
+    font-size: 1.7em;
+    margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 1024px){
+    /* Sección 1 */
+
+    /* Datos proceso */
+
+    #container_datos_top{
+        grid-template-columns: 150px 3fr 1fr;
+    }
+
+    #titulo_oferta{
+        width: 50%;
+        max-height: 5em;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    #titulo_oferta h1{
+        max-height: 2.5em;
+        width: 90%;
+        overflow-x: hidden;
+    }
+
+    #nombre_empresa, #centro_trabajo{
+        margin-top: 0px;
+    }
+
+    #container_ultimo_cambio, #container_cambios{
+        grid-column: 3 / 11;
+    }
+
+    #container_ultimo_cambio{
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    /* Sección 1 */
+
+    /* Datos proceso */
+
+    #container_datos_top{
+        grid-template-columns: 125px 3fr 1fr;
+    }
+
+    #imagen_empresa{
+        width: 125px;
+        height: 125px;
+    }
+
+    #container_texto_datos{
+        margin-left: 25px;
+    }
+
+    #titulo_oferta{
+        width: 50%;
+        max-height: 4.8em;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    #titulo_oferta h1{
+        max-height: 2.5em;
+        width: 90%;
+        overflow-x: hidden;
+    }
+
+    #nombre_empresa{
+        max-width: 90%;
+    }
+
+    #centro_trabajo{
+        max-width: 90%;
+    }
+
+    #container_ultimo_cambio, #container_cambios{
+        grid-column: 3 / 11;
+    }
+}
+
+@media only screen and (max-width: 720px){
+    /* Sección 1 */
+
+    /* Datos proceso */
+
+    #container_datos_proceso{
+        display: flex;
+        flex-wrap: wrap;
+        grid-column: 2 / 12;
+    }
+
+    #imagen_empresa{
+        width: 125px;
+        height: 125px;
+        background-color: #D9D9D9;
+        border-radius: 10px;
+    }
+
+    #container_texto_datos{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 25px 0px;
+    }
+
+    #titulo_oferta{
+        width: 100%;
+        max-height: 10em;
+        overflow-x: hidden;
+    }
+
+    #titulo_oferta h1{
+        max-height: 10em;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    #nombre_empresa, #centro_trabajo{
+        margin-top: 20px;
+    }
+
+    #container_ultimo_cambio, #container_cambios{
+        grid-column: 2 / 12;
+    }
+
+    /* Sección 2 */
+
+    /* Cambios */
+
+    #container_cambios{
+        padding: 10px;
+    }
+
+    #container_estado_candidatura{
+        padding: 30px 20px;
+    }
+
+    /* Sección 3 */
+
+    /* Estado de candidatura */
+
+    #titulo_estado_candidatura h3{
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+}
