@@ -1,0 +1,78 @@
+:root {
+    --negro: #000000;
+    --gris: #D8D8D8;
+    --azul: #2FB9CE;
+    --blanco: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bloque {
+    height: 25vh;
+}
+
+.rellenar_cv {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
+}
+
+.rellenar_cv h2 {
+    grid-row: 1;
+    grid-column: 4 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.rellenar_cv > input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid var(--azul);
+    border-radius: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+}
+
+.rellenar_cv #subir_cv {
+    grid-row: 2;
+    grid-column: 4 / 7;
+}
+
+.rellenar_cv #telefono {
+    grid-row: 2;
+    grid-column: 7/ 10;
+}
+
+.rellenar_cv button {
+    grid-column: 6 / 8;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 1em;
+    border-radius: 10px;
+    border: 0;
+    height: 50px;
+    margin: 10px 0;
+}
+
+.preferencias {
+    padding: 2em 0;
+}
+
+.rellenar_cv {
+    padding: 1em 0;
+}
