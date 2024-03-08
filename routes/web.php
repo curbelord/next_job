@@ -26,6 +26,10 @@ Route::get('/empresas', function () {
     return view('empresas');
 });
 
+Route::get('/registrar-empresa', function () {
+    return view('registrar_empresa');
+});
+
 Route::get('/descripcion', function (){
     return view('offer_description');
 });

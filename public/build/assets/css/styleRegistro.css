@@ -17,11 +17,15 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(9, 1fr);
+    grid-gap: 10px;
 }
 
 .registro h2 {
     grid-row: 1;
     grid-column: 4 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
 .registro > input, .registro > select {
