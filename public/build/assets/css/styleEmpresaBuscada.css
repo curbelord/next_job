@@ -1,0 +1,191 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: start;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, auto);
+    margin: 100px 0px;
+}
+
+
+/* Sección 1 */
+
+/* Datos empresa */
+
+#container_datos_empresa{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 150px;
+    grid-column: 3 / 11;
+    grid-row: 1 / 2;
+}
+
+#container_imagen{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+#imagen_empresa{
+    width: 150px;
+    height: 150px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+#container_texto_datos{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-left: 50px;
+}
+
+#container_texto_datos div{
+    width: 100%;
+}
+
+#sede_empresa{
+    margin-top: 20px;
+}
+
+#nombre_empresa h1{
+    font-size: 1.7em;
+}
+
+#sede_empresa p{
+    font-size: 1.3em;
+}
+
+/* Sección 2 */
+
+/* Descripción empresa */
+
+#container_descripcion_empresa{
+    grid-column: 3 / 11;
+    grid-row: 2 / 3;
+    margin-top: 25px;
+}
+
+@media only screen and (min-width: 1024px){
+    /* Sección 1 */
+
+    /* Datos empresa */
+
+    #nombre_empresa{
+        width: 50%;
+        max-height: 5em;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    #nombre_empresa h1{
+        max-height: 2.5em;
+        width: 90%;
+        overflow-x: hidden;
+    }
+
+    /* Sección 2 */
+
+    /* Descripción empresa */
+
+    #container_descripcion_empresa{
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    /* Sección 1 */
+
+    /* Datos proceso */
+
+    #container_datos_empresa{
+        grid-template-columns: 125px 1fr;
+    }
+
+    #container_imagen{
+        margin-right: 50px;
+    }
+
+    #imagen_empresa{
+        width: 125px;
+        height: 125px;
+    }
+
+    #container_texto_datos{
+        margin-left: 50px;
+    }
+
+    #nombre_empresa{
+        width: 50%;
+        max-height: 4.8em;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    #nombre_empresa h1{
+        max-height: 2.5em;
+        width: 90%;
+        overflow-x: hidden;
+    }
+
+    #sede_empresa{
+        max-width: 90%;
+    }
+}
+
+@media only screen and (max-width: 720px){
+    /* Sección 1 */
+
+    /* Datos empresa */
+
+    #container_datos_empresa{
+        display: flex;
+        flex-wrap: wrap;
+        grid-column: 2 / 12;
+    }
+
+    #container_imagen{
+        width: 100%;
+    }
+
+    #imagen_empresa{
+        width: 125px;
+        height: 125px;
+        background-color: #D9D9D9;
+        border-radius: 10px;
+    }
+
+    #container_texto_datos{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 25px 0px;
+    }
+
+    #nombre_empresa{
+        width: 100%;
+        max-height: 10em;
+        overflow-x: hidden;
+    }
+
+    #nombre_empresa h1{
+        max-height: 10em;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    #sede_empresa{
+        margin-top: 20px;
+    }
+
+    /* Sección 2 */
+
+    /* Descripción empresa */
+
+    #container_descripcion_empresa{
+        grid-column: 2 / 12;
+    }
+}
