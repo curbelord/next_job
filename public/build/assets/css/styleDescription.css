@@ -58,8 +58,7 @@
 }
 
 #titulo_oferta h1{
-    /* font-size: 2.5em; */
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 #nombre_empresa p{
@@ -150,8 +149,12 @@
 }
 
 #titulo_descripcion h3, #titulo_cuestionario h3{
-    font-size: 1.7em;
+    font-size: 1.5em;
     margin-bottom: 30px;
+}
+
+#cuerpo_descripcion p{
+    line-height: 1.6em;
 }
 
 #subcontainer_cuestionario{
@@ -193,7 +196,7 @@
     }
 
     #titulo_oferta h1{
-        max-height: 2.5em;
+        height: 2.8em;
         width: 90%;
         overflow-x: hidden;
     }
@@ -332,7 +335,7 @@
     }
 
     #titulo_descripcion h3, #titulo_cuestionario h3{
-        font-size: 1.2em;
+        font-size: 1.3em;
         margin-bottom: 30px;
     }
 
