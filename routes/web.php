@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OfertasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,8 @@ Route::get('/', function () {
     return view('principal');
 });
 
-Route::get('/ofertas', function () {
-    return view('ofertas');
-});
+Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('ofertas');
+
 
 Route::get('/empresas', function () {
     return view('empresas');

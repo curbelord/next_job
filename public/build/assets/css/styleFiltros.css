@@ -32,6 +32,6 @@
     grid-template-rows: repeat(4, 1fr);
 }
 
-.seccion_buscador button {
+.seccion_buscador form {
     grid-row: 4;
 }

@@ -50,9 +50,13 @@ select {
     grid-column: 8 / 11;
 }
 
-button {
+form {
     grid-column: 6 / 8;
     grid-row: 3;
+}
+
+button {
+    width: 100%;
     display: flex;
     align-self: center;
     align-items: center;

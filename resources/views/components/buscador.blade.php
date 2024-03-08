@@ -18,6 +18,11 @@
         @include('components.filtros')
     @endif
 
-    <button type="button">Buscar</button>
+
+    <!-- Botón que dirija a ofertas -->
+
+    <form method="GET" action="{{ route('ofertas') }}">
+        <button type="submit">Buscar</button>
+    </form>
 
 </div>
