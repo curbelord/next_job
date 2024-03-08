@@ -16,6 +16,8 @@
 
         <title>@yield('title')</title>
 
+        @yield('style')
+
     </head>
 
     <body>
