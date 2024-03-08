@@ -34,6 +34,10 @@ Route::get('/vincular-empresa', function () {
     return view('vincular_empresa');
 });
 
+Route::get('/rellenar-cv', function () {
+    return view('rellenar_cv');
+});
+
 Route::get('/descripcion', function (){
     return view('offer_description');
 });
