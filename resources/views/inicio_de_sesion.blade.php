@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantilla_sin_footer')
 
 @section('title', 'Inicio de sesión')
 
