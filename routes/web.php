@@ -51,6 +51,10 @@ Route::get('/info-proceso', function (){
 
 });
 
+Route::get('/empresa-buscada', function (){
+    return view('empresa_buscada');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
