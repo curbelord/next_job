@@ -55,6 +55,12 @@
   $j = 1;
   $i = 2;
 
+  $titulo = 'Busca un empleo';
+
+  $mostrarFiltros = false;
+  $mostrarProvincias = true;
+  $placeholder_buscador = 'Puesto, localidad, categoría...';
+
 ?>
 
 @extends('layouts.plantilla')

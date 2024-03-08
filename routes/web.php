@@ -22,6 +22,10 @@ Route::get('/ofertas', function () {
     return view('ofertas');
 });
 
+Route::get('/empresas', function () {
+    return view('empresas');
+});
+
 Route::get('/descripcion', function (){
     return view('offer_description');
 });
