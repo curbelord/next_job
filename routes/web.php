@@ -30,6 +30,14 @@ Route::get('/descripcion', function (){
     return view('offer_description');
 });
 
+Route::get('/registro', function (){
+    return view('registro');
+});
+
+Route::get('/inicio-de-sesion', function (){
+    return view('inicio_de_sesion');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
