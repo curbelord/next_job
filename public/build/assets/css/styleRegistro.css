@@ -1,0 +1,106 @@
+:root {
+    --negro: #000000;
+    --gris: #D8D8D8;
+    --azul: #2FB9CE;
+    --blanco: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.registro {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+}
+
+.registro h2 {
+    grid-row: 1;
+    grid-column: 4 / 10;
+}
+
+.registro > input, .registro > select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid var(--azul);
+    border-radius: 5px;
+    height: 50px;
+}
+
+.registro > input {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.registro #nombre {
+    grid-row: 2;
+    grid-column: 4 / 10;
+}
+
+.registro #edad {
+    grid-row: 3;
+    grid-column: 4 / 5;
+}
+
+.registro #genero {
+    grid-row: 3;
+    grid-column: 5 / 7;
+}
+
+.registro #fecha_nacimiento {
+    grid-row: 3;
+    grid-column: 7 / 10;
+}
+
+.registro #direccion {
+    grid-row: 4;
+    grid-column: 4 / 10;
+}
+
+.registro #email {
+    grid-row: 5;
+    grid-column: 4 / 10;
+}
+
+.registro #contrasena {
+    grid-row: 6;
+    grid-column: 4 / 10;
+}
+
+.registro #confirmar_contrasena {
+    grid-row: 7;
+    grid-column: 4 / 10;
+}
+
+.registro button {
+    grid-row: 8;
+    grid-column: 6 / 8;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 1em;
+    border-radius: 10px;
+    border: 0;
+    height: 50px;
+    margin: 10px 0;
+}
+
+.registro p {
+    grid-row: 9;
+    grid-column: 6 / 8;
+}
+
+.registro a {
+    color: var(--azul);
+    text-decoration: none;
+}

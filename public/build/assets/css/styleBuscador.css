@@ -55,6 +55,7 @@ button {
     grid-row: 3;
     display: flex;
     align-self: center;
+    align-items: center;
     justify-content: center;
     background-color: var(--azul);
     color: var(--blanco);
