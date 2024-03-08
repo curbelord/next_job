@@ -58,7 +58,8 @@
 }
 
 #titulo_oferta h1{
-    font-size: 2.5em;
+    /* font-size: 2.5em; */
+    font-size: 2em;
 }
 
 #nombre_empresa p{
@@ -133,7 +134,7 @@
 
 /* Sección 2 */
 
-#container_descripcion{
+#container_descripcion_cuestionario{
     grid-column: 3 / 11;
     grid-row: 2 / 3;
     margin-top: 100px;
@@ -142,13 +143,219 @@
     border-radius: 20px;
 }
 
-#subcontainer_descripcion{
+#subcontainer_descripcion, #subcontainer_cuestionario{
     padding: 40px 50px;
     background-color: #FFF;
     border-radius: 20px;
 }
 
-#titulo_descripcion h3{
+#titulo_descripcion h3, #titulo_cuestionario h3{
     font-size: 1.7em;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+#subcontainer_cuestionario{
+    margin-top: 25px;
+}
+
+#cuestionario_fila_1{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#cantidad_preguntas{
+    margin-right: 20px;
+}
+
+#tipo_preguntas{
+    padding-left: 20px;
+    border-left: 2px solid #2FB9CE;
+}
+
+#cuestionario_fila_2{
+    margin-top: 20px;
+}
+
+@media only screen and (min-width: 1024px){
+    /* Sección 1 */
+
+    /* Datos TOP */
+
+    #container_datos_top{
+        grid-template-columns: 150px 3fr 1fr;
+    }
+
+    #titulo_oferta{
+        width: 50%;
+        max-height: 5em;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    #titulo_oferta h1{
+        max-height: 2.5em;
+        width: 90%;
+        overflow-x: hidden;
+    }
+
+    #nombre_empresa, #centro_trabajo{
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    /* Sección 1 */
+
+    /* Datos TOP */
+
+    #container_datos_top{
+        grid-template-columns: 125px 3fr 1fr;
+    }
+
+    #imagen_empresa{
+        width: 125px;
+        height: 125px;
+    }
+
+    #container_texto_datos{
+        margin-left: 25px;
+    }
+
+    #titulo_oferta{
+        width: 50%;
+        max-height: 4.8em;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    #titulo_oferta h1{
+        max-height: 2.5em;
+        width: 90%;
+        overflow-x: hidden;
+    }
+
+    #nombre_empresa{
+        max-width: 90%;
+    }
+
+    #centro_trabajo{
+        max-width: 90%;
+    }
+}
+
+@media only screen and (max-width: 720px){
+    /* Sección 1 */
+
+    /* Datos TOP */
+
+    #container_datos{
+        grid-column: 2 / 12;
+    }
+
+    #container_datos_top{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #imagen_empresa{
+        width: 125px;
+        height: 125px;
+        background-color: #D9D9D9;
+        border-radius: 10px;
+    }
+
+    #container_texto_datos{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 25px 0px;
+    }
+
+    #titulo_oferta{
+        width: 100%;
+        max-height: 10em;
+        overflow-x: hidden;
+    }
+
+    #titulo_oferta h1{
+        max-height: 10em;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    #nombre_empresa, #centro_trabajo{
+        margin-top: 20px;
+    }
+
+    #container_boton_inscripcion{
+        width: 100%;
+    }
+
+    #boton_inscripcion, #boton_inscripcion a{
+        width: 100%;
+    }
+
+    #numero_inscritos{
+        width: 100%;
+        margin: -10px auto 0px auto;
+    }
+
+    #numero_inscritos span{
+        padding-top: 12px;
+    }
+
+    /* Datos BOTTOM */
+
+    #container_datos_bottom{
+        margin-top: 50px;
+    }
+
+    .boton_outline_azul{
+        display: block;
+        margin-top: 20px;
+    }
+
+    #salario, #horario{
+        margin-left: 0px;
+    }
+
+
+    /* Sección 2 */
+
+    #container_descripcion_cuestionario{
+        grid-column: 2 / 12;
+        margin-top: 50px;
+        padding: 10px;
+    }
+
+    #subcontainer_descripcion, #subcontainer_cuestionario{
+        padding: 30px 20px;
+    }
+
+    #titulo_descripcion h3, #titulo_cuestionario h3{
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+
+    #subcontainer_cuestionario{
+        margin-top: 20px;
+    }
+
+    #cuestionario_fila_1{
+        flex-wrap: wrap;
+    }
+
+    #cantidad_preguntas{
+        margin-right: 0px;
+        width: 100%;
+    }
+
+    #tipo_preguntas{
+        margin-top: 20px;
+        padding-left: 0px;
+        border-left: none;
+    }
+
+    #cuestionario_fila_2{
+        margin-top: 20px;
+    }
 }
