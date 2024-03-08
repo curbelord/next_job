@@ -21,8 +21,14 @@
 
     <!-- Botón que dirija a ofertas -->
 
-    <form method="GET" action="{{ route('ofertas') }}">
-        <button type="submit">Buscar</button>
-    </form>
+    @if ($titulo == 'Busca una empresa')
+        <form method="GET" action="{{ route('empresa-buscada') }}">
+            <button type="submit">Buscar</button>
+        </form>
+    @else
+        <form method="GET" action="{{ route('ofertas') }}">
+            <button type="submit">Buscar</button>
+        </form>
+    @endif
 
 </div>
