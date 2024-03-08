@@ -37,6 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: left;
+    text-align: left;
 }
 
 .registro #nombre {
@@ -44,19 +45,14 @@
     grid-column: 4 / 10;
 }
 
-.registro #edad {
-    grid-row: 3;
-    grid-column: 4 / 5;
-}
-
 .registro #genero {
     grid-row: 3;
-    grid-column: 5 / 7;
+    grid-column: 4 / 6;
 }
 
 .registro #fecha_nacimiento {
     grid-row: 3;
-    grid-column: 7 / 10;
+    grid-column: 6 / 10;
 }
 
 .registro #direccion {
@@ -97,7 +93,7 @@
 
 .registro p {
     grid-row: 9;
-    grid-column: 6 / 8;
+    grid-column: 4 / 10;
 }
 
 .registro a {
