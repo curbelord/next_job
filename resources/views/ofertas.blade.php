@@ -52,17 +52,20 @@
     'Melilla'
   ];
 
-  $j = 1;
-  $i = 2;
+  $titulo = '¡Aplica filtros para cerrar la búsqueda!';
+  $mostrarFiltros = true;
+  $mostrarProvincias = true;
+  $placeholder_buscador = 'Puesto, localidad, categoría...';
 
 ?>
 
 @extends('layouts.plantilla')
 
-@section('title', 'Principal')
+@section('title', 'Ofertas de empleo')
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleOfertas.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleFiltros.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleBuscador.css') }}">
 @endsection
 
@@ -72,6 +75,43 @@
 
         @include('components.buscador')
 
+        <div class="ofertas">
+
+            <div class="contenedor_ofertas">
+
+                <div class="oferta">
+                    <div class="oferta_img">IMG</div>
+                    <div class="oferta_titulo">
+                        <h3>Desarrollador Web</h3>
+                    </div>
+                    <div class="oferta_empresa">
+                        <p>Artek</p>
+                    </div>
+                    <div>
+                        <div class="oferta_localizacion">
+                            <p>Ubicación: Arrecife</p>
+                        </div>
+                        <div class="oferta__fecha">
+                            <p>Fecha: 03/04/2024</p>
+                        </div>
+                    </div>
+                    <div class="oferta_descripcion">
+                        <p>Se busca programador de Backend con experiencia en Laravel y al menos 5 años de PHP.</p>
+                    </div>
+                    <div>
+                        <div class="oferta_jornada">
+                            <p>Jornada Completa</p>
+                        </div>
+                        <div class="oferta_tipo_contrato">
+                            <p>Contrato Indefinido</p>
+                        </div>
+                    </div>
+                    <div class="vector_borde_azul"></div>
+                </div>
+
+            </div>
+
+        </div>
 
         <!--div class="content__title">
             <h1>Ofertas</h1>
