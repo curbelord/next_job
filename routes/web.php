@@ -30,6 +30,10 @@ Route::get('/descripcion', function (){
     return view('offer_description');
 });
 
+Route::get('/info-proceso', function (){
+    return view('process_info');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
