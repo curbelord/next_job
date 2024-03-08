@@ -16,56 +16,9 @@
     height: 25vh;
 }
 
-.seccion_buscador, .seccion_relleno, .seccion_valor, .seccion_provincias {
+.seccion_relleno, .seccion_valor, .seccion_provincias {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-}
-
-.seccion_buscador {
-    grid-template-rows: repeat(3, 1fr);
-}
-
-.seccion_buscador > * {
-    display: flex;
-    align-items: center;
-}
-
-.seccion_buscador h2 {
-    grid-column: 3 / 8;
-    grid-row: 1;
-}
-
-input, select {
-    grid-row: 2;
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid var(--azul);
-    border-radius: 5px;
-    height: 50px;
-}
-
-input {
-    grid-column: 3 / 11;
-    text-align: left;
-}
-
-select {
-    grid-column: 8 / 11;
-}
-
-button {
-    grid-column: 6 / 8;
-    grid-row: 3;
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    background-color: var(--azul);
-    color: var(--blanco);
-    padding: 1em;
-    border-radius: 10px;
-    border: 0;
-    height: 50px;
 }
 
 .seccion_relleno div {
@@ -208,22 +161,6 @@ button {
 
     .bloque {
         height: 10vh;
-    }
-
-    .seccion_buscador h2 {
-        grid-column: 2 / 12;
-    }
-
-    .seccion_buscador input {
-        grid-column: 2 / 11;
-    }
-
-    .seccion_buscador select {
-        grid-column: 8 / 12;
-    }
-
-    .seccion_buscador button {
-        grid-column: 5 / 9;
     }
 
     .seccion_relleno, .seccion_valor {

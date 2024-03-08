@@ -63,30 +63,14 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('build/assets/css/principal.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleBuscador.css') }}">
 @endsection
 
 @section('content')
 
     <div class="content">
 
-        <div class="seccion_buscador">
-
-            <h2>Busca un empleo</h2>
-
-            <input type="text" name="buscador" id="buscador" placeholder="Puesto, localidad, categoría...">
-
-            <select name="provincia" id="provincia">
-                <option value="0">Selecciona una provincia</option>
-
-                @foreach ($provincias as $provincia)
-                    <option value="{{ $provincia }}">{{ $provincia }}</option>
-                @endforeach
-                
-            </select>
-
-            <button type="button">Buscar</button>
-
-        </div>
+        @include('components.buscador')
 
         <div class="bloque"></div>
 
