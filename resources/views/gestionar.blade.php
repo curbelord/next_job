@@ -18,6 +18,10 @@
             ¿Qué quieres hacer?
         </p>
 
+    </div>
+
+    <div class="seccion_gestion">
+
         <div class="gestion gestion_1-3">
             <div class="imagen_gestion">IMAGEN</div>
             <div class="nombre_gestion">
