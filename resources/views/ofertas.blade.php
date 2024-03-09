@@ -77,39 +77,43 @@
 
         <div class="ofertas">
 
-            <div class="contenedor_ofertas">
+            @foreach ($ofertas as $oferta)
 
-                <div class="oferta">
-                    <div class="oferta_img">IMG</div>
-                    <div class="oferta_titulo">
-                        <h3>Desarrollador Web</h3>
-                    </div>
-                    <div class="oferta_empresa">
-                        <p>Artek</p>
-                    </div>
-                    <div>
-                        <div class="oferta_localizacion">
-                            <p>Ubicación: Arrecife</p>
+                <div class="contenedor_ofertas">
+
+                    <div class="oferta">
+                        <div class="oferta_img">IMG</div>
+                        <div class="oferta_titulo">
+                            <h3> {{ $oferta->puesto_trabajo }} </h3>
                         </div>
-                        <div class="oferta__fecha">
-                            <p>Fecha: 03/04/2024</p>
+                        <div class="oferta_empresa">
+                            <p> Artek </p>
                         </div>
-                    </div>
-                    <div class="oferta_descripcion">
-                        <p>Se busca programador de Backend con experiencia en Laravel y al menos 5 años de PHP.</p>
-                    </div>
-                    <div>
-                        <div class="oferta_jornada">
-                            <p>Jornada Completa</p>
+                        <div>
+                            <div class="oferta_localizacion">
+                                <p> Ubicación: {{ $oferta->ubicacion }} </p>
+                            </div>
+                            <div class="oferta__fecha">
+                                <p> Fecha: {{ $oferta->fecha_publicacion }} </p>
+                            </div>
                         </div>
-                        <div class="oferta_tipo_contrato">
-                            <p>Contrato Indefinido</p>
+                        <div class="oferta_descripcion">
+                            <p> {{ $oferta->descripcion }} </p>
                         </div>
+                        <div>
+                            <div class="oferta_jornada">
+                                <p> {{ $oferta->jornada }} </p>
+                            </div>
+                            <div class="oferta_tipo_contrato">
+                                <p> {{ $oferta->tipo_trabajo }} </p>
+                            </div>
+                        </div>
+                        <div class="vector_borde_azul"></div>
                     </div>
-                    <div class="vector_borde_azul"></div>
+
                 </div>
 
-            </div>
+            @endforeach
 
         </div>
 
