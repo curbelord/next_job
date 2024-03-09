@@ -20,7 +20,7 @@ class OfertaSeeder extends Seeder
             'fecha_publicacion' => '2024-03-08',
             'fecha_cierre' => '2024-03-15',
             'numero_vacantes' => 3,
-            'salario' => 30000.00,
+            'salario' => 3000.00,
             'jornada' => 'Tiempo completo',
             'sector' => 'Tecnología',
             'tipo_trabajo' => 'Presencial',
