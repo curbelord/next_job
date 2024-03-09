@@ -117,7 +117,8 @@
                         Provincia 2
                     </span>
                     <div class="vector_borde_azul"></div>
-                </div>            </div>
+                </div>            
+            </div>
 
             <div class="provincia provincia_3-3">
                 <div class="imagen_provincia">IMAGEN</div>

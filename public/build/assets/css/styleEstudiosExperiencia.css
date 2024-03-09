@@ -64,7 +64,7 @@
     grid-row: 2;
 }
 
-#categoria, #jornada {
+#categoria, #jornada, #turno {
     grid-row: 2;
 }
 
@@ -91,4 +91,71 @@
     align-items: center;
     justify-content: left;
     text-align: left;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1000px) {
+
+    .rellenar_cv h2, .contenedor_estudios_experiencia h2, .preferencias h2, .contenedor_input {
+        grid-column: 3 / 11;
+    }
+
+    .rellenar_cv > #subir_cv {
+        grid-column: 3 / 7;
+    }
+
+    .rellenar_cv > #telefono {
+        grid-column: 7 / 11;
+    }
+
+    .rellenar_cv > button {
+        grid-column: 5 / 9;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .rellenar_cv h2,.contenedor_estudios_experiencia h2, .preferencias h2 {
+        grid-column: 2 / 12;
+    }
+
+    .contenedor_input {
+        grid-column: 2 / 12;
+    }
+
+    .rellenar_cv > #subir_cv {
+        grid-column: 2 / 7;
+    }
+
+    .rellenar_cv > #telefono {
+        grid-column: 7 / 12;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    #categoria, #jornada, #turno, #anho_inicio_Estudios, #anho_inicio_Experiencia, #anho_fin_Estudios, #anho_fin_Experiencia, #Escuela, #Empresa {
+        grid-column: 1 / 4;
+    }
+
+    #categoria, #Escuela, #Empresa, .rellenar_cv > #telefono {
+        grid-row: 2;
+    }
+    
+    #jornada, #anho_inicio_Estudios, #anho_inicio_Experiencia, .rellenar_cv > #subir_cv {
+        grid-row: 3;
+    }
+    
+    #turno, #anho_fin_Estudios, #anho_fin_Experiencia {
+        grid-row: 4;
+    }
+
+    .rellenar_cv #telefono, .rellenar_cv > #subir_cv {
+        grid-column: 2 / 12;
+    }
+
+    .rellenar_cv > button {
+        grid-column: 4 / 10;
+    }
 }
