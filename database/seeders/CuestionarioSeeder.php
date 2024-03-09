@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Cuestionario;
+use Carbon\Carbon;
 
 class CuestionarioSeeder extends Seeder
 {
@@ -14,13 +15,15 @@ class CuestionarioSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Cuestionario
+        // Crear datos de prueba para la tabla cuestionarios
         Cuestionario::create([
-            'id' => 1,
-            'fecha' => '2024-03-08',
-            'tipo' => 'Encuesta de satisfacción',
+            'fecha' => Carbon::now(),
+            'tipo' => 'Prueba técnica',
+            'id_seleccionador' => 2,
+            'id_demandante' => 1,
+            'id_oferta' => 1,
         ]);
 
-        // Puedes agregar más registros de Cuestionario si lo deseas
+        // Puedes agregar más datos de prueba según sea necesario
     }
 }

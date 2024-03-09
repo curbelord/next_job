@@ -10,8 +10,6 @@ class Calendario extends Model
 
     protected $primaryKey = 'id'; // Clave primaria de la tabla
 
-    public $timestamps = false; // Indica si la tabla tiene los campos created_at y updated_at
-
     protected $fillable = [
         'id',
         'evento',

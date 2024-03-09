@@ -140,11 +140,25 @@ CREATE TABLE Mensaje (
     CONSTRAINT mensaje_id_receptor FOREIGN KEY (id_receptor) REFERENCES Demandante(id) ON DELETE CASCADE
 );
 
+CREATE TABLE Inscripcion (
+    id_demandante INT,
+    id_oferta INT,
+    anotacion VARCHAR (255),
+    CONSTRAINT inscripcion_id_demandante_fk FOREIGN KEY (id_demandante) REFERENCES Demandante(id) ON DELETE CASCADE,
+    CONSTRAINT inscripcion_id_oferta_fk FOREIGN KEY (id_oferta) REFERENCES Oferta(referencia) ON DELETE CASCADE,
+    CONSTRAINT inscripcion_id_pk PRIMARY KEY (id_demandante, id_oferta)
+);
+
 CREATE TABLE Cuestionario (
     id INT,
     fecha DATE,
     tipo VARCHAR(255),
-    CONSTRAINT cuestionario_id_pk PRIMARY KEY (id)
+    id_seleccionador INT,
+    id_demandante INT,
+    id_oferta INT,
+    CONSTRAINT cuestionario_id_pk PRIMARY KEY (id),
+    CONSTRAINT cuestionario_id_seleccionador_fk FOREIGN KEY (id_seleccionador) REFERENCES Seleccionador(id) ON DELETE CASCADE,
+    CONSTRAINT cuestionario_id_inscripcion_fk FOREIGN KEY (id_demandante, id_oferta) REFERENCES Inscripcion(id_demandante, id_oferta) ON DELETE CASCADE
 );
 
 CREATE TABLE Pregunta (
@@ -154,15 +168,4 @@ CREATE TABLE Pregunta (
     id_cuestionario INT,
     CONSTRAINT pregunta_id_cuestionario_fk FOREIGN KEY (id_cuestionario) REFERENCES Cuestionario(id) ON DELETE CASCADE,
     CONSTRAINT pregunta_id_pk PRIMARY KEY (id_cuestionario, id)
-);
-
-CREATE TABLE Inscripcion (
-    id_demandante INT,
-    id_oferta INT,
-    anotacion VARCHAR (255),
-    cuestionario INT,
-    CONSTRAINT inscripcion_id_demandante_fk FOREIGN KEY (id_demandante) REFERENCES Demandante(id) ON DELETE CASCADE,
-    CONSTRAINT inscripcion_id_oferta_fk FOREIGN KEY (id_oferta) REFERENCES Oferta(referencia) ON DELETE CASCADE,
-    CONSTRAINT inscripcion_id_pk PRIMARY KEY (id_demandante, id_oferta),
-    CONSTRAINT inscripcion_cuestionaro_fk FOREIGN KEY (cuestionario) REFERENCES Cuestionario(id) ON DELETE CASCADE
 );

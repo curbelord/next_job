@@ -10,8 +10,6 @@ class Seleccionador extends Model
 
     protected $primaryKey = 'id'; 
 
-    public $timestamps = false; 
-
     protected $fillable = [
         'id',
         'id_empresa', // Si tienes un campo id_empresa en tu tabla Seleccionador

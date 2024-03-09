@@ -19,7 +19,6 @@ class InscripcionSeeder extends Seeder
             'id_demandante' => 1,
             'id_oferta' => 1,
             'anotacion' => 'Interesado en la oferta',
-            'cuestionario' => 1, // Suponiendo que tienes un cuestionario asociado
         ]);
 
         // Puedes agregar más registros de Inscripcion si lo deseas

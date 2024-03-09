@@ -6,19 +6,41 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cuestionario extends Model
 {
-    protected $table = 'Cuestionario'; // Nombre de la tabla en la base de datos
+    // Nombre de la tabla en la base de datos
+    protected $table = 'cuestionario';
 
-    protected $primaryKey = 'id'; // Clave primaria de la tabla
+    // Nombre de la clave primaria
+    protected $primaryKey = 'id';
 
-    public $timestamps = false; // Indica si la tabla tiene los campos created_at y updated_at
-
+    // Los campos que pueden ser asignados masivamente
     protected $fillable = [
-        'id',
+        
         'fecha',
         'tipo',
+        'id_seleccionador',
+        'id_demandante',
+        'id_oferta',
     ];
 
-    // Define la relación con la tabla Pregunta
+    // Relación con el modelo Seleccionador
+    public function seleccionador()
+    {
+        return $this->belongsTo(Seleccionador::class, 'id_seleccionador', 'id');
+    }
+
+    // Relación con el modelo Demandante
+    public function demandante()
+    {
+        return $this->belongsTo(Demandante::class, 'id_demandante', 'id');
+    }
+
+    // Relación con el modelo Oferta
+    public function oferta()
+    {
+        return $this->belongsTo(Oferta::class, 'id_oferta', 'referencia');
+    }
+
+    // Relación con el modelo Pregunta
     public function preguntas()
     {
         return $this->hasMany(Pregunta::class, 'id_cuestionario', 'id');

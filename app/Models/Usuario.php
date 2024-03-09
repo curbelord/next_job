@@ -11,8 +11,6 @@ class Usuario extends Model
 
     protected $primaryKey = 'id'; 
 
-    public $timestamps = false; // Indica si la tabla tiene los campos created_at y updated_at
-
     protected $fillable = [
         'id',
         'nombre',
