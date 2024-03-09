@@ -56,6 +56,10 @@ Route::get('/info-proceso', function (){
 
 Route::get('/empresa-buscada', [EmpresaBuscadaController::class, 'mostrar'])->name('empresa-buscada');
 
+Route::get('/desplegable', function (){
+    return view('desplegable');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

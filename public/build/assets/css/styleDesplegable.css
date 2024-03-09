@@ -1,0 +1,53 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+.boton_desplegable{
+    display: inline-block;
+    border: 2px solid #2FB9CE;
+    border-radius: 10px;
+}
+
+.titulo_desplegable{
+    display: inline-block;
+    cursor : pointer;
+    padding : 20px;
+    font-size : 1.2em;
+}
+
+.lista_elementos_desplegable{
+    width: 50%;
+    height: 0px;
+    overflow: hidden;
+    text-align: center;
+    transition: height .4s ease;
+}
+
+.lista_elementos_desplegable li{
+    border: 1px solid #2FB9CE;
+}
+
+.lista_elementos_desplegable li button{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding : 30px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    font-size: 1em;
+    background: none;
+    border: none;
+}
+
+.boton_desplegar {
+    opacity: 0;
+}
+
+#boton_desplegar_0:checked ~ #lista_elementos_desplegable_0, #boton_desplegar_1:checked ~ #lista_elementos_desplegable_1, #boton_desplegar_2:checked ~ #lista_elementos_desplegable_2,#boton_desplegar_3:checked ~ #lista_elementos_desplegable_3,#boton_desplegar_4:checked ~ #lista_elementos_desplegable_4{
+    height: 500px;
+}

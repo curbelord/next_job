@@ -10,7 +10,7 @@
 
                 @foreach ($provincias as $provincia)
                     <option value="{{ $provincia }}">{{ $provincia }}</option>
-                @endforeach        
+                @endforeach
         </select>
     @endif
 
