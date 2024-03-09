@@ -27,12 +27,16 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    padding: 1.5em 0;
+    padding: 1.5em 0 0 0;
 }
 
 .seccion_gestion p {
     grid-column: 3 / 11;
     grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 1.5em 0;
 }
 
 .gestion {
@@ -96,14 +100,15 @@
 
 @media (max-width: 1150px) {
 
-    .seccion_gestion {
-        grid-template-rows: repeat(3, 1fr);
-    }
-
     .seccion_gestion h2 {
         font-size: 2em;
         justify-content: center;
         padding: 0em 0;
+    }
+
+    .seccion_gestion p {
+        font-size: 1em;
+        justify-content: center;
     }
 
     .gestion_1-3, .gestion_2-3, .gestion_3-3{
@@ -112,17 +117,17 @@
 
     .gestion_1-3 {
         grid-column: 5 / 9;
-        grid-row: 3;
+        grid-row: 1;
     }
     
     .gestion_2-3 {
         grid-column: 3 / 6;
-        grid-row: 4;
+        grid-row: 2;
     }
     
     .gestion_3-3 {
         grid-column: 8 / 11;
-        grid-row: 4;
+        grid-row: 2;
     }
 }
 
@@ -132,23 +137,19 @@
         height: 10vh;
     }
 
-    .seccion_gestion {
-        grid-template-rows: repeat(4, 1fr);
-    }
-
     .gestion_1-3 {
         grid-column: 4 / 10;
-        grid-row: 2;
+        grid-row: 1;
     }
     
     .gestion_2-3 {
         grid-column: 4 / 10;
-        grid-row: 3;
+        grid-row: 2;
     }
     
     .gestion_3-3 {
         grid-column: 4 / 10;
-        grid-row: 4;
+        grid-row: 3;
     }
 }
 
@@ -156,17 +157,14 @@
 
     .gestion_1-3 {
         grid-column: 2 / 12;
-        grid-row: 2;
     }
     
     .gestion_2-3 {
         grid-column: 2 / 12;
-        grid-row: 3;
     }
     
     .gestion_3-3 {
         grid-column: 2 / 12;
-        grid-row: 4;
     }
 
     .gestion:first-child {
