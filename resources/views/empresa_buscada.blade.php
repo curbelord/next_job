@@ -31,5 +31,17 @@
                 Sunt beatae quae repellendus, expedita odio doloribus adipisci maxime unde ipsam numquam. Suscipit, ad. Consequuntur, tenetur nihil ratione aperiam vero totam deleniti! Laborum impedit unde eum, officiis culpa cum pariatur.</p>
             </div>
         </div>
+
+        <div id="container_ultimas_ofertas">
+            <div id="titulo_ultimas_ofertas">
+                <h3>Últimas ofertas</h3>
+            </div>
+            <div id="subcontainer_ultimas_ofertas">
+                @for($i = 0; $i < 3; $i++)
+                    @component('components.ultima_oferta')
+                    @endcomponent
+                @endfor
+            </div>
+        </div>
     </div>
 @endsection
