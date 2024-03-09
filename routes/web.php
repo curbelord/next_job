@@ -49,6 +49,64 @@ Route::get('/inicio-de-sesion', function (){
     return view('inicio_de_sesion');
 });
 
+Route::prefix('gestionar')->group(function () {
+    
+    Route::get('/', function () {
+        return view('gestionar');
+    });
+
+    /*
+    Route::get('/crear-empresa', function (){
+        return view('crear_empresa');
+    });
+
+    Route::get('/editar-empresa', function (){
+        return view('editar_empresa');
+    });
+    */
+
+    Route::prefix('ofertas')->group(function () {
+
+        Route::get('/', function () {
+            return view('gestionar_ofertas');
+        });
+    
+        Route::get('/crear', function (){
+            return view('crear_oferta');
+        })->name('ofertas.crear');
+    
+        Route::get('/editar', function () {
+            return view('editar_oferta');
+        })->name('ofertas.editar');
+    
+        Route::get('/ver', function () {
+            return view('ver_ofertas');
+        })->name('ofertas.ver');
+
+    });
+
+    Route::prefix('plantillas')->group(function () {
+
+        Route::get('/', function () {
+            return view('gestionar_plantillas');
+        });
+    
+        Route::get('/crear', function (){
+            return view('crear_plantilla');
+        })->name('plantillas.crear');
+    
+        Route::get('/editar', function (){
+            return view('editar_plantilla');
+        })->name('plantillas.editar');
+
+        Route::get('/ver', function () {
+            return view('ver_plantillas');
+        })->name('plantillas.ver');
+    
+    });
+    
+});
+
 Route::get('/info-proceso', function (){
     return view('process_info');
 
