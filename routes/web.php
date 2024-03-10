@@ -23,6 +23,8 @@ Route::get('/', function () {
 
 Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('ofertas');
 
+Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta'])->name('descripcion');
+
 Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
 
 Route::get('/registrar-empresa', function () {
@@ -35,10 +37,6 @@ Route::get('/vincular-empresa', function () {
 
 Route::get('/rellenar-cv', function () {
     return view('rellenar_cv');
-});
-
-Route::get('/descripcion', function (){
-    return view('offer_description');
 });
 
 Route::get('/registro', function (){

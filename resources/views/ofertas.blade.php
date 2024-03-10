@@ -77,24 +77,25 @@
 
         <div class="ofertas">
 
-            @foreach ($ofertas as $oferta)
+            <div class="contenedor_ofertas">
 
-                <div class="contenedor_ofertas">
+                @foreach ($ofertas as $oferta)
 
-                    <div class="oferta">
+                    <a href="{{ url('descripcion', ['parametro' => $oferta->referencia]) }}" class="oferta">
+
                         <div class="oferta_img">IMG</div>
                         <div class="oferta_titulo">
                             <h3> {{ $oferta->puesto_trabajo }} </h3>
                         </div>
                         <div class="oferta_empresa">
-                            <p> Artek </p>
+                            <p> {{ $oferta->seleccionador->empresa->nombre }} </p>
                         </div>
                         <div>
                             <div class="oferta_localizacion">
-                                <p> Ubicación: {{ $oferta->ubicacion }} </p>
+                                <p> {{ $oferta->ubicacion }} </p>
                             </div>
                             <div class="oferta__fecha">
-                                <p> Fecha: {{ $oferta->fecha_publicacion }} </p>
+                                <p> {{ $oferta->fecha_publicacion }} </p>
                             </div>
                         </div>
                         <div class="oferta_descripcion">
@@ -108,12 +109,12 @@
                                 <p> {{ $oferta->tipo_trabajo }} </p>
                             </div>
                         </div>
-                        <div class="vector_borde_azul"></div>
-                    </div>
 
-                </div>
+                    </a>
 
-            @endforeach
+                @endforeach
+
+            </div>
 
         </div>
 

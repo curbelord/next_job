@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calendario extends Model
 {
-    protected $table = 'Calendario'; // Nombre de la tabla en la base de datos
+    protected $table = 'Calendario'; 
 
-    protected $primaryKey = 'id'; // Clave primaria de la tabla
+    protected $primaryKey = 'id'; 
 
     protected $fillable = [
         'id',
@@ -17,10 +17,9 @@ class Calendario extends Model
         'hora_inicio',
         'hora_cierre',
         'descripcion',
-        'id_seleccionador', // Suponiendo que tienes una relación con la tabla Seleccionador
+        'id_seleccionador', 
     ];
 
-    // Define la relación con la tabla Seleccionador
     public function seleccionador()
     {
         return $this->belongsTo(Seleccionador::class, 'id_seleccionador', 'id');

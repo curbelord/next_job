@@ -6,18 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pregunta extends Model
 {
-    protected $table = 'Pregunta'; // Nombre de la tabla en la base de datos
+    protected $table = 'Pregunta';
 
-    protected $primaryKey = 'id'; // Clave primaria de la tabla
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',
         'pregunta',
         'respuesta',
-        'id_cuestionario', // Suponiendo que tienes una relación con la tabla Cuestionario
+        'id_cuestionario', 
     ];
 
-    // Define la relación con la tabla Cuestionario
     public function cuestionario()
     {
         return $this->belongsTo(Cuestionario::class, 'id_cuestionario', 'id');
