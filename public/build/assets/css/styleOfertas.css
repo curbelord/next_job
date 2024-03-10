@@ -21,13 +21,19 @@
     background-color: var(--gris);
     border-radius: 10px;
     grid-column: 2 / 12;
-    padding: 2em;
+    padding: calc(2em + 10px);
+    display: grid;
+    grid-gap: 2em;
+    margin: 2em 0;
 }
 
 .oferta {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     background-color: var(--blanco);
+    border-radius: 10px;
+    color: var(--negro);
+    text-decoration: none;
 }
 
 .oferta > * {
@@ -36,6 +42,10 @@
     align-items: center;
     justify-content: left;
     padding: 1em 0 1em 1em;
+}
+
+.oferta p {
+    text-align: left;
 }
 
 .oferta_img {
@@ -47,24 +57,4 @@
     border-radius: 10px;
     background-color: var(--gris);
     margin: 1em;
-}
-
-.oferta .vector_borde_azul {
-    grid-column: 12;
-    grid-row: 1 / 8;
-    height: 100%;
-    background-color: var(--azul);
-    position: relative; /* Permite posicionar el pico */
-    
-    /* Crea el pico */
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0em; /* Ajusta la posición del pico */ /* Cualquier valor +2em (del padding del nombre_provincia) */
-      border-width: 0 4px 2em 0;
-      border-style: solid;
-      border-color: transparent var(--azul) transparent transparent;
-      transform: scaleX(-1);
-    }
 }

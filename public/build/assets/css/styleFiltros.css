@@ -28,6 +28,11 @@
     margin: 0 .5em;
 }
 
+.filtros a {
+    color: var(--negro);
+    text-decoration: none;
+}
+
 .seccion_buscador {
     grid-template-rows: repeat(4, 1fr);
 }

@@ -14,13 +14,11 @@ class Demandante extends Model
         'id',
     ];
 
-    // Define la relación con la tabla Usuario
     public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'id', 'id');
     }
 
-    // Define otras relaciones si las hubiera, por ejemplo, con la tabla CV
     public function cv()
     {
         return $this->hasOne(CV::class, 'id_demandante', 'id');

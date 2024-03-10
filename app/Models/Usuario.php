@@ -22,7 +22,6 @@ class Usuario extends Model
         'telefono',
     ];
 
-    // Define las relaciones con otras tablas si las hay
     public function demandante()
     {
         return $this->hasOne(Demandante::class, 'id', 'id');

@@ -15,13 +15,13 @@
                 </div>
                 <div id="container_texto_datos">
                     <div id="titulo_oferta">
-                        <h1>Título ofertaaa esto es una prueba para ver el funcionamiento del scroll del título en la página de descripción de oferta</h1>
+                        <h1>{{ $oferta->puesto_trabajo }}</h1>
                     </div>
                     <div id="nombre_empresa">
-                        <p>Nombre empresa</p>
+                        <p>{{ $oferta->seleccionador->empresa->nombre }}</p>
                     </div>
                     <div id="centro_trabajo">
-                        <p>Centro de trabajo</p>
+                        <p>{{ $oferta->ubicacion }}</p>
                     </div>
                 </div>
                 <div id="container_boton_inscripcion">
@@ -29,25 +29,25 @@
                         <a href="#">Inscribirme</a>
                     </div>
                     <div id="numero_inscritos">
-                        <span>Nº inscritos</span>
+                        <span>{{ $inscripciones }}</span>
                     </div>
                 </div>
             </div>
             <div id="container_datos_bottom">
                 <div id="datos_bottom_fila_1">
                     <div id="fecha_publicacion" class="boton_outline_azul">
-                        <p>Fecha de publicación</p>
+                        <p>{{ $oferta->fecha_publicacion }}</p>
                     </div>
                     <div id="salario" class="boton_outline_azul">
-                        <p>Salario</p>
+                        <p>{{ $oferta->salario }}</p>
                     </div>
                 </div>
                 <div id="datos_bottom_fila_2">
                     <div id="jornada" class="boton_outline_azul">
-                        <p>Jornada</p>
+                        <p>{{ $oferta->jornada }}</p>
                     </div>
                     <div id="horario" class="boton_outline_azul">
-                        <p>Horario</p>
+                        <p>{{ $oferta->horario }}</p>
                     </div>
                 </div>
             </div>
@@ -62,11 +62,7 @@
                     <h3>Descripción</h3>
                 </div>
                 <div id="cuerpo_descripcion">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut  tellus enim. Donec bibendum libero mollis neque placerat hendrerit.  Donec scelerisque aliquet elit eget mattis. Donec feugiat, orci in  rhoncus lacinia, mauris nisi porta mi, id facilisis justo est nec neque.  Integer eu luctus turpis, ut accumsan ex. Fusce nec velit luctus erat  semper facilisis. Nunc fringilla, enim ut aliquet volutpat, nisi velit  dictum ipsum, quis porttitor sapien odio nec sapien.
-
-                    Phasellus consectetur urna eu diam auctor, sed volutpat tortor  vestibulum. Pellentesque egestas turpis est, vitae interdum nisi iaculis  id. Pellentesque porta quam et quam molestie, nec sagittis erat  lacinia. Vivamus viverra viverra ultricies. Pellentesque dapibus orci  non diam fermentum dignissim. Sed placerat ac erat ut aliquam. Curabitur  hendrerit vulputate tellus, at rhoncus nibh elementum sodales. Integer  egestas enim non leo semper volutpat. Pellentesque luctus odio in  vehicula scelerisque. Quisque enim nulla, ultricies quis ex sit amet,  rutrum ornare ex.
-
-                    Sed scelerisque, ante id maximus interdum, massa mi porttitor turpis,  quis consequat massa risus finibus diam. Nunc non erat fermentum,  feugiat mauris vitae, volutpat mi. Vestibulum ante ipsum primis in  faucibus orci luctus et ultrices posuere cubilia curae; Aenean varius  leo non ullamcorper interdum. Integer orci ante, lobortis placerat  vestibulum tempus.</p>
+                    <p>{{ $oferta->descripcion }}</p>
                 </div>
             </div>
             <div id="subcontainer_cuestionario">
