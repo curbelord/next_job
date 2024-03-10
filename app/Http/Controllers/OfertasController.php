@@ -11,8 +11,9 @@ class OfertasController extends Controller
 
         $ofertas = Oferta::all();
 
-
-        // compact('ofertas') es lo mismo que ['ofertas' => $ofertas]
+        if ($ubicacion = request('provincia')) {
+            $ofertas = Oferta::where('ubicacion', $ubicacion)->get();
+        }
 
         return view('ofertas', compact('ofertas'));
     }
