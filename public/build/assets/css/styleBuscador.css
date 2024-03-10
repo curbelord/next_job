@@ -12,21 +12,21 @@
     font-family: "Manrope", sans-serif;
 }
 
-.seccion_buscador, .seccion_relleno, .seccion_valor, .seccion_provincias {
+form, .seccion_relleno, .seccion_valor, .seccion_provincias {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
 
-.seccion_buscador {
+form {
     grid-template-rows: repeat(3, 1fr);
 }
 
-.seccion_buscador > * {
+form > * {
     display: flex;
     align-items: center;
 }
 
-.seccion_buscador h2 {
+form h2 {
     grid-column: 3 / 8;
     grid-row: 1;
 }
@@ -50,12 +50,8 @@ select {
     grid-column: 8 / 11;
 }
 
-form {
-    grid-column: 6 / 8;
-    grid-row: 3;
-}
-
 button {
+    grid-column: 6 / 8;
     width: 100%;
     display: flex;
     align-self: center;
@@ -72,19 +68,19 @@ button {
 
 @media (max-width: 800px) {
 
-    .seccion_buscador h2 {
+    form h2 {
         grid-column: 2 / 12;
     }
 
-    .seccion_buscador input {
+    form input {
         grid-column: 2 / 11;
     }
 
-    .seccion_buscador select {
+    form select {
         grid-column: 8 / 12;
     }
 
-    .seccion_buscador button {
+    form button {
         grid-column: 5 / 9;
     }
 }
