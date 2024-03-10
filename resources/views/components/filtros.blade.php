@@ -1,23 +1,22 @@
 <div class="filtros">
 
     <div>
-        Fecha
+        <a href="#">Fecha</a>
     </div>
 
     <div>
-        Tipo de trabajo
+        <a href="#">Tipo de trabajo</a>
     </div>
 
     <div>
-        Categoría
+        <a href="#">Categoría</a>
     </div>
 
     <div>
-        Experiencia
+        <a href="#">Experiencia</a>
     </div>
 
     <div>
-        Jornada
+        <a href="#">Jornada</a>
     </div>
-    
 </div>
