@@ -43,10 +43,17 @@ class OfertasController extends Controller
         return view('descripcion', compact('oferta'), compact('inscripciones'));
     }
 
-    public function crear(Request $request){
+    public function store(Request $request){
         $oferta = new Oferta;
-        $oferta->puesto_trabajo = $request->titulo_crear_oferta;
+        $oferta->puesto_trabajo = $request->puesto_trabajo;
+        $oferta->ubicacion = $request->ubicacion;
+        $oferta->descripcion = $request->descripcion;
+        $oferta->jornada = $request->jornada;
+        $oferta->turno = $request->turno;
+        $oferta->numero_vacantes = $request->numero_vacantes;
+        $oferta->salario = $request->salario;
         $oferta->save();
-        // Seguir almacenando el resto de campos
+
+        return redirect()->route('gestionar_ofertas');
     }
 }

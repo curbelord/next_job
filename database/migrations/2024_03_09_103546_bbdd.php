@@ -87,7 +87,7 @@ return new class extends Migration
 
         // Oferta Table
         Schema::create('Oferta', function (Blueprint $table) {
-            $table->integer('referencia')->unsigned();
+            $table->id('referencia');
             $table->date('fecha_publicacion');
             $table->date('fecha_cierre');
             $table->integer('numero_vacantes');
@@ -106,7 +106,7 @@ return new class extends Migration
             $table->string('idioma');
             $table->string('borrador', 2);
             $table->integer('id_seleccionador')->unsigned();
-            $table->primary('referencia');
+            // $table->primary('referencia');
             $table->foreign('id_seleccionador')->references('id')->on('Seleccionador')->onDelete('cascade');
         });
 
@@ -137,7 +137,7 @@ return new class extends Migration
         // Inscripcion Table
         Schema::create('Inscripcion', function (Blueprint $table) {
             $table->integer('id_demandante')->unsigned();
-            $table->integer('id_oferta')->unsigned();
+            $table->unsignedBigInteger('id_oferta');
             $table->string('anotacion');
             $table->primary(['id_demandante', 'id_oferta']);
             $table->foreign('id_demandante')->references('id')->on('Demandante')->onDelete('cascade');
@@ -152,7 +152,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->integer('id_seleccionador')->unsigned();
             $table->integer('id_demandante')->unsigned();
-            $table->integer('id_oferta')->unsigned();
+            $table->unsignedBigInteger('id_oferta');
             $table->foreign('id_seleccionador')->references('id')->on('Seleccionador')->onDelete('cascade');
             $table->foreign('id_demandante')->references('id_demandante')->on('Inscripcion')->onDelete('cascade');
             $table->foreign('id_oferta')->references('id_oferta')->on('Inscripcion')->onDelete('cascade');
