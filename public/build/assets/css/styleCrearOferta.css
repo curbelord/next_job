@@ -47,12 +47,16 @@
     flex-wrap: nowrap;
 }
 
-#container_jornada_horario input, #container_vacantes_salario input{
+#container_jornada_horario select, #container_vacantes_salario input{
     width: 50%;
 }
 
-#jornada_crear_oferta, #vacantes_crear_oferta{
+#select_jornada_crear_oferta, #vacantes_crear_oferta{
     margin-right: 20px;
+}
+
+#select_jornada_crear_oferta, #select_turno_crear_oferta{
+    background: none;
 }
 
 #container_cuestionario{
@@ -103,11 +107,11 @@
         flex-wrap: wrap;
     }
 
-    #container_jornada_horario input, #container_vacantes_salario input{
+    #container_jornada_horario select, #container_vacantes_salario input{
         width: 100%;
     }
 
-    #jornada_crear_oferta, #vacantes_crear_oferta{
+    #select_jornada_crear_oferta, #vacantes_crear_oferta{
         margin-right: 0px;
     }
 

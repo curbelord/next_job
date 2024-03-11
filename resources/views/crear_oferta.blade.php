@@ -17,25 +17,34 @@
 
             {{-- Pendiente añadir los names de los inputs iguales a los campos de la BBDD. Confirmar algunos campos --}}
 
-            <form method="POST" action="#">
+            <form method="POST" action="{{ route('ofertas.almacenar') }}">
                 @csrf
 
                 <input type="text" id="titulo_crear_oferta" class="input_formulario" name="puesto_trabajo" placeholder="Título">
 
-                <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="descripcion" placeholder="Centro de trabajo">
+                <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Centro de trabajo">
 
-                <textarea rows="10" id="descripcion_crear_oferta" class="input_formulario" name="descripcion_crear_oferta" placeholder="Descripción"></textarea>
+                <textarea rows="10" id="descripcion_crear_oferta" class="input_formulario" name="descripcion" placeholder="Descripción"></textarea>
 
                 <div id="container_jornada_horario">
-                    <input type="text" id="jornada_crear_oferta" class="input_formulario" name="jornada_crear_oferta" placeholder="Jornada">
+                    <select id="select_jornada_crear_oferta" class="input_formulario" name="jornada">
+                        <option value="null" selected>Jornada</option>
+                        <option value="completa">Completa</option>
+                        <option value="parcial">Parcial</option>
+                    </select>
 
-                    <input type="text" id="horario_crear_oferta" class="input_formulario" name="horario_crear_oferta" placeholder="Horario">
+                    <select id="select_turno_crear_oferta" class="input_formulario" name="turno">
+                        <option value="null" selected>Turno</option>
+                        <option value="manana">Mañana</option>
+                        <option value="tarde">Tarde</option>
+                        <option value="noche">Noche</option>
+                    </select>
                 </div>
 
                 <div id="container_vacantes_salario">
-                    <input type="text" id="vacantes_crear_oferta" class="input_formulario" name="vacantes_crear_oferta" placeholder="Nº vacantes">
+                    <input type="number" id="vacantes_crear_oferta" class="input_formulario" name="numero_vacantes" placeholder="Nº vacantes" min="1">
 
-                    <input type="number" id="salario_crear_oferta" class="input_formulario" name="salario_crear_oferta" placeholder="Salario">
+                    <input type="number" id="salario_crear_oferta" class="input_formulario" name="salario" placeholder="Salario">
                 </div>
 
                 <div id="container_cuestionario">

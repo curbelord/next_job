@@ -51,7 +51,7 @@ Route::get('/inicio-de-sesion', function (){
 });
 
 Route::prefix('gestionar')->group(function () {
-    
+
     Route::get('/', function () {
         return view('gestionar');
     });
@@ -71,18 +71,20 @@ Route::prefix('gestionar')->group(function () {
         Route::get('/', function () {
             return view('gestionar_ofertas');
         });
-    
+
         Route::get('/crear', function (){
             return view('crear_oferta');
         })->name('ofertas.crear');
-    
+
         Route::get('/editar', function () {
             return view('editar_oferta');
         })->name('ofertas.editar');
-    
+
         Route::get('/ver', function () {
             return view('ver_ofertas');
         })->name('ofertas.ver');
+
+        Route::post('/store', [OfertasController::class, 'store'])->name('ofertas.almacenar');
 
     });
 
@@ -91,11 +93,11 @@ Route::prefix('gestionar')->group(function () {
         Route::get('/', function () {
             return view('gestionar_plantillas');
         });
-    
+
         Route::get('/crear', function (){
             return view('crear_plantilla');
         })->name('plantillas.crear');
-    
+
         Route::get('/editar', function (){
             return view('editar_plantilla');
         })->name('plantillas.editar');
@@ -103,9 +105,9 @@ Route::prefix('gestionar')->group(function () {
         Route::get('/ver', function () {
             return view('ver_plantillas');
         })->name('plantillas.ver');
-    
+
     });
-    
+
 });
 
 Route::get('/info-proceso', function (){
