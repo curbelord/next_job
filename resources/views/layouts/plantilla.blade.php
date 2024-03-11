@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{{ asset('build/assets/css/styles.css') }}">
         <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
         <title>@yield('title')</title>
+        @vite('resources/js/app.js')
 
         @yield('style')
 

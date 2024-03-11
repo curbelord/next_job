@@ -1,6 +1,6 @@
 :root {
     --negro: #000000;
-    --gris: #D8D8D8;
+    --gris: #D9D9D9;
     --azul: #2FB9CE;
     --blanco: #FFFFFF;
 }
@@ -10,164 +10,131 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Manrope", sans-serif;
+    text-align: left;
 }
 
-.bloque {
-    height: 25vh;
-}
-
-.seccion_gestion {
+#container{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, auto);
+    margin-top: 100px;
 }
 
-.seccion_gestion h2 {
+#container_bienvenida_seleccionador{
     grid-column: 3 / 11;
-    grid-row: 1;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding: 1.5em 0 0 0;
+    grid-row: 1 / 2;
+    margin-bottom: 50px;
 }
 
-.seccion_gestion p {
+#container_bienvenida_seleccionador h3{
+    font-size: 1.7em;
+}
+
+#container_bienvenida_seleccionador p{
+    font-size: 1.3em;
+    margin-top: 10px;
+}
+
+#container_seccion_gestion{
     grid-column: 3 / 11;
-    grid-row: 2;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding: 1.5em 0;
+    grid-row: 2 / 3;
+    margin-bottom: 100px;
 }
 
-.gestion {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+.bloque_gestion{
+    display: inline-block;
+    margin-right: 50px;
+    margin-top: 50px;
+    min-width: 25%;
 }
 
-.imagen_gestion {
-    grid-row: 1;
+.imagen_gestion{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 30px;
     background-color: var(--gris);
     border-radius: 10px;
-    height: 360px;
+}
+
+.texto_gestion{
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 200px;
+    background-image: url('../img/vector_azul_derecha.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50px;
+    width: 90%;
 }
 
-.nombre_gestion {
-    grid-row: 2;
+.texto_gestion a{
     display: flex;
     align-items: center;
-    justify-content: left;
-    width: fit-content;
-    background-color: var(--azul);
-    color: var(--blanco);
-    margin: 1em 0;
-    padding: .5em 2em .5em .75em;
-    height: 2em;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
 }
 
-.gestion_1-3 {
-    grid-column: 3 / 5;
+#container_ultimos_procesos{
+    grid-column: 3 / 11;
+    grid-row: 3 / 4;
+    margin-bottom: 100px;
 }
 
-.gestion_2-3 {
-    grid-column: 6 / 8;
+#container_ultimos_procesos h3{
+    font-size: 1.3em;
 }
 
-.gestion_3-3 {
-    grid-column: 9 / 11;
+#subcontainer_ultimos_procesos{
+    margin-top: 50px;
+    padding: 35px;
+    background-color: var(--gris);
+    border-radius: 30px;
 }
 
-.gestion .vector_borde_azul {
-    height: 2em;
-    background-color: var(--azul);
-    position: relative; /* Permite posicionar el pico */
-    
-    /* Crea el pico */
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 2em; /* Ajusta la posición del pico */ /* Cualquier valor +2em (del padding del nombre_gestion) */
-      border-width: 0 4px 2em 0;
-      border-style: solid;
-      border-color: transparent var(--azul) transparent transparent;
-      transform: scaleX(-1);
-    }
+.container_oferta{
+    padding: 40px 50px;
+    background-color: #FFF;
+    border-radius: 30px;
 }
 
-@media (max-width: 1150px) {
-
-    .seccion_gestion h2 {
-        font-size: 2em;
-        justify-content: center;
-        padding: 0em 0;
-    }
-
-    .seccion_gestion p {
-        font-size: 1em;
-        justify-content: center;
-    }
-
-    .gestion_1-3, .gestion_2-3, .gestion_3-3{
-        padding-bottom: 2em !important;
-    }
-
-    .gestion_1-3 {
-        grid-column: 5 / 9;
-        grid-row: 1;
-    }
-    
-    .gestion_2-3 {
-        grid-column: 3 / 6;
-        grid-row: 2;
-    }
-    
-    .gestion_3-3 {
-        grid-column: 8 / 11;
-        grid-row: 2;
-    }
+.titulo_oferta{
+    margin-bottom: 20px;
 }
 
-@media (max-width: 800px) {
-
-    .bloque {
-        height: 10vh;
-    }
-
-    .gestion_1-3 {
-        grid-column: 4 / 10;
-        grid-row: 1;
-    }
-    
-    .gestion_2-3 {
-        grid-column: 4 / 10;
-        grid-row: 2;
-    }
-    
-    .gestion_3-3 {
-        grid-column: 4 / 10;
-        grid-row: 3;
-    }
+.titulo_oferta h3{
+    font-size: 1.3em;
 }
 
-@media (max-width: 650px) {
+.centro_trabajo_fecha_publicacion div{
+    display: inline-block;
+}
 
-    .gestion_1-3 {
-        grid-column: 2 / 12;
-    }
-    
-    .gestion_2-3 {
-        grid-column: 2 / 12;
-    }
-    
-    .gestion_3-3 {
-        grid-column: 2 / 12;
-    }
+.centro_trabajo_fecha_publicacion div p{
+    font-size: 1em;
+}
 
-    .gestion:first-child {
-        content: "gestion";
-    }
+.centro_trabajo{
+    margin-right: 20px;
+}
+
+.container_numero_inscritos, .container_numero_preseleccionados, .container_numero_descartados{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.subcontainer_numero_inscritos, .subcontainer_numero_preseleccionados, .subcontainer_numero_descartados{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.imagen_datos_bottom{
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    background-color: var(--gris);
+    border-radius: 10px;
 }
