@@ -42,11 +42,11 @@
     align-items: center;
     justify-content: left;
     text-align: left;
+    grid-column: 4 / 10;
 }
 
 .registro #nombre {
     grid-row: 2;
-    grid-column: 4 / 10;
 }
 
 .registro #genero {
@@ -61,22 +61,18 @@
 
 .registro #direccion {
     grid-row: 4;
-    grid-column: 4 / 10;
 }
 
 .registro #email {
     grid-row: 5;
-    grid-column: 4 / 10;
 }
 
 .registro #contrasena {
     grid-row: 6;
-    grid-column: 4 / 10;
 }
 
 .registro #confirmar_contrasena {
     grid-row: 7;
-    grid-column: 4 / 10;
 }
 
 .registro button {
@@ -98,9 +94,49 @@
 .registro p {
     grid-row: 9;
     grid-column: 4 / 10;
+    margin-bottom: 2em;
 }
 
 .registro a {
     color: var(--azul);
     text-decoration: none;
+}
+
+@media (max-width: 720px) {
+    .registro h2, .registro > input, .registro > select, .registro p, .registro #genero, .registro #fecha_nacimiento {
+        grid-column: 2 / 12;
+    }
+ 
+    .registro #genero {
+        grid-row: 3;
+    }
+    
+    .registro #fecha_nacimiento {
+        grid-row: 4;
+    }
+    
+    .registro #direccion {
+        grid-row: 5;
+    }
+    
+    .registro #email {
+        grid-row: 6;
+    }
+    
+    .registro #contrasena {
+        grid-row: 7;
+    }
+    
+    .registro #confirmar_contrasena {
+        grid-row: 8;
+    }
+    
+    .registro button {
+        grid-row: 9;
+        grid-column: 5 / 9;
+    }
+
+    .registro p {
+        grid-row: 10;
+    }
 }
