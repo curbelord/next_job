@@ -1,0 +1,81 @@
+.container_oferta{
+    padding: 40px 50px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.titulo_oferta{
+    margin-bottom: 20px;
+}
+
+.titulo_oferta h3{
+    font-size: 1.3em;
+}
+
+.centro_trabajo_fecha_publicacion div{
+    display: inline-block;
+}
+
+.centro_trabajo_fecha_publicacion div p{
+    font-size: 1em;
+}
+
+.centro_trabajo{
+    margin-right: 20px;
+}
+
+.container_numero_inscritos, .container_numero_preseleccionados, .container_numero_descartados{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.subcontainer_numero_inscritos, .subcontainer_numero_preseleccionados, .subcontainer_numero_descartados{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.imagen_datos_bottom{
+    min-height: 40px;
+    min-width: 40px;
+    margin-right: 10px;
+    background-color: var(--gris);
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 720px){
+    .container_oferta{
+        padding: 20px;
+    }
+
+    .titulo_oferta h3{
+        font-size: 1.2em;
+    }
+
+    .fecha_publicacion{
+        margin-top: 10px;
+    }
+
+    .container_numero_inscritos, .container_numero_preseleccionados, .container_numero_descartados{
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    /* Sección 2 */
+
+    /* Últimos procesos */
+
+    .subcontainer_numero_inscritos, .subcontainer_numero_preseleccionados, .subcontainer_numero_descartados{
+        flex-wrap: wrap;
+    }
+
+    .valor_numero_inscritos, .valor_numero_preseleccionados, .valor_numero_descartados{
+        display: block;
+        width: 100%;
+    }
+
+     .imagen_datos_bottom {
+        margin-bottom: 10px;
+    }
+}
