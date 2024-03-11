@@ -36,6 +36,7 @@
     border-radius: 5px;
     height: 50px;
     text-align: left;
+    grid-column: 4 / 10;
 }
 
 .registrar_empresa > textarea {
@@ -46,16 +47,15 @@
     border-radius: 5px;
     text-align: left;
     resize: none;
+    grid-column: 4 / 10;
 }
 
 .registrar_empresa #nombre {
     grid-row: 2;
-    grid-column: 4 / 10;
 }
 
 .registrar_empresa #descripcion {
     grid-row: 3 / 6;
-    grid-column: 4 / 10;
 }
 
 .registrar_empresa #subir_archivo {
@@ -70,12 +70,10 @@
 
 .registrar_empresa #clave_acceso {
     grid-row: 7;
-    grid-column: 4 / 10;
 }
 
 .registrar_empresa #confirmar_clave {
     grid-row: 8;
-    grid-column: 4 / 10;
 }
 
 .registrar_empresa button {
@@ -97,9 +95,40 @@
 .registrar_empresa p {
     grid-row: 10;
     grid-column: 4 / 10;
+    margin-bottom: 2em;
 }
 
 .registrar_empresa a {
     color: var(--azul);
     text-decoration: none;
+}
+
+@media (max-width: 720px) {
+    .registrar_empresa h2, .registrar_empresa > input, .registrar_empresa p, .registrar_empresa textarea, .registrar_empresa button, .registrar_empresa #subir_archivo, .registrar_empresa #ubicacion_sede {
+        grid-column: 2 / 12;
+    }
+
+    .registrar_empresa #subir_archivo {
+        grid-row: 6;
+    }
+    
+    .registrar_empresa #ubicacion_sede {
+        grid-row: 7;
+    }
+    
+    .registrar_empresa #clave_acceso {
+        grid-row: 8;
+    }
+    
+    .registrar_empresa #confirmar_clave {
+        grid-row: 9;
+    }
+    
+    .registrar_empresa button {
+        grid-row: 10;
+    }
+
+    .registrar_empresa p {
+        grid-row: 11;
+    }
 }

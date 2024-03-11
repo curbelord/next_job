@@ -103,7 +103,7 @@
 }
 
 @media (max-width: 720px) {
-    .registro h2, .registro > input, .registro > select, .registro p, .registro #genero, .registro #fecha_nacimiento {
+    .registro h2, .registro > input, .registro > select, .registro p, .registro #genero, .registro #fecha_nacimiento, .registro button {
         grid-column: 2 / 12;
     }
  
@@ -133,7 +133,6 @@
     
     .registro button {
         grid-row: 9;
-        grid-column: 5 / 9;
     }
 
     .registro p {
