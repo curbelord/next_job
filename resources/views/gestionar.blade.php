@@ -42,7 +42,7 @@
                 <div class="container_oferta">
                     <div class="datos_top">
                         <div class="titulo_oferta">
-                            <h3>Título oferta</h3>
+                            <h3>Título oferta...Lorem ipsum dolor sit amet consectetur adipisicing elit</h3>
                         </div>
                         <div class="centro_trabajo_fecha_publicacion">
                             <div class="centro_trabajo">
