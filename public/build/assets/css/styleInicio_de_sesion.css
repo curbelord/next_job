@@ -79,11 +79,7 @@
 }
 
 @media (max-width: 720px) {
-    .login h2, .login > input, .login p {
+    .login h2, .login > input, .login p, .login button {
         grid-column: 2 / 12;
-    }
-
-    .login button {
-        grid-column: 5 / 9;
     }
 }
