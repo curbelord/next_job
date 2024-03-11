@@ -270,6 +270,7 @@
     #container_texto_datos{
         display: flex;
         flex-wrap: wrap;
+        width: 100%;
         margin: 25px 0px;
     }
 
