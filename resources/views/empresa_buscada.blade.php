@@ -33,11 +33,12 @@
                 <h3>Últimas ofertas</h3>
             </div>
             <div id="subcontainer_ultimas_ofertas">
-                
-                @for($i = 0; $i < 3; $i++)
-                    @component('components.ultima_oferta')
+
+                @foreach ($empresa->ofertas as $oferta)
+                    @component('components.ultima_oferta', ['oferta' => $oferta])
                     @endcomponent
-                @endfor
+                @endforeach
+                
             </div>
         </div>
     </div>
