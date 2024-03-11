@@ -13,11 +13,11 @@ class OfertasController extends Controller
     {
 
         $ofertas = Oferta::query();
-    
+
         if ($ubicacion = request('provincia')) {
             $ofertas->where('ubicacion', $ubicacion);
         }
-    
+
         if ($buscador = request('buscador')) {
             $ofertas->where(function ($query) use ($buscador) {
                 $query->where('puesto_trabajo', 'like', '%' . $buscador . '%')
@@ -41,5 +41,12 @@ class OfertasController extends Controller
         $oferta->load('seleccionador.empresa');
 
         return view('descripcion', compact('oferta'), compact('inscripciones'));
+    }
+
+    public function crear(Request $request){
+        $oferta = new Oferta;
+        $oferta->puesto_trabajo = $request->titulo_crear_oferta;
+        $oferta->save();
+        // Seguir almacenando el resto de campos
     }
 }
