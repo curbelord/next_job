@@ -22,18 +22,24 @@ class EmpresasController extends Controller
             return view('empresas');
         } else {
             
-            // $empresa = Empresa::where('nombre', 'like', '%' . $nombre_empresa . '%')->first();
             $empresa = Empresa::where('nombre', $nombre_empresa)->first();
+
+            $ofertas = Oferta::all();
+            $ofertas = $ofertas->load('seleccionador.empresa');
+
+            $empresa_id = Empresa::where('nombre', $nombre_empresa)->first()->value('id');
+
+            $seleccionadores = Seleccionador::where('id_empresa', $empresa_id)->get();
+
+            $ofertas_empresa = Oferta::whereIn('id_seleccionador', $seleccionadores->pluck('id'))->limit(5)->orderBy('fecha_publicacion', 'DESC')->get();
+
+            $empresa->ofertas = $ofertas_empresa;
 
             if ($empresa == null) {
                 return view('empresas');
             } else {
                 return view('empresa_buscada', compact('empresa'));
             }
-
-            // $ofertas = Oferta::all();
-
-            //$ofertas = $ofertas->load('seleccionador.empresa');
             
         }
     }
