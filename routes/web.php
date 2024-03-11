@@ -27,6 +27,9 @@ Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta
 
 Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
 
+Route::get('/empresa', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa-buscada');
+
+
 Route::get('/registrar-empresa', function () {
     return view('registrar_empresa');
 });
@@ -109,8 +112,6 @@ Route::get('/info-proceso', function (){
     return view('process_info');
 
 });
-
-Route::get('/empresa-buscada', [EmpresaBuscadaController::class, 'mostrar'])->name('empresa-buscada');
 
 Route::get('/desplegable', function (){
     return view('desplegable');
