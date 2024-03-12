@@ -88,26 +88,22 @@ return new class extends Migration
         // Oferta Table
         Schema::create('Oferta', function (Blueprint $table) {
             $table->id('referencia');
-            $table->date('fecha_publicacion');
-            $table->date('fecha_cierre');
+            $table->date('fecha_cierre')->nullable();
             $table->integer('numero_vacantes');
             $table->decimal('salario', 10, 2);
             $table->string('jornada');
-            $table->string('sector');
-            $table->string('tipo_trabajo');
+            $table->string('sector')->nullable();
+            $table->string('tipo_trabajo')->nullable();
             $table->string('puesto_trabajo');
-            $table->string('vacante_especial');
             $table->string('descripcion');
-            $table->string('estudios_minimos');
-            $table->integer('experiencia_minima');
+            $table->string('estudios_minimos')->nullable();
+            $table->integer('experiencia_minima')->nullable();
             $table->string('ubicacion');
-            $table->string('turno');
-            $table->string('horario');
-            $table->string('idioma');
-            $table->string('borrador', 2);
-            $table->integer('id_seleccionador')->unsigned();
-            // $table->primary('referencia');
+            $table->enum('turno', ['manana', 'tarde', 'noche'])->nullable();
+            $table->enum('estado', ['publicada', 'plantilla'])->nullable();
+            $table->integer('id_seleccionador')->unsigned()->nullable();
             $table->foreign('id_seleccionador')->references('id')->on('Seleccionador')->onDelete('cascade');
+            $table->timestamps();
         });
 
         // Calendario Table

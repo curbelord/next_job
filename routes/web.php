@@ -70,7 +70,7 @@ Route::prefix('gestionar')->group(function () {
 
         Route::get('/', function () {
             return view('gestionar_ofertas');
-        });
+        })->name('gestionar_ofertas');
 
         Route::get('/crear', function (){
             return view('crear_oferta');
