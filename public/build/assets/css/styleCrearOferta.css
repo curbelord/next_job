@@ -42,20 +42,20 @@
     border-radius: 10px;
 }
 
-#container_jornada_turno, #container_vacantes_salario, #container_cierre_cuestionario{
+#container_jornada_turno, #container_vacantes_salario, #container_cierre_cuestionario, #container_tipo_trabajo_sector{
     display: flex;
     flex-wrap: nowrap;
 }
 
-#container_jornada_turno select, #container_vacantes_salario input, #container_cierre_cuestionario input, #container_cierre_cuestionario button{
+#container_jornada_turno select, #container_vacantes_salario input, #container_cierre_cuestionario input, #container_cierre_cuestionario button, #container_tipo_trabajo_sector input{
     width: 50%;
 }
 
-#select_jornada_crear_oferta, #vacantes_crear_oferta, #cierre_crear_oferta{
+#select_jornada_crear_oferta, #vacantes_crear_oferta, #cierre_crear_oferta, #tipo_trabajo_oferta{
     margin-right: 20px;
 }
 
-#select_jornada_crear_oferta, #select_turno_crear_oferta, #select_estudios_crear_oferta, #preguntas_crear_oferta, #sector_oferta{
+#select_jornada_crear_oferta, #select_turno_crear_oferta, #select_estudios_crear_oferta, #preguntas_crear_oferta, #sector_oferta, #tipo_trabajo_oferta{
     background: none;
 }
 
@@ -106,16 +106,16 @@
         grid-row: 4 / 5;
     }
 
-    #container_jornada_turno, #container_vacantes_salario, #container_cierre_cuestionario{
+    #container_jornada_turno, #container_vacantes_salario, #container_cierre_cuestionario, #container_tipo_trabajo_sector{
         display: flex;
         flex-wrap: wrap;
     }
 
-    #container_jornada_turno select, #container_vacantes_salario input, #container_cierre_cuestionario input, #container_cierre_cuestionario button{
+    #container_jornada_turno select, #container_vacantes_salario input, #container_cierre_cuestionario input, #container_cierre_cuestionario button, #container_tipo_trabajo_sector select{
         width: 100%;
     }
 
-    #select_jornada_crear_oferta, #vacantes_crear_oferta, #cierre_crear_oferta{
+    #select_jornada_crear_oferta, #vacantes_crear_oferta, #cierre_crear_oferta, #tipo_trabajo_oferta{
         margin-right: 0px;
     }
 

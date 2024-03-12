@@ -33,6 +33,7 @@ class GestionOfertaController extends Controller
         $oferta = new Oferta;
         $oferta->puesto_trabajo = $request->puesto_trabajo;
         $oferta->ubicacion = $request->ubicacion;
+        $oferta->tipo_trabajo = $request->tipo_trabajo;
         $oferta->sector = $request->sector;
         $oferta->descripcion = $request->descripcion;
         $oferta->estudios_minimos = $request->estudios_minimos;
