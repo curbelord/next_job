@@ -42,21 +42,25 @@
     border-radius: 10px;
 }
 
-#container_jornada_horario, #container_vacantes_salario{
+#container_jornada_turno, #container_vacantes_salario, #container_cierre_cuestionario{
     display: flex;
     flex-wrap: nowrap;
 }
 
-#container_jornada_horario select, #container_vacantes_salario input{
+#container_jornada_turno select, #container_vacantes_salario input, #container_cierre_cuestionario input, #container_cierre_cuestionario button{
     width: 50%;
 }
 
-#select_jornada_crear_oferta, #vacantes_crear_oferta{
+#select_jornada_crear_oferta, #vacantes_crear_oferta, #cierre_crear_oferta{
     margin-right: 20px;
 }
 
-#select_jornada_crear_oferta, #select_turno_crear_oferta{
+#select_jornada_crear_oferta, #select_turno_crear_oferta, #select_estudios_crear_oferta, #preguntas_crear_oferta, #sector_oferta{
     background: none;
+}
+
+#preguntas_crear_oferta{
+    cursor: pointer;
 }
 
 #container_cuestionario{
@@ -102,16 +106,16 @@
         grid-row: 4 / 5;
     }
 
-    #container_jornada_horario, #container_vacantes_salario{
+    #container_jornada_turno, #container_vacantes_salario, #container_cierre_cuestionario{
         display: flex;
         flex-wrap: wrap;
     }
 
-    #container_jornada_horario select, #container_vacantes_salario input{
+    #container_jornada_turno select, #container_vacantes_salario input, #container_cierre_cuestionario input, #container_cierre_cuestionario button{
         width: 100%;
     }
 
-    #select_jornada_crear_oferta, #vacantes_crear_oferta{
+    #select_jornada_crear_oferta, #vacantes_crear_oferta, #cierre_crear_oferta{
         margin-right: 0px;
     }
 

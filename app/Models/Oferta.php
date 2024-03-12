@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Oferta extends Model
 {
-    protected $table = 'Oferta'; 
+    protected $table = 'Oferta';
 
-    protected $primaryKey = 'referencia'; 
+    protected $primaryKey = 'referencia';
 
-    public $timestamps = false; 
+    // public $timestamps = false;
 
     protected $fillable = [
         'referencia',

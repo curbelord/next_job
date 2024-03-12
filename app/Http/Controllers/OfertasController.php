@@ -47,11 +47,15 @@ class OfertasController extends Controller
         $oferta = new Oferta;
         $oferta->puesto_trabajo = $request->puesto_trabajo;
         $oferta->ubicacion = $request->ubicacion;
+        $oferta->sector = $request->sector;
         $oferta->descripcion = $request->descripcion;
+        $oferta->estudios_minimos = $request->estudios_minimos;
+        $oferta->experiencia_minima = $request->experiencia_minima;
         $oferta->jornada = $request->jornada;
         $oferta->turno = $request->turno;
         $oferta->numero_vacantes = $request->numero_vacantes;
         $oferta->salario = $request->salario;
+        $oferta->fecha_cierre = $request->fecha_cierre;
         $oferta->save();
 
         return redirect()->route('gestionar');
