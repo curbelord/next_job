@@ -87,41 +87,23 @@
                         <div class="oferta_titulo">
                             <h3> {{ $oferta->puesto_trabajo }} </h3>
                         </div>
-                        <div class="oferta_fecha">
-                            <p> {{ $oferta->created_at }} </p>
-                        </div>
-                        <div class="oferta_info_extra">
-                            <div class="oferta_empresa">
-                                <p> {{ $oferta->seleccionador->empresa->nombre }} </p>
-                            </div>
-                            <div class="oferta_localizacion">
-                                <p> {{ $oferta->ubicacion }} </p>
-                            </div>
-                        </div>
-                        <div class="oferta_info_trabajo">
-                            <div class="oferta_jornada">
-                                <p> {{ $oferta->jornada }} </p>
-                            </div>
-                            <div class="oferta_tipo_contrato">
-                                <p> {{ $oferta->tipo_trabajo }} </p>
-                            </div>
-                        </div>
+
                         <div class="oferta_info">
                             <div class="oferta_empresa">
-                                <p> {{ $oferta->seleccionador->empresa->nombre }} </p>
+                                <span> {{ $oferta->seleccionador->empresa->nombre }} </span>
                             </div>
                             <div class="oferta_localizacion">
-                                <p> {{ $oferta->ubicacion }} </p>
+                                <span> {{ $oferta->ubicacion }} </span>
                             </div>
                             <div class="oferta_jornada">
-                                <p> {{ $oferta->jornada }} </p>
+                                <span> {{ $oferta->jornada }} </span>
                             </div>
                             <div class="oferta_tipo_contrato">
-                                <p> {{ $oferta->tipo_trabajo }} </p>
+                                <span> {{ $oferta->tipo_trabajo }} </span>
                             </div>
                         </div>
                         <div class="oferta_descripcion">
-                            <p> {{ $oferta->descripcion }} </p>
+                            <span> {{ $oferta->descripcion }} </span>
                         </div>
 
                     </a>
