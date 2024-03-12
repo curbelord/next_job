@@ -1,0 +1,137 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, auto);
+    margin-top: 100px;
+}
+
+/* Sección 1 */
+
+/* Datos TOP */
+
+#container_datos_top{
+    grid-column: 3 / 11;
+    grid-row: 1 / 2;
+}
+
+#titulo_gestion_procesos{
+    margin-bottom: 25px;
+}
+
+#titulo_gestion_procesos h3{
+    font-size: 1.7em;
+}
+
+#datos_candidatos, #datos_candidatos div{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#datos_candidatos div{
+    align-items: center;
+    margin-right: 20px;
+}
+
+.imagen_datos_candidatos{
+    width: 40px;
+    height: 40px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+/* Sección 2 */
+
+/* Procesos */
+
+#container_procesos{
+    grid-column: 3 / 11;
+    grid-row: 2 / 3;
+    margin-top: 100px;
+    padding: 35px;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+}
+
+.container_proceso{
+    padding: 40px 50px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.titulo_proceso{
+    margin-bottom: 20px;
+}
+
+.titulo_proceso h3{
+    font-size: 1.3em;
+}
+
+.datos_mid_proceso{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.datos_mid_left_proceso, .datos_mid_mid_right_proceso{
+    min-width: 50%;
+}
+
+.centro_trabajo, .fecha_publicacion{
+    display: inline-block;
+}
+
+.centro_trabajo{
+    margin-right: 20px;
+}
+
+.datos_mid_mid_right_proceso{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
+.estado, .hipervinculos{
+    display: inline-block;
+    min-width: 40%;
+}
+
+.estado select{
+    cursor: pointer;
+    padding: 15px 30px;
+    background: none;
+    border: 2px solid #2FB9CE;
+    border-radius: 10px;
+}
+
+.imagen_datos_mid_right{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    margin-right: 20px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+.imagen_datos_mid_right a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sección 3 */
+
+/* Slider numeración */
+
+#container_slider_numeracion{
+    grid-column: 3 / 11;
+    grid-row: 3 / 4;
+}

@@ -37,6 +37,7 @@ Route::prefix('gestionar')->group(function () {
 
     Route::prefix('ofertas')->group(function () {
 
+        Route::get('/', [GestionOfertaController::class, 'manageOffers'])->name('gestionar.gestionar_ofertas');
         Route::get('/crear', [GestionOfertaController::class, 'create'])->name('gestionar.ofertas.crear_oferta');
         Route::get('/editar', [GestionOfertaController::class, 'edit'])->name('gestionar.ofertas.editar_oferta');
         Route::post('/store', [GestionOfertaController::class, 'store'])->name('gestionar.ofertas.ofertas.almacenar');
