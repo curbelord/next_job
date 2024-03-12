@@ -31,7 +31,7 @@ class EmpresasController extends Controller
 
             $seleccionadores = Seleccionador::where('id_empresa', $empresa_id)->get();
 
-            $ofertas_empresa = Oferta::whereIn('id_seleccionador', $seleccionadores->pluck('id'))->limit(5)->orderBy('fecha_publicacion', 'DESC')->get();
+            $ofertas_empresa = Oferta::whereIn('id_seleccionador', $seleccionadores->pluck('id'))->limit(5)->orderBy('created_at', 'DESC')->get();
 
             $empresa->ofertas = $ofertas_empresa;
 

@@ -7,7 +7,7 @@
             <p>{{ $oferta->ubicacion }}</p>
         </div>
         <div class="fecha_publicacion_oferta">
-            <p>{{ $oferta->fecha_publicacion }}</p>
+            <p>{{ $oferta->created_at }}</p>
         </div>
     </div>
     <div class="descripcion_oferta">
