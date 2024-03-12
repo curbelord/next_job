@@ -30,7 +30,7 @@ class OfertasController extends Controller
 
         $ofertas->load('seleccionador.empresa');
 
-        return view('ofertas', compact('ofertas'));
+        return view('gestionar.ofertas.ofertas', compact('ofertas'));
     }
 
     public function mostrarOferta($parametro) {
@@ -40,6 +40,6 @@ class OfertasController extends Controller
 
         $oferta->load('seleccionador.empresa');
 
-        return view('descripcion', compact('oferta'), compact('inscripciones'));
+        return view('gestionar.ofertas.descripcion', compact('oferta'), compact('inscripciones'));
     }
 }

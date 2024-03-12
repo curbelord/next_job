@@ -4,7 +4,7 @@
 
                                 <!--['empresa' => request('buscador')]
                             url('empresa', ['empresa' => $empresa->nombre])-->
-        <form method="GET" action="{{ route('empresa-buscada') }}">
+        <form method="GET" action="{{ route('empresa_buscada') }}">
 
             @csrf
 
@@ -18,7 +18,7 @@
 
     @else
 
-        <form method="GET" action="{{ route('ofertas') }}">
+        <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
 
             @csrf
 

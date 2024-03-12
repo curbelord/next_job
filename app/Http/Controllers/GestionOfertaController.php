@@ -18,14 +18,14 @@ class GestionOfertaController extends Controller
         $ofertas = Oferta::all();
         $inscripciones = Inscripcion::all();
 
-        return view('gestionar', compact('ofertas'), compact('inscripciones'));    }
+        return view('gestionar.principal_empresa', compact('ofertas'), compact('inscripciones'));    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('crear_oferta');
+        return view('gestionar.ofertas.crear_oferta');
     }
 
     public function store(Request $request){
@@ -44,7 +44,7 @@ class GestionOfertaController extends Controller
         $oferta->fecha_cierre = $request->fecha_cierre;
         $oferta->save();
 
-        return redirect()->route('gestionar');
+        return redirect()->route('gestionar.principal_empresa');
     }
 
     /**
@@ -60,7 +60,7 @@ class GestionOfertaController extends Controller
      */
     public function edit()
     {
-        return view('editar_oferta');
+        return view('gestionar.ofertas.editar_oferta');
     }
 
     /**

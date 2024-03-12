@@ -18,7 +18,7 @@
             <div id="bloque_gestion_1" class="bloque_gestion">
                 <div class="imagen_gestion"></div>
                 <div class="texto_gestion">
-                    <a href="{{ route('crear_oferta') }}">Publicar proceso</a>
+                    <a href="{{ route('gestionar.ofertas.crear_oferta') }}">Publicar proceso</a>
                 </div>
             </div>
             <div id="bloque_gestion_2" class="bloque_gestion">
@@ -30,7 +30,7 @@
             <div id="bloque_gestion_3" class="bloque_gestion">
                 <div class="imagen_gestion"></div>
                 <div class="texto_gestion">
-                    <a href="{{ route('crear_plantilla') }}">Crear plantilla</a>
+                    <a href="{{ route('gestionar.plantillas.crear_plantilla') }}">Crear plantilla</a>
                 </div>
             </div>
         </div>
