@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GestionOfertaController;
+use App\Http\Controllers\GestionPlantillaController;
 use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\EmpresaBuscadaController;
@@ -54,39 +56,20 @@ Route::get('/inicio-de-sesion', function (){
 
 Route::prefix('gestionar')->group(function () {
 
-    Route::get('/', [OfertasController::class, 'create'])->name('gestionar');
+    Route::get('/', [GestionOfertaController::class, 'index'])->name('gestionar');
 
     Route::prefix('ofertas')->group(function () {
 
-        Route::get('/crear', function (){
-            return view('crear_oferta');
-        })->name('ofertas.crear');
-
-        Route::get('/editar', function () {
-            return view('editar_oferta');
-        })->name('ofertas.editar');
-
-        Route::get('/ver', function () {
-            return view('ver_ofertas');
-        })->name('ofertas.ver');
-
+        Route::get('/crear', [GestionOfertaController::class, 'create'])->name('crear_oferta');
+        Route::get('/editar', [GestionOfertaController::class, 'edit'])->name('editar_oferta');
         Route::post('/store', [OfertasController::class, 'store'])->name('ofertas.almacenar');
 
     });
 
     Route::prefix('plantillas')->group(function () {
 
-        Route::get('/crear', function (){
-            return view('crear_plantilla');
-        })->name('plantillas.crear');
-
-        Route::get('/editar', function (){
-            return view('editar_plantilla');
-        })->name('plantillas.editar');
-
-        Route::get('/ver', function () {
-            return view('ver_plantillas');
-        })->name('plantillas.ver');
+        Route::get('/crear', [GestionOfertaController::class, 'create'])->name('crear_plantilla');
+        Route::get('/editar', [GestionOfertaController::class, 'edit'])->name('editar_plantilla');
 
     });
 
