@@ -54,7 +54,6 @@ Route::prefix('gestionar')->group(function () {
 
 Route::get('/info-proceso', function (){
     return view('process_info');
-
 });
 
 Route::get('/desplegable', function (){
