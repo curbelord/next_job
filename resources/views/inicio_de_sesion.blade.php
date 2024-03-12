@@ -10,12 +10,14 @@
 
     <div class="content">
             
-        <div class="login">
+        <form class="login">
+
+            @csrf
 
             <h2>Inicio de sesión</h2>
 
-            <input type="email" name="email" id="email" placeholder="Correo electrónico" require>
-            <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" require>
+            <input type="email" name="email" id="email" placeholder="Correo electrónico" required autofocus autocomplete="username">
+            <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required autocomplete="current-password">
 
             <button>Iniciar sesión</button>
 
@@ -24,7 +26,7 @@
                 <a href="{{ url('/registro') }}">Registrar</a>
             </p>
 
-        </div>
+        </form>
     
     </div>
 
