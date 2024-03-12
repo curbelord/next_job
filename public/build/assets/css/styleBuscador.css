@@ -12,10 +12,16 @@
     font-family: "Manrope", sans-serif;
 }
 
-form, .seccion_relleno, .seccion_valor, .seccion_provincias {
+.tabla {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
+
+/*
+form, .seccion_relleno, .seccion_valor, .seccion_provincias {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}*/
 
 form {
     grid-template-rows: repeat(3, 1fr);
@@ -27,6 +33,7 @@ form > * {
 }
 
 form h2 {
+    text-align: left;
     grid-column: 3 / 8;
     grid-row: 1;
 }

@@ -16,7 +16,7 @@
         <a href="#">Experiencia</a>
     </div>
 
-    <div>
+    <div id="jornada">
         <a href="#">Jornada</a>
     </div>
 </div>

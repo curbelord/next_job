@@ -47,7 +47,7 @@
                         <p>{{ $oferta->jornada }}</p>
                     </div>
                     <div id="horario" class="boton_outline_azul">
-                        <p>{{ $oferta->horario }}</p>
+                        <p>{{ $oferta->turno }}</p>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@
         <form method="GET" action="{{ route('empresa-buscada') }}">
 
             @csrf
-            
+
             <h2>{{ $titulo }}</h2>
 
             <input type="text" name="buscador" id="buscador" placeholder="{{ $placeholder_buscador }}">
@@ -22,25 +22,33 @@
 
             @csrf
 
-            <h2>{{ $titulo }}</h2>
+            <div class="tabla">
+                <h2>{{ $titulo }}</h2>
+            </div>
 
-            <input type="text" name="buscador" id="buscador" placeholder="{{ $placeholder_buscador }}">
+            <div class="tabla">
+                <input type="text" name="buscador" id="buscador" placeholder="{{ $placeholder_buscador }}">
 
-            @if ($mostrarProvincias)
-                <select name="provincia" id="provincia">
-                    <option value="0">Selecciona una provincia</option>
+                @if ($mostrarProvincias)
+                    <select name="provincia" id="provincia">
+                        <option value="0">Selecciona una provincia</option>
 
-                        @foreach ($provincias as $provincia)
-                            <option value="{{ $provincia }}">{{ $provincia }}</option>
-                        @endforeach        
-                </select>
-            @endif
+                            @foreach ($provincias as $provincia)
+                                <option value="{{ $provincia }}">{{ $provincia }}</option>
+                            @endforeach        
+                    </select>
+                @endif
+            </div>
 
-            @if ($mostrarFiltros)
-                @include('components.filtros')
-            @endif
+            <div class="tabla tabla_filtros">
+                @if ($mostrarFiltros)
+                    @include('components.filtros')
+                @endif
+            </div>
 
-            <button type="submit">Buscar</button>
+            <div class="tabla">
+                <button type="submit">Buscar</button>
+            </div>
 
         </form>
 
