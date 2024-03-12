@@ -39,6 +39,7 @@
     padding: 1em;
     border: 3px solid transparent;
     transition: ease-in .3s;
+    position: relative;
 }
 
 .oferta:hover {
@@ -82,6 +83,12 @@
     display: flex;
     /*justify-self: center;*/
     transition: ease-in .3s;
+}
+
+.oferta_fecha {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .oferta:hover .oferta_img {
