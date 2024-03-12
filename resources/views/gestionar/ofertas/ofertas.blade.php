@@ -87,6 +87,9 @@
                         <div class="oferta_titulo">
                             <h3> {{ $oferta->puesto_trabajo }} </h3>
                         </div>
+                        <div class="oferta_fecha">
+                            <p> {{ $oferta->created_at }} </p>
+                        </div>
                         <div class="oferta_info_extra">
                             <div class="oferta_empresa">
                                 <p> {{ $oferta->seleccionador->empresa->nombre }} </p>
@@ -94,9 +97,6 @@
                             <div class="oferta_localizacion">
                                 <p> {{ $oferta->ubicacion }} </p>
                             </div>
-                            <!--div class="oferta_fecha">
-                                <p> {{ $oferta->fecha_publicacion }} </p>
-                            </div-->
                         </div>
                         <div class="oferta_info_trabajo">
                             <div class="oferta_jornada">
