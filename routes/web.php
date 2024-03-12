@@ -54,30 +54,9 @@ Route::get('/inicio-de-sesion', function (){
 
 Route::prefix('gestionar')->group(function () {
 
-    Route::get('/', function () {
-        // Aquí, cuando se haya hecho la funcionalidad del registro/login de las empresas, entonces limitar las búsquedas con un "where" para solo recoger los datos asociados a esa empresa
-
-        $ofertas = Oferta::all();
-        $inscripciones = Inscripcion::all();
-
-        return view('gestionar', compact('ofertas'), compact('inscripciones'));
-    })->name('gestionar');
-
-    /*
-    Route::get('/crear-empresa', function (){
-        return view('crear_empresa');
-    });
-
-    Route::get('/editar-empresa', function (){
-        return view('editar_empresa');
-    });
-    */
+    Route::get('/', [OfertasController::class, 'create'])->name('gestionar');
 
     Route::prefix('ofertas')->group(function () {
-
-        Route::get('/', function () {
-            return view('gestionar_ofertas');
-        })->name('gestionar_ofertas');
 
         Route::get('/crear', function (){
             return view('crear_oferta');
@@ -96,10 +75,6 @@ Route::prefix('gestionar')->group(function () {
     });
 
     Route::prefix('plantillas')->group(function () {
-
-        Route::get('/', function () {
-            return view('gestionar_plantillas');
-        });
 
         Route::get('/crear', function (){
             return view('crear_plantilla');
