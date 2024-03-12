@@ -79,4 +79,9 @@ class GestionOfertaController extends Controller
     {
         //
     }
+
+    public function manageOffers()
+    {
+        return view('gestionar.gestionar_ofertas');
+    }
 }

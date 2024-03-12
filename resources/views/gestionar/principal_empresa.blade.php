@@ -3,7 +3,7 @@
 @section('title', 'Gestionar')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleGestionar.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/stylePrincipalEmpresa.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleUltimoProceso.css') }}">
 @endsection
 
@@ -51,7 +51,7 @@
                         @endslot
 
                         @slot('fecha_publicacion')
-                            {{ $oferta->created_at }}
+                            {{ date('d/m/Y', strtotime($oferta->created_at)) }}
                         @endslot
 
                         @slot('numero_inscritos')
