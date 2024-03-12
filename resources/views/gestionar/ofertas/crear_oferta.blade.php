@@ -17,33 +17,41 @@
 
             {{-- Pendiente añadir los names de los inputs iguales a los campos de la BBDD. Confirmar algunos campos --}}
 
-            <form method="POST" action="{{ route('gestionar.ofertas.ofertas.almacenar') }}">
+            <form method="POST" action="{{ route('gestionar.ofertas.ofertas.store') }}">
                 @csrf
 
                 <input type="text" id="titulo_crear_oferta" class="input_formulario" name="puesto_trabajo" placeholder="Título">
 
                 <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Centro de trabajo">
 
-                <select id="sector_oferta" class="input_formulario" name="sector">
-                    <option value="null" selected>Sector</option>
-                    <option value="afde">Actividades Físicas y Deportivas</option>
-                    <option value="ages">Administración y Gestión</option>
-                    <option value="agro">Agroalimentario</option>
-                    <option value="agra">Artes Gráficas</option>
-                    <option value="cons">Construcción</option>
-                    <option value="ener">Energía</option>
-                    <option value="imap">Imagen Personal</option>
-                    <option value="imas">Imagen y Sonido</option>
-                    <option value="indu">Industrial</option>
-                    <option value="icom">Informática y Comunicaciones</option>
-                    <option value="ltco">Logística, Transporte y Comercio</option>
-                    <option value="mant">Mantenimiento</option>
-                    <option value="mamb">Medio Ambiente</option>
-                    <option value="quim">Químico</option>
-                    <option value="salu">Salud</option>
-                    <option value="stho">Servicios Turísticos y Hosteleros</option>
-                    <option value="text">Textil</option>
-                </select>
+                <div id="container_tipo_trabajo_sector">
+                    <select id="tipo_trabajo_oferta" class="input_formulario" name="tipo_trabajo">
+                        <option value="null" selected>Tipo de trabajo</option>
+                        <option value="presencial">Presencial</option>
+                        <option value="no_presencial">Teletrabajo</option>
+                    </select>
+
+                    <select id="sector_oferta" class="input_formulario" name="sector">
+                        <option value="null" selected>Sector</option>
+                        <option value="afde">Actividades Físicas y Deportivas</option>
+                        <option value="ages">Administración y Gestión</option>
+                        <option value="agro">Agroalimentario</option>
+                        <option value="agra">Artes Gráficas</option>
+                        <option value="cons">Construcción</option>
+                        <option value="ener">Energía</option>
+                        <option value="imap">Imagen Personal</option>
+                        <option value="imas">Imagen y Sonido</option>
+                        <option value="indu">Industrial</option>
+                        <option value="icom">Informática y Comunicaciones</option>
+                        <option value="ltco">Logística, Transporte y Comercio</option>
+                        <option value="mant">Mantenimiento</option>
+                        <option value="mamb">Medio Ambiente</option>
+                        <option value="quim">Químico</option>
+                        <option value="salu">Salud</option>
+                        <option value="stho">Servicios Turísticos y Hosteleros</option>
+                        <option value="text">Textil</option>
+                    </select>
+                </div>
 
                 <textarea rows="10" id="descripcion_crear_oferta" class="input_formulario" name="descripcion" placeholder="Descripción"></textarea>
 

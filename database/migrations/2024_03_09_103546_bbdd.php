@@ -93,7 +93,7 @@ return new class extends Migration
             $table->decimal('salario', 10, 2);
             $table->string('jornada');
             $table->enum('sector', ['afde', 'ages', 'agro', 'agra', 'cons', 'ener', 'imap', 'imas', 'indu', 'icom', 'ltco', 'mant', 'mamb', 'quim', 'salu', 'stho', 'text']);
-            // $table->string('tipo_trabajo')->nullable();
+            $table->string('tipo_trabajo');
             $table->string('puesto_trabajo');
             $table->string('descripcion');
             $table->enum('estudios_minimos', ['ge', 'eso', 'bac', 'gm', 'gs', 'ea', 'ed', 'luni', 'muni', 'duni', 'guni']);
