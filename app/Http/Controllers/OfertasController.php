@@ -43,7 +43,16 @@ class OfertasController extends Controller
         return view('descripcion', compact('oferta'), compact('inscripciones'));
     }
 
+    public function create()
+    {
+        $ofertas = Oferta::all();
+        $inscripciones = Inscripcion::all();    
+
+        return view('gestionar', compact('ofertas'), compact('inscripciones'));
+    }
+
     public function store(Request $request){
+
         $oferta = new Oferta;
         $oferta->puesto_trabajo = $request->puesto_trabajo;
         $oferta->ubicacion = $request->ubicacion;
