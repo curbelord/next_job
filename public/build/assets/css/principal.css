@@ -88,7 +88,11 @@
     align-items: center;
     justify-content: left;
     width: fit-content;
-    background-color: var(--azul);
+    background-image: url(../img/vector_corto_provincia.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    /*background-color: var(--azul);*/
     color: var(--blanco);
     margin: 1em 0;
     padding: .5em 2em .5em .75em;
@@ -107,33 +111,14 @@
     grid-column: 9 / 11;
 }
 
-.provincia .vector_borde_azul {
-    height: 2em;
-    background-color: var(--azul);
-    position: relative; /* Permite posicionar el pico */
-    
-    /* Crea el pico */
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 2em; /* Ajusta la posición del pico */ /* Cualquier valor +2em (del padding del nombre_provincia) */
-      border-width: 0 4px 2em 0;
-      border-style: solid;
-      border-color: transparent var(--azul) transparent transparent;
-      transform: scaleX(-1);
-    }
+.tabla h2 {
+    margin-top: 2em;
 }
 
 @media (max-width: 1000px) {
 
-    .seccion_provincias {
-        grid-template-rows: repeat(3, 1fr);
-    }
-
     .seccion_provincias h2 {
         font-size: 2em;
-        justify-content: center;
         padding: 0em 0;
     }
 
@@ -141,23 +126,48 @@
         padding-bottom: 2em !important;
     }
 
+    .nombre_provincia {
+        width: 100%;
+        background-size: cover;
+    }
+
+    .seccion_provincias {
+        grid-template-rows: 100px repeat(3, 1fr);
+    }
+
+    .seccion_provincias h2, .provincia_1-3, .provincia_2-3, .provincia_3-3 {
+        grid-column: 3 / 11;
+    }
+
     .provincia_1-3 {
-        grid-column: 5 / 9;
         grid-row: 2;
     }
     
     .provincia_2-3 {
-        grid-column: 3 / 6;
         grid-row: 3;
     }
     
     .provincia_3-3 {
-        grid-column: 8 / 11;
-        grid-row: 3;
+        grid-row: 4;
     }
 }
 
 @media (max-width: 800px) {
+
+    #buscador {
+        grid-row: 1;
+        grid-column: 2 / 12;
+    }
+
+    #provincia {
+        grid-row: 2;
+        grid-column: 2 / 12;
+    }
+
+    .tabla button {
+        grid-row: 3;
+        grid-column: 2 / 12;
+    }
 
     .bloque {
         height: 10vh;
@@ -180,21 +190,23 @@
     }
 
     .seccion_provincias {
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: 100px repeat(3, 1fr);
+    }
+
+    .seccion_provincias h2, .provincia_1-3, .provincia_2-3, .provincia_3-3 {
+        grid-column: 2 / 12;
     }
 
     .provincia_1-3 {
-        grid-column: 4 / 10;
+        
         grid-row: 2;
     }
     
     .provincia_2-3 {
-        grid-column: 4 / 10;
         grid-row: 3;
     }
     
     .provincia_3-3 {
-        grid-column: 4 / 10;
         grid-row: 4;
     }
 }
@@ -202,21 +214,14 @@
 @media (max-width: 650px) {
 
     .provincia_1-3 {
-        grid-column: 2 / 12;
         grid-row: 2;
     }
     
     .provincia_2-3 {
-        grid-column: 2 / 12;
         grid-row: 3;
     }
     
     .provincia_3-3 {
-        grid-column: 2 / 12;
         grid-row: 4;
-    }
-
-    .provincia:first-child {
-        content: "Provincia";
     }
 }
