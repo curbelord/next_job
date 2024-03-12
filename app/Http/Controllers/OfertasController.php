@@ -54,6 +54,6 @@ class OfertasController extends Controller
         $oferta->salario = $request->salario;
         $oferta->save();
 
-        return redirect()->route('gestionar_ofertas');
+        return redirect()->route('gestionar');
     }
 }

@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\EmpresaBuscadaController;
+use App\Models\Inscripcion;
+use App\Models\Oferta;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,8 +55,13 @@ Route::get('/inicio-de-sesion', function (){
 Route::prefix('gestionar')->group(function () {
 
     Route::get('/', function () {
-        return view('gestionar');
-    });
+        // Aquí, cuando se haya hecho la funcionalidad del registro/login de las empresas, entonces limitar las búsquedas con un "where" para solo recoger los datos asociados a esa empresa
+
+        $ofertas = Oferta::all();
+        $inscripciones = Inscripcion::all();
+
+        return view('gestionar', compact('ofertas'), compact('inscripciones'));
+    })->name('gestionar');
 
     /*
     Route::get('/crear-empresa', function (){

@@ -40,9 +40,33 @@
                 <h3>Últimos procesos</h3>
             </div>
             <div id="subcontainer_ultimos_procesos">
-                @component('components.ultimo_proceso')
+                @forelse ($ofertas as $oferta)
+                    @component('components.ultimo_proceso')
+                        @slot('puesto_trabajo')
+                            {{ $oferta->puesto_trabajo }}
+                        @endslot
 
-                @endcomponent
+                        @slot('ubicacion')
+                            {{ $oferta->ubicacion }}
+                        @endslot
+
+                        @slot('fecha_publicacion')
+                            {{ $oferta->created_at }}
+                        @endslot
+
+                        @slot('numero_inscritos')
+                            {{ count($inscripciones) }}
+                        @endslot
+                    @endcomponent
+                @empty
+                    <div class="container_oferta">
+                        <div class="datos_top">
+                            <div class="titulo_oferta">
+                                <h3>No hay procesos</h3>
+                            </div>
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

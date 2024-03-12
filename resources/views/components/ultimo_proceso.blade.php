@@ -1,14 +1,14 @@
 <div class="container_oferta">
     <div class="datos_top">
         <div class="titulo_oferta">
-            <h3>Título oferta...Lorem ipsum dolor sit amet consectetur adipisicing elit</h3>
+            <h3>{{ $puesto_trabajo }}</h3>
         </div>
         <div class="centro_trabajo_fecha_publicacion">
             <div class="centro_trabajo">
-                <p>Centro de trabajo</p>
+                <p>{{ $ubicacion }}</p>
             </div>
             <div class="fecha_publicacion">
-                <p>Fecha publicación</p>
+                <p>{{ $fecha_publicacion }}</p>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
             <div class="subcontainer_numero_inscritos">
                 <div class="imagen_datos_bottom imagen_inscritos"></div>
                 <div class="valor_numero_inscritos">
-                    <p>Nº inscritos</p>
+                    <p>{{ $numero_inscritos }}</p>
                 </div>
             </div>
         </div>
