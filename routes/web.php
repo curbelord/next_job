@@ -4,72 +4,49 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GestionOfertaController;
 use App\Http\Controllers\GestionPlantillaController;
 use App\Http\Controllers\OfertasController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\EmpresaBuscadaController;
 use App\Models\Inscripcion;
 use App\Models\Oferta;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('principal');
-});
 
-Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('ofertas');
+Route::get('/', [HomeController::class, 'index'])->name('principal');
 
-Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta'])->name('descripcion');
+Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('gestionar.ofertas.ofertas');
+Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta'])->name('gestionar.ofertas.descripcion');
 
 Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
+Route::get('/empresa', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa_buscada');
 
-Route::get('/empresa', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa-buscada');
+Route::get('/registrar-empresa', [RegistroController::class, 'registrar_empresa'])->name('auth.registrar_empresa');
+Route::get('/vincular-empresa', [RegistroController::class, 'vincula_empresa'])->name('auth.vincular_empresa');
+Route::get('/rellenar-cv', [RegistroController::class, 'rellenar_cv'])->name('auth.rellenar_cv');
+Route::get('/registro', [RegistroController::class, 'index'])->name('auth.registro');
 
+Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.incio_de_sesion');
 
-Route::get('/registrar-empresa', function () {
-    return view('registrar_empresa');
-});
-
-Route::get('/vincular-empresa', function () {
-    return view('vincular_empresa');
-});
-
-Route::get('/rellenar-cv', function () {
-    return view('rellenar_cv');
-});
-
-Route::get('/registro', function (){
-    return view('registro');
-});
-
-Route::get('/inicio-de-sesion', function (){
-    return view('inicio_de_sesion');
-});
 
 Route::prefix('gestionar')->group(function () {
 
-    Route::get('/', [GestionOfertaController::class, 'index'])->name('gestionar');
+    Route::get('/', [GestionOfertaController::class, 'index'])->name('gestionar.principal_empresa');
 
     Route::prefix('ofertas')->group(function () {
 
-        Route::get('/crear', [GestionOfertaController::class, 'create'])->name('crear_oferta');
-        Route::get('/editar', [GestionOfertaController::class, 'edit'])->name('editar_oferta');
-        Route::post('/store', [OfertasController::class, 'store'])->name('ofertas.almacenar');
+        Route::get('/crear', [GestionOfertaController::class, 'create'])->name('gestionar.ofertas.crear_oferta');
+        Route::get('/editar', [GestionOfertaController::class, 'edit'])->name('gestionar.ofertas.editar_oferta');
+        Route::post('/store', [OfertasController::class, 'store'])->name('gestionar.ofertas.ofertas.almacenar');
 
     });
 
     Route::prefix('plantillas')->group(function () {
 
-        Route::get('/crear', [GestionOfertaController::class, 'create'])->name('crear_plantilla');
-        Route::get('/editar', [GestionOfertaController::class, 'edit'])->name('editar_plantilla');
+        Route::get('/crear', [GestionOfertaController::class, 'create'])->name('gestionar.plantillas.crear_plantilla');
+        Route::get('/editar', [GestionOfertaController::class, 'edit'])->name('gestionar.plantillas.editar_plantilla');
 
     });
 

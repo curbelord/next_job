@@ -23,7 +23,7 @@ class GestionPlantillaController extends Controller
      */
     public function create()
     { 
-        return view('crear_plantilla');
+        return view('gestionar.plantillas.crear_plantilla');
     }
 
     /**
@@ -47,7 +47,7 @@ class GestionPlantillaController extends Controller
      */
     public function edit()
     {
-        return view('crear_plantilla');
+        return view('gestionar.plantillas.crear_plantilla');
     }
 
     /**

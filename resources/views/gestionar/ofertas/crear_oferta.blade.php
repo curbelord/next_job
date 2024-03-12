@@ -17,7 +17,7 @@
 
             {{-- Pendiente añadir los names de los inputs iguales a los campos de la BBDD. Confirmar algunos campos --}}
 
-            <form method="POST" action="{{ route('ofertas.almacenar') }}">
+            <form method="POST" action="{{ route('gestionar.ofertas.ofertas.almacenar') }}">
                 @csrf
 
                 <input type="text" id="titulo_crear_oferta" class="input_formulario" name="puesto_trabajo" placeholder="Título">
