@@ -10,7 +10,9 @@
 
     <div class="content">
             
-        <div class="crear_plantilla">
+        <form class="crear_plantilla">
+
+            @csrf
 
             <h2>Crea una plantilla</h2>
 
@@ -25,7 +27,7 @@
 
             <button>Crear</button>
 
-        </div>
+        </form>
 
     </div>
 

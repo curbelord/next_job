@@ -10,7 +10,9 @@
 
     <div class="content">
             
-        <div class="registrar_empresa">
+        <form class="registrar_empresa">
+
+            @csrf
 
             <h2>Registrar una empresa</h2>
 
@@ -27,7 +29,7 @@
                 <a href="{{ url('/inicio-de-sesion') }}">¿Ya tienes una empresa registrada?</a>
             </p>
 
-        </div>
+        </form>
     
     </div>
 

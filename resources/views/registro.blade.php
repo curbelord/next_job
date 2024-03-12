@@ -10,7 +10,9 @@
 
     <div class="content">
             
-        <div class="registro">
+        <form class="registro">
+
+            @csrf
 
             <h2>Registro</h2>
 
@@ -30,7 +32,7 @@
                 <a href="{{ url('/inicio-de-sesion') }}">Inicia sesión</a>
             </p>
 
-        </div>
+        </form>
     
     </div>
 
