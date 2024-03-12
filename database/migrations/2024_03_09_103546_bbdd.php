@@ -88,18 +88,18 @@ return new class extends Migration
         // Oferta Table
         Schema::create('Oferta', function (Blueprint $table) {
             $table->id('referencia');
-            $table->date('fecha_cierre')->nullable();
+            $table->date('fecha_cierre');
             $table->integer('numero_vacantes');
             $table->decimal('salario', 10, 2);
             $table->string('jornada');
-            $table->string('sector')->nullable();
-            $table->string('tipo_trabajo')->nullable();
+            $table->enum('sector', ['afde', 'ages', 'agro', 'agra', 'cons', 'ener', 'imap', 'imas', 'indu', 'icom', 'ltco', 'mant', 'mamb', 'quim', 'salu', 'stho', 'text']);
+            // $table->string('tipo_trabajo')->nullable();
             $table->string('puesto_trabajo');
             $table->string('descripcion');
-            $table->string('estudios_minimos')->nullable();
-            $table->integer('experiencia_minima')->nullable();
+            $table->enum('estudios_minimos', ['ge', 'eso', 'bac', 'gm', 'gs', 'ea', 'ed', 'luni', 'muni', 'duni', 'guni']);
+            $table->integer('experiencia_minima');
             $table->string('ubicacion');
-            $table->enum('turno', ['manana', 'tarde', 'noche'])->nullable();
+            $table->enum('turno', ['manana', 'tarde', 'noche']);
             $table->enum('estado', ['publicada', 'plantilla'])->nullable();
             $table->integer('id_seleccionador')->unsigned()->nullable();
             $table->foreign('id_seleccionador')->references('id')->on('Seleccionador')->onDelete('cascade');

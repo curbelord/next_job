@@ -24,9 +24,49 @@
 
                 <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Centro de trabajo">
 
+                <select id="sector_oferta" class="input_formulario" name="sector">
+                    <option value="null" selected>Sector</option>
+                    <option value="afde">Actividades Físicas y Deportivas</option>
+                    <option value="ages">Administración y Gestión</option>
+                    <option value="agro">Agroalimentario</option>
+                    <option value="agra">Artes Gráficas</option>
+                    <option value="cons">Construcción</option>
+                    <option value="ener">Energía</option>
+                    <option value="imap">Imagen Personal</option>
+                    <option value="imas">Imagen y Sonido</option>
+                    <option value="indu">Industrial</option>
+                    <option value="icom">Informática y Comunicaciones</option>
+                    <option value="ltco">Logística, Transporte y Comercio</option>
+                    <option value="mant">Mantenimiento</option>
+                    <option value="mamb">Medio Ambiente</option>
+                    <option value="quim">Químico</option>
+                    <option value="salu">Salud</option>
+                    <option value="stho">Servicios Turísticos y Hosteleros</option>
+                    <option value="text">Textil</option>
+                </select>
+
                 <textarea rows="10" id="descripcion_crear_oferta" class="input_formulario" name="descripcion" placeholder="Descripción"></textarea>
 
-                <div id="container_jornada_horario">
+                <div id="container_estudios_experiencia">
+                    <select id="select_estudios_crear_oferta" class="input_formulario" name="estudios_minimos">
+                        <option value="null" selected>Estudios mínimos</option>
+                        <option value="ge">Graduado Escolar</option>
+                        <option value="eso">ESO</option>
+                        <option value="bac">Bachillerato</option>
+                        <option value="gm">Ciclo Formativo Grado Medio</option>
+                        <option value="gs">Ciclo Formativo Grado Superior</option>
+                        <option value="ea">Enseñanzas artísticas</option>
+                        <option value="ed">Enseñanzas deportivas</option>
+                        <option value="luni">Licenciatura</option>
+                        <option value="muni">Máster</option>
+                        <option value="duni">Doctorado</option>
+                        <option value="guni">Grado universitario</option>
+                    </select>
+
+                    <input type="number" id="experiencia_crear_oferta" class="input_formulario" name="experiencia_minima" placeholder="Experiencia mínima" min="0">
+                </div>
+
+                <div id="container_jornada_turno">
                     <select id="select_jornada_crear_oferta" class="input_formulario" name="jornada">
                         <option value="null" selected>Jornada</option>
                         <option value="completa">Completa</option>
@@ -45,6 +85,13 @@
                     <input type="number" id="vacantes_crear_oferta" class="input_formulario" name="numero_vacantes" placeholder="Nº vacantes" min="1">
 
                     <input type="number" id="salario_crear_oferta" class="input_formulario" name="salario" placeholder="Salario">
+                </div>
+
+                <div id="container_cierre_cuestionario">
+                    <input type="text" onfocus="(this.type='date')"
+                    onblur="(this.type='text')" id="cierre_crear_oferta" class="input_formulario" name="fecha_cierre" placeholder="Fecha cierre">
+
+                    <button type="button" id="preguntas_crear_oferta" class="input_formulario">Killer questions</button>
                 </div>
 
                 <div id="container_cuestionario">
