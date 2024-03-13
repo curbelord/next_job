@@ -3,9 +3,24 @@
         <ul>
             <img src="{{ asset('build/assets/img/logo_next_job.svg') }}" alt="Next Job" class="logo logo_no_extendido">
             <img src="{{ asset('build/assets/img/logo_next_job_ext.svg') }}" alt="Next Job" class="logo logo_extendido">
-            <li class="empleo"><a href="/">Empleo</a></li>
-            <li class="empresas"><a href="/empresas">Empresas</a></li>
-            <li class="acceder"><a href="/inicio-de-sesion">Acceder</a></li>
+            <li class="empleo"><a href="{{ route('principal') }}">Empleo</a></li>
+            <li class="empresas"><a href="{{ route('empresas') }}">Empresas</a></li>
+
+            
+            @if (Route::has('login'))
+                @auth
+                    <li class="perfil"><a href="{{ url('/dashboard') }}">Perfil</a></li>
+                @endauth
+            @endif
+
+            @if (Route::has('login'))
+                @auth
+                    <li class="cerrar_sesion"><a href="{{ url('/logout') }}">Cerrar sesión</a></li>
+                @else
+                    <li class="acceder"><a href="{{ url('/login') }}">Acceder</a></li>
+                @endauth
+            @endif
+
             <i class="fa-solid fa-bars icono_menu"></i>
         </ul>
         <div class="contenedor_vector">

@@ -14,6 +14,9 @@ use App\Models\Oferta;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/inscripciones', function () {
+    return view('inscripciones');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('principal');
 
@@ -49,8 +52,8 @@ Route::prefix('gestionar')->group(function () {
 
     Route::prefix('plantillas')->group(function () {
 
-        Route::get('/crear', [GestionOfertaController::class, 'create'])->name('gestionar.plantillas.crear_plantilla');
-        Route::get('/editar', [GestionOfertaController::class, 'edit'])->name('gestionar.plantillas.editar_plantilla');
+        Route::get('/crear', [GestionPlantillaController::class, 'create'])->name('gestionar.plantillas.crear_plantilla');
+        Route::get('/editar', [GestionPlantillaController::class, 'edit'])->name('gestionar.plantillas.editar_plantilla');
 
     });
 

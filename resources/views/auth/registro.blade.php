@@ -24,7 +24,6 @@
             <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" require>
             <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Repita la contraseña" require>
 
-
             <button>Registrar</button>
 
             <p>
