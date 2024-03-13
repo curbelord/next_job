@@ -22,34 +22,35 @@
 
                 <input type="text" id="titulo_crear_oferta" class="input_formulario" name="puesto_trabajo" placeholder="Título">
 
-                <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Centro de trabajo">
+                <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Ubicación del centro de trabajo">
 
                 <div id="container_tipo_trabajo_sector">
                     <select id="tipo_trabajo_oferta" class="input_formulario" name="tipo_trabajo">
                         <option value="null" selected>Tipo de trabajo</option>
-                        <option value="presencial">Presencial</option>
-                        <option value="no_presencial">Teletrabajo</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="No presencial">Teletrabajo</option>
+                        <option value="Mixto">Mixto</option>
                     </select>
 
                     <select id="sector_oferta" class="input_formulario" name="sector">
                         <option value="null" selected>Sector</option>
-                        <option value="afde">Actividades Físicas y Deportivas</option>
-                        <option value="ages">Administración y Gestión</option>
-                        <option value="agro">Agroalimentario</option>
-                        <option value="agra">Artes Gráficas</option>
-                        <option value="cons">Construcción</option>
-                        <option value="ener">Energía</option>
-                        <option value="imap">Imagen Personal</option>
-                        <option value="imas">Imagen y Sonido</option>
-                        <option value="indu">Industrial</option>
-                        <option value="icom">Informática y Comunicaciones</option>
-                        <option value="ltco">Logística, Transporte y Comercio</option>
-                        <option value="mant">Mantenimiento</option>
-                        <option value="mamb">Medio Ambiente</option>
-                        <option value="quim">Químico</option>
-                        <option value="salu">Salud</option>
-                        <option value="stho">Servicios Turísticos y Hosteleros</option>
-                        <option value="text">Textil</option>
+                        <option value="Actividades Físicas y Deportivas">Actividades Físicas y Deportivas</option>
+                        <option value="Administración y Gestión">Administración y Gestión</option>
+                        <option value="Agroalimentario">Agroalimentario</option>
+                        <option value="Artes Gráficas">Artes Gráficas</option>
+                        <option value="Construcción">Construcción</option>
+                        <option value="Energía">Energía</option>
+                        <option value="Imagen Personal">Imagen Personal</option>
+                        <option value="Imagen y Sonido">Imagen y Sonido</option>
+                        <option value="Industrial">Industrial</option>
+                        <option value="Informática y Comunicaciones">Informática y Comunicaciones</option>
+                        <option value="Logística, Transporte y Comercio">Logística, Transporte y Comercio</option>
+                        <option value="Mantenimiento">Mantenimiento</option>
+                        <option value="Medio Ambiente">Medio Ambiente</option>
+                        <option value="Químico">Químico</option>
+                        <option value="Salud">Salud</option>
+                        <option value="Servicios Turísticos y Hosteleros">Servicios Turísticos y Hosteleros</option>
+                        <option value="Textil">Textil</option>
                     </select>
                 </div>
 
@@ -58,17 +59,19 @@
                 <div id="container_estudios_experiencia">
                     <select id="select_estudios_crear_oferta" class="input_formulario" name="estudios_minimos">
                         <option value="null" selected>Estudios mínimos</option>
-                        <option value="ge">Graduado Escolar</option>
-                        <option value="eso">ESO</option>
-                        <option value="bac">Bachillerato</option>
-                        <option value="gm">Ciclo Formativo Grado Medio</option>
-                        <option value="gs">Ciclo Formativo Grado Superior</option>
-                        <option value="ea">Enseñanzas artísticas</option>
-                        <option value="ed">Enseñanzas deportivas</option>
-                        <option value="luni">Licenciatura</option>
-                        <option value="muni">Máster</option>
-                        <option value="duni">Doctorado</option>
-                        <option value="guni">Grado universitario</option>
+                        <option value="Graduado Escolar">Graduado Escolar</option>
+                        <option value="ESO">ESO</option>
+                        <option value="Bachillerato">Bachillerato</option>
+                        <option value="Formación Profesional Básica">Formación Profesional Básica</option>
+                        <option value="Ciclo Formativo de Grado Medio">Ciclo Formativo de Grado Medio</option>
+                        <option value="Ciclo Formativo de Grado Superior">Ciclo Formativo de Grado Superior</option>
+                        <option value="Enseñanzas artísticas">Enseñanzas artísticas</option>
+                        <option value="Enseñanzas deportivas">Enseñanzas deportivas</option>
+                        <option value="Licenciatura">Licenciatura</option>
+                        <option value="Máster">Máster</option>
+                        <option value="Doctorado">Doctorado</option>
+                        <option value="Grado universitario">Grado universitario</option>
+                        <option value="No requerida"></option>
                     </select>
 
                     <input type="number" id="experiencia_crear_oferta" class="input_formulario" name="experiencia_minima" placeholder="Experiencia mínima" min="0">
@@ -77,15 +80,15 @@
                 <div id="container_jornada_turno">
                     <select id="select_jornada_crear_oferta" class="input_formulario" name="jornada">
                         <option value="null" selected>Jornada</option>
-                        <option value="completa">Completa</option>
-                        <option value="parcial">Parcial</option>
+                        <option value="Completa">Completa</option>
+                        <option value="Parcial">Parcial</option>
                     </select>
 
                     <select id="select_turno_crear_oferta" class="input_formulario" name="turno">
                         <option value="null" selected>Turno</option>
-                        <option value="manana">Mañana</option>
-                        <option value="tarde">Tarde</option>
-                        <option value="noche">Noche</option>
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Noche">Noche</option>
                     </select>
                 </div>
 
@@ -113,8 +116,8 @@
                             </div>
                             <div class="tipo_pregunta">
                                 <select id="select_tipo_pregunta" class="input_formulario" name="select_tipo_pregunta">
-                                    <option value="abierta">Abierta</option>
-                                    <option value="cerrada">Cerrada</option>
+                                    <option value="Abierta">Abierta</option>
+                                    <option value="Cerrada">Cerrada</option>
                                     <option value="null" selected>Abierta/cerrada</option>
                                 </select>
 
@@ -130,9 +133,8 @@
                 </div>
 
                 <div id="container_publicar_guardar_plantilla">
-                    <input type="submit" id="enviar_oferta" class="input_formulario" value="Publicar">
-
-                    <button id="guardar_plantilla" class="input_formulario">Guardar plantilla</button>
+                    <input name="publicada" type="submit" id="enviar_oferta" class="input_formulario" value="Publicar">
+                    <button name="plantilla" id="guardar_plantilla" class="input_formulario">Guardar plantilla</button>
                 </div>
             </form>
         </div>

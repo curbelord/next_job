@@ -36,7 +36,7 @@
             <div id="container_datos_bottom">
                 <div id="datos_bottom_fila_1">
                     <div id="fecha_publicacion" class="boton_outline_azul">
-                        <p>{{ $oferta->fecha_publicacion }}</p>
+                        <p>{{ date('d/m/Y', strtotime($oferta->created_at)) }}</p>
                     </div>
                     <div id="salario" class="boton_outline_azul">
                         <p>{{ $oferta->salario }}</p>

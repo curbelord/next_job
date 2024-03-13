@@ -30,6 +30,17 @@ class GestionOfertaController extends Controller
 
     public function store(Request $request){
 
+        if (request('publicada')) {
+            $estado = request('publicada');
+        } elseif (request('guardada')) {
+            $estado = request('guardada');
+        } elseif (!(request('publicada')) && !(request('guardada'))){
+            $estado = 'No existe / Nulo';
+        } 
+        else {
+            $estado = request('borrador');
+        }
+
         $oferta = new Oferta;
         $oferta->puesto_trabajo = $request->puesto_trabajo;
         $oferta->ubicacion = $request->ubicacion;
@@ -43,6 +54,9 @@ class GestionOfertaController extends Controller
         $oferta->numero_vacantes = $request->numero_vacantes;
         $oferta->salario = $request->salario;
         $oferta->fecha_cierre = $request->fecha_cierre;
+        
+        $oferta->estado = $estado;
+        // dd($oferta);
         $oferta->save();
 
         return redirect()->route('gestionar.principal_empresa');
