@@ -52,6 +52,7 @@ class GestionOfertaController extends Controller
         $oferta->numero_vacantes = $request->numero_vacantes;
         $oferta->salario = $request->salario;
         $oferta->fecha_cierre = $request->fecha_cierre;
+
         $oferta->estado = $estado;
         $oferta->save();
 
@@ -70,9 +71,10 @@ class GestionOfertaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('gestionar.ofertas.editar_oferta');
+        $oferta = Oferta::find($id);
+        return view('gestionar.ofertas.editar_oferta', compact('oferta'));
     }
 
     /**
