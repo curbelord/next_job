@@ -99,7 +99,7 @@ return new class extends Migration
             $table->enum('estudios_minimos', ['ge', 'eso', 'bac', 'gm', 'gs', 'ea', 'ed', 'luni', 'muni', 'duni', 'guni']);
             $table->integer('experiencia_minima');
             $table->string('ubicacion');
-            $table->enum('turno', ['manana', 'tarde', 'noche']);
+            $table->enum('turno', ['mañana', 'tarde', 'noche']);
             $table->enum('estado', ['publicada', 'plantilla'])->nullable();
             $table->integer('id_seleccionador')->unsigned()->nullable();
             $table->foreign('id_seleccionador')->references('id')->on('Seleccionador')->onDelete('cascade');

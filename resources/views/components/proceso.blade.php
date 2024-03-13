@@ -29,7 +29,7 @@
         <div class="datos_mid_right_proceso">
             <div class="hipervinculos">
                 <div class="imagen_datos_mid_right imagen_ojo">
-                    <a href="#"></a>
+                    <a href="{{ route('gestionar.ofertas.ver_oferta', $id) }}"></a>
                 </div>
                 <div class="imagen_datos_mid_right imagen_lapiz">
                     <a href="#"></a>
