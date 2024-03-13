@@ -38,7 +38,6 @@ class GestionOfertaController extends Controller
             $estado = 'borrador';
         }
 
-
         $oferta = new Oferta;
         $oferta->puesto_trabajo = $request->puesto_trabajo;
         $oferta->ubicacion = $request->ubicacion;
