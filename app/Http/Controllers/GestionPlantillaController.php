@@ -45,8 +45,9 @@ class GestionPlantillaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id)
     {
+        $plantilla = Oferta::find($id);
         return view('gestionar.plantillas.crear_plantilla');
     }
 

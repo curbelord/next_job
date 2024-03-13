@@ -51,7 +51,6 @@ class GestionOfertaController extends Controller
         $oferta->numero_vacantes = $request->numero_vacantes;
         $oferta->salario = $request->salario;
         $oferta->fecha_cierre = $request->fecha_cierre;
-
         $oferta->estado = $estado;
         $oferta->save();
 
