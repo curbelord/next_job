@@ -18,7 +18,7 @@ class GestionOfertaController extends Controller
         $ofertas = Oferta::all();
         $inscripciones = Inscripcion::all();
 
-        return view('gestionar.principal_empresa', compact('ofertas'), compact('inscripciones'));    }
+        return view('gestionar.principal_empresa', compact('ofertas'), compact('inscripciones'));}
 
     /**
      * Show the form for creating a new resource.
@@ -51,7 +51,7 @@ class GestionOfertaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
         //
     }
@@ -82,6 +82,9 @@ class GestionOfertaController extends Controller
 
     public function manageOffers()
     {
-        return view('gestionar.gestionar_ofertas');
+        $ofertas = Oferta::all();
+        $inscripciones = Inscripcion::all();
+
+        return view('gestionar.gestionar_ofertas', compact('ofertas'), compact('inscripciones'));
     }
 }

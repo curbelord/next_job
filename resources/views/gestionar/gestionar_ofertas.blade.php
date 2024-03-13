@@ -4,6 +4,8 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleGestionarOfertas.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleComponenteProceso.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleNumeracionSlider.css') }}">
 @endsection
 
 @section('content')
@@ -36,51 +38,44 @@
 
         <div id="container_procesos">
             <div id="subcontainer_procesos">
-                <div class="container_proceso">
-                    <div class="titulo_proceso">
-                        <h3>Título oferta</h3>
-                    </div>
-                    <div class="datos_mid_proceso">
-                        <div class="datos_mid_left_proceso">
-                            <div class="centro_trabajo">
-                                <p>Centro de trabajo</p>
-                            </div>
-                            <div class="fecha_publicacion">
-                                <p>Fecha publicación</p>
-                            </div>
-                        </div>
-                        <div class="datos_mid_mid_proceso">
-                            <div class="estado">
-                                <select>
-                                    <option value="null">Estado</option>
-                                    <option value="publicada">Publicada</option>
-                                    <option value="plantilla">Plantilla</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="datos_mid_right_proceso">
-                            <div class="hipervinculos">
-                                <div class="imagen_datos_mid_right">
-                                    <a href="#"></a>
-                                </div>
-                                <div class="imagen_datos_mid_right">
-                                    <a href="#"></a>
-                                </div>
-                                <div class="imagen_datos_mid_right">
-                                    <a href="#"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @forelse ($ofertas as $oferta)
+                    @component('components.proceso')
+                        @slot('puesto_trabajo')
+                            {{ $oferta->puesto_trabajo }}
+                        @endslot
+
+                        @slot('ubicacion')
+                            {{ $oferta->ubicacion }}
+                        @endslot
+
+                        @slot('created_at')
+                            {{ date('d/m/Y', strtotime($oferta->created_at)) }}
+                        @endslot
+
+                        @slot('numero_candidatos')
+                            {{ count($inscripciones) }}
+                        @endslot
+                    @endcomponent
+                @empty
+
+                @endforelse
             </div>
         </div>
 
+        <?php
+            $numeroSliderNumeracion = 2;
+        ?>
+
         <div id="container_slider_numeracion">
-            @for ($i = 2; $i < 6; $i++)
-                <div class="numeracion_slider">
-                    <span>{{ $i }}</span>
-                </div>
+            @for ($i = 0; $i < count($ofertas); $i++)
+                @if ($i > 0 && $i % 20 == 0)
+                    @component('components.numeracion_slider')
+                        @slot('numero')
+                            {{ $numeroSliderNumeracion }}
+                        @endslot
+                        {{ $numeroSliderNumeracion++ }}
+                    @endcomponent
+                @endif
             @endfor
         </div>
     </div>
