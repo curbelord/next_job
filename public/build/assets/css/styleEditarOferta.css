@@ -32,7 +32,7 @@
     padding: 10px;
     margin: 10px 0;
     border: 2px solid var(--azul);
-    border-radius: 5px;
+    border-radius: 10px;
     height: 50px;
     text-align: left;
 }
@@ -42,7 +42,7 @@
     padding: 10px;
     margin: 10px 0;
     border: 2px solid var(--azul);
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     resize: none;
 }
