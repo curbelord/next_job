@@ -8,11 +8,17 @@
 
             @csrf
 
-            <h2>{{ $titulo }}</h2>
+            <div class="tabla">
+                <h2>{{ $titulo }}</h2>
+            </div>
 
-            <input type="text" name="buscador" id="buscador" placeholder="{{ $placeholder_buscador }}">
+            <div class="tabla">
+                <input type="text" name="buscador" id="buscador" placeholder="{{ $placeholder_buscador }}">
+            </div>
 
-            <button type="submit">Buscar</button>
+            <div class="tabla">
+                <button type="submit">Buscar</button>
+            </div>
 
         </form>
 
