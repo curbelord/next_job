@@ -24,7 +24,7 @@
             <div id="bloque_gestion_2" class="bloque_gestion">
                 <div class="imagen_gestion"></div>
                 <div class="texto_gestion">
-                    <a href="#">Gestionar proceso</a>
+                    <a href="{{ route('gestionar.gestionar_ofertas') }}">Gestionar proceso</a>
                 </div>
             </div>
             <div id="bloque_gestion_3" class="bloque_gestion">
