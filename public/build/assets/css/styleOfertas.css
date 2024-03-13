@@ -33,8 +33,8 @@ span {
 
 .oferta {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(3, 50px) 1fr;
+    grid-template-columns: 125px repeat(11, 1fr);
+    grid-template-rows: repeat(3, 62.5px) 1fr;
     background-color: var(--blanco);
     border-radius: 10px;
     color: var(--negro);
@@ -55,7 +55,7 @@ span {
 */
 
 .oferta > * {
-    grid-column: 4 / 13;
+    grid-column: 2 / 13;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -77,9 +77,9 @@ span {
 }
 
 .oferta_img {
-    width: 150px;
-    height: 150px;
-    grid-column: 1 / 4;
+    width: 125px;
+    height: 125px;
+    grid-column: 1;
     grid-row: 1 / 7;
     display: flex;
     align-items: center;
@@ -87,29 +87,14 @@ span {
     border-radius: 10px;
     background-color: var(--gris);
     display: flex;
-    /*justify-self: center;*/
     transition: ease-in .3s;
 }
-
-/*
-.oferta_fecha {
-    position: absolute;
-    right: 0;
-    top: 0;
-} */
-
-/*
-.oferta:hover .oferta_img {
-    background-color: rgba(47, 185, 206, 0.2);
-    transition: ease-in .3s;
-}
-*/
 
 @media (max-width: 1024px) {
 
     .oferta {
-        grid-template-columns: 100px repeat(1, 1fr);
-        grid-template-rows: 50px 50px repeat(1, 1fr);
+        grid-template-columns: 125px repeat(1, 1fr);
+        grid-template-rows: repeat(2, 62.5px) 1fr;
     }
 
     .contenedor_ofertas {
@@ -123,8 +108,8 @@ span {
 
     .oferta .oferta_img {
         grid-row: 1 / 3;
-        height: 100px;
-        width: 100px;
+        height: 125px;
+        width: 125px;
     }
 
     .oferta .oferta_titulo {
@@ -165,8 +150,8 @@ span {
 @media (max-width: 720px) {
 
     .oferta {
-        grid-template-columns: 50px repeat(1, 1fr);
-        grid-template-rows: repeat(1, 50px) 2fr;
+        grid-template-columns: 125px repeat(1, 1fr);
+        grid-template-rows: 125px 3fr;
     }
 
     .contenedor_ofertas {
@@ -179,22 +164,19 @@ span {
     }
 
     .oferta .oferta_titulo {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .oferta .oferta_titulo {
-        padding: 0 0 0 1em;
+        grid-column: 1 / 3;
+        grid-row: 2;
+        padding: 1em 0;
     }
 
     .oferta .oferta_img {
         grid-row: 1;
-        height: 50px;
-        width: 50px;
+        height: 125px;
+        width: 125px;
     }
 
     .oferta_info {
-        grid-row: 3;
+        grid-row: 4;
         grid-column: 1 / 3 !important;
         padding: .5em 0;
         flex-wrap: wrap;
@@ -210,7 +192,7 @@ span {
     }
 
     .oferta .oferta_descripcion {
-        grid-row: 2;
+        grid-row: 3;
         padding: .5em 0;
     }
 }
