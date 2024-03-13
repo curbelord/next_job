@@ -23,7 +23,7 @@
 }
 
 #titulo_gestion_procesos{
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 #titulo_gestion_procesos h3{
@@ -76,11 +76,14 @@
 
 .datos_mid_proceso{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.datos_mid_left_proceso, .datos_mid_mid_right_proceso{
-    min-width: 50%;
+.datos_mid_left_proceso, .datos_mid_mid_proceso, .datos_mid_right_proceso{
+    display: inline-block;
+    /* min-width: 30%; */
+    margin: 0px 20px 20px 0px;
 }
 
 .centro_trabajo, .fecha_publicacion{
@@ -88,21 +91,15 @@
 }
 
 .centro_trabajo{
+    margin-bottom: 10px;
     margin-right: 20px;
 }
 
-.datos_mid_mid_right_proceso{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
+.datos_mid_mid_proceso{
+    margin-bottom: 20px;
 }
 
-.estado, .hipervinculos{
-    display: inline-block;
-    min-width: 40%;
-}
-
-.estado select{
+.estado select, .numeracion_slider{
     cursor: pointer;
     padding: 15px 30px;
     background: none;
@@ -132,6 +129,115 @@
 /* Slider numeración */
 
 #container_slider_numeracion{
+    display: flex;
     grid-column: 3 / 11;
     grid-row: 3 / 4;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.numeracion_slider{
+    padding: 12px 15px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+
+@media only screen and (max-width: 720px){
+    #container_datos_top, #container_procesos, #container_slider_numeracion{
+        grid-column: 2 / 12;
+    }
+
+    /* Sección 1 */
+
+    /* Datos TOP */
+
+    #titulo_gestion_procesos h3{
+        font-size: 1.5em;
+    }
+
+    #datos_candidatos, #datos_candidatos div{
+        flex-wrap: wrap;
+        font-size: 1em;
+    }
+
+    #numero_procesos, #numero_candidatos{
+        margin-bottom: 20px;
+    }
+
+    /* Sección 2 */
+
+    /* Procesos */
+
+    #container_procesos{
+        padding: 10px;
+    }
+
+    .container_proceso{
+        padding: 20px 20px 10px 20px;
+    }
+
+    .titulo_proceso h3{
+        font-size: 1.2em;
+    }
+
+    .datos_mid_left_proceso{
+        margin-bottom: 10px;
+    }
+
+    .centro_trabajo, .fecha_publicacion{
+        margin-bottom: 10px;
+    }
+
+    .estado select{
+        width: 100%;
+        padding: 15px;
+    }
+
+    .datos_mid_mid_proceso{
+        display: block;
+        width: 100%;
+    }
+
+    .imagen_datos_mid_right{
+        margin-bottom: 10px;
+    }
+
+    /* Sección 3 */
+
+    /* Slider numeración */
+
+    #container_slider_numeracion{
+        flex-wrap: wrap;
+    }
+
+    .numeracion_slider{
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    /* Sección 1 */
+
+    /* Datos TOP */
+
+    .imagen_datos_candidatos{
+        margin-bottom: 10px;
+    }
+
+    #valor_numero_procesos, #valor_numero_candidatos, #valor_numero_preseleccionados{
+        width: 100%;
+    }
+
+    /* Sección 3 */
+
+    /* Slider numeración */
+
+    .numeracion_slider{
+        display: block;
+        width: 100%;
+        margin-right: 0px;
+        text-align: center;
+    }
 }
