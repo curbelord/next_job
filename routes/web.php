@@ -29,6 +29,7 @@ Route::get('/rellenar-cv', [RegistroController::class, 'rellenar_cv'])->name('au
 Route::get('/registro', [RegistroController::class, 'index'])->name('auth.registro');
 
 Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.incio_de_sesion');
+Route::get('/recuperar-contrasena', [LoginController::class, 'recuperar_contrasena'])->name('auth.recuperar_contrasena');
 
 
 Route::prefix('gestionar')->group(function () {

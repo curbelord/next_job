@@ -81,6 +81,8 @@
 
                 @foreach ($ofertas as $oferta)
 
+                    <option value="{{ $oferta->provincia }}"></option>
+
                     <a href="{{ url('descripcion', ['parametro' => $oferta->referencia]) }}" class="oferta">
 
                         <div class="oferta_img">IMG</div>

@@ -1,3 +1,59 @@
+<?php
+
+    $familias_profesionales = [
+        'Actividades Físicas y Deportivas',
+        'Administración y Gestión',
+        'Agroalimentario',
+        'Artes Gráficas',
+        'Construcción',
+        'Energía',
+        'Imagen Personal',
+        'Imagen y Sonido',
+        'Industrial',
+        'Informática y Comunicaciones',
+        'Logística, Transporte y Comercio',
+        'Mantenimiento',
+        'Medio Ambiente',
+        'Químico',
+        'Salud',
+        'Servicios Turísticos y Hosteleros',
+        'Textil'
+    ];
+
+    $tipo_trabajo = [
+        'Presencial',
+        'No presencial',
+        'Mixto'
+    ];
+
+    $jornada = [
+        'Completa',
+        'Parcial'
+    ];
+
+    $turno = [
+        'Mañana',
+        'Tarde',
+        'Noche'
+    ];
+
+    $estudios = [
+        'Graduado Escolar',
+        'ESO',
+        'Bachillerato',
+        'Formación Profesional Básica',
+        'Ciclo Formativo de Grado Medio',
+        'Ciclo Formativo de Grado Superior',
+        'Enseñanzas artísticas',
+        'Enseñanzas deportivas',
+        'Licenciatura',
+        'Máster',
+        'Doctorado',
+        'Grado universitario',
+        'No requerida'
+    ];
+?>
+
 @extends('layouts.plantilla')
 
 @section('title', 'Crear oferta')
@@ -27,30 +83,16 @@
                 <div id="container_tipo_trabajo_sector">
                     <select id="tipo_trabajo_oferta" class="input_formulario" name="tipo_trabajo">
                         <option value="null" selected>Tipo de trabajo</option>
-                        <option value="Presencial">Presencial</option>
-                        <option value="No presencial">Teletrabajo</option>
-                        <option value="Mixto">Mixto</option>
+                        @foreach ($tipo_trabajo as $tipo)
+                            <option value="{{ $tipo }}">{{ $tipo }}</option>
+                        @endforeach
                     </select>
 
                     <select id="sector_oferta" class="input_formulario" name="sector">
                         <option value="null" selected>Sector</option>
-                        <option value="Actividades Físicas y Deportivas">Actividades Físicas y Deportivas</option>
-                        <option value="Administración y Gestión">Administración y Gestión</option>
-                        <option value="Agroalimentario">Agroalimentario</option>
-                        <option value="Artes Gráficas">Artes Gráficas</option>
-                        <option value="Construcción">Construcción</option>
-                        <option value="Energía">Energía</option>
-                        <option value="Imagen Personal">Imagen Personal</option>
-                        <option value="Imagen y Sonido">Imagen y Sonido</option>
-                        <option value="Industrial">Industrial</option>
-                        <option value="Informática y Comunicaciones">Informática y Comunicaciones</option>
-                        <option value="Logística, Transporte y Comercio">Logística, Transporte y Comercio</option>
-                        <option value="Mantenimiento">Mantenimiento</option>
-                        <option value="Medio Ambiente">Medio Ambiente</option>
-                        <option value="Químico">Químico</option>
-                        <option value="Salud">Salud</option>
-                        <option value="Servicios Turísticos y Hosteleros">Servicios Turísticos y Hosteleros</option>
-                        <option value="Textil">Textil</option>
+                        @foreach ($familias_profesionales as $familia)
+                            <option value="{{ $familia }}">{{ $familia }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -59,19 +101,9 @@
                 <div id="container_estudios_experiencia">
                     <select id="select_estudios_crear_oferta" class="input_formulario" name="estudios_minimos">
                         <option value="null" selected>Estudios mínimos</option>
-                        <option value="Graduado Escolar">Graduado Escolar</option>
-                        <option value="ESO">ESO</option>
-                        <option value="Bachillerato">Bachillerato</option>
-                        <option value="Formación Profesional Básica">Formación Profesional Básica</option>
-                        <option value="Ciclo Formativo de Grado Medio">Ciclo Formativo de Grado Medio</option>
-                        <option value="Ciclo Formativo de Grado Superior">Ciclo Formativo de Grado Superior</option>
-                        <option value="Enseñanzas artísticas">Enseñanzas artísticas</option>
-                        <option value="Enseñanzas deportivas">Enseñanzas deportivas</option>
-                        <option value="Licenciatura">Licenciatura</option>
-                        <option value="Máster">Máster</option>
-                        <option value="Doctorado">Doctorado</option>
-                        <option value="Grado universitario">Grado universitario</option>
-                        <option value="No requerida"></option>
+                        @foreach ($estudios as $estudio)
+                            <option value="{{ $estudio }}">{{ $estudio }}</option>
+                        @endforeach
                     </select>
 
                     <input type="number" id="experiencia_crear_oferta" class="input_formulario" name="experiencia_minima" placeholder="Experiencia mínima" min="0">
@@ -80,15 +112,16 @@
                 <div id="container_jornada_turno">
                     <select id="select_jornada_crear_oferta" class="input_formulario" name="jornada">
                         <option value="null" selected>Jornada</option>
-                        <option value="Completa">Completa</option>
-                        <option value="Parcial">Parcial</option>
+                        @foreach ($jornada as $jornada)
+                            <option value="{{ $jornada }}">{{ $jornada }}</option>
+                        @endforeach
                     </select>
 
                     <select id="select_turno_crear_oferta" class="input_formulario" name="turno">
                         <option value="null" selected>Turno</option>
-                        <option value="Mañana">Mañana</option>
-                        <option value="Tarde">Tarde</option>
-                        <option value="Noche">Noche</option>
+                        @foreach ($turno as $turno)
+                            <option value="{{ $turno }}">{{ $turno }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -133,8 +166,8 @@
                 </div>
 
                 <div id="container_publicar_guardar_plantilla">
-                    <input name="publicada" type="submit" id="enviar_oferta" class="input_formulario" value="Publicar">
-                    <button name="plantilla" id="guardar_plantilla" class="input_formulario">Guardar plantilla</button>
+                    <button name="publicada" id="enviar_oferta" type="submit" class="input_formulario" value="publicada">Publicar</button>
+                    <button name="plantilla" id="guardar_plantilla" class="input_formulario" value="plantilla">Guardar plantilla</button>
                 </div>
             </form>
         </div>
