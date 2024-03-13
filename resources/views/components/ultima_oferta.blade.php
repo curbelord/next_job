@@ -7,7 +7,7 @@
             <p>{{ $oferta->ubicacion }}</p>
         </div>
         <div class="fecha_publicacion_oferta">
-            <p>{{ $oferta->created_at }}</p>
+            <p>{{ date('d/m/Y', strtotime($oferta->created_at)) }}</p>
         </div>
     </div>
     <div class="descripcion_oferta">

@@ -2,7 +2,7 @@
 
     @if ($titulo == 'Busca una empresa')
 
-                                <!--['empresa' => request('buscador')]
+                            <!--['empresa' => request('buscador')]
                             url('empresa', ['empresa' => $empresa->nombre])-->
         <form method="GET" action="{{ route('empresa_buscada') }}">
 
