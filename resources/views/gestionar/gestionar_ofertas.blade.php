@@ -49,7 +49,7 @@
                                 <p>Fecha publicación</p>
                             </div>
                         </div>
-                        <div class="datos_mid_mid_right_proceso">
+                        <div class="datos_mid_mid_proceso">
                             <div class="estado">
                                 <select>
                                     <option value="null">Estado</option>
@@ -57,6 +57,8 @@
                                     <option value="plantilla">Plantilla</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="datos_mid_right_proceso">
                             <div class="hipervinculos">
                                 <div class="imagen_datos_mid_right">
                                     <a href="#"></a>
@@ -75,18 +77,11 @@
         </div>
 
         <div id="container_slider_numeracion">
-            <div class="numeracion_slider">
-                <span>2</span>
-            </div>
-            <div class="numeracion_slider">
-                <span>3</span>
-            </div>
-            <div class="numeracion_slider">
-                <span>4</span>
-            </div>
-            <div class="numeracion_slider">
-                <span>5</span>
-            </div>
+            @for ($i = 2; $i < 6; $i++)
+                <div class="numeracion_slider">
+                    <span>{{ $i }}</span>
+                </div>
+            @endfor
         </div>
     </div>
 @endsection
