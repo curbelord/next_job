@@ -133,8 +133,8 @@
                 </div>
 
                 <div id="container_publicar_guardar_plantilla">
-                    <input name="publicada" type="submit" id="enviar_oferta" class="input_formulario" value="Publicar">
-                    <button name="plantilla" id="guardar_plantilla" class="input_formulario">Guardar plantilla</button>
+                    <button name="publicada" id="enviar_oferta" type="submit" class="input_formulario" value="publicada">Publicar</button>
+                    <button name="plantilla" id="guardar_plantilla" class="input_formulario" value="plantilla">Guardar plantilla</button>
                 </div>
             </form>
         </div>
