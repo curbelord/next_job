@@ -51,9 +51,10 @@ class GestionOfertaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $oferta = Oferta::find($id);
+        return view('gestionar.ofertas.ver_oferta', compact('oferta'));
     }
 
     /**

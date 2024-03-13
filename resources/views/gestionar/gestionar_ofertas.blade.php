@@ -55,6 +55,10 @@
                         @slot('numero_candidatos')
                             {{ count($inscripciones) }}
                         @endslot
+
+                        @slot('id')
+                            {{ $oferta->referencia }}
+                        @endslot
                     @endcomponent
                 @empty
 
