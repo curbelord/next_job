@@ -1,7 +1,14 @@
+@section('title', 'Perfil')
+
+@section('style')
+    <link rel="stylesheet" href="{{ asset('build/assets/css/stylePerfil.css') }}">
+@endsection
+
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
+            {{ __('Perfil') }}
         </h2>
     </x-slot>
 

@@ -53,7 +53,7 @@ Route::prefix('gestionar')->group(function () {
     Route::prefix('plantillas')->group(function () {
 
         Route::get('/crear', [GestionPlantillaController::class, 'create'])->name('gestionar.plantillas.crear_plantilla');
-        Route::get('/editar', [GestionPlantillaController::class, 'edit'])->name('gestionar.plantillas.editar_plantilla');
+        Route::get('/editar/{id}', [GestionPlantillaController::class, 'edit'])->name('gestionar.plantillas.editar_plantilla');
 
     });
 
