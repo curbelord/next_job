@@ -4,6 +4,7 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleVerOferta.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCurriculumSimplificado.css') }}">
 @endsection
 
 @section('content')
@@ -40,30 +41,27 @@
             </div>
             <div id="container_info_candidatos">
                 <div id="subcontainer_info_candidatos">
-                    <div class="container_candidato">
-                        <div class="container_left_candidato">
-                            <div class="imagen_candidato"></div>
-                            <div class="nombre_edad">
-                                <div class="nombre">
-                                    <h3>Nombre</h3>
-                                </div>
-                                <div class="edad">
-                                    <p>Edad</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container_mid_candidato">
-                            <div class="curriculum">
-                                <a href="#">Curriculum</a>
-                            </div>
-                        </div>
-                        <div class="container_right_candidato">
-                            <div class="imagen_nota_ojo">
-                                <div class="imagen_nota"></div>
-                                <div class="imagen_ojo"></div>
-                            </div>
-                        </div>
-                    </div>
+                    @component('components.curriculum_simplificado')
+                        @slot('nombre')
+                            {{ "Nombre" }}
+                        @endslot
+
+                        @slot('edad')
+                            {{ "Edad" }}
+                        @endslot
+
+                        @slot('urlCurriculum')
+                            {{ "urlCurriculum" }}
+                        @endslot
+
+                        @slot('urlNota')
+                            {{ "urlNota" }}
+                        @endslot
+
+                        @slot('urlOjo')
+                            {{ "urlOjo" }}
+                        @endslot
+                    @endcomponent
                 </div>
             </div>
         </div>
