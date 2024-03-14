@@ -55,7 +55,7 @@
     grid-column: 3 / 11;
     grid-row: 2 / 3;
     margin-top: 100px;
-    padding: 35px;
+    padding: 35px 35px 15px 35px;
     background-color: #D9D9D9;
     border-radius: 30px;
 }

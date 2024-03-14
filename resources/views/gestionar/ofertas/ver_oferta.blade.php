@@ -41,49 +41,51 @@
             </div>
             <div id="container_info_candidatos">
                 <div id="subcontainer_info_candidatos">
-                    @component('components.curriculum_simplificado')
-                        @slot('nombre')
-                            {{ "Nombre" }}
-                        @endslot
+                    @for ($i = 0; $i < 2; $i++)
+                        @component('components.curriculum_simplificado')
+                            @slot('nombre')
+                                {{ "Nombre" }}
+                            @endslot
 
-                        @slot('edad')
-                            {{ "Edad" }}
-                        @endslot
+                            @slot('edad')
+                                {{ "Edad" }}
+                            @endslot
 
-                        {{--
+                            {{--
 
-                        Si es un currículum ciego, entonces pasar esas variables con estos estilos. Si no, vacías
+                            Si es un currículum ciego, entonces pasar esas variables con estos estilos. Si no, vacías
 
-                        @slot('estiloContainerCandidato')
-                            {{ "style=padding:0px;" }}
-                        @endslot
+                            @slot('estiloContainerCandidato')
+                                {{ "style=padding:0px;" }}
+                            @endslot
 
-                        @slot('estiloCurriculumVisible')
-                            {{ "style=display:none;" }}
-                        @endslot
+                            @slot('estiloCurriculumVisible')
+                                {{ "style=display:none;" }}
+                            @endslot
 
-                        --}}
+                            --}}
 
-                        @slot('estiloContainerCandidato')
-                            {{ "" }}
-                        @endslot
+                            @slot('estiloContainerCandidato')
+                                {{ "" }}
+                            @endslot
 
-                        @slot('estiloCurriculumVisible')
-                            {{ "" }}
-                        @endslot
+                            @slot('estiloCurriculumVisible')
+                                {{ "" }}
+                            @endslot
 
-                        @slot('urlCurriculum')
-                            {{ "urlCurriculum" }}
-                        @endslot
+                            @slot('urlCurriculum')
+                                {{ "urlCurriculum" }}
+                            @endslot
 
-                        @slot('urlNota')
-                            {{ "urlNota" }}
-                        @endslot
+                            @slot('urlNota')
+                                {{ "urlNota" }}
+                            @endslot
 
-                        @slot('urlOjo')
-                            {{ "urlOjo" }}
-                        @endslot
-                    @endcomponent
+                            @slot('urlOjo')
+                                {{ "urlOjo" }}
+                            @endslot
+                        @endcomponent
+                    @endfor
                 </div>
             </div>
         </div>

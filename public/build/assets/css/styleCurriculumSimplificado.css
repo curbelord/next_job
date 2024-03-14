@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 40px 50px;
+    margin-bottom: 20px;
     background-color: #FFF;
     border-radius: 30px;
 }
