@@ -27,6 +27,7 @@
 
             <form method="POST" action="{{ route('gestionar.ofertas.ofertas.almacenar') }}">
                 @csrf
+                @method('PUT')
 
                 <input type="text" id="titulo_crear_oferta" class="input_formulario" name="puesto_trabajo" placeholder="Título" value="{{ $oferta->puesto_trabajo }}">
 
@@ -133,8 +134,7 @@
                 </div>
 
                 <div id="container_publicar_guardar_plantilla">
-                    <input name="publicada" type="submit" id="enviar_oferta" class="input_formulario" value="Publicar">
-                    <button name="plantilla" id="guardar_plantilla" class="input_formulario">Guardar plantilla</button>
+                    <input name="publicada" type="submit" id="enviar_oferta" class="input_formulario" value="Editar">
                 </div>
             </form>
         </div>
