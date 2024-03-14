@@ -1,0 +1,17 @@
+:root {
+    --negro: #000000;
+    --gris: #D8D8D8;
+    --azul: #2FB9CE;
+    --blanco: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Manrope", sans-serif;
+}
+
+.bloque {
+    height: 25vh;
+}

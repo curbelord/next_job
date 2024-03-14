@@ -84,7 +84,7 @@
     grid-column: 4;
 }
 
-.acceder {
+.acceder, .perfil {
     grid-column: 11;
 }
   
@@ -106,7 +106,7 @@
         grid-column: 4;
     }
     
-    .acceder {
+    .acceder, .perfil {
         grid-column: 9;
     }
 
@@ -141,7 +141,7 @@
         grid-column: 4;
     }
     
-    .acceder {
+    .acceder, .perfil {
         grid-column: 8;
     }
 
@@ -165,7 +165,7 @@
         display: block;
     }
 
-    .empleo, .empresas, .acceder {
+    .empleo, .empresas, .acceder, .perfil {
         display: none;
     }
 
