@@ -32,7 +32,7 @@
                     <a href="{{ route('gestionar.ofertas.ver_oferta', $id) }}"></a>
                 </div>
                 <div class="imagen_datos_mid_right imagen_lapiz">
-                    <a href="#"></a>
+                    <a href="{{ route('gestionar.ofertas.editar_oferta', $id) }}"></a>
                 </div>
                 <div class="imagen_datos_mid_right imagen_papelera">
                     <a href="#"></a>

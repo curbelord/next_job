@@ -10,8 +10,8 @@
             </div>
         </div>
     </div>
-    <div class="container_mid_candidato">
-        <div class="curriculum">
+    <div class="container_mid_candidato" {{ $estiloContainerCandidato }}>
+        <div class="curriculum" {{ $estiloCurriculumVisible }}>
             <a href="{{ $urlCurriculum }}">Curriculum</a>
         </div>
     </div>
