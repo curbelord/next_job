@@ -68,91 +68,6 @@
     border-radius: 30px;
 }
 
-.container_candidato{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 40px 50px;
-    background-color: #FFF;
-    border-radius: 30px;
-}
-
-.container_left_candidato, .container_mid_candidato, .container_right_candidato{
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: 20px;
-}
-
-.container_left_candidato{
-    padding-bottom: 10px;
-}
-
-.imagen_candidato, .nombre_edad{
-    display: inline-block;
-}
-
-.imagen_candidato{
-    min-width: 150px;
-    min-height: 150px;
-    margin-right: 25px;
-    background-color: #D9D9D9;
-    border-radius: 30px;
-}
-
-.nombre{
-    margin-bottom: 10px;
-}
-
-.nombre h3{
-    font-size: 1.3em;
-}
-
-.container_mid_candidato{
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0px;
-}
-
-.curriculum a{
-    display: block;
-    cursor: pointer;
-    padding: 15px 30px;
-    text-decoration: none;
-    color: #000;
-    background: none;
-    border: 2px solid #2FB9CE;
-    border-radius: 10px;
-}
-
-.container_right_candidato{
-    align-items: center;
-    padding: 10px 0px;
-}
-
-.imagen_nota_ojo{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.imagen_nota, .imagen_ojo{
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    margin-right: 20px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 50% 50%;
-    border-radius: 10px;
-}
-
-.imagen_nota{
-    background-image: url('../img/nota.svg');
-}
-
-.imagen_ojo{
-    background-image: url('../img/ojo.svg');
-}
-
 /* Sección 3 */
 
 /* Descripción */
@@ -160,7 +75,7 @@
 #container_descripcion{
     grid-column: 3 / 11;
     grid-row: 3 / 4;
-    margin-top: 100px;
+    margin: 100px 0px;
 }
 
 #titulo_descripcion h3{
@@ -203,7 +118,7 @@
 
 
 @media only screen and (max-width: 720px){
-    #container_datos_top{
+    #container_datos_top, #container_candidatos, #container_descripcion{
         grid-column: 2 / 12;
     }
 
@@ -224,7 +139,33 @@
         margin-bottom: 20px;
     }
 
+    /* Sección 2 */
+
+    /* Candidatos */
+
+    #titulo_candidatos h3{
+        font-size: 1.3em;
+    }
+
+    #container_info_candidatos{
+        padding: 10px;
+    }
+
     /* Sección 3 */
+
+    /* Descripción */
+
+    #titulo_descripcion h3{
+        font-size: 1.3em;
+    }
+
+    #container_info_descripcion{
+        padding: 10px;
+    }
+
+    #subcontainer_info_descripcion{
+        padding: 20px;
+    }
 
     /* Datos BOTTOM */
 
