@@ -55,13 +55,13 @@
     grid-column: 3 / 11;
     grid-row: 2 / 3;
     margin-top: 100px;
-    padding: 35px 35px 15px 35px;
+    padding: 15px;
     background-color: #D9D9D9;
     border-radius: 30px;
 }
 
 #container_sin_ofertas{
-    padding: 40px 50px;
+    padding: 25px;
     background-color: #FFF;
     border-radius: 30px;
     margin-bottom: 20px;

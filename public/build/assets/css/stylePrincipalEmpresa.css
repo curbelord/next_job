@@ -100,7 +100,7 @@
 
 #subcontainer_ultimos_procesos{
     margin-top: 50px;
-    padding: 35px 35px 15px 35px;
+    padding: 15px;
     background-color: var(--gris);
     border-radius: 30px;
 }

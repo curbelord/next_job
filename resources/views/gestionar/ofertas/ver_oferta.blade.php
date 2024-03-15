@@ -44,7 +44,7 @@
                     @for ($i = 0; $i < 2; $i++)
                         @component('components.curriculum_simplificado')
                             @slot('nombre')
-                                {{ "Nombre" }}
+                                {{ "Nombre de prueba" }}
                             @endslot
 
                             @slot('edad')

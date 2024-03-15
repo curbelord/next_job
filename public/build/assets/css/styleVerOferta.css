@@ -63,7 +63,7 @@
 
 #container_info_candidatos{
     margin-top: 50px;
-    padding: 35px 35px 15px 35px;
+    padding: 15px;
     background-color: #D9D9D9;
     border-radius: 30px;
 }
@@ -83,14 +83,14 @@
 }
 
 #container_info_descripcion{
-    padding: 35px;
+    padding: 15px;
     margin-top: 50px;
     background-color: #D9D9D9;
     border-radius: 30px;
 }
 
 #subcontainer_info_descripcion{
-    padding: 40px 50px;
+    padding: 25px;
     background-color: #FFF;
     border-radius: 30px;
 }

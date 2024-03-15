@@ -137,13 +137,13 @@
     grid-column: 3 / 11;
     grid-row: 2 / 3;
     margin-top: 100px;
-    padding: 35px;
+    padding: 15px;
     background-color: #D9D9D9;
     border-radius: 20px;
 }
 
 #subcontainer_descripcion, #subcontainer_cuestionario{
-    padding: 40px 50px;
+    padding: 25px;
     background-color: #FFF;
     border-radius: 20px;
 }
