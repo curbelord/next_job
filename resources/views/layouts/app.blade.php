@@ -20,7 +20,7 @@
         <!-- Scripts -->
         <!-- ANTES ERA ASÍ: ['resources/css/app.css', 'resources/js/app.js'] 
         SE ELIMINAN LOS ESTILOS PREDETERMINADOS DE LARAVEL -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite('resources/js/app.js')
     </head>
 
     <body>

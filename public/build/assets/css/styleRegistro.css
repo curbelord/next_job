@@ -16,12 +16,10 @@
 .registro {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(9, 1fr);
     grid-gap: 10px;
 }
 
 .registro h2 {
-    grid-row: 1;
     grid-column: 4 / 10;
     display: flex;
     align-items: center;
@@ -45,38 +43,15 @@
     grid-column: 4 / 10;
 }
 
-.registro #nombre {
-    grid-row: 2;
-}
-
 .registro #genero {
-    grid-row: 3;
     grid-column: 4 / 6;
 }
 
 .registro #fecha_nacimiento {
-    grid-row: 3;
     grid-column: 6 / 10;
 }
 
-.registro #direccion {
-    grid-row: 4;
-}
-
-.registro #email {
-    grid-row: 5;
-}
-
-.registro #contrasena {
-    grid-row: 6;
-}
-
-.registro #confirmar_contrasena {
-    grid-row: 7;
-}
-
 .registro button {
-    grid-row: 8;
     grid-column: 6 / 8;
     display: flex;
     align-items: center;
@@ -92,7 +67,6 @@
 }
 
 .registro p {
-    grid-row: 9;
     grid-column: 4 / 10;
     margin-bottom: 2em;
 }
@@ -102,40 +76,23 @@
     text-decoration: none;
 }
 
+#rol {
+    grid-column: 4 / 10;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#rol:first-child {
+    grid-column: 1;
+}
+
+#rol:last-child {
+    grid-column: 2;
+}
+
 @media (max-width: 720px) {
     .registro h2, .registro > input, .registro > select, .registro p, .registro #genero, .registro #fecha_nacimiento, .registro button {
         grid-column: 2 / 12;
     }
  
-    .registro #genero {
-        grid-row: 3;
-    }
-    
-    .registro #fecha_nacimiento {
-        grid-row: 4;
-    }
-    
-    .registro #direccion {
-        grid-row: 5;
-    }
-    
-    .registro #email {
-        grid-row: 6;
-    }
-    
-    .registro #contrasena {
-        grid-row: 7;
-    }
-    
-    .registro #confirmar_contrasena {
-        grid-row: 8;
-    }
-    
-    .registro button {
-        grid-row: 9;
-    }
-
-    .registro p {
-        grid-row: 10;
-    }
 }

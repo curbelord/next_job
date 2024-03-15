@@ -17,6 +17,7 @@
             <h2>Registro</h2>
 
             <input type="text" name="nombre" id="nombre" placeholder="Nombre" require>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre" require>
             <input type="text" name="genero" id="genero" placeholder="Género">
             <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento" require>
             <input type="text" name="direccion" id="direccion" placeholder="Dirección Postal">

@@ -15,9 +15,9 @@ class Seleccionador extends Model
         'id_empresa',
     ];
 
-    public function usuario()
+    public function users()
     {
-        return $this->belongsTo(Usuario::class, 'id', 'id');
+        return $this->belongsTo(User::class, 'id', 'id');
     }
 
     public function empresa()

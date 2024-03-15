@@ -28,7 +28,7 @@ return new class extends Migration
         // Demandante Table
         Schema::create('Demandante', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('id')->references('id')->on('Usuario')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('User')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -44,8 +44,8 @@ return new class extends Migration
         // Seleccionador Table
         Schema::create('Seleccionador', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_empresa')->unsigned();
-            $table->foreign('id')->references('id')->on('Usuario')->onDelete('cascade');
+            $table->integer('id_empresa')->unsigned()->nullable();
+            $table->foreign('id')->references('id')->on('User')->onDelete('cascade');
             $table->foreign('id_empresa')->references('id')->on('Empresa')->onDelete('cascade');
             $table->timestamps();
         });

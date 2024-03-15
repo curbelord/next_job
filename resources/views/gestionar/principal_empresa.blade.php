@@ -10,7 +10,11 @@
 @section('content')
     <div id="container">
         <div id="container_bienvenida_seleccionador">
-            <h3>Bienvenid@, NombreSeleccionador</h3>
+            <h3>
+                @auth
+                    Bienvenid@, {{ Auth::user()->nombre }}
+                @endauth
+            </h3>
             <p>¿Qué quieres hacer?</p>
         </div>
 
@@ -55,7 +59,7 @@
                         @endslot
 
                         @slot('numero_inscritos')
-                            {{ count($inscripciones) }}
+                            {{ $oferta->inscripciones->count() }}
                         @endslot
                     @endcomponent
                 @empty
