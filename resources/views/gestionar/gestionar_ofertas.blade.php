@@ -59,9 +59,17 @@
                         @slot('id')
                             {{ $oferta->referencia }}
                         @endslot
+
+                        @slot('idOferta')
+                            {{ $oferta->referencia }}
+                        @endslot
                     @endcomponent
                 @empty
-
+                    <div id="container_sin_ofertas">
+                        <div id="titulo_sin_ofertas">
+                            <h3>No hay procesos</h3>
+                        </div>
+                    </div>
                 @endforelse
             </div>
         </div>

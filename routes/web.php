@@ -47,6 +47,7 @@ Route::prefix('gestionar')->group(function () {
         Route::put('/update/{id}', [GestionOfertaController::class, 'update'])->name('gestionar.ofertas.actualizar_oferta');
         Route::post('/store', [GestionOfertaController::class, 'store'])->name('gestionar.ofertas.ofertas.almacenar');
         Route::get('/ver/{id}', [GestionOfertaController::class, 'show'])->name('gestionar.ofertas.ver_oferta');
+        Route::delete('/delete/{id}', [GestionOfertaController::class, 'destroy'])->name('gestionar.ofertas.eliminar_oferta');
 
     });
 
