@@ -84,8 +84,27 @@
     grid-column: 4;
 }
 
-.acceder, .perfil {
+.acceder, .menu_perfil {
     grid-column: 11;
+}
+
+.desplegable_perfil {
+    width: 48px;
+}
+
+.menu_perfil_boton {
+    border: none;
+    font-size: 16px;
+    background-color: transparent;
+    display: inline-flex;
+    /* align-items: center;
+    transition: ease-in-out;
+    transition-duration: .15s;*/
+}
+
+.menu_perfil_boton svg {
+    width: 20px;
+    height: 20px;
 }
   
 @media (max-width: 1000px) {
@@ -106,7 +125,7 @@
         grid-column: 4;
     }
     
-    .acceder, .perfil {
+    .acceder, .menu_perfil {
         grid-column: 9;
     }
 
@@ -141,7 +160,7 @@
         grid-column: 4;
     }
     
-    .acceder, .perfil {
+    .acceder, .menu_perfil {
         grid-column: 8;
     }
 
@@ -165,7 +184,7 @@
         display: block;
     }
 
-    .empleo, .empresas, .acceder, .perfil {
+    .empleo, .empresas, .acceder, .menu_perfil {
         display: none;
     }
 

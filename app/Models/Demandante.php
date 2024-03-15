@@ -14,9 +14,9 @@ class Demandante extends Model
         'id',
     ];
 
-    public function usuario()
+    public function users()
     {
-        return $this->belongsTo(Usuario::class, 'id', 'id');
+        return $this->belongsTo(User::class, 'id', 'id');
     }
 
     public function cv()

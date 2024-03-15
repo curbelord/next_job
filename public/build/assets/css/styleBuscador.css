@@ -51,7 +51,7 @@ select {
     grid-column: 8 / 11;
 }
 
-button {
+.seccion_buscador button {
     grid-column: 6 / 8;
     width: 100%;
     display: flex;

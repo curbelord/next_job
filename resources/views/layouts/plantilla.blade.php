@@ -22,7 +22,7 @@
     <body>
 
         <div>
-            @include('components.header')
+            @include('layouts.navigation')
         </div>
 
         <div class="container">

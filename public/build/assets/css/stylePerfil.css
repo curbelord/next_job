@@ -10,8 +10,85 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Manrope", sans-serif;
+    text-align: left;
 }
 
 .bloque {
     height: 25vh;
+}
+
+.info-message {
+    color: var(--azul);
+    text-align: right;
+}
+
+.padding {
+    padding: .5em 0;
+}
+
+.perfil {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 2em 0;
+}
+
+.contenedor_opciones {
+    display: grid;
+    grid-gap: calc(1.5em + 10px);
+    grid-column: 3 / 11;
+    background-color: var(--gris);
+    border-radius: 10px;
+    padding: calc(1.5em + 10px);
+}
+
+.contenedor_opciones > div {
+    background-color: var(--blanco);
+    border-radius: 10px;
+    padding: 1.5em;
+}
+
+.contenedor_opciones > div > * {
+    padding: .5em 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid var(--azul);
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+}
+
+.perfil button {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 1em;
+    border-radius: 10px;
+    border: 0;
+    height: 50px;
+    margin: 10px 0;
+}
+
+.boton_derecha {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 720px){
+    .contenedor_opciones {
+        grid-gap: calc(1.5em + 10px);
+        grid-column: 2 / 12;
+        padding: calc(1em + 10px);
+        grid-gap: calc(1em + 10px);
+    }
 }
