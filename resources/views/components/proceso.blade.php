@@ -35,7 +35,13 @@
                     <a href="{{ route('gestionar.ofertas.editar_oferta', $id) }}"></a>
                 </div>
                 <div class="imagen_datos_mid_right imagen_papelera">
-                    <a href="#"></a>
+                    {{-- <a href="{{ route('gestionar.ofertas.eliminar_oferta') }}"></a> --}}
+                    <form method="POST" action="{{ route('gestionar.ofertas.eliminar_oferta', $idOferta) }}" class="formulario_eliminacion">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit"></button>
+                    </form>
                 </div>
             </div>
         </div>

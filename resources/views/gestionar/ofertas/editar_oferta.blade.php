@@ -25,7 +25,7 @@
 
             {{-- Pendiente añadir los names de los inputs iguales a los campos de la BBDD. Confirmar algunos campos --}}
 
-            <form method="POST" action="{{ route('gestionar.ofertas.ofertas.almacenar') }}">
+            <form method="POST" action="{{ route('gestionar.ofertas.actualizar_oferta', $oferta->referencia) }}">
                 @csrf
                 @method('PUT')
 

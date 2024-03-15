@@ -80,7 +80,9 @@ class GestionOfertaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $oferta = Oferta::find($id);
+        $oferta->update($request->all());
+        return redirect()->route('gestionar.principal_empresa');
     }
 
     /**
@@ -88,7 +90,9 @@ class GestionOfertaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $oferta = Oferta::find($id);
+        $oferta->destroy($id);
+        return redirect()->route('gestionar.principal_empresa');
     }
 
     public function manageOffers()

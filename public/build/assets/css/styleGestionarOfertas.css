@@ -60,6 +60,17 @@
     border-radius: 30px;
 }
 
+#container_sin_ofertas{
+    padding: 40px 50px;
+    background-color: #FFF;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+#titulo_sin_ofertas h3{
+    font-size: 1.3em;
+}
+
 /* Sección 3 */
 
 /* Slider numeración */
@@ -94,6 +105,18 @@
 
     #numero_procesos, #numero_candidatos{
         margin-bottom: 20px;
+    }
+
+    /* Sección 2 */
+
+    /* Procesos */
+
+    #container_sin_ofertas{
+        padding: 20px;
+    }
+
+    #titulo_sin_ofertas h3{
+        font-size: 1.2em;
     }
 
     /* Sección 3 */
