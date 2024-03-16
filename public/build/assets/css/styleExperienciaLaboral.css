@@ -1,0 +1,18 @@
+.container_experiencia{
+    padding: 25px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.datos_experiencia_iconos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nombre_empresa{
+    margin: 10px 0px
+}
+
+.descripcion_experiencia{
+    margin-top: 20px;
+}

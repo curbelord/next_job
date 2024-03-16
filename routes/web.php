@@ -68,6 +68,10 @@ Route::get('/desplegable', function (){
     return view('desplegable');
 });
 
+Route::get('/perfil/ver', function (){
+    return view('perfil.ver_demandante');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,0 +1,14 @@
+.container_formacion{
+    padding: 25px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.datos_formacion_iconos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nombre_centro{
+    margin: 10px 0px;
+}
