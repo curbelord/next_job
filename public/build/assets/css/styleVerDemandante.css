@@ -1,0 +1,171 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, auto);
+    margin-top: 100px;
+}
+
+/* Sección 1 */
+
+/* Perfil */
+
+#container_datos_top{
+    grid-column: 3 / 11;
+    grid-row: 1 / 2;
+}
+
+#container_nombre_cv_iconos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#nombre_cv h3{
+    font-size: 1.7em;
+}
+
+.icono_editar, .icono_eliminar{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    border-radius: 10px;
+}
+
+.icono_editar{
+    background-image: url('../img/lapiz.svg');
+}
+
+.icono_eliminar{
+    background-image: url('../img/papelera.svg');
+}
+
+.icono_editar a, .icono_eliminar a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#container_datos_perfil_cvs{
+    display: flex;
+    margin-top: 25px;
+}
+
+#datos_perfil, #cvs{
+    display: flex;
+    padding: 20px;
+    border: 2px solid #2FB9CE;
+    border-radius: 10px;
+}
+
+#datos_perfil{
+    width: 70%;
+    margin-right: 20px;
+}
+
+#imagen_usuario{
+    min-width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+}
+
+#nombre_usuario h3{
+    font-size: 1.3em;
+}
+
+#fecha_nacimiento, #direccion_postal, #telefono, #correo_electronico{
+    margin-top: 10px;
+}
+
+#cvs{
+    flex-wrap: wrap;
+    width: 30%;
+}
+
+#titulo_cvs{
+    width: 100%;
+}
+
+#nombres_cvs{
+    width: 100%;
+    max-height: 7em;
+    overflow-y: auto;
+}
+
+.cv{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid #2FB9CE;
+    border-radius: 10px;
+}
+
+.cv a{
+    text-decoration: none;
+    color: #000;
+}
+
+/* Sección 2 */
+
+/* Experiencia laboral */
+
+#container_experiencia_laboral{
+    grid-column: 3 / 11;
+    grid-row: 2 / 3;
+    margin-top: 100px;
+}
+
+#titulo_experiencia_laboral h3{
+    font-size: 1.5em;
+}
+
+#subcontainer_experiencia_laboral{
+    padding: 15px;
+    margin-top: 50px;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+}
+
+/* Sección 3 */
+
+/* Formación */
+
+#container_formacion{
+    grid-column: 3 / 11;
+    grid-row: 3 / 4;
+    margin: 100px 0px;
+}
+
+#titulo_formacion h3{
+    font-size: 1.5em;
+}
+
+#subcontainer_formacion{
+    padding: 15px;
+    margin-top: 50px;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+}
+
+@media only screen and (max-width: 1024px){
+    /* Sección 1 */
+
+    /* Perfil */
+
+    #nombres_cvs{
+        max-height: 9em;
+    }
+}
