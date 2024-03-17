@@ -9,10 +9,28 @@
     justify-content: space-between;
 }
 
+.nombre_trabajo h3{
+    font-size: 1.3em;
+}
+
 .nombre_empresa{
     margin: 10px 0px
 }
 
 .descripcion_experiencia{
     margin-top: 20px;
+}
+
+@media only screen and (max-width: 720px){
+    .datos_experiencia_iconos{
+        flex-direction: column-reverse;
+    }
+
+    .nombre_trabajo{
+        margin-top: 20px;
+    }
+
+    .nombre_trabajo h3{
+        font-size: 1.2em;
+    }
 }
