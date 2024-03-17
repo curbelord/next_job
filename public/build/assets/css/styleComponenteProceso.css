@@ -151,6 +151,12 @@
     .numero_candidatos_oferta{
         flex-wrap: wrap;
     }
+
+    .hipervinculos{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+    }
 }
 
 @media only screen and (max-width: 360px){
