@@ -72,6 +72,10 @@ Route::get('/perfil/ver', function (){
     return view('perfil.ver_demandante');
 });
 
+Route::get('/perfil/editar', function (){
+    return view('perfil.editar_demandante');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
