@@ -236,6 +236,10 @@
         font-size: 1.3em;
     }
 
+    #subcontainer_experiencia_laboral{
+        padding: 10px;
+    }
+
     /* Sección 3 */
 
     /* Formación */
@@ -246,5 +250,9 @@
 
     #titulo_formacion h3{
         font-size: 1.3em;
+    }
+
+    #subcontainer_formacion{
+        padding: 10px;
     }
 }

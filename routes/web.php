@@ -76,6 +76,14 @@ Route::get('/perfil/editar', function (){
     return view('perfil.editar_demandante');
 });
 
+Route::get('/perfil/editar/experiencia-laboral', function (){
+    return view('perfil.editar.experiencia_laboral');
+});
+
+Route::get('/perfil/editar/formacion', function (){
+    return view('perfil.editar.formacion');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

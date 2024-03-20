@@ -1,0 +1,75 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    margin-top: 100px;
+}
+
+#container_formacion{
+    grid-column: 3 / 11;
+    grid-row: 1 / 2;
+}
+
+#titulo_formacion{
+    margin-bottom: 50px;
+}
+
+#titulo_formacion h3{
+    font-size: 1.5em;
+}
+
+.input_formulario{
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid #2FB9CE;
+    border-radius: 10px;
+}
+
+#fecha_inicio_fecha_fin{
+    display: flex;
+    justify-content: space-between;
+}
+
+#fecha_inicio{
+    margin-right: 20px;
+}
+
+#boton_actualizar_formacion{
+    width: auto;
+    margin: 25px auto 125px auto;
+    text-align: center;
+    background: none;
+    color: #FFF;
+    background-color: #2FB9CE;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 720px){
+    #container_formacion{
+        grid-column: 2 / 12;
+    }
+
+    #titulo_formacion h3{
+        font-size: 1.3em;
+    }
+
+    #fecha_inicio_fecha_fin{
+        flex-wrap: wrap;
+    }
+
+    #fecha_inicio_fecha_fin input{
+        display: block;
+        width: 100%;
+        margin-right: 0px;
+    }
+}
