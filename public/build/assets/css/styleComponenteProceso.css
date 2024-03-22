@@ -99,6 +99,10 @@
     border-radius: 10px;
 }
 
+.hipervinculos{
+    display: flex;
+}
+
 .imagen_datos_mid_right .formulario_eliminacion{
     display: flex;
     align-items: center;
@@ -153,9 +157,7 @@
     }
 
     .hipervinculos{
-        display: flex;
         flex-wrap: wrap;
-        align-items: baseline;
     }
 }
 

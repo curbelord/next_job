@@ -84,6 +84,10 @@ Route::get('/perfil/editar/formacion', function (){
     return view('perfil.editar.formacion');
 });
 
+Route::get('/vue/gestionar/procesos', function (){
+    return view('vue.gestionar_ofertas');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
