@@ -5,11 +5,12 @@ import numeracion_slider from "./numeracion_slider.js";
 const app = Vue.createApp({
     data(){
         return {
-            puesto_trabajo: "Puesto de prueba",
-            ubicacion: "Lorem ipsum dolor sit amet",
-            created_at: "22/03/2024",
-            numero_candidatos: 8,
-            numero_pagina: 1
+            numeroProcesos: 0,
+            puesto_trabajo: [],
+            ubicacion: [],
+            fecha_creacion: [],
+            numero_candidatos: [],
+            numero_pagina: 1,
         }
     },
     template: `
@@ -21,7 +22,7 @@ const app = Vue.createApp({
             <div id="numero_procesos">
                 <div class="imagen_datos_candidatos"></div>
                 <div id="valor_numero_procesos">
-                    <p>Nº procesos</p>
+                    <p>{{ numeroProcesos }} procesos</p>
                 </div>
             </div>
             <div id="numero_candidatos">
@@ -42,7 +43,7 @@ const app = Vue.createApp({
     <div id="container_procesos">
         <div id="subcontainer_procesos">
 
-            <proceso :puesto_trabajo="puesto_trabajo" :ubicacion="ubicacion" :created_at="created_at" :numero_candidatos="numero_candidatos"></proceso>
+            <proceso v-for="i in numeroProcesos" :key="i" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos"></proceso>
 
             <div id="container_sin_ofertas">
                 <div id="titulo_sin_ofertas">
@@ -61,11 +62,37 @@ const app = Vue.createApp({
         numeracion_slider
     },
     methods: {
-        obtenerAlgo(){
-            $.get('http://www.next-job.lan/build/assets/php/proceso.php', function(data){
-                // Seguir con la obtención de datos
-            });
+        async obtenerProcesos(){
+            try {
+                let datosProcesos = await $.get('http://next-job.lan/build/assets/php/proceso.php');
+
+                let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
+                objeto = JSON.parse(objeto);
+
+                console.log(objeto["procesos"]);
+
+                this.almacenaProcesosObtenidos(objeto["procesos"])
+                this.actualizaCantidadProcesos(objeto["procesos"]);
+
+                return objeto;
+            } catch (error) {
+                console.error('Error al hacer la petición', error);
+            }
+        },
+        almacenaProcesosObtenidos(arrayProcesos){
+            for (let i = 0; i < arrayProcesos.length; i++){
+                this.puesto_trabajo.push(arrayProcesos[i]["puesto_trabajo"]);
+                this.ubicacion.push(arrayProcesos[i]["ubicacion"]);
+                this.fecha_creacion.push(arrayProcesos[i]["fecha_creacion"]);
+            }
+        },
+        actualizaCantidadProcesos(arrayProcesos){
+            for (let i = 0; i < arrayProcesos.length; i++){
+                this.numeroProcesos++;
+            }
         },
     },
 
 }).mount('#container');
+
+app.obtenerProcesos();

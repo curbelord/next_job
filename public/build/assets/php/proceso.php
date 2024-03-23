@@ -1,26 +1,29 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-$servername = "http://www.next-job.lan/";
+// header('Access-Control-Allow-Origin: *');
+
+$servername = "localhost";
 $username = "laravel";
 $password = "password";
 $dbname = "next_job";
 
-// Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT puesto_trabajo, ubicacion, created_at FROM Oferta";
+$sql = "SELECT referencia, puesto_trabajo, ubicacion, created_at FROM Oferta";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-  // output data of each row
+
   while($row = $result->fetch_assoc()) {
-    echo '{"puesto_trabajo":' . $row["puesto_trabajo"]. '","ubicacion":"' . $row["ubicacion"]. '","created_at":"' . $row["created_at"]. '"}';
+    echo '{"puesto_trabajo":"' . $row["puesto_trabajo"]. '","ubicacion":"' . $row["ubicacion"]. '","fecha_creacion":"' . date('d/m/Y', strtotime($row["created_at"])) . '"},';
   }
 } else {
   echo "0 results";

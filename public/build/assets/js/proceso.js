@@ -1,5 +1,5 @@
 export default {
-    props: ['puesto_trabajo', 'ubicacion', 'created_at', 'numero_candidatos'],
+    props: ['puesto_trabajo', 'ubicacion', 'fecha_creacion', 'numero_candidatos'],
     template: `
     <div class="container_proceso">
         <div class="titulo_proceso">
@@ -11,7 +11,7 @@ export default {
                     <p>{{ ubicacion }}</p>
                 </div>
                 <div class="fecha_publicacion">
-                    <p>{{ created_at }}</p>
+                    <p>{{ fecha_creacion }}</p>
                 </div>
                 <div class="numero_candidatos_oferta">
                     <div class="imagen_numero_candidatos_oferta"></div>
