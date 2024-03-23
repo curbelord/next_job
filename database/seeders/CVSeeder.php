@@ -14,15 +14,45 @@ class CVSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para CV
         CV::create([
             'id' => 1,
             'jornada_laboral' => 'Tiempo completo',
             'puesto_trabajo' => 'Desarrollador web',
             'tipo_trabajo' => 'Tiempo completo',
-            'id_demandante' => 1, // Suponiendo que tienes un demandante asociado
+            'id_demandante' => 1,
         ]);
 
-        // Puedes agregar más registros de CV si lo deseas
+        CV::create([
+            'id' => 2,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Desarrollador web',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 3,
+        ]);
+
+        CV::create([
+            'id' => 3,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Desarrollador web',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 5,
+        ]);
+
+        CV::create([
+            'id' => 4,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Desarrollador web',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 7,
+        ]);
+
+        CV::create([
+            'id' => 5,
+            'jornada_laboral' => 'Tiempo parcial',
+            'puesto_trabajo' => 'Desarrollador web',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 9,
+        ]);
+        
     }
 }

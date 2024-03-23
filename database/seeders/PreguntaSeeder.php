@@ -14,14 +14,19 @@ class PreguntaSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Pregunta
         Pregunta::create([
             'id' => 1,
             'pregunta' => '¿Cuál es tu mayor fortaleza?',
             'respuesta' => 'Mi mayor fortaleza es mi capacidad para resolver problemas de manera creativa.',
-            'id_cuestionario' => 1, // Suponiendo que tienes un cuestionario asociado
+            'id_cuestionario' => 1, 
         ]);
 
-        // Puedes agregar más registros de Pregunta si lo deseas
+        Pregunta::create([
+            'id' => 2,
+            'pregunta' => '¿Cuál es tu mayor debilidad?',
+            'respuesta' => 'Mi mayor debilidad es que a veces me cuesta delegar tareas.',
+            'id_cuestionario' => 1, 
+        ]);
+
     }
 }

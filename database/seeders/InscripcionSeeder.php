@@ -14,13 +14,47 @@ class InscripcionSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Inscripcion
         Inscripcion::create([
             'id_demandante' => 1,
             'id_oferta' => 1,
             'anotacion' => 'Interesado en la oferta',
         ]);
 
-        // Puedes agregar más registros de Inscripcion si lo deseas
+        Inscripcion::create([
+            'id_demandante' => 3,
+            'id_oferta' => 2,
+            'anotacion' => 'Cancelado por el demandante',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 5,
+            'id_oferta' => 3,
+            'anotacion' => 'Candidato seleccionado',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 7,
+            'id_oferta' => 4,
+            'anotacion' => 'Falló en la entrevista de trabajo',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 9,
+            'id_oferta' => 5,
+            'anotacion' => 'Fuera de plazo de inscripción',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 1,
+            'id_oferta' => 6,
+            'anotacion' => 'Pendiente de revisión',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 3,
+            'id_oferta' => 7,
+            'anotacion' => 'Rechazado por el seleccionador',
+        ]);
+
     }
 }

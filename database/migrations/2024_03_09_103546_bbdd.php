@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        // Users
         Schema::create('Users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
@@ -28,14 +29,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Demandante Table
+        // Demandante
         Schema::create('Demandante', function (Blueprint $table) {
             $table->increments('id');
             $table->foreign('id')->references('id')->on('Users')->onDelete('cascade');
             $table->timestamps();
         });
 
-        // Empresa Table
+        // Empresa
         Schema::create('Empresa', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
@@ -44,7 +45,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Seleccionador Table
+        // Seleccionador
         Schema::create('Seleccionador', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_empresa')->unsigned()->nullable();
@@ -53,7 +54,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // CV Table
+        // CV 
         Schema::create('CV', function (Blueprint $table) {
             $table->increments('id');
             $table->string('jornada_laboral');
@@ -64,7 +65,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Estudios Table
+        // Estudios
         Schema::create('Estudios', function (Blueprint $table) {
             $table->integer('id_cv')->unsigned();
             $table->integer('id_estudio');
@@ -76,7 +77,7 @@ return new class extends Migration
             $table->primary(['id_cv', 'id_estudio']);
         });
 
-        // Experiencia Table
+        // Experiencia
         Schema::create('Experiencia', function (Blueprint $table) {
             $table->integer('id_cv')->unsigned();
             $table->integer('id_experiencia');
@@ -88,7 +89,7 @@ return new class extends Migration
             $table->primary(['id_cv', 'id_experiencia']);
         });
 
-        // Oferta Table
+        // Oferta
         Schema::create('Oferta', function (Blueprint $table) {
             $table->id('referencia');
             $table->date('fecha_cierre');
@@ -109,7 +110,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Calendario Table
+        // Calendario
         Schema::create('Calendario', function (Blueprint $table) {
             $table->increments('id');
             $table->string('evento');
@@ -122,7 +123,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Mensaje Table
+        // Mensaje
         Schema::create('Mensaje', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_emisor')->unsigned();
@@ -133,7 +134,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Inscripcion Table
+        // Inscripcion
         Schema::create('Inscripcion', function (Blueprint $table) {
             $table->integer('id_demandante')->unsigned();
             $table->unsignedBigInteger('id_oferta');
@@ -144,7 +145,18 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Cuestionario Table
+        // Estado
+        Schema::create('Estado', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->integer('id_demandante')->unsigned();
+            $table->unsignedBigInteger('id_oferta');
+            $table->foreign(['id_demandante', 'id_oferta'])->references(['id_demandante', 'id_oferta'])->on('Inscripcion')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        // Cuestionario
         Schema::create('Cuestionario', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
@@ -158,7 +170,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Pregunta Table
+        // Pregunta
         Schema::create('Pregunta', function (Blueprint $table) {
             $table->increments('id');
             $table->string('pregunta');
@@ -188,6 +200,6 @@ return new class extends Migration
         Schema::dropIfExists('Seleccionador');
         Schema::dropIfExists('Empresa');
         Schema::dropIfExists('Demandante');
-        Schema::dropIfExists('Usuario');
+        Schema::dropIfExists('Users');
     }
 };
