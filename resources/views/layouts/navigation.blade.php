@@ -2,71 +2,58 @@
     <nav x-data="{ open: false }">
         <ul>
  
-                    <img src="{{ asset('build/assets/img/logo_next_job.svg') }}" alt="Next Job" class="logo logo_no_extendido">
-                    <img src="{{ asset('build/assets/img/logo_next_job_ext.svg') }}" alt="Next Job" class="logo logo_extendido">
+            <img src="{{ asset('build/assets/img/logo_next_job.svg') }}" alt="Next Job" class="logo logo_no_extendido">
+            <img src="{{ asset('build/assets/img/logo_next_job_ext.svg') }}" alt="Next Job" class="logo logo_extendido">
 
-                    @auth
+            <li class="empleo"><a href="{{ route('principal') }}">Empleo</a></li>
+            <li class="empresas"><a href="{{ route('empresas') }}">Empresas</a></li>
 
-                        @if (Auth::user()->hasRole('demandante'))
-                            <li class="empleo"><a href="{{ route('principal') }}">Empleo</a></li>
-                            <li class="empresas"><a href="{{ route('empresas') }}">Empresas</a></li>
-                        @else
-                            <li class="empleo"><a href="{{ route('gestionar.ofertas.crear_oferta.blade.php') }}">Publicar oferta</a></li>
-                            <li class="empresas"><a href="{{ route('gestionar.principal_empresa.blade.php') }}">Procesos</a></li>
-                        @endif
+            @auth
+            <!-- Settings Dropdown -->
+            <div class="menu_perfil">
+                <x-dropdown class="desplegable_perfil" width="48">
+                    <x-slot name="trigger">
+                        <button class="menu_perfil_boton">
+                            <div>
+                                
+                                {{ Auth::user()->nombre }}
+                                <!--img src="{{ asset('build/assets/img/usuario.svg') }}" alt="Usuario" class="usuario"-->
+                                
+                            </div>
 
-                    @elseauth
-                        <li class="empleo"><a href="{{ route('principal') }}">Empleo</a></li>
-                        <li class="empresas"><a href="{{ route('empresas') }}">Empresas</a></li>
-                    @endauth
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
 
+                    <x-slot name="content">
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Perfil') }}
+                        </x-dropdown-link>
 
-                @auth
-                <!-- Settings Dropdown -->
-                <div class="menu_perfil">
-                    <x-dropdown class="desplegable_perfil" width="48">
-                        <x-slot name="trigger">
-                            <button class="menu_perfil_boton">
-                                <div>
-                                    
-                                    {{ Auth::user()->nombre }}
-                                    <!--img src="{{ asset('build/assets/img/usuario.svg') }}" alt="Usuario" class="usuario"-->
-                                    
-                                </div>
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
 
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </button>
-                        </x-slot>
-
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Perfil') }}
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Cerrar sesión') }}
                             </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
+            </div>
+            @else
+                <li class="acceder"><a href="{{ url('/login') }}">Acceder</a></li>
 
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                <!--li class="iniciar_sesion"><a href="{{ route('login') }}">Iniciar sesión</a></li>
+                <li class="registro"><a href="{{ route('register') }}">Registro</a></li-->
 
-                                <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Cerrar sesión') }}
-                                </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-dropdown>
-                </div>
-                @else
-                    <li class="acceder"><a href="{{ url('/login') }}">Acceder</a></li>
-
-                    <!--li class="iniciar_sesion"><a href="{{ route('login') }}">Iniciar sesión</a></li>
-                    <li class="registro"><a href="{{ route('register') }}">Registro</a></li-->
-
-                @endauth
+            @endauth
         </ul>
   
         <div class="contenedor_vector">

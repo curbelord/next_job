@@ -13,22 +13,25 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Usuario', function (Blueprint $table) {
+        Schema::create('Users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellidos');
             $table->enum('genero', ['Hombre', 'Mujer', 'Otro'])->nullable();
             $table->date('fecha_nacimiento');
             $table->string('direccion')->nullable();
-            $table->string('correo')->unique();
+            $table->string('email')->unique();
             $table->string('telefono')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
 
         // Demandante Table
         Schema::create('Demandante', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('id')->references('id')->on('User')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('Users')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -45,7 +48,7 @@ return new class extends Migration
         Schema::create('Seleccionador', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_empresa')->unsigned()->nullable();
-            $table->foreign('id')->references('id')->on('User')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('Users')->onDelete('cascade');
             $table->foreign('id_empresa')->references('id')->on('Empresa')->onDelete('cascade');
             $table->timestamps();
         });
