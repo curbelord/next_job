@@ -26,11 +26,13 @@ class Cuestionario extends Model
 
     public function demandante()
     {
+        // No debería estar vinculado a la tabla Inscripción?
         return $this->belongsTo(Demandante::class, 'id_demandante', 'id');
     }
 
     public function oferta()
     {
+        // No debería estar vinculado a la tabla Inscripción?
         return $this->belongsTo(Oferta::class, 'id_oferta', 'referencia');
     }
 

@@ -14,15 +14,39 @@ class EmpresaSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Empresa
         Empresa::create([
             'id' => 1,
             'nombre' => 'Artek',
             'descripcion' => 'Empresa de desarrollo de software',
             'ubicacion' => 'Arrecife',
-            // Otros campos de Empresa si los hay
         ]);
 
-        // Puedes agregar más registros de Empresa si lo deseas
+        Empresa::create([
+            'id' => 2,
+            'nombre' => 'Biosfera',
+            'descripcion' => 'Empresa de desarrollo de videojuegos',
+            'ubicacion' => 'Teguise',
+        ]);
+
+        Empresa::create([
+            'id' => 3,
+            'nombre' => 'Cactus',
+            'descripcion' => 'Vivero de plantas',
+            'ubicacion' => 'Yaiza',
+        ]);
+
+        Empresa::create([
+            'id' => 4,
+            'nombre' => 'Dunas',
+            'descripcion' => 'Empresa de desarrollo de páginas web',
+            'ubicacion' => 'Tías',
+        ]);
+
+        Empresa::create([
+            'id' => 5,
+            'nombre' => 'Estrella',
+            'descripcion' => 'Restaurante de comida rápida',
+            'ubicacion' => 'Tinajo',
+        ]);
     }
 }

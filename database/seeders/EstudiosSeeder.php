@@ -14,7 +14,6 @@ class EstudiosSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Estudios
         Estudios::create([
             'id_cv' => 1,
             'id_estudio' => 1,
@@ -24,6 +23,40 @@ class EstudiosSeeder extends Seeder
             'fecha_fin' => '2019-06-30',
         ]);
 
-        // Puedes agregar más registros de Estudios si lo deseas
+        Estudios::create([
+            'id_cv' => 2,
+            'id_estudio' => 1,
+            'nombre' => 'Ingeniería Informática',
+            'centro_estudios' => 'Universidad XYZ',
+            'fecha_inicio' => '2015-09-01',
+            'fecha_fin' => '2019-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 3,
+            'id_estudio' => 1,
+            'nombre' => 'Ingeniería Informática',
+            'centro_estudios' => 'Universidad XYZ',
+            'fecha_inicio' => '2015-09-01',
+            'fecha_fin' => '2019-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 4,
+            'id_estudio' => 1,
+            'nombre' => 'Ingeniería Informática',
+            'centro_estudios' => 'Universidad XYZ',
+            'fecha_inicio' => '2015-09-01',
+            'fecha_fin' => '2019-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 5,
+            'id_estudio' => 1,
+            'nombre' => 'Ingeniería Informática',
+            'centro_estudios' => 'Universidad XYZ',
+            'fecha_inicio' => '2015-09-01',
+            'fecha_fin' => '2019-06-30',
+        ]);
     }
 }

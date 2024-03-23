@@ -46,13 +46,6 @@ class User extends Authenticatable
         return $this->hasOne(Seleccionador::class, 'id', 'id');
     }
 
-    // public $incrementing = false;
-
-    /*public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id', 'role_id');
-    }*/
-
     /**
      * The attributes that should be hidden for serialization.
      *

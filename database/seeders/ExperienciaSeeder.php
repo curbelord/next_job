@@ -14,7 +14,6 @@ class ExperienciaSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Experiencia
         Experiencia::create([
             'id_cv' => 1,
             'id_experiencia' => 1,
@@ -24,6 +23,41 @@ class ExperienciaSeeder extends Seeder
             'fecha_fin' => '2021-12-31',
         ]);
 
-        // Puedes agregar más registros de Experiencia si lo deseas
+        Experiencia::create([
+            'id_cv' => 2,
+            'id_experiencia' => 1,
+            'nombre' => 'Desarrollador web',
+            'centro_laboral' => 'Empresa XYZ',
+            'fecha_inicio' => '2020-01-01',
+            'fecha_fin' => '2021-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 3,
+            'id_experiencia' => 1,
+            'nombre' => 'Desarrollador web',
+            'centro_laboral' => 'Empresa XYZ',
+            'fecha_inicio' => '2020-01-01',
+            'fecha_fin' => '2021-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 4,
+            'id_experiencia' => 1,
+            'nombre' => 'Desarrollador web',
+            'centro_laboral' => 'Empresa XYZ',
+            'fecha_inicio' => '2020-01-01',
+            'fecha_fin' => '2021-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 5,
+            'id_experiencia' => 1,
+            'nombre' => 'Desarrollador web',
+            'centro_laboral' => 'Empresa XYZ',
+            'fecha_inicio' => '2020-01-01',
+            'fecha_fin' => '2021-12-31',
+        ]);
+
     }
 }

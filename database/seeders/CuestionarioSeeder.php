@@ -15,7 +15,7 @@ class CuestionarioSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de prueba para la tabla cuestionarios
+
         Cuestionario::create([
             'fecha' => Carbon::now(),
             'tipo' => 'Prueba técnica',
@@ -24,6 +24,12 @@ class CuestionarioSeeder extends Seeder
             'id_oferta' => 1,
         ]);
 
-        // Puedes agregar más datos de prueba según sea necesario
+        Cuestionario::create([
+            'fecha' => Carbon::now(),
+            'tipo' => 'Prueba técnica',
+            'id_seleccionador' => 4,
+            'id_demandante' => 3,
+            'id_oferta' => 2,
+        ]);
     }
 }

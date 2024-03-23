@@ -14,13 +14,29 @@ class SeleccionadorSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Seleccionador
         Seleccionador::create([
             'id' => 2,
-            'id_empresa' => 1, // Asignar el ID de la empresa correspondiente
-            // Otros campos de Seleccionador si los hay
+            'id_empresa' => 1,
         ]);
 
-        // Puedes agregar más registros de Seleccionador si lo deseas
+        Seleccionador::create([
+            'id' => 4,
+            'id_empresa' => 2,
+        ]);
+
+        Seleccionador::create([
+            'id' => 6,
+            'id_empresa' => 3,
+        ]);
+
+        Seleccionador::create([
+            'id' => 8,
+            'id_empresa' => 4,
+        ]);
+
+        Seleccionador::create([
+            'id' => 10,
+            'id_empresa' => 5,
+        ]);
     }
 }

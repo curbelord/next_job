@@ -14,12 +14,24 @@ class DemandanteSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Demandante
         Demandante::create([
             'id' => 1,
-            // Otros campos de Demandante si los hay
         ]);
 
-        // Puedes agregar más registros de Demandante si lo deseas
+        Demandante::create([
+            'id' => 3,
+        ]);
+
+        Demandante::create([
+            'id' => 5,
+        ]);
+
+        Demandante::create([
+            'id' => 7,
+        ]);
+
+        Demandante::create([
+            'id' => 9,
+        ]);
     }
 }

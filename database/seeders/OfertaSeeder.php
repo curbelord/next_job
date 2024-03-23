@@ -14,10 +14,9 @@ class OfertaSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Oferta
+
         Oferta::create([
             'referencia' => 1,
-            'fecha_publicacion' => '2024-03-08',
             'fecha_cierre' => '2024-03-15',
             'numero_vacantes' => 3,
             'salario' => 3000.00,
@@ -25,18 +24,122 @@ class OfertaSeeder extends Seeder
             'sector' => 'Tecnología',
             'tipo_trabajo' => 'Presencial',
             'puesto_trabajo' => 'Desarrollador web',
-            'vacante_especial' => 'No',
             'descripcion' => 'Se busca desarrollador web con experiencia.',
             'estudios_minimos' => 'Grado universitario',
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
-            'horario' => '9:00 - 18:00',
-            'idioma' => 'Inglés',
-            'borrador' => 'No',
-            'id_seleccionador' => 2, // Suponiendo que tienes un seleccionador asociado
+            'estado' => 'Publicada',
+            'id_seleccionador' => 2,
         ]);
 
-        // Puedes agregar más registros de Oferta si lo deseas
+        Oferta::create([
+            'referencia' => 2,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 2,
+            'salario' => 2000.00,
+            'jornada' => 'Tiempo completo',
+            'sector' => 'Tecnología',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Desarrollador web',
+            'descripcion' => 'Se busca desarrollador web con experiencia.',
+            'estudios_minimos' => 'Grado universitario',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'turno' => 'Mañana',
+            'borrador' => 'Publicada',
+            'id_seleccionador' => 4,
+        ]);
+
+        Oferta::create([
+            'referencia' => 3,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 1,
+            'salario' => 1000.00,
+            'jornada' => 'Tiempo completo',
+            'sector' => 'Tecnología',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Desarrollador web',
+            'descripcion' => 'Se busca desarrollador web con experiencia.',
+            'estudios_minimos' => 'Grado universitario',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'turno' => 'Mañana',
+            'borrador' => 'Plantilla',
+            'id_seleccionador' => 6,
+        ]);
+
+        Oferta::create([
+            'referencia' => 4,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 3,
+            'salario' => 3000.00,
+            'jornada' => 'Tiempo completo',
+            'sector' => 'Tecnología',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Desarrollador web',
+            'descripcion' => 'Se busca desarrollador web con experiencia.',
+            'estudios_minimos' => 'Grado universitario',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'turno' => 'Mañana',
+            'borrador' => 'Borrador',
+            'id_seleccionador' => 8,
+        ]);
+
+        Oferta::create([
+            'referencia' => 5,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 2,
+            'salario' => 2000.00,
+            'jornada' => 'Tiempo completo',
+            'sector' => 'Tecnología',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Desarrollador web',
+            'descripcion' => 'Se busca desarrollador web con experiencia.',
+            'estudios_minimos' => 'Grado universitario',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'turno' => 'Mañana',
+            'borrador' => 'Publicada',
+            'id_seleccionador' => 10,
+        ]);
+
+        Oferta::create([
+            'referencia' => 6,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 1,
+            'salario' => 1000.00,
+            'jornada' => 'Tiempo completo',
+            'sector' => 'Tecnología',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Desarrollador web',
+            'descripcion' => 'Se busca desarrollador web con experiencia.',
+            'estudios_minimos' => 'Grado universitario',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'turno' => 'Mañana',
+            'borrador' => 'Publicada',
+            'id_seleccionador' => 2,
+        ]);
+
+        Oferta::create([
+            'referencia' => 7,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 3,
+            'salario' => 3000.00,
+            'jornada' => 'Tiempo completo',
+            'sector' => 'Tecnología',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Desarrollador web',
+            'descripcion' => 'Se busca desarrollador web con experiencia.',
+            'estudios_minimos' => 'Grado universitario',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'turno' => 'Mañana',
+            'borrador' => 'Plantilla',
+            'id_seleccionador' => 4,
+        ]);
+
     }
 }

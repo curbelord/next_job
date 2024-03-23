@@ -14,14 +14,12 @@ class MensajeSeeder extends Seeder
      */
     public function run()
     {
-        // Crear datos de ejemplo para Mensaje
         Mensaje::create([
             'id' => 1,
-            'id_emisor' => 2, // Suponiendo que tienes un emisor asociado
-            'id_receptor' => 1, // Suponiendo que tienes un receptor asociado
+            'id_emisor' => 2, 
+            'id_receptor' => 1, 
             'mensaje' => 'Hola, ¿cómo estás?',
         ]);
 
-        // Puedes agregar más registros de Mensaje si lo deseas
     }
 }
