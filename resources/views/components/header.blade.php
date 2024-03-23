@@ -3,8 +3,20 @@
         <ul>
             <img src="{{ asset('build/assets/img/logo_next_job.svg') }}" alt="Next Job" class="logo logo_no_extendido">
             <img src="{{ asset('build/assets/img/logo_next_job_ext.svg') }}" alt="Next Job" class="logo logo_extendido">
-            <li class="empleo"><a href="{{ route('principal') }}">Empleo</a></li>
-            <li class="empresas"><a href="{{ route('empresas') }}">Empresas</a></li>
+
+
+            @auth 
+                @if (Auth::user()->hasRole('seleccionador'))
+                    <li class="empleo"><a href="{{ route('gestionar.ofertas.crear_oferta.blade.php') }}">Publicar oferta</a></li>
+                    <li class="empresas"><a href="{{ route('gestionar.principal_empresa.blade.php') }}">Procesos</a></li>
+                @else
+                    <li class="empleo"><a href="{{ route('principal') }}">Empleo</a></li>
+                    <li class="empresas"><a href="{{ route('empresas') }}">Empresas</a></li>
+                @endif
+            @else
+                <li class="empleo"><a href="{{ route('principal') }}">Empleo</a></li>
+                <li class="empresas"><a href="{{ route('empresas') }}">Empresas</a></li>
+            @endauth
 
             
             @if (Route::has('login'))

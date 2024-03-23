@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
-    use HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -46,6 +46,13 @@ class User extends Authenticatable
         return $this->hasOne(Seleccionador::class, 'id', 'id');
     }
 
+    // public $incrementing = false;
+
+    /*public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id', 'role_id');
+    }*/
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -65,4 +72,39 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /*public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function getEmailAttribute($email)
+    {
+        return strtolower($email);
+    }
+
+    public function setEmailAttribute($email)
+    {
+        $this->attributes['email'] = strtolower($email);
+    }
+
+    public function getNombreAttribute($nombre)
+    {
+        return ucfirst($nombre);
+    }
+
+    public function getApellidosAttribute($apellidos)
+    {
+        return ucfirst($apellidos);
+    }
+
+    public function getGeneroAttribute($genero)
+    {
+        return ucfirst($genero);
+    }
+
+    public function getDireccionAttribute($direccion)
+    {
+        return ucfirst($direccion);
+    }*/
 }

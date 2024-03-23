@@ -17,6 +17,7 @@ use Illuminate\View\View;
 // Roles
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Traits\HasRoles;
 
 
 class RegisteredUserController extends Controller
@@ -57,38 +58,19 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        
+        $user->save();
 
         if ($request->rol === 'Demandante') {
-            $demandante = new Demandante;
-            $demandante->id = $user->id;
+            $demandante = Demandante::create(['id' => $user->id]);
             $demandante->save();
+            $user->assignRole('demandante');
 
-            $demandante = Role::create(['nombre' => 'demandante']);
-            $user->assignRole($demandante);
-            
-            // $user->attachRole('demandante');
-            // $demandante = Demandante::create(['id' => $user->id]);
         } else {
-            $seleccionador = new Seleccionador;
-            $seleccionador->id = $user->id;
+            $seleccionador = Seleccionador::create(['id' => $user->id]);
             $seleccionador->save();
-
-            $seleccionador = Role::create(['nombre' => 'seleccionador']);
-            $user->assignRole($seleccionador);
-            // $user->attachRole('seleccionador');
-            // $seleccionador = Seleccionador::create(['id' => $user->id]);
+            $user->assignRole('seleccionador');
         }
-
-        // $user->attachRole('demandante');
-
-        // Demandante::create([
-        //     'id' => $user->id,
-        // ]);
-
-        // $user->demandante()->create();
-
-        // Dependiendo del tipo de usuario, se redirige a una vista u otra
-        // return redirect()->route('demandante.create');
 
         event(new Registered($user));
 
