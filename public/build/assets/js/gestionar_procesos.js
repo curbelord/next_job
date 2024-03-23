@@ -10,6 +10,7 @@ const app = Vue.createApp({
             ubicacion: [],
             fecha_creacion: [],
             numero_candidatos: [],
+            candidatos_totales: 0,
             numero_pagina: 1,
         }
     },
@@ -20,19 +21,19 @@ const app = Vue.createApp({
         </div>
         <div id="datos_candidatos">
             <div id="numero_procesos">
-                <div class="imagen_datos_candidatos"></div>
+                <div class="imagen_datos_candidatos imagen_procesos"></div>
                 <div id="valor_numero_procesos">
                     <p>{{ numeroProcesos }} procesos</p>
                 </div>
             </div>
             <div id="numero_candidatos">
-                <div class="imagen_datos_candidatos"></div>
+                <div class="imagen_datos_candidatos imagen_candidatos"></div>
                 <div id="valor_numero_candidatos">
-                    <p>Nº candidatos</p>
+                    <p>{{ candidatos_totales }} candidatos</p>
                 </div>
             </div>
             <div id="numero_preseleccionados">
-                <div class="imagen_datos_candidatos"></div>
+                <div class="imagen_datos_candidatos imagen_preseleccionados"></div>
                 <div id="valor_numero_preseleccionados">
                     <p>Nº preseleccionados</p>
                 </div>
@@ -43,9 +44,9 @@ const app = Vue.createApp({
     <div id="container_procesos">
         <div id="subcontainer_procesos">
 
-            <proceso v-for="i in numeroProcesos" :key="i" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos"></proceso>
+            <proceso v-for="i in numeroProcesos" :key="i" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]"></proceso>
 
-            <div id="container_sin_ofertas">
+            <div id="container_sin_ofertas" v-if="numeroProcesos == 0">
                 <div id="titulo_sin_ofertas">
                     <h3>No hay procesos</h3>
                 </div>
@@ -56,6 +57,11 @@ const app = Vue.createApp({
     <div id="container_slider_numeracion">
         <numeracion_slider :numero_pagina="numero_pagina"></numeracion_slider>
     </div>
+
+
+
+
+
     `,
     components: {
         proceso,
@@ -71,7 +77,7 @@ const app = Vue.createApp({
 
                 console.log(objeto["procesos"]);
 
-                this.almacenaProcesosObtenidos(objeto["procesos"])
+                this.almacenaProcesosObtenidos(objeto["procesos"]);
                 this.actualizaCantidadProcesos(objeto["procesos"]);
 
                 return objeto;
@@ -84,7 +90,9 @@ const app = Vue.createApp({
                 this.puesto_trabajo.push(arrayProcesos[i]["puesto_trabajo"]);
                 this.ubicacion.push(arrayProcesos[i]["ubicacion"]);
                 this.fecha_creacion.push(arrayProcesos[i]["fecha_creacion"]);
+                this.numero_candidatos.push(parseInt(arrayProcesos[i]["candidatos_inscritos"]));
             }
+            this.candidatos_totales = this.numero_candidatos.reduce((acumulador, valorActual) => acumulador + valorActual);
         },
         actualizaCantidadProcesos(arrayProcesos){
             for (let i = 0; i < arrayProcesos.length; i++){

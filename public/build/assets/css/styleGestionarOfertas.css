@@ -43,8 +43,22 @@
 .imagen_datos_candidatos{
     width: 40px;
     height: 40px;
-    background-color: #D9D9D9;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60% 60%;
     border-radius: 10px;
+}
+
+.imagen_procesos{
+    background-image: url("../img/proceso.svg");
+}
+
+.imagen_candidatos{
+    background-image: url("../img/candidato.svg");
+}
+
+.imagen_preseleccionados{
+    background-image: url("../img/preseleccionado.svg");
 }
 
 /* Sección 2 */
