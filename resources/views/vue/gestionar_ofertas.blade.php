@@ -3,9 +3,16 @@
 @section('title', 'Gestionar procesos')
 
 @section('style')
+    {{-- Estilos Gestionar procesos --}}
+
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleGestionarOfertas.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleComponenteProceso.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleNumeracionSlider.css') }}">
+
+    {{-- Estilos Ver proceso --}}
+
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleVerOferta.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCurriculumSimplificado.css') }}">
 
     <script src="https://unpkg.com/vue@3"></script>
 

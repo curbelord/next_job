@@ -95,7 +95,10 @@
     min-width: 40px;
     min-height: 40px;
     margin-right: 20px;
-    background-color: #D9D9D9;
+    background-image: url("../img/candidato.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
     border-radius: 10px;
 }
 
@@ -154,6 +157,7 @@
 
     .numero_candidatos_oferta{
         flex-wrap: wrap;
+        width: 100%;
     }
 
     .hipervinculos{
@@ -168,11 +172,5 @@
 
     .imagen_numero_candidatos_oferta{
         display: block;
-    }
-
-    .valor_numero_candidatos_oferta{
-        display: block;
-        width: 100%;
-        margin-top: 10px;
     }
 }
