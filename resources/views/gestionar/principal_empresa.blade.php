@@ -12,7 +12,16 @@
         <div id="container_bienvenida_seleccionador">
             <h3>
                 @auth
-                    Bienvenid@, {{ Auth::user()->nombre }}
+                    @if (Auth::user()->genero === 'Hombre')
+                        Bienvenido, {{ Auth::user()->nombre }}
+                    @elseif (Auth::user()->genero === 'Mujer')
+                        Bienvenida, {{ Auth::user()->nombre }}
+                    @else
+                        Bienvenidx, {{ Auth::user()->nombre }}
+                    @endif
+                @else
+                    No se debería poder acceder porque no se ha iniciado sesión
+                    Redirigir a login
                 @endauth
             </h3>
             <p>¿Qué quieres hacer?</p>

@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 // Roles
-// use Spatie\Permission\Models\Role;
-// use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 
 class RegisteredUserController extends Controller
@@ -62,12 +62,19 @@ class RegisteredUserController extends Controller
             $demandante = new Demandante;
             $demandante->id = $user->id;
             $demandante->save();
+
+            $demandante = Role::create(['nombre' => 'demandante']);
+            $user->assignRole($demandante);
+            
             // $user->attachRole('demandante');
             // $demandante = Demandante::create(['id' => $user->id]);
         } else {
             $seleccionador = new Seleccionador;
             $seleccionador->id = $user->id;
             $seleccionador->save();
+
+            $seleccionador = Role::create(['nombre' => 'seleccionador']);
+            $user->assignRole($seleccionador);
             // $user->attachRole('seleccionador');
             // $seleccionador = Seleccionador::create(['id' => $user->id]);
         }
