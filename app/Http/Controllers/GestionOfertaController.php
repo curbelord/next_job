@@ -15,8 +15,17 @@ class GestionOfertaController extends Controller
      */
     public function index()
     {
-        $ofertas = Oferta::all();
-        $inscripciones = Inscripcion::all();
+        $ofertas = Oferta::query();
+
+        $ofertas->where('id_seleccionador', auth()->user()->id)
+                ->where('estado', 'Publicada')
+                ->limit(5)->orderBy('created_at', 'desc');
+
+        $ofertas = $ofertas->get();
+
+        $inscripciones = Inscripcion::query();
+        $inscripciones->whereIn('id_oferta', $ofertas->pluck('id'));
+        $inscripciones = $inscripciones->get();
 
         return view('gestionar.principal_empresa', compact('ofertas'), compact('inscripciones'));}
 
@@ -52,6 +61,7 @@ class GestionOfertaController extends Controller
         $oferta->salario = $request->salario;
         $oferta->fecha_cierre = $request->fecha_cierre;
         $oferta->estado = $estado;
+        $oferta->id_seleccionador = auth()->user()->id;
         $oferta->save();
 
         return redirect()->route('gestionar.principal_empresa');
