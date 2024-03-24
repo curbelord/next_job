@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -148,7 +149,7 @@ return new class extends Migration
         // Estado
         Schema::create('estado', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->enum('nombre', ['Inscrito', 'CV leído', 'Preseleccionado', 'Seleccionado para entrevista', 'Entrevistado', 'Descartado']);
             $table->string('descripcion');
             $table->integer('id_demandante')->unsigned();
             $table->unsignedBigInteger('id_oferta');
