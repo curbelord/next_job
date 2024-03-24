@@ -190,6 +190,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('pregunta');
         Schema::dropIfExists('cuestionario');
+        Schema::dropIfExists('estado');
         Schema::dropIfExists('inscripcion');
         Schema::dropIfExists('mensaje');
         Schema::dropIfExists('calendario');
