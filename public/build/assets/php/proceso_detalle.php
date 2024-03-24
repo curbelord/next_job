@@ -17,7 +17,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT referencia, puesto_trabajo, ubicacion, oferta.created_at, COUNT(inscripcion.id_demandante) AS 'candidatos_inscritos', candidatos_preseleccionados AS 'candidatos_preseleccionados' FROM oferta INNER JOIN inscripcion ON oferta.referencia = inscripcion.id_oferta LEFT JOIN candidatos_preseleccionados ON oferta.referencia = candidatos_preseleccionados.id_oferta GROUP BY oferta.referencia;";
+// PENDIENTE OBTENER -> estilo_container_candidato', 'estilo_curriculum_visible', 'url_curriculum', 'url_nota', 'url_ojo', 'nombre_o_id_candidato', 'edad_o_experiencia_candidato'
+
+$sql = "SELECT referencia, puesto_trabajo, (SELECT COUNT(*) FROM inscripcion WHERE inscripcion.id_oferta = oferta.referencia) AS 'numero_candidatos', (SELECT COUNT(*) FROM candidatos_preseleccionados WHERE candidatos_preseleccionados.id_oferta = oferta.referencia) AS 'candidatos_preseleccionados', (SELECT COUNT(*) FROM candidatos_descartados WHERE candidatos_descartados.id_oferta = oferta.referencia) AS 'candidatos_descartados' FROM oferta WHERE oferta.referencia=" . $_GET['referencia'];
 
 $result = $conn->query($sql);
 

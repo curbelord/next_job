@@ -1,5 +1,5 @@
 export default {
-    props: ['puesto_trabajo', 'ubicacion', 'fecha_creacion', 'numero_candidatos'],
+    props: ['referencia', 'puesto_trabajo', 'ubicacion', 'fecha_creacion', 'numero_candidatos'],
     template: `
     <div class="container_proceso">
         <div class="titulo_proceso">
@@ -32,7 +32,7 @@ export default {
             <div class="datos_mid_right_proceso">
                 <div class="hipervinculos">
                     <div class="imagen_datos_mid_right imagen_ojo">
-                        <a href="#"></a>
+                        <a href="#" @click.prevent="avisoPadreImpresionProceso"></a>
                     </div>
                     <div class="imagen_datos_mid_right imagen_lapiz">
                         <a href="#"></a>
@@ -47,5 +47,10 @@ export default {
             </div>
         </div>
     </div>
-    `
+    `,
+    methods: {
+        avisoPadreImpresionProceso(){
+            this.$emit('abrirProceso', this.referencia);
+        },
+    },
 }
