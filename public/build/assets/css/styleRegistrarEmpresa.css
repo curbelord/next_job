@@ -14,6 +14,7 @@
 }
 
 .registrar_empresa {
+    margin-top: 100px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(10, 1fr);

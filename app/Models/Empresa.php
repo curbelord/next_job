@@ -15,6 +15,11 @@ class Empresa extends Model
         'nombre',
         'descripcion',
         'ubicacion',
+        /*'telefono',
+        'email',
+        'web',*/
+        'logo',
+        'password',
     ];
 
     public function seleccionadores()
