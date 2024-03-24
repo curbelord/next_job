@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seleccionador extends Model
 {
-    protected $table = 'Seleccionador'; 
+    protected $table = 'seleccionador'; 
 
     protected $primaryKey = 'id'; 
 

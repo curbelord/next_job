@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inscripcion extends Model
 {
-    protected $table = 'Inscripcion';
+    protected $table = 'inscripcion';
 
     protected $primaryKey = ['id_demandante', 'id_oferta'];
 

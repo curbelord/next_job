@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Oferta extends Model
 {
-    protected $table = 'Oferta';
+    protected $table = 'oferta';
 
     protected $primaryKey = 'referencia';
 
