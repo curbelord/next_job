@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 
 // SELECT referencia, puesto_trabajo, ubicacion, Oferta.created_at, COUNT(id_demandante) AS 'candidatos_inscritos' FROM Oferta, Inscripcion WHERE Oferta.referencia = Inscripcion.id_oferta GROUP BY referencia;
 
-$sql = "SELECT referencia, puesto_trabajo, ubicacion, Oferta.created_at, COUNT(id_demandante) AS 'candidatos_inscritos' FROM Oferta, Inscripcion WHERE Oferta.referencia = Inscripcion.id_oferta GROUP BY referencia";
+$sql = "SELECT referencia, puesto_trabajo, ubicacion, oferta.created_at, COUNT(id_demandante) AS 'candidatos_inscritos' FROM oferta, inscripcion WHERE oferta.referencia = inscripcion.id_oferta GROUP BY referencia";
 
 $result = $conn->query($sql);
 
