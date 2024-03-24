@@ -18,7 +18,7 @@
 }
 
 form {
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 40px repeat(2, 1fr);
 }
 
 form > * {
@@ -28,7 +28,7 @@ form > * {
 
 form h2 {
     text-align: left;
-    grid-column: 3 / 8;
+    grid-column: 3 / 11;
     grid-row: 1;
 }
 
@@ -49,6 +49,10 @@ input {
 
 select {
     grid-column: 8 / 11;
+}
+
+.seccion_buscador {
+    margin-top: 100px;
 }
 
 .seccion_buscador button {
