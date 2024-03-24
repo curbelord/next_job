@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         // Users
-        Schema::create('Users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellidos');
@@ -30,14 +30,14 @@ return new class extends Migration
         });
 
         // Demandante
-        Schema::create('Demandante', function (Blueprint $table) {
+        Schema::create('demandante', function (Blueprint $table) {
             $table->increments('id');
             $table->foreign('id')->references('id')->on('Users')->onDelete('cascade');
             $table->timestamps();
         });
 
         // Empresa
-        Schema::create('Empresa', function (Blueprint $table) {
+        Schema::create('empresa', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->text('descripcion');
@@ -46,7 +46,7 @@ return new class extends Migration
         });
 
         // Seleccionador
-        Schema::create('Seleccionador', function (Blueprint $table) {
+        Schema::create('seleccionador', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_empresa')->unsigned()->nullable();
             $table->foreign('id')->references('id')->on('Users')->onDelete('cascade');
@@ -55,7 +55,7 @@ return new class extends Migration
         });
 
         // CV 
-        Schema::create('CV', function (Blueprint $table) {
+        Schema::create('cv', function (Blueprint $table) {
             $table->increments('id');
             $table->string('jornada_laboral');
             $table->string('puesto_trabajo');
@@ -66,7 +66,7 @@ return new class extends Migration
         });
 
         // Estudios
-        Schema::create('Estudios', function (Blueprint $table) {
+        Schema::create('estudios', function (Blueprint $table) {
             $table->integer('id_cv')->unsigned();
             $table->integer('id_estudio');
             $table->string('nombre');
@@ -78,7 +78,7 @@ return new class extends Migration
         });
 
         // Experiencia
-        Schema::create('Experiencia', function (Blueprint $table) {
+        Schema::create('experiencia', function (Blueprint $table) {
             $table->integer('id_cv')->unsigned();
             $table->integer('id_experiencia');
             $table->string('nombre');
@@ -90,7 +90,7 @@ return new class extends Migration
         });
 
         // Oferta
-        Schema::create('Oferta', function (Blueprint $table) {
+        Schema::create('oferta', function (Blueprint $table) {
             $table->id('referencia');
             $table->date('fecha_cierre');
             $table->integer('numero_vacantes');
@@ -111,7 +111,7 @@ return new class extends Migration
         });
 
         // Calendario
-        Schema::create('Calendario', function (Blueprint $table) {
+        Schema::create('calendario', function (Blueprint $table) {
             $table->increments('id');
             $table->string('evento');
             $table->date('fecha');
@@ -124,7 +124,7 @@ return new class extends Migration
         });
 
         // Mensaje
-        Schema::create('Mensaje', function (Blueprint $table) {
+        Schema::create('mensaje', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_emisor')->unsigned();
             $table->integer('id_receptor')->unsigned();
@@ -135,7 +135,7 @@ return new class extends Migration
         });
 
         // Inscripcion
-        Schema::create('Inscripcion', function (Blueprint $table) {
+        Schema::create('inscripcion', function (Blueprint $table) {
             $table->integer('id_demandante')->unsigned();
             $table->unsignedBigInteger('id_oferta');
             $table->string('anotacion');
@@ -146,7 +146,7 @@ return new class extends Migration
         });
 
         // Estado
-        Schema::create('Estado', function (Blueprint $table) {
+        Schema::create('estado', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion');
@@ -157,7 +157,7 @@ return new class extends Migration
         });
 
         // Cuestionario
-        Schema::create('Cuestionario', function (Blueprint $table) {
+        Schema::create('cuestionario', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
             $table->string('tipo');
@@ -171,7 +171,7 @@ return new class extends Migration
         });
 
         // Pregunta
-        Schema::create('Pregunta', function (Blueprint $table) {
+        Schema::create('pregunta', function (Blueprint $table) {
             $table->increments('id');
             $table->string('pregunta');
             $table->string('respuesta');
@@ -188,18 +188,18 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Pregunta');
-        Schema::dropIfExists('Cuestionario');
-        Schema::dropIfExists('Inscripcion');
-        Schema::dropIfExists('Mensaje');
-        Schema::dropIfExists('Calendario');
-        Schema::dropIfExists('Oferta');
-        Schema::dropIfExists('Experiencia');
-        Schema::dropIfExists('Estudios');
-        Schema::dropIfExists('CV');
-        Schema::dropIfExists('Seleccionador');
-        Schema::dropIfExists('Empresa');
-        Schema::dropIfExists('Demandante');
-        Schema::dropIfExists('Users');
+        Schema::dropIfExists('pregunta');
+        Schema::dropIfExists('cuestionario');
+        Schema::dropIfExists('inscripcion');
+        Schema::dropIfExists('mensaje');
+        Schema::dropIfExists('calendario');
+        Schema::dropIfExists('oferta');
+        Schema::dropIfExists('experiencia');
+        Schema::dropIfExists('estudios');
+        Schema::dropIfExists('cv');
+        Schema::dropIfExists('seleccionador');
+        Schema::dropIfExists('empresa');
+        Schema::dropIfExists('demandante');
+        Schema::dropIfExists('users');
     }
 };
