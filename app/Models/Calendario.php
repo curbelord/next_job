@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calendario extends Model
 {
-    protected $table = 'Calendario'; 
+    protected $table = 'calendario'; 
 
     protected $primaryKey = 'id'; 
 
