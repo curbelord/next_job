@@ -42,6 +42,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->text('descripcion');
             $table->string('ubicacion');
+            $table->string('logo');
+            $table->string('password');
             $table->timestamps();
         });
 

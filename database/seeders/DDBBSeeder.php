@@ -181,6 +181,8 @@ class DDBBSeeder extends Seeder
             'nombre' => 'Artek',
             'descripcion' => 'Empresa de desarrollo de software',
             'ubicacion' => 'Arrecife',
+            'logo' => 'artek.png',
+            'password' => bcrypt('password'),
         ]);
 
         Empresa::create([
@@ -188,6 +190,8 @@ class DDBBSeeder extends Seeder
             'nombre' => 'Biosfera',
             'descripcion' => 'Empresa de desarrollo de videojuegos',
             'ubicacion' => 'Teguise',
+            'logo' => 'biosfera.png',
+            'password' => bcrypt('password'),
         ]);
 
         Empresa::create([
@@ -195,6 +199,8 @@ class DDBBSeeder extends Seeder
             'nombre' => 'Cactus',
             'descripcion' => 'Vivero de plantas',
             'ubicacion' => 'Yaiza',
+            'logo' => 'cactus.png',
+            'password' => bcrypt('password'),
         ]);
 
         Empresa::create([
@@ -202,6 +208,8 @@ class DDBBSeeder extends Seeder
             'nombre' => 'Dunas',
             'descripcion' => 'Empresa de desarrollo de páginas web',
             'ubicacion' => 'Tías',
+            'logo' => 'dunas.png',
+            'password' => bcrypt('password'),
         ]);
 
         Empresa::create([
@@ -209,6 +217,8 @@ class DDBBSeeder extends Seeder
             'nombre' => 'Estrella',
             'descripcion' => 'Restaurante de comida rápida',
             'ubicacion' => 'Tinajo',
+            'logo' => 'estrella.png',
+            'password' => bcrypt('password'),
         ]);
 
         // SELECCIONADORES

@@ -1,5 +1,11 @@
 <?php
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Traits\HasRoles;
+
+use App\Http\Middleware\CheckSeleccionadorRole;
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GestionOfertaController;
 use App\Http\Controllers\GestionPlantillaController;
@@ -96,36 +102,40 @@ Route::get('/empresa', [EmpresasController::class, 'mostrarEmpresa'])->name('emp
 
 // VISTAS DEL SELECCIONADOR
 
-Route::middleware('auth')->group(function () {
 
-    Route::get('/registrar-empresa', [RegistroController::class, 'registrar_empresa'])->name('auth.registrar_empresa');
-    Route::get('/vincular-empresa', [RegistroController::class, 'vincula_empresa'])->name('auth.vincular_empresa');
+    // Proteger las rutas de seleccionador para que sólo puedan acceder los seleccionadores
 
-    Route::prefix('gestionar')->group(function () {
+    Route::middleware(['auth', CheckSeleccionadorRole::class])->group(function () {
 
-        Route::get('/', [GestionOfertaController::class, 'index'])->name('gestionar.principal_empresa');
+        Route::get('/registrar-empresa', [RegistroController::class, 'mostrar_registrar_empresa'])->name('auth.registrar_empresa');
+        Route::post('/registrar-empresa/store', [RegistroController::class, 'registrar_empresa'])->name('auth.registrar_empresa.almacenar');
+        Route::get('/vincular-empresa', [RegistroController::class, 'mostrar_vincular_empresa'])->name('auth.vincular_empresa');
+        Route::post('/vincular-empresa/store', [RegistroController::class, 'vincular_empresa'])->name('auth.vincular_empresa.almacenar');
 
-        Route::prefix('ofertas')->group(function () {
+        Route::prefix('gestionar')->group(function () {
 
-            Route::get('/', [GestionOfertaController::class, 'manageOffers'])->name('gestionar.gestionar_ofertas');
-            Route::get('/crear', [GestionOfertaController::class, 'create'])->name('gestionar.ofertas.crear_oferta');
-            Route::get('/editar/{id}', [GestionOfertaController::class, 'edit'])->name('gestionar.ofertas.editar_oferta');
-            Route::put('/update/{id}', [GestionOfertaController::class, 'update'])->name('gestionar.ofertas.actualizar_oferta');
-            Route::post('/store', [GestionOfertaController::class, 'store'])->name('gestionar.ofertas.ofertas.almacenar');
-            Route::get('/ver/{id}', [GestionOfertaController::class, 'show'])->name('gestionar.ofertas.ver_oferta');
-            Route::delete('/delete/{id}', [GestionOfertaController::class, 'destroy'])->name('gestionar.ofertas.eliminar_oferta');
+            Route::get('/', [GestionOfertaController::class, 'index'])->name('gestionar.principal_empresa');
+
+            Route::prefix('ofertas')->group(function () {
+
+                Route::get('/', [GestionOfertaController::class, 'manageOffers'])->name('gestionar.gestionar_ofertas');
+                Route::get('/crear', [GestionOfertaController::class, 'create'])->name('gestionar.ofertas.crear_oferta');
+                Route::get('/editar/{id}', [GestionOfertaController::class, 'edit'])->name('gestionar.ofertas.editar_oferta');
+                Route::put('/update/{id}', [GestionOfertaController::class, 'update'])->name('gestionar.ofertas.actualizar_oferta');
+                Route::post('/store', [GestionOfertaController::class, 'store'])->name('gestionar.ofertas.ofertas.almacenar');
+                Route::get('/ver/{id}', [GestionOfertaController::class, 'show'])->name('gestionar.ofertas.ver_oferta');
+                Route::delete('/delete/{id}', [GestionOfertaController::class, 'destroy'])->name('gestionar.ofertas.eliminar_oferta');
+
+            });
+
+            Route::prefix('plantillas')->group(function () {
+
+                Route::get('/crear', [GestionPlantillaController::class, 'create'])->name('gestionar.plantillas.crear_plantilla');
+                Route::get('/editar/{id}', [GestionPlantillaController::class, 'edit'])->name('gestionar.plantillas.editar_plantilla');
+
+            });
 
         });
-
-        Route::prefix('plantillas')->group(function () {
-
-            Route::get('/crear', [GestionPlantillaController::class, 'create'])->name('gestionar.plantillas.crear_plantilla');
-            Route::get('/editar/{id}', [GestionPlantillaController::class, 'edit'])->name('gestionar.plantillas.editar_plantilla');
-
-        });
-
     });
-
-});
 
 require __DIR__.'/auth.php';

@@ -1,4 +1,4 @@
-@extends('layouts.plantilla_sin_footer')
+@extends('layouts.plantilla')
 
 @section('title', 'Vincular empresa')
 
@@ -10,7 +10,9 @@
 
     <div class="content">
             
-        <div class="vincular_empresa">
+        <form class="vincular_empresa"  method="POST" action="{{ route('auth.vincular_empresa.almacenar') }}">
+
+            @csrf
 
             <h2>Selecciona tu empresa</h2>
 
@@ -19,7 +21,7 @@
 
             <button>Seleccionar empresa</button>
 
-        </div>
+        </form>
     
     </div>
 
