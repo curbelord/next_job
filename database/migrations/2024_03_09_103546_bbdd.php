@@ -32,7 +32,7 @@ return new class extends Migration
         // Demandante
         Schema::create('demandante', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -49,19 +49,19 @@ return new class extends Migration
         Schema::create('seleccionador', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_empresa')->unsigned()->nullable();
-            $table->foreign('id')->references('id')->on('Users')->onDelete('cascade');
-            $table->foreign('id_empresa')->references('id')->on('Empresa')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_empresa')->references('id')->on('empresa')->onDelete('cascade');
             $table->timestamps();
         });
 
-        // CV 
+        // CV
         Schema::create('cv', function (Blueprint $table) {
             $table->increments('id');
             $table->string('jornada_laboral');
             $table->string('puesto_trabajo');
             $table->string('tipo_trabajo');
             $table->integer('id_demandante')->unsigned();
-            $table->foreign('id_demandante')->references('id')->on('Demandante')->onDelete('cascade');
+            $table->foreign('id_demandante')->references('id')->on('demandante')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -73,7 +73,7 @@ return new class extends Migration
             $table->string('centro_estudios');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->foreign('id_cv')->references('id')->on('CV')->onDelete('cascade');
+            $table->foreign('id_cv')->references('id')->on('cv')->onDelete('cascade');
             $table->primary(['id_cv', 'id_estudio']);
         });
 
@@ -85,7 +85,7 @@ return new class extends Migration
             $table->string('centro_laboral');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->foreign('id_cv')->references('id')->on('CV')->onDelete('cascade');
+            $table->foreign('id_cv')->references('id')->on('cv')->onDelete('cascade');
             $table->primary(['id_cv', 'id_experiencia']);
         });
 
@@ -106,7 +106,7 @@ return new class extends Migration
             $table->enum('turno', ['Mañana', 'Tarde', 'Noche']);
             $table->enum('estado', ['Publicada', 'Plantilla', 'Borrador'])->nullable();
             $table->integer('id_seleccionador')->unsigned()->nullable();
-            $table->foreign('id_seleccionador')->references('id')->on('Seleccionador')->onDelete('cascade');
+            $table->foreign('id_seleccionador')->references('id')->on('seleccionador')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -119,7 +119,7 @@ return new class extends Migration
             $table->string('hora_cierre');
             $table->string('descripcion');
             $table->integer('id_seleccionador')->unsigned();
-            $table->foreign('id_seleccionador')->references('id')->on('Seleccionador')->onDelete('cascade');
+            $table->foreign('id_seleccionador')->references('id')->on('seleccionador')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -129,8 +129,8 @@ return new class extends Migration
             $table->integer('id_emisor')->unsigned();
             $table->integer('id_receptor')->unsigned();
             $table->string('mensaje');
-            $table->foreign('id_emisor')->references('id')->on('Seleccionador')->onDelete('cascade');
-            $table->foreign('id_receptor')->references('id')->on('Demandante')->onDelete('cascade');
+            $table->foreign('id_emisor')->references('id')->on('seleccionador')->onDelete('cascade');
+            $table->foreign('id_receptor')->references('id')->on('demandante')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -140,8 +140,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_oferta');
             $table->string('anotacion');
             $table->primary(['id_demandante', 'id_oferta']);
-            $table->foreign('id_demandante')->references('id')->on('Demandante')->onDelete('cascade');
-            $table->foreign('id_oferta')->references('referencia')->on('Oferta')->onDelete('cascade');
+            $table->foreign('id_demandante')->references('id')->on('demandante')->onDelete('cascade');
+            $table->foreign('id_oferta')->references('referencia')->on('oferta')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -152,7 +152,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->integer('id_demandante')->unsigned();
             $table->unsignedBigInteger('id_oferta');
-            $table->foreign(['id_demandante', 'id_oferta'])->references(['id_demandante', 'id_oferta'])->on('Inscripcion')->onDelete('cascade');
+            $table->foreign(['id_demandante', 'id_oferta'])->references(['id_demandante', 'id_oferta'])->on('inscripcion')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -164,9 +164,9 @@ return new class extends Migration
             $table->integer('id_seleccionador')->unsigned();
             $table->integer('id_demandante')->unsigned();
             $table->unsignedBigInteger('id_oferta');
-            $table->foreign('id_seleccionador')->references('id')->on('Seleccionador')->onDelete('cascade');
-            $table->foreign('id_demandante')->references('id_demandante')->on('Inscripcion')->onDelete('cascade');
-            $table->foreign('id_oferta')->references('id_oferta')->on('Inscripcion')->onDelete('cascade');
+            $table->foreign('id_seleccionador')->references('id')->on('seleccionador')->onDelete('cascade');
+            $table->foreign('id_demandante')->references('id_demandante')->on('inscripcion')->onDelete('cascade');
+            $table->foreign('id_oferta')->references('id_oferta')->on('inscripcion')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -176,7 +176,7 @@ return new class extends Migration
             $table->string('pregunta');
             $table->string('respuesta');
             $table->integer('id_cuestionario')->unsigned();
-            $table->foreign('id_cuestionario')->references('id')->on('Cuestionario')->onDelete('cascade');
+            $table->foreign('id_cuestionario')->references('id')->on('cuestionario')->onDelete('cascade');
             $table->timestamps();
         });
     }
