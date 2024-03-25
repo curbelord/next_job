@@ -13,8 +13,8 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="container_mid_candidato" {{ estilo_container_candidato }}>
-            <div class="curriculum" {{ estilo_curriculum_visible }}>
+        <div class="container_mid_candidato" style="{{ estilo_container_candidato }}">
+            <div class="curriculum" style="{{ estilo_curriculum_visible }}">
                 <a href="{{ url_curriculum }}">Curriculum</a>
             </div>
         </div>
@@ -29,5 +29,6 @@ export default {
             </div>
         </div>
     </div>
-    `
+    `,
+    name: "curriculum_simplificado",
 }

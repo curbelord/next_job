@@ -6,41 +6,42 @@
     text-align: left;
 }
 
-#container{
+#container_proceso_detalle{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(4, auto);
-    margin-top: 100px;
+    grid-column: 3 / 11;
+    grid-row: 1 / 2;
 }
 
 /* Sección 1 */
 
 /* Datos TOP */
 
-#container_datos_top{
-    grid-column: 3 / 11;
+#container_datos_top_proceso_detalle{
+    grid-column: 1 / 13;
     grid-row: 1 / 2;
 }
 
-#titulo_datos_procesos{
+#titulo_datos_procesos_proceso_detalle{
     margin-bottom: 50px;
 }
 
-#titulo_datos_procesos h3{
+#titulo_datos_procesos_proceso_detalle h3{
     font-size: 1.7em;
 }
 
-#datos_candidatos, #datos_candidatos div{
+#datos_candidatos_proceso_detalle, #datos_candidatos_proceso_detalle div{
     display: flex;
     flex-wrap: nowrap;
 }
 
-#datos_candidatos div{
+#datos_candidatos_proceso_detalle div{
     align-items: center;
     margin-right: 20px;
 }
 
-.imagen_datos_candidatos{
+.imagen_datos_candidatos_proceso_detalle{
     width: 40px;
     height: 40px;
     background-repeat: no-repeat;
@@ -49,12 +50,24 @@
     border-radius: 10px;
 }
 
+.imagen_candidatos{
+    background-image: url("../img/candidato.svg");
+}
+
+.imagen_preseleccionados{
+    background-image: url("../img/preseleccionado.svg");
+}
+
+.imagen_descartados{
+    background-image: url("../img/descartado.svg");
+}
+
 /* Sección 2 */
 
 /* Candidatos */
 
 #container_candidatos{
-    grid-column: 3 / 11;
+    grid-column: 1 / 13;
     grid-row: 2 / 3;
     margin-top: 100px;
 }
@@ -75,7 +88,7 @@
 /* Descripción */
 
 #container_descripcion{
-    grid-column: 3 / 11;
+    grid-column: 1 / 13;
     grid-row: 3 / 4;
     margin: 100px 0px;
 }
@@ -120,7 +133,7 @@
 
 
 @media only screen and (max-width: 720px){
-    #container_datos_top, #container_candidatos, #container_descripcion{
+    #container_proceso_detalle{
         grid-column: 2 / 12;
     }
 

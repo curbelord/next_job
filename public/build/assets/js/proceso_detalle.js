@@ -1,33 +1,38 @@
 import curriculum_simplificado from "./curriculum_simplificado.js";
 
 export default {
-    props: ['referencia', 'puesto_trabajo', 'numero_candidatos', 'candidatos_preseleccionados', 'candidatos_descartados', 'estilo_container_candidato', 'estilo_curriculum_visible', 'url_curriculum', 'url_nota', 'url_ojo', 'nombre_o_id_candidato', 'edad_o_experiencia_candidato'],
+    data(){
+        return {
+
+        }
+    },
+    props: ['referencia', 'puesto_trabajo', 'numero_candidatos', 'candidatos_preseleccionados_proceso', 'candidatos_descartados_proceso', 'estilo_container_candidato', 'estilo_curriculum_visible', 'url_curriculum', 'url_nota', 'url_ojo', 'nombre_o_id_candidato', 'edad_o_experiencia_candidato'],
     components: {
         curriculum_simplificado
     },
     template: `
-    <div id="container">
-        <div id="container_datos_top">
-            <div id="titulo_datos_procesos">
-                <h3>{{ referencia }} {{ puesto_trabajo }}</h3>
+    <div id="container_proceso_detalle">
+        <div id="container_datos_top_proceso_detalle">
+            <div id="titulo_datos_procesos_proceso_detalle">
+                <h3>#{{ referencia }} &nbsp; {{ puesto_trabajo }}</h3>
             </div>
-            <div id="datos_candidatos">
+            <div id="datos_candidatos_proceso_detalle">
                 <div id="numero_candidatos">
-                    <div class="imagen_datos_candidatos"></div>
+                    <div class="imagen_datos_candidatos_proceso_detalle imagen_candidatos"></div>
                     <div id="valor_numero_candidatos">
-                        <p>{{ numero_candidatos }}</p>
+                        <p>{{ numero_candidatos }} candidatos</p>
                     </div>
                 </div>
                 <div id="numero_preseleccionados">
-                    <div class="imagen_datos_candidatos"></div>
+                    <div class="imagen_datos_candidatos_proceso_detalle imagen_preseleccionados"></div>
                     <div id="valor_numero_preseleccionados">
-                        <p>{{ candidatos_preseleccionados }}</p>
+                        <p>{{ candidatos_preseleccionados_proceso }} preseleccionados</p>
                     </div>
                 </div>
                 <div id="numero_descartados">
-                    <div class="imagen_datos_candidatos"></div>
+                    <div class="imagen_datos_candidatos_proceso_detalle imagen_descartados"></div>
                     <div id="valor_numero_descartados">
-                        <p>{{ candidatos_descartados }}</p>
+                        <p>{{ candidatos_descartados_proceso }} descartados</p>
                     </div>
                 </div>
             </div>
@@ -42,19 +47,6 @@ export default {
 
                     <curriculum_simplificado v-for="i in numero_candidatos" :key="i" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :nombre_o_id_candidato="nombre_o_id_candidato" :edad_o_experiencia_candidato="edad_o_experiencia_candidato"></curriculum_simplificado>
 
-                    <!--
-
-                    Si es un currículum ciego, entonces pasar esas variables con estos estilos. Si no, vacías
-
-                    @slot('estilo_container_candidato')
-                        {{ "style=padding:0px;" }}
-                    @endslot
-
-                    @slot('estilo_curriculum_visible')
-                        {{ "style=display:none;" }}
-                    @endslot
-
-                    -->
                 </div>
             </div>
         </div>

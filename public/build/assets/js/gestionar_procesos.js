@@ -13,10 +13,21 @@ const app = Vue.createApp({
             ubicacion: [],
             fecha_creacion: [],
             numero_candidatos: [],
+            curriculums_ciegos: [],
             candidatos_totales: 0,
             candidatos_preseleccionados: 0,
             numero_pagina: 1,
             procesoDetalle: false,
+            posicionProcesoSeleccionado: 0,
+            candidatos_preseleccionados_proceso: 0,
+            candidatos_descartados_proceso: 0,
+            estilo_container_candidato: "",
+            estilo_curriculum_visible: "",
+            url_curriculum: "a",
+            url_nota: "a",
+            url_ojo: "a",
+            nombre_o_id_candidato: "a",
+            edad_o_experiencia_candidato: "a",
         }
     },
     template: `
@@ -63,7 +74,7 @@ const app = Vue.createApp({
         <numeracion_slider :numero_pagina="numero_pagina"></numeracion_slider>
     </div>
 
-    <proceso_detalle v-if="procesoDetalle"></proceso_detalle>
+    <proceso_detalle v-if="procesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :nombre_o_id_candidato="nombre_o_id_candidato" :edad_o_experiencia_candidato="edad_o_experiencia_candidato"></proceso_detalle>
     `,
     components: {
         proceso,
@@ -96,6 +107,7 @@ const app = Vue.createApp({
                 this.ubicacion.push(arrayProcesos[i]["ubicacion"]);
                 this.fecha_creacion.push(arrayProcesos[i]["fecha_creacion"]);
                 this.numero_candidatos.push(parseInt(arrayProcesos[i]["candidatos_inscritos"]));
+                this.curriculums_ciegos.push(parseInt(arrayProcesos[i]["curriculums_ciegos"]));
 
                 if (arrayProcesos[i]["candidatos_preseleccionados"] != NaN && arrayProcesos[i]["candidatos_preseleccionados"] != "" && arrayProcesos[i]["candidatos_preseleccionados"] != undefined){
                     this.candidatos_preseleccionados += parseInt(arrayProcesos[i]["candidatos_preseleccionados"]);
@@ -108,15 +120,48 @@ const app = Vue.createApp({
                 this.numeroProcesos++;
             }
         },
-        imprimirProceso(referencia){
+        ocultaPanelPrincipal(){
             $("#container_datos_top").css("display", "none");
             $("#container_procesos").css("display", "none");
             $("#container_slider_numeracion").css("display", "none");
+        },
+        async obtenerDatosProcesoSeleccionado(referenciaProceso){
+            try {
+                let datosProceso = await $.get('http://next-job.lan/build/assets/php/proceso_detalle.php?referencia=' + referenciaProceso);
 
+                let objeto = '{"proceso":[' + datosProceso.substring(0, datosProceso.length - 1) + "]}";
+                objeto = JSON.parse(objeto);
+
+                console.log(objeto["proceso"][0]);
+
+                this.almacenaDatosProcesoSeleccionado(objeto["proceso"]);
+
+                return objeto;
+            } catch (error) {
+                console.error('Error al hacer la petición', error);
+            }
+        },
+        almacenaDatosProcesoSeleccionado(arrayDatos){
+            this.candidatos_preseleccionados_proceso = parseInt(arrayDatos[0]["candidatos_preseleccionados"]);
+            this.candidatos_descartados_proceso = parseInt(arrayDatos[0]["candidatos_descartados"]);
+        },
+        imprimirProceso(referencia){
+            this.ocultaPanelPrincipal();
+            this.obtenerDatosProcesoSeleccionado(referencia);
+
+            if (this.curriculums_ciegos[this.referencia.indexOf(referencia)] == "SI"){
+                this.estilo_container_candidato = "padding:0px;";
+                this.estilo_curriculum_visible = "display:none;";
+            }
+            console.log(this.estilo_container_candidato, this.estilo_curriculum_visible);
             this.procesoDetalle = true;
+            this.posicionProcesoSeleccionado = this.referencia.indexOf(referencia);
         },
     },
 
 }).mount('#container');
 
 app.obtenerProcesos();
+
+
+// PENDIENTE AÑADIR NOMBRE/ID de usuario y EDAD/Experiencia en función de si es currículum ciego o no (en currículum simplificado)
