@@ -108,6 +108,7 @@ return new class extends Migration
             $table->string('ubicacion');
             $table->enum('turno', ['Mañana', 'Tarde', 'Noche']);
             $table->enum('estado', ['Publicada', 'Plantilla', 'Borrador'])->nullable();
+            $table->enum('curriculums_ciegos', ["SI", "NO"]);
             $table->integer('id_seleccionador')->unsigned()->nullable();
             $table->foreign('id_seleccionador')->references('id')->on('seleccionador')->onDelete('cascade');
             $table->timestamps();

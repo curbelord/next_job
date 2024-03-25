@@ -30,6 +30,7 @@ class OfertaSeeder extends Seeder
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
             'estado' => 'Publicada',
+            'curriculums_ciegos' => 'SI',
             'id_seleccionador' => 2,
         ]);
 
@@ -48,6 +49,7 @@ class OfertaSeeder extends Seeder
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
             'borrador' => 'Publicada',
+            'curriculums_ciegos' => 'NO',
             'id_seleccionador' => 4,
         ]);
 
@@ -66,6 +68,7 @@ class OfertaSeeder extends Seeder
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
             'borrador' => 'Plantilla',
+            'curriculums_ciegos' => 'SI',
             'id_seleccionador' => 6,
         ]);
 
@@ -84,6 +87,7 @@ class OfertaSeeder extends Seeder
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
             'borrador' => 'Borrador',
+            'curriculums_ciegos' => 'NO',
             'id_seleccionador' => 8,
         ]);
 
@@ -102,6 +106,7 @@ class OfertaSeeder extends Seeder
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
             'borrador' => 'Publicada',
+            'curriculums_ciegos' => 'NO',
             'id_seleccionador' => 10,
         ]);
 
@@ -120,6 +125,7 @@ class OfertaSeeder extends Seeder
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
             'borrador' => 'Publicada',
+            'curriculums_ciegos' => 'SI',
             'id_seleccionador' => 2,
         ]);
 
@@ -138,6 +144,7 @@ class OfertaSeeder extends Seeder
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
             'borrador' => 'Plantilla',
+            'curriculums_ciegos' => 'NO',
             'id_seleccionador' => 4,
         ]);
 
