@@ -26,8 +26,12 @@ const app = Vue.createApp({
             url_curriculum: "a",
             url_nota: "a",
             url_ojo: "a",
-            nombre_o_id_candidato: "a",
-            edad_o_experiencia_candidato: "a",
+            nombre_o_id_candidatos: [],
+            edad_o_experiencia_candidatos: [],
+            fecha_publicacion_proceso: "",
+            salario_proceso: 0,
+            jornada_proceso: "",
+            turno_proceso: "",
         }
     },
     template: `
@@ -74,7 +78,7 @@ const app = Vue.createApp({
         <numeracion_slider :numero_pagina="numero_pagina"></numeracion_slider>
     </div>
 
-    <proceso_detalle v-if="procesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :nombre_o_id_candidato="nombre_o_id_candidato" :edad_o_experiencia_candidato="edad_o_experiencia_candidato"></proceso_detalle>
+    <proceso_detalle v-if="procesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso"></proceso_detalle>
     `,
     components: {
         proceso,
@@ -125,14 +129,14 @@ const app = Vue.createApp({
             $("#container_procesos").css("display", "none");
             $("#container_slider_numeracion").css("display", "none");
         },
-        async obtenerDatosProcesoSeleccionado(referenciaProceso){
+        async obtenerDatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo){
             try {
-                let datosProceso = await $.get('http://next-job.lan/build/assets/php/proceso_detalle.php?referencia=' + referenciaProceso);
+                let datosProceso = await $.get('http://next-job.lan/build/assets/php/proceso_detalle.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo);
 
                 let objeto = '{"proceso":[' + datosProceso.substring(0, datosProceso.length - 1) + "]}";
                 objeto = JSON.parse(objeto);
 
-                console.log(objeto["proceso"][0]);
+                console.log(objeto["proceso"]);
 
                 this.almacenaDatosProcesoSeleccionado(objeto["proceso"]);
 
@@ -144,12 +148,29 @@ const app = Vue.createApp({
         almacenaDatosProcesoSeleccionado(arrayDatos){
             this.candidatos_preseleccionados_proceso = parseInt(arrayDatos[0]["candidatos_preseleccionados"]);
             this.candidatos_descartados_proceso = parseInt(arrayDatos[0]["candidatos_descartados"]);
+
+            for (let i = 0; i < arrayDatos.length; i++){
+                if (arrayDatos[i]["nombre_o_id_candidatos"]){
+                    this.nombre_o_id_candidatos.push(arrayDatos[i]["nombre_o_id_candidatos"]);
+                }else{
+                    this.nombre_o_id_candidatos.push(i);
+                }
+                this.edad_o_experiencia_candidatos.push(arrayDatos[i]["edad_o_experiencia_candidatos"]);
+            }
+
+            let fechaATipoDate = new Date(arrayDatos[0]["oferta_fecha_publicacion"]);
+
+            this.fecha_publicacion_proceso = fechaATipoDate.toLocaleDateString("es-ES");
+            this.salario_proceso = arrayDatos[0]["oferta_salario"];
+            this.jornada_proceso = arrayDatos[0]["oferta_jornada"];
+            this.turno_proceso = arrayDatos[0]["oferta_turno"];
         },
         imprimirProceso(referencia){
+            let curriculumsCiegosSiNo = this.curriculums_ciegos[this.referencia.indexOf(referencia)];
             this.ocultaPanelPrincipal();
-            this.obtenerDatosProcesoSeleccionado(referencia);
+            this.obtenerDatosProcesoSeleccionado(referencia, curriculumsCiegosSiNo);
 
-            if (this.curriculums_ciegos[this.referencia.indexOf(referencia)] == "SI"){
+            if (curriculumsCiegosSiNo == "SI"){
                 this.estilo_container_candidato = "padding:0px;";
                 this.estilo_curriculum_visible = "display:none;";
             }
@@ -164,4 +185,4 @@ const app = Vue.createApp({
 app.obtenerProcesos();
 
 
-// PENDIENTE AÑADIR NOMBRE/ID de usuario y EDAD/Experiencia en función de si es currículum ciego o no (en currículum simplificado)
+// PENDIENTE - AÑADIR ACCESO A NOTA Y A LA VISUALIZACIÓN DEL CANDIDATO DENTRO DEL CURRÍCULUM SIMPLIFICADO

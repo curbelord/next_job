@@ -6,7 +6,7 @@ export default {
 
         }
     },
-    props: ['referencia', 'puesto_trabajo', 'numero_candidatos', 'candidatos_preseleccionados_proceso', 'candidatos_descartados_proceso', 'estilo_container_candidato', 'estilo_curriculum_visible', 'url_curriculum', 'url_nota', 'url_ojo', 'nombre_o_id_candidato', 'edad_o_experiencia_candidato'],
+    props: ['referencia', 'puesto_trabajo', 'numero_candidatos', 'candidatos_preseleccionados_proceso', 'candidatos_descartados_proceso', 'estilo_container_candidato', 'estilo_curriculum_visible', 'url_curriculum', 'url_nota', 'url_ojo', 'nombre_o_id_candidatos', 'edad_o_experiencia_candidatos', 'fecha_publicacion_proceso', 'salario_proceso', 'jornada_proceso', 'turno_proceso'],
     components: {
         curriculum_simplificado
     },
@@ -45,7 +45,7 @@ export default {
             <div id="container_info_candidatos">
                 <div id="subcontainer_info_candidatos">
 
-                    <curriculum_simplificado v-for="i in numero_candidatos" :key="i" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :nombre_o_id_candidato="nombre_o_id_candidato" :edad_o_experiencia_candidato="edad_o_experiencia_candidato"></curriculum_simplificado>
+                    <curriculum_simplificado v-for="i in numero_candidatos" :key="i" :i="i" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos"></curriculum_simplificado>
 
                 </div>
             </div>
@@ -64,18 +64,18 @@ export default {
             <div id="container_datos_bottom">
                 <div id="datos_bottom_fila_1">
                     <div id="fecha_publicacion" class="boton_outline_azul">
-                        <p><!-- Fecha publicacion --></p>
+                        <p>{{ fecha_publicacion_proceso }}</p>
                     </div>
                     <div id="salario" class="boton_outline_azul">
-                        <p><!-- salario --></p>
+                        <p>{{ salario_proceso }} €</p>
                     </div>
                 </div>
                 <div id="datos_bottom_fila_2">
                     <div id="jornada" class="boton_outline_azul">
-                        <p><!-- jornada --></p>
+                        <p>{{ jornada_proceso }}</p>
                     </div>
                     <div id="horario" class="boton_outline_azul">
-                        <p><!-- turno --></p>
+                        <p>{{ turno_proceso }}</p>
                     </div>
                 </div>
             </div>
