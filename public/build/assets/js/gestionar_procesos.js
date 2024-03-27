@@ -26,6 +26,7 @@ const app = Vue.createApp({
             url_curriculum: "a",
             url_nota: "a",
             url_ojo: "a",
+            id_candidatos: [],
             nombre_o_id_candidatos: [],
             edad_o_experiencia_candidatos: [],
             fecha_publicacion_proceso: "",
@@ -78,7 +79,7 @@ const app = Vue.createApp({
         <numeracion_slider :numero_pagina="numero_pagina"></numeracion_slider>
     </div>
 
-    <proceso_detalle v-if="procesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso"></proceso_detalle>
+    <proceso_detalle v-if="procesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso"></proceso_detalle>
     `,
     components: {
         proceso,
@@ -156,6 +157,7 @@ const app = Vue.createApp({
                     this.nombre_o_id_candidatos.push(i);
                 }
                 this.edad_o_experiencia_candidatos.push(arrayDatos[i]["edad_o_experiencia_candidatos"]);
+                this.id_candidatos.push(arrayDatos[i]["id_candidato"]);
             }
 
             let fechaATipoDate = new Date(arrayDatos[0]["oferta_fecha_publicacion"]);
