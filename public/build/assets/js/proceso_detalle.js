@@ -7,7 +7,7 @@ export default {
             numeroLimiteCandidatos: 20,
         }
     },
-    props: ['referencia', 'puesto_trabajo', 'numero_candidatos', 'candidatos_preseleccionados_proceso', 'candidatos_descartados_proceso', 'estilo_container_candidato', 'estilo_curriculum_visible', 'url_curriculum', 'url_nota', 'url_ojo', 'nombre_o_id_candidatos', 'edad_o_experiencia_candidatos', 'fecha_publicacion_proceso', 'salario_proceso', 'jornada_proceso', 'turno_proceso', 'id_candidatos'],
+    props: ['referencia', 'puesto_trabajo', 'numero_candidatos', 'candidatos_preseleccionados_proceso', 'candidatos_descartados_proceso', 'estilo_container_candidato', 'estilo_curriculum_visible', 'url_curriculum', 'url_nota', 'url_ojo', 'nombre_o_id_candidatos', 'edad_o_experiencia_candidatos', 'fecha_publicacion_proceso', 'salario_proceso', 'jornada_proceso', 'turno_proceso', 'id_candidatos', 'descripcion_oferta'],
     components: {
         curriculum_simplificado
     },
@@ -58,7 +58,7 @@ export default {
             </div>
             <div id="container_info_descripcion">
                 <div id="subcontainer_info_descripcion">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat saepe, iure dolorum, ut corporis velit maiores, minus ex nihil repudiandae nemo libero quasi optio mollitia aperiam sunt? Iste, molestias voluptate.Adipisci incidunt aliquam deleniti maxime aspernatur voluptates corrupti nulla perspiciatis explicabo dolor fugiat perferendis, omnis nihil quisquam facilis, accusantium sunt tempora maiores minima assumenda! Quaerat ipsum at consequatur odio libero.</p>
+                    <p>{{ descripcion_oferta }}</p>
                 </div>
             </div>
 
