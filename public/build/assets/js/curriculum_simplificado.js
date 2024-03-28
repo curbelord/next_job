@@ -58,6 +58,18 @@ export default {
                 console.log("Nota editada");
             });
         },
+        popUpConfirmaEdicion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Nota editada correctamente"
+            });
+        },
         async muestraNota(){
             let textoNota = await this.obtenerDatosNota();
 
@@ -81,24 +93,12 @@ export default {
                 },
                 preConfirm: () => {
                     let texto = Swal.getPopup().querySelector("textarea").value;
-                    if (texto != this.inputValue) {
+                    if (texto != textoNota) {
                         this.editarNota(texto);
+                        this.popUpConfirmaEdicion();
                     }
                 }
-              });
-              if (textoInsertado != await this.obtenerDatosNota()) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                });
-                Toast.fire({
-                    icon: "success",
-                    title: "Nota editada correctamente"
-                });
-            }
+            });
         },
     }
 }
