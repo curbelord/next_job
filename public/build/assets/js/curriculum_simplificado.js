@@ -29,7 +29,7 @@ export default {
                     <a href="{{ url_nota }}" @click.prevent="muestraNota"></a>
                 </div>
                 <div class="imagen_ojo">
-                    <a href="{{ url_ojo }}"></a>
+                    <a href="#" @click.prevent="avisoPadreImpresionCurriculum"></a>
                 </div>
             </div>
         </div>
@@ -99,6 +99,9 @@ export default {
                     }
                 }
             });
+        },
+        avisoPadreImpresionCurriculum(){
+            this.$emit('impresionCurriculum', this.id_candidato);
         },
     }
 }

@@ -344,6 +344,7 @@ class DDBBSeeder extends Seeder
             'id_experiencia' => 1,
             'nombre' => 'Desarrollador web',
             'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
             'fecha_inicio' => '2020-01-01',
             'fecha_fin' => '2021-12-31',
         ]);
@@ -353,6 +354,7 @@ class DDBBSeeder extends Seeder
             'id_experiencia' => 1,
             'nombre' => 'Desarrollador web',
             'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
             'fecha_inicio' => '2020-01-01',
             'fecha_fin' => '2021-12-31',
         ]);
@@ -362,6 +364,7 @@ class DDBBSeeder extends Seeder
             'id_experiencia' => 1,
             'nombre' => 'Desarrollador web',
             'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
             'fecha_inicio' => '2020-01-01',
             'fecha_fin' => '2021-12-31',
         ]);
@@ -371,6 +374,7 @@ class DDBBSeeder extends Seeder
             'id_experiencia' => 1,
             'nombre' => 'Desarrollador web',
             'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
             'fecha_inicio' => '2020-01-01',
             'fecha_fin' => '2021-12-31',
         ]);
@@ -380,6 +384,7 @@ class DDBBSeeder extends Seeder
             'id_experiencia' => 1,
             'nombre' => 'Desarrollador web',
             'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
             'fecha_inicio' => '2020-01-01',
             'fecha_fin' => '2021-12-31',
         ]);

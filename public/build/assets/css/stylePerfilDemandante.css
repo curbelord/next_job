@@ -1,0 +1,226 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+/* Sección 1 */
+
+/* Perfil */
+
+#container_datos_top_curriculum{
+    grid-column: 3 / 11;
+    grid-row: 1 / 2;
+}
+
+#subcontainer_datos_curriculum{
+    margin-top: 25px;
+}
+
+#datos_curriculum{
+    display: flex;
+    padding: 20px;
+    border: 2px solid #2FB9CE;
+    border-radius: 10px;
+}
+
+#imagen_usuario_curriculum{
+    min-width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+}
+
+#nombre_usuario_curriculum h3{
+    font-size: 1.3em;
+}
+
+#fecha_nacimiento_curriculum, #direccion_postal_curriculum, #telefono_curriculum, #correo_electronico_curriculum{
+    margin-top: 10px;
+}
+
+
+/* Sección 2 */
+
+/* Experiencia laboral */
+
+#container_experiencia_laboral_curriculum{
+    grid-column: 3 / 11;
+    grid-row: 2 / 3;
+    margin-top: 100px;
+}
+
+#titulo_experiencia_laboral_curriculum h3{
+    font-size: 1.5em;
+}
+
+#subcontainer_experiencia_laboral_curriculum{
+    padding: 15px;
+    margin-top: 50px;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+}
+
+/* Componente Experiencia laboral */
+
+.container_experiencia_curriculum{
+    padding: 25px;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.datos_experiencia_iconos_curriculum{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nombre_trabajo_curriculum h3{
+    font-size: 1.3em;
+}
+
+.nombre_empresa_curriculum{
+    margin: 10px 0px
+}
+
+.descripcion_experiencia_curriculum{
+    margin-top: 20px;
+}
+
+/* Sección 3 */
+
+/* Formación */
+
+#container_formacion_curriculum{
+    grid-column: 3 / 11;
+    grid-row: 3 / 4;
+    margin: 100px 0px;
+}
+
+#titulo_formacion_curriculum h3{
+    font-size: 1.5em;
+}
+
+#subcontainer_formacion_curriculum{
+    padding: 15px;
+    margin-top: 50px;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+}
+
+/* Componente Formación */
+
+.container_formacion_curriculum{
+    padding: 25px;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.datos_formacion_iconos_curriculum{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nombre_formacion_curriculum h3{
+    font-size: 1.3em;
+}
+
+.nombre_centro_curriculum{
+    margin: 10px 0px;
+}
+
+
+@media only screen and (max-width: 720px){
+    /* Sección 1 */
+
+    /* Perfil */
+
+    #container_datos_top_curriculum{
+        grid-column: 2 / 12;
+    }
+
+    #subcontainer_datos_curriculum{
+        flex-wrap: wrap;
+    }
+
+    #datos_curriculum{
+        width: 100%;
+    }
+
+    #datos_curriculum{
+        margin-right: 0px;
+        flex-wrap: wrap;
+    }
+
+    #imagen_usuario_curriculum{
+        margin-bottom: 20px;
+    }
+
+    #nombre_usuario_curriculum h3{
+        font-size: 1.2em;
+    }
+
+    /* Sección 2 */
+
+    /* Experiencia laboral */
+
+    #container_experiencia_laboral_curriculum{
+        grid-column: 2 / 12;
+    }
+
+    #titulo_experiencia_laboral_curriculum h3{
+        font-size: 1.3em;
+    }
+
+    #subcontainer_experiencia_laboral_curriculum{
+        padding: 10px;
+    }
+
+    /* Componente Experiencia laboral */
+
+    .datos_experiencia_iconos_curriculum{
+        flex-direction: column-reverse;
+    }
+
+    .nombre_trabajo_curriculum{
+        margin-top: 20px;
+    }
+
+    .nombre_trabajo_curriculum h3{
+        font-size: 1.2em;
+    }
+
+    /* Sección 3 */
+
+    /* Formación */
+
+    #container_formacion_curriculum{
+        grid-column: 2 / 12;
+    }
+
+    #titulo_formacion_curriculum h3{
+        font-size: 1.3em;
+    }
+
+    #subcontainer_formacion_curriculum{
+        padding: 10px;
+    }
+
+    /* Componente Formación */
+
+    .datos_formacion_iconos_curriculum{
+        flex-direction: column-reverse;
+    }
+
+    .nombre_formacion_curriculum{
+        margin-top: 20px;
+    }
+
+    .nombre_formacion_curriculum h3{
+        font-size: 1.2em;
+    }
+}

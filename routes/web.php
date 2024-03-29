@@ -50,26 +50,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
-    
+
     Route::get('/perfil/ver', function (){
         return view('perfil.ver_demandante');
     });
-    
+
     Route::get('/perfil/editar', function (){
         return view('perfil.editar_demandante');
     });
-    
+
     Route::get('/perfil/editar/experiencia-laboral', function (){
         return view('perfil.editar.experiencia_laboral');
     });
-    
+
     Route::get('/perfil/editar/formacion', function (){
         return view('perfil.editar.formacion');
     });
 
     Route::get('/recuperar-contrasena', [LoginController::class, 'recuperar_contrasena'])->name('auth.recuperar_contrasena');
     // AÚN NO ESTÁ IMPLEMENTADA, PERO SERÍA UNA VISTA PARA RECUPERAR LA CONTRASEÑA MEDIANTE EL CORREO ELECTRÓNICO
-    
+
 });
 
 

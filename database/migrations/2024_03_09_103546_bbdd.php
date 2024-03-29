@@ -86,6 +86,7 @@ return new class extends Migration
             $table->integer('id_experiencia');
             $table->string('nombre');
             $table->string('centro_laboral');
+            $table->text('descripcion');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->foreign('id_cv')->references('id')->on('cv')->onDelete('cascade');

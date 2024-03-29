@@ -187,6 +187,3 @@ const app = Vue.createApp({
 }).mount('#container');
 
 app.obtenerProcesos();
-
-
-// PENDIENTE - AÑADIR ACCESO A NOTA Y A LA VISUALIZACIÓN DEL CANDIDATO DENTRO DEL CURRÍCULUM SIMPLIFICADO
