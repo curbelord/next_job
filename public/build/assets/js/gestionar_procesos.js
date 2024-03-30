@@ -80,7 +80,7 @@ const app = Vue.createApp({
         <numeracion_slider :numero_pagina="numero_pagina"></numeracion_slider>
     </div>
 
-    <proceso_detalle v-if="procesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta"></proceso_detalle>
+    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta"></proceso_detalle>
     `,
     components: {
         proceso,
@@ -89,6 +89,15 @@ const app = Vue.createApp({
         curriculum_simplificado
     },
     methods: {
+        imprimirElementosGestionProcesos(){
+            $("#container_datos_top").css("display", "grid");
+            $("#container_procesos").css("display", "grid");
+            $("#container_slider_numeracion").css("display", "grid");
+        },
+        quitarProcesoDetalle(){
+            this.procesoDetalle = false;
+            this.imprimirElementosGestionProcesos();
+        },
         async obtenerProcesos(){
             try {
                 let datosProcesos = await $.get('http://next-job.lan/build/assets/php/proceso.php');
