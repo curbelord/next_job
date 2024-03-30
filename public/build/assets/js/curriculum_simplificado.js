@@ -26,10 +26,10 @@ export default {
         <div class="container_right_candidato">
             <div class="imagen_nota_ojo">
                 <div class="imagen_nota">
-                    <a href="{{ url_nota }}" @click.prevent="muestraNota"></a>
+                    <a href="ver_nota" @click.prevent="muestraNota"></a>
                 </div>
                 <div class="imagen_ojo">
-                    <a href="#" @click.prevent="avisoPadreImpresionCurriculum"></a>
+                    <a href="ver_curriculum" @click.prevent="avisoPadreImpresionCurriculum"></a>
                 </div>
             </div>
         </div>

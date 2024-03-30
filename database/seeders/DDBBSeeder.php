@@ -665,6 +665,14 @@ class DDBBSeeder extends Seeder
 
         Estado::create([
             'id' => 5,
+            'nombre' => 'Entrevista negativa',
+            'descripcion' => 'Falló en la entrevista de trabajo',
+            'id_demandante' => 7,
+            'id_oferta' => 4,
+        ]);
+
+        Estado::create([
+            'id' => 6,
             'nombre' => 'Descartado',
             'descripcion' => 'Falló en la entrevista de trabajo',
             'id_demandante' => 7,
