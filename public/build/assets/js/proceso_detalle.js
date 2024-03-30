@@ -6,7 +6,7 @@ export default {
         return {
             numeroOffset: 0,
             numeroLimiteCandidatos: 20,
-            estadoCurriculum: false,
+            curriculumVisible: false,
 
             // Datos componente "curriculum"
 
@@ -16,6 +16,8 @@ export default {
             direccion_postal: "",
             telefono: "",
             email: "",
+            nombre_estado: "",
+            fecha_estado: "",
             nombre_experiencia: [],
             empresa_experiencia: [],
             fecha_inicio_experiencia: [],
@@ -35,6 +37,9 @@ export default {
     template: `
     <div id="container_proceso_detalle">
         <div id="container_datos_top_proceso_detalle">
+            <div class="container_boton_volver">
+                <button type="button" @click.prevent="avisoPadreOcultarProcesoDetalle">Volver</button>
+            </div>
             <div id="titulo_datos_procesos_proceso_detalle">
                 <h3>#{{ referencia }} &nbsp; {{ puesto_trabajo }}</h3>
             </div>
@@ -104,9 +109,17 @@ export default {
         </div>
     </div>
 
-    <curriculum v-if="estadoCurriculum" :id_candidato="id_candidato" :id_oferta="referencia" :nombre="nombre" :fecha_nacimiento="fecha_nacimiento" :direccion_postal="direccion_postal" :telefono="telefono" :email="email" :nombre_experiencia="nombre_experiencia" :empresa_experiencia="empresa_experiencia" :fecha_inicio_experiencia="fecha_inicio_experiencia" :fecha_fin_experiencia="fecha_fin_experiencia" :descripcion_experiencia="descripcion_experiencia" :nombre_formacion="nombre_formacion" :centro_formacion="centro_formacion" :fecha_inicio_formacion="fecha_inicio_formacion" :fecha_fin_formacion="fecha_fin_formacion"></curriculum>
+    <curriculum v-if="curriculumVisible" @ocultarCurriculum="quitarCurriculum" :id_candidato="id_candidato" :id_oferta="referencia" :nombre="nombre" :fecha_nacimiento="fecha_nacimiento" :direccion_postal="direccion_postal" :telefono="telefono" :email="email" :nombre_estado="nombre_estado" :fecha_estado="fecha_estado" :nombre_experiencia="nombre_experiencia" :empresa_experiencia="empresa_experiencia" :fecha_inicio_experiencia="fecha_inicio_experiencia" :fecha_fin_experiencia="fecha_fin_experiencia" :descripcion_experiencia="descripcion_experiencia" :nombre_formacion="nombre_formacion" :centro_formacion="centro_formacion" :fecha_inicio_formacion="fecha_inicio_formacion" :fecha_fin_formacion="fecha_fin_formacion"></curriculum>
     `,
+    emits: ['ocultarProcesoDetalle'],
     methods: {
+        avisoPadreOcultarProcesoDetalle(){
+            this.$emit('ocultarProcesoDetalle', true);
+        },
+        quitarCurriculum(){
+            this.curriculumVisible = false;
+            this.muestraElementosProcesoDetalle();
+        },
         async obtenerDatosCurriculum(idCandidato){
             try {
                 let datosCurriculum = await $.get('http://next-job.lan/build/assets/php/obtener_perfil.php?id_demandante=' + idCandidato);
@@ -134,6 +147,8 @@ export default {
             this.direccion_postal = arrayDatos[0][0]["direccion_postal"];
             this.telefono = arrayDatos[0][0]["telefono"];
             this.email = arrayDatos[0][0]["email"];
+            this.nombre_estado = arrayDatos[0][0]["nombre_estado"];
+            this.fecha_estado = new Date(arrayDatos[0][0]["fecha_estado"]).toLocaleDateString("es-ES");
 
             for (let i = 0; i < arrayDatos[1].length; i++){
                 this.nombre_experiencia.push(arrayDatos[1][i]["nombre_experiencia"]);
@@ -155,13 +170,16 @@ export default {
                 let objetoDatosCurriculum = await this.obtenerDatosCurriculum(idCandidato);
                 this.almacenaDatosCurriculum(objetoDatosCurriculum);
                 this.ocultaElementosProcesoDetalle();
-                this.estadoCurriculum = true;
+                this.curriculumVisible = true;
             } catch (error){
                 console.error('Error al hacer la petición', error);
             }
         },
         ocultaElementosProcesoDetalle(){
             $("#container_proceso_detalle").css("display", "none");
+        },
+        muestraElementosProcesoDetalle(){
+            $("#container_proceso_detalle").css("display", "grid");
         },
     }
 }

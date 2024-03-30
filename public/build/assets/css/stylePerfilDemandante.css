@@ -15,13 +15,29 @@
     grid-row: 1 / 2;
 }
 
+.container_boton_volver{
+    display: flex;
+    justify-content: end;
+}
+
+.container_boton_volver button{
+    display: block;
+    cursor: pointer;
+    padding: 15px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #2FB9CE;
+    border: none;
+    border-radius: 10px;
+}
+
 #subcontainer_datos_curriculum{
     margin-top: 25px;
 }
 
 #datos_curriculum{
     display: flex;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     border: 2px solid #2FB9CE;
     border-radius: 10px;
 }
@@ -34,12 +50,50 @@
     border-radius: 50%;
 }
 
+#container_datos_curriculum{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#valor_datos_curriculum{
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
 #nombre_usuario_curriculum h3{
     font-size: 1.3em;
 }
 
 #fecha_nacimiento_curriculum, #direccion_postal_curriculum, #telefono_curriculum, #correo_electronico_curriculum{
     margin-top: 10px;
+}
+
+/* Datos último estado */
+
+#container_datos_ultimo_estado_curriculum{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#subcontainer_datos_ultimo_estado_curriculum{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #2FB9CE;
+    border-radius: 10px;
+}
+
+#subcontainer_datos_ultimo_estado_curriculum h3{
+    width: 100%;
+    font-size: 1.3em;
+}
+
+#subcontainer_datos_ultimo_estado_curriculum p{
+    margin-top: -20px;
 }
 
 /* Opciones preseleccionar/descartar */
@@ -129,11 +183,6 @@
     border-radius: 30px;
 }
 
-.datos_experiencia_iconos_curriculum{
-    display: flex;
-    justify-content: space-between;
-}
-
 .nombre_trabajo_curriculum h3{
     font-size: 1.3em;
 }
@@ -176,11 +225,6 @@
     border-radius: 30px;
 }
 
-.datos_formacion_iconos_curriculum{
-    display: flex;
-    justify-content: space-between;
-}
-
 .nombre_formacion_curriculum h3{
     font-size: 1.3em;
 }
@@ -218,6 +262,30 @@
 
     #nombre_usuario_curriculum h3{
         font-size: 1.2em;
+    }
+
+    /* Datos último estado */
+
+    #container_datos_curriculum{
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: flex-end;
+    }
+
+    #container_datos_ultimo_estado_curriculum{
+        justify-content: start;
+    }
+
+    #subcontainer_datos_ultimo_estado_curriculum{
+        width: 100%;
+    }
+
+    #subcontainer_datos_ultimo_estado_curriculum h3{
+        font-size: 1.2em;
+    }
+
+    #subcontainer_datos_ultimo_estado_curriculum p{
+        margin-top: 0px;
     }
 
     /* Opciones preseleccionar/descartar */
@@ -262,14 +330,6 @@
 
     /* Componente Experiencia laboral */
 
-    .datos_experiencia_iconos_curriculum{
-        flex-direction: column-reverse;
-    }
-
-    .nombre_trabajo_curriculum{
-        margin-top: 20px;
-    }
-
     .nombre_trabajo_curriculum h3{
         font-size: 1.2em;
     }
@@ -291,14 +351,6 @@
     }
 
     /* Componente Formación */
-
-    .datos_formacion_iconos_curriculum{
-        flex-direction: column-reverse;
-    }
-
-    .nombre_formacion_curriculum{
-        margin-top: 20px;
-    }
 
     .nombre_formacion_curriculum h3{
         font-size: 1.2em;
