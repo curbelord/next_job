@@ -17,8 +17,6 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
-
 $sql = "UPDATE inscripcion SET anotacion='" . $_POST['texto'] . "' WHERE id_demandante=" . $_POST['id_demandante'] . " AND id_oferta=" . $_POST['id_oferta'];
 
 $result = $conn->query($sql);

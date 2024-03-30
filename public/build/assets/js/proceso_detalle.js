@@ -10,6 +10,7 @@ export default {
 
             // Datos componente "curriculum"
 
+            id_candidato: "",
             nombre: "",
             fecha_nacimiento: "",
             direccion_postal: "",
@@ -103,7 +104,7 @@ export default {
         </div>
     </div>
 
-    <curriculum v-if="estadoCurriculum" :nombre="nombre" :fecha_nacimiento="fecha_nacimiento" :direccion_postal="direccion_postal" :telefono="telefono" :email="email" :nombre_experiencia="nombre_experiencia" :empresa_experiencia="empresa_experiencia" :fecha_inicio_experiencia="fecha_inicio_experiencia" :fecha_fin_experiencia="fecha_fin_experiencia" :descripcion_experiencia="descripcion_experiencia" :nombre_formacion="nombre_formacion" :centro_formacion="centro_formacion" :fecha_inicio_formacion="fecha_inicio_formacion" :fecha_fin_formacion="fecha_fin_formacion"></curriculum>
+    <curriculum v-if="estadoCurriculum" :id_candidato="id_candidato" :id_oferta="referencia" :nombre="nombre" :fecha_nacimiento="fecha_nacimiento" :direccion_postal="direccion_postal" :telefono="telefono" :email="email" :nombre_experiencia="nombre_experiencia" :empresa_experiencia="empresa_experiencia" :fecha_inicio_experiencia="fecha_inicio_experiencia" :fecha_fin_experiencia="fecha_fin_experiencia" :descripcion_experiencia="descripcion_experiencia" :nombre_formacion="nombre_formacion" :centro_formacion="centro_formacion" :fecha_inicio_formacion="fecha_inicio_formacion" :fecha_fin_formacion="fecha_fin_formacion"></curriculum>
     `,
     methods: {
         async obtenerDatosCurriculum(idCandidato){
@@ -127,6 +128,7 @@ export default {
             }
         },
         almacenaDatosCurriculum(arrayDatos){
+            this.id_candidato = arrayDatos[0][0]["id"];
             this.nombre = arrayDatos[0][0]["nombre"];
             this.fecha_nacimiento = new Date(arrayDatos[0][0]["fecha_nacimiento"]).toLocaleDateString("es-ES");
             this.direccion_postal = arrayDatos[0][0]["direccion_postal"];

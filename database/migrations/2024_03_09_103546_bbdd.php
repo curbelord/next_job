@@ -153,7 +153,7 @@ return new class extends Migration
         // Estado
         Schema::create('estado', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('nombre', ['Inscrito', 'CV leído', 'Preseleccionado', 'Seleccionado para entrevista', 'Entrevistado', 'Descartado']);
+            $table->enum('nombre', ['Inscrito', 'CV leído', 'Preseleccionado', 'Seleccionado para entrevista', 'Entrevista positiva', 'Entrevista negativa', 'Descartado']);
             $table->string('descripcion');
             $table->integer('id_demandante')->unsigned();
             $table->unsignedBigInteger('id_oferta');
