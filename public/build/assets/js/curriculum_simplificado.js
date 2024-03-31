@@ -1,5 +1,5 @@
 export default {
-    props: ['estilo_container_candidato', 'estilo_curriculum_visible', 'url_curriculum', 'url_nota', 'url_ojo', 'nombre_o_id_candidatos', 'edad_o_experiencia_candidatos', 'i', 'id_oferta', 'id_candidato'],
+    props: ['estilo_container_candidato', 'estilo_curriculum_visible', 'nombre_o_id_candidatos', 'edad_o_experiencia_candidatos', 'i', 'id_oferta', 'id_candidato'],
     data(){
         return {
             idCandidatos: [],
@@ -20,7 +20,7 @@ export default {
         </div>
         <div class="container_mid_candidato" style="{{ estilo_container_candidato }}">
             <div class="curriculum" style="{{ estilo_curriculum_visible }}">
-                <a href="{{ url_curriculum }}">Curriculum</a>
+                <a href="ver_curriculum_en_pdf">Curriculum</a>
             </div>
         </div>
         <div class="container_right_candidato">
