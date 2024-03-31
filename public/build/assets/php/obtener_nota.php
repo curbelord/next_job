@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
     echo '{"nota":"' . $row["nota"] . '"}';
   }
 } else {
-  echo "0 results";
+  echo '{"nota":""}';
 }
 
 $conn->close();

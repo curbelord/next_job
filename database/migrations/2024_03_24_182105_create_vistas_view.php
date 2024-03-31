@@ -12,9 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement("CREATE VIEW candidatos_preseleccionados AS SELECT referencia AS 'id_oferta', COUNT(nombre) AS 'candidatos_preseleccionados' FROM oferta, estado WHERE oferta.referencia = estado.id_oferta AND nombre LIKE 'Preseleccionado'  GROUP BY referencia;");
+        DB::statement("CREATE VIEW candidatos_preseleccionados AS SELECT referencia AS 'id_oferta', COUNT(DISTINCT nombre) AS 'candidatos_preseleccionados' FROM oferta, estado WHERE oferta.referencia = estado.id_oferta AND nombre LIKE 'Preseleccionado'  GROUP BY referencia;");
 
-        DB::statement("CREATE VIEW candidatos_descartados AS SELECT referencia AS 'id_oferta', COUNT(nombre) AS 'candidatos_descartados' FROM oferta, estado WHERE oferta.referencia = estado.id_oferta AND nombre LIKE 'Descartado'  GROUP BY referencia;");
+        DB::statement("CREATE VIEW candidatos_descartados AS SELECT referencia AS 'id_oferta', COUNT(DISTINCT nombre) AS 'candidatos_descartados' FROM oferta, estado WHERE oferta.referencia = estado.id_oferta AND nombre LIKE 'Descartado'  GROUP BY referencia;");
     }
 
     /**

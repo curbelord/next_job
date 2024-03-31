@@ -39,9 +39,6 @@ export default {
                     </div>
                     <div class="imagen_datos_mid_right imagen_papelera">
                         <a href="#"></a>
-                        <form method="POST" action="#" class="formulario_eliminacion">
-                            <button type="submit"></button>
-                        </form>
                     </div>
                 </div>
             </div>

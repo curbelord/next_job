@@ -1,11 +1,19 @@
 .numeracion_slider{
-    cursor: pointer;
-    padding: 12px 15px;
     margin-right: 20px;
     margin-bottom: 10px;
     background: none;
     border: 2px solid #2FB9CE;
     border-radius: 10px;
+}
+
+.numeracion_slider button{
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    padding: 12px 15px;
+    background: none;
+    border: none;
 }
 
 @media only screen and (max-width: 720px){

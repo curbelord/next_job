@@ -7,16 +7,18 @@ import curriculum_simplificado from "./curriculum_simplificado.js";
 const app = Vue.createApp({
     data(){
         return {
+            /* Datos propios */
             numeroProcesos: 0,
-            referencia: [],
-            puesto_trabajo: [],
-            ubicacion: [],
-            fecha_creacion: [],
-            numero_candidatos: [],
-            curriculums_ciegos: [],
             candidatos_totales: 0,
             candidatos_preseleccionados: 0,
-            numero_pagina: 1,
+            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
+            numeroOffset: 0,
+
+            /* Datos componente proceso */
+            ubicacion: [],
+            fecha_creacion: [],
+
+            /* Datos componente proceso_detalle */
             procesoDetalle: false,
             posicionProcesoSeleccionado: 0,
             candidatos_preseleccionados_proceso: 0,
@@ -34,6 +36,17 @@ const app = Vue.createApp({
             jornada_proceso: "",
             turno_proceso: "",
             descripcion_oferta: "",
+
+            /* Datos componentes proceso/proceso_detalle */
+            referencia: [],
+            puesto_trabajo: [],
+            numero_candidatos: [],
+
+            /* Se almacenan datos, pero no se usa */
+            curriculums_ciegos: [],
+
+            /* Datos componente numeracion_slider */
+            numero_pagina: 1,
         }
     },
     template: `
@@ -66,7 +79,7 @@ const app = Vue.createApp({
     <div id="container_procesos">
         <div id="subcontainer_procesos">
 
-            <proceso @abrirProceso="imprimirProceso" v-for="i in numeroProcesos" :key="i" :referencia="referencia[i - 1]" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]"></proceso>
+            <proceso @abrirProceso="imprimirProceso" v-for="i in referencia.length" :key="i" :referencia="referencia[i - 1]" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]"></proceso>
 
             <div id="container_sin_ofertas" v-if="numeroProcesos == 0">
                 <div id="titulo_sin_ofertas">
@@ -77,7 +90,7 @@ const app = Vue.createApp({
     </div>
 
     <div id="container_slider_numeracion">
-        <numeracion_slider :numero_pagina="numero_pagina"></numeracion_slider>
+        <numeracion_slider v-for="i in (parseInt(numeroProcesos / 10) + 1)" @recargarProcesos="recargaProcesos" :key="i" :numero_pagina="i"></numeracion_slider>
     </div>
 
     <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :url_curriculum="url_curriculum" :url_nota="url_nota" :url_ojo="url_ojo" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta"></proceso_detalle>
@@ -100,7 +113,7 @@ const app = Vue.createApp({
         },
         async obtenerProcesos(){
             try {
-                let datosProcesos = await $.get('http://next-job.lan/build/assets/php/proceso.php');
+                let datosProcesos = await $.get('http://next-job.lan/build/assets/php/proceso.php?id_seleccionador=' + this.idSeleccionador + '&numero_offset=' + this.numeroOffset);
 
                 let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
                 objeto = JSON.parse(objeto);
@@ -108,7 +121,6 @@ const app = Vue.createApp({
                 console.log(objeto["procesos"]);
 
                 this.almacenaProcesosObtenidos(objeto["procesos"]);
-                this.actualizaCantidadProcesos(objeto["procesos"]);
 
                 return objeto;
             } catch (error) {
@@ -129,11 +141,7 @@ const app = Vue.createApp({
                 }
             }
             this.candidatos_totales = this.numero_candidatos.reduce((acumulador, valorActual) => acumulador + valorActual);
-        },
-        actualizaCantidadProcesos(arrayProcesos){
-            for (let i = 0; i < arrayProcesos.length; i++){
-                this.numeroProcesos++;
-            }
+            this.numeroProcesos = arrayProcesos[0]["cantidad_total_ofertas"];
         },
         ocultaPanelPrincipal(){
             $("#container_datos_top").css("display", "none");
@@ -145,6 +153,7 @@ const app = Vue.createApp({
                 let datosProceso = await $.get('http://next-job.lan/build/assets/php/proceso_detalle.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo);
 
                 let objeto = '{"proceso":[' + datosProceso.substring(0, datosProceso.length - 1) + "]}";
+                console.log(objeto);
                 objeto = JSON.parse(objeto);
 
                 console.log(objeto["proceso"]);
@@ -190,6 +199,19 @@ const app = Vue.createApp({
             console.log(this.estilo_container_candidato, this.estilo_curriculum_visible);
             this.procesoDetalle = true;
             this.posicionProcesoSeleccionado = this.referencia.indexOf(referencia);
+        },
+        limpiaDatosProcesosObtenidos(){
+            this.referencia = [];
+            this.puesto_trabajo = []
+            this.ubicacion = []
+            this.fecha_creacion = []
+            this.numero_candidatos = []
+            this.curriculums_ciegos = []
+        },
+        recargaProcesos(numeroPagina){
+            this.numeroOffset = (numeroPagina * 10) - 10;
+            this.limpiaDatosProcesosObtenidos();
+            this.obtenerProcesos();
         },
     },
 
