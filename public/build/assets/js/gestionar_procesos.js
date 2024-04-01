@@ -11,12 +11,13 @@ const app = Vue.createApp({
             numeroProcesos: 0,
             candidatos_totales: 0,
             candidatos_preseleccionados: 0,
-            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
+            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 8,
             numeroOffset: 0,
 
             /* Datos componente proceso */
             ubicacion: [],
             fecha_creacion: [],
+            estado: [],
 
             /* Datos componente proceso_detalle */
             procesoDetalle: false,
@@ -76,7 +77,7 @@ const app = Vue.createApp({
     <div id="container_procesos">
         <div id="subcontainer_procesos">
 
-            <proceso @abrirProceso="imprimirProceso" v-for="i in referencia.length" :key="i" :referencia="referencia[i - 1]" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]"></proceso>
+            <proceso @abrirProceso="imprimirProceso" v-for="i in referencia.length" :key="i" :referencia="referencia[i - 1]" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]" :estado="estado[i - 1]"></proceso>
 
             <div id="container_sin_ofertas" v-if="numeroProcesos == 0">
                 <div id="titulo_sin_ofertas">
@@ -132,6 +133,7 @@ const app = Vue.createApp({
                 this.fecha_creacion.push(arrayProcesos[i]["fecha_creacion"]);
                 this.numero_candidatos.push(parseInt(arrayProcesos[i]["candidatos_inscritos"]));
                 this.curriculums_ciegos.push(parseInt(arrayProcesos[i]["curriculums_ciegos"]));
+                this.estado.push(arrayProcesos[i]["estado"]);
 
                 if (arrayProcesos[i]["candidatos_preseleccionados"] != NaN && arrayProcesos[i]["candidatos_preseleccionados"] != "" && arrayProcesos[i]["candidatos_preseleccionados"] != undefined){
                     this.candidatos_preseleccionados += parseInt(arrayProcesos[i]["candidatos_preseleccionados"]);
