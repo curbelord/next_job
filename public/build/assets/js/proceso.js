@@ -1,5 +1,12 @@
 export default {
-    props: ['referencia', 'puesto_trabajo', 'ubicacion', 'fecha_creacion', 'numero_candidatos'],
+    props: ['referencia', 'puesto_trabajo', 'ubicacion', 'fecha_creacion', 'numero_candidatos', 'estado'],
+    data(){
+        return{
+            estadosPosibles: ["Publicada", "Plantilla", "Borrador"],
+            estadoSeleccionado: this.estado,
+            copiaEstadoEntrante: this.estado,
+        }
+    },
     template: `
     <div class="container_proceso">
         <div class="titulo_proceso">
@@ -21,11 +28,9 @@ export default {
                 </div>
             </div>
             <div class="datos_mid_mid_proceso">
-                <div class="estado">
-                    <select>
-                        <option value="null">Estado</option>
-                        <option value="publicada">Publicada</option>
-                        <option value="plantilla">Plantilla</option>
+                <div class="estado" @change="muestraPopUpEdicionEstado">
+                    <select v-model="estadoSeleccionado">
+                        <option v-for="estadoActual in estadosPosibles" :selected="estadoActual == estado" :value="estadoActual">{{ estadoActual }}</option>
                     </select>
                 </div>
             </div>
@@ -48,6 +53,67 @@ export default {
     methods: {
         avisoPadreImpresionProceso(){
             this.$emit('abrirProceso', this.referencia);
+        },
+        obtieneOpcionSeleccionada(){
+            let opciones = document.querySelectorAll("option");
+            let estado = ""
+
+            for (let i = 0; i < opciones.length; i++){
+                opciones[i].getAttribute("selected") ? estado = opciones[i].getAttribute("selected") : false;
+            }
+
+            console.log(estado);
+
+            return estado;
+        },
+        reseteaSelectAEstadoOriginal(){
+            this.estadoSeleccionado = this.copiaEstadoEntrante;
+        },
+        actualizaEstado(){
+            // let estado = this.obtieneOpcionSeleccionada();
+            let parametrosPeticion = "estado=" + this.estadoSeleccionado + "&referencia=" + this.referencia;
+
+            $.post('http://next-job.lan/build/assets/php/actualizar_estado_proceso.php', parametrosPeticion).done(function (){
+                console.log("Estado actualizado");
+            });
+        },
+        popUpConfirmaCambioEstado(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Estado actualizado correctamente"
+            });
+        },
+        async muestraPopUpEdicionEstado(){
+            await Swal.fire({
+                title: "¿Quieres cambiar el estado del proceso?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Cambiar",
+                confirmButtonColor: "#2FB9CE",
+                cancelButtonText: "Cancelar",
+                cancelButtonColor: "#FFFFFF",
+                customClass: {
+                  confirmButton: "boton_confirmar",
+                  cancelButton: "boton_cancelar",
+                },
+                preConfirm: () => {
+                    this.actualizaEstado();
+                    this.popUpConfirmaCambioEstado();
+                    this.copiaEstadoEntrante = this.estadoSeleccionado;
+                    console.log(this.estadoSeleccionado);
+                }
+            }).then((result) => {
+                if (result && result.dismiss === Swal.DismissReason.cancel) {
+                    this.reseteaSelectAEstadoOriginal();
+                }
+            });
+
         },
     },
 }
