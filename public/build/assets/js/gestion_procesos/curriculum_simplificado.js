@@ -1,17 +1,12 @@
 export default {
     props: ['estilo_container_candidato', 'estilo_curriculum_visible', 'nombre_o_id_candidatos', 'edad_o_experiencia_candidatos', 'i', 'id_oferta', 'id_candidato'],
-    data(){
-        return {
-            idCandidatos: [],
-        }
-    },
     template: `
     <div class="container_candidato">
         <div class="container_left_candidato">
             <div class="imagen_candidato"></div>
             <div class="nombre_edad">
                 <div class="nombre">
-                    <h3>{{ nombre_o_id_candidatos[i - 1] }}</h3>
+                    <h3><span v-if="nombre_o_id_candidatos >= 0">#</span>{{ nombre_o_id_candidatos[i - 1] }}</h3>
                 </div>
                 <div class="edad">
                     <p>{{ edad_o_experiencia_candidatos[i - 1] }} años</p>
