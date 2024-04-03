@@ -2,7 +2,7 @@ import experiencia_laboral from "./experiencia_laboral.js";
 import formacion from "./formacion.js";
 
 export default {
-    props: ['id_candidato', 'id_oferta', 'nombre', 'fecha_nacimiento', 'direccion_postal', 'telefono', 'email', 'nombre_estado', 'fecha_estado', 'nombre_experiencia', 'empresa_experiencia', 'fecha_inicio_experiencia', 'fecha_fin_experiencia', 'descripcion_experiencia', 'nombre_formacion', 'centro_formacion', 'fecha_inicio_formacion', 'fecha_fin_formacion'],
+    props: ['id_candidato', 'id_oferta', 'nombre', 'fecha_nacimiento', 'direccion_postal', 'telefono', 'email', 'nombre_estado', 'fecha_ultimo_estado', 'nombre_experiencia', 'empresa_experiencia', 'fecha_inicio_experiencia', 'fecha_fin_experiencia', 'descripcion_experiencia', 'nombre_formacion', 'centro_formacion', 'fecha_inicio_formacion', 'fecha_fin_formacion', 'curriculums_ciegos'],
     components: {
         experiencia_laboral,
         formacion,
@@ -19,10 +19,12 @@ export default {
                 <div id="container_datos_curriculum">
                     <div id="valor_datos_curriculum">
                         <div id="nombre_usuario_curriculum">
-                            <h3>{{ nombre }}</h3>
+                            <h3 v-if="curriculums_ciegos == 'NO'">{{ nombre }}</h3>
+                            <h3 v-else>#{{ id_candidato }}</h3>
                         </div>
                         <div id="fecha_nacimiento_curriculum">
-                            <p>{{ fecha_nacimiento }}</p>
+                            <p v-if="curriculums_ciegos == 'NO'">{{ fecha_nacimiento }}</p>
+                            <p v-else></p>
                         </div>
                         <div id="direccion_postal_curriculum">
                             <p>{{ direccion_postal }}</p>
@@ -31,14 +33,15 @@ export default {
                             <p>{{ telefono }}</p>
                         </div>
                         <div id="correo_electronico_curriculum">
-                            <p>{{ email }}</p>
+                            <p v-if="curriculums_ciegos == 'NO'">{{ email }}</p>
+                            <p v-else>{{ email.replace(/^([^@]+)(?=@)/, '*'.repeat(email.substring(0, email.indexOf('@')).length)) }}</p>
                         </div>
                     </div>
 
                     <div id="container_datos_ultimo_estado_curriculum">
                         <div id="subcontainer_datos_ultimo_estado_curriculum">
                             <h3>{{ nombre_estado }}</h3>
-                            <p>{{ fecha_estado }}</p>
+                            <p>{{ fecha_ultimo_estado }}</p>
                         </div>
                     </div>
                 </div>

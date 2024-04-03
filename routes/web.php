@@ -32,6 +32,10 @@ Route::get('/vue/gestionar/procesos', function (){
     return view('vue.gestionar_ofertas');
 });
 
+Route::get('/vue/principal/procesos', function (){
+    return view('vue.principal_procesos');
+});
+
 
 
 

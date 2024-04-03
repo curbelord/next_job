@@ -11,7 +11,7 @@ const app = Vue.createApp({
             numeroProcesos: 0,
             candidatos_totales: 0,
             candidatos_preseleccionados: 0,
-            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 8,
+            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 4,
             numeroOffset: 0,
 
             /* Datos componente proceso */
@@ -91,7 +91,7 @@ const app = Vue.createApp({
         <numeracion_slider v-for="i in (parseInt(numeroProcesos / 10) + 1)" @recargarProcesos="recargaProcesos" :key="i" :numero_pagina="i"></numeracion_slider>
     </div>
 
-    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta"></proceso_detalle>
+    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta" :curriculums_ciegos="curriculums_ciegos[posicionProcesoSeleccionado]"></proceso_detalle>
     `,
     components: {
         proceso,
@@ -105,8 +105,11 @@ const app = Vue.createApp({
             $("#container_procesos").css("display", "grid");
             $("#container_slider_numeracion").css("display", "grid");
         },
-        quitarProcesoDetalle(){
+        async quitarProcesoDetalle(){
             this.procesoDetalle = false;
+            this.reseteaValoresProcesoDetalle();
+            // this.reseteaValoresProcesosObtenidos();  -> funcionalidad pendiente de adaptación por intervalos
+            // this.obtenerProcesos();
             this.imprimirElementosGestionProcesos();
         },
         async obtenerProcesos(){
@@ -125,6 +128,33 @@ const app = Vue.createApp({
                 console.error('Error al hacer la petición', error);
             }
         },
+        reseteaValoresProcesosObtenidos(){
+            this.referencia = [];
+            this.puesto_trabajo = [];
+            this.ubicacion = [];
+            this.fecha_creacion = [];
+            this.numero_candidatos = [];
+            this.curriculums_ciegos = [];
+            this.estado = [];
+            this.candidatos_preseleccionados = 0;
+            this.candidatos_totales = 0;
+            this.numeroProcesos = 0;
+        },
+        reseteaValoresProcesoDetalle(){
+            this.posicionProcesoSeleccionado = 0;
+            this.candidatos_preseleccionados_proceso = 0;
+            this.candidatos_descartados_proceso = 0;
+            this.estilo_container_candidato = "";
+            this.estilo_curriculum_visible = "";
+            this.id_candidatos = [];
+            this.nombre_o_id_candidatos = [];
+            this.edad_o_experiencia_candidatos = [];
+            this.fecha_publicacion_proceso = "";
+            this.salario_proceso = 0;
+            this.jornada_proceso = "";
+            this.turno_proceso = "";
+            this.descripcion_oferta = "";
+        },
         almacenaProcesosObtenidos(arrayProcesos){
             for (let i = 0; i < arrayProcesos.length; i++){
                 this.referencia.push(arrayProcesos[i]["referencia"]);
@@ -132,7 +162,7 @@ const app = Vue.createApp({
                 this.ubicacion.push(arrayProcesos[i]["ubicacion"]);
                 this.fecha_creacion.push(arrayProcesos[i]["fecha_creacion"]);
                 this.numero_candidatos.push(parseInt(arrayProcesos[i]["candidatos_inscritos"]));
-                this.curriculums_ciegos.push(parseInt(arrayProcesos[i]["curriculums_ciegos"]));
+                this.curriculums_ciegos.push(arrayProcesos[i]["curriculums_ciegos"]);
                 this.estado.push(arrayProcesos[i]["estado"]);
 
                 if (arrayProcesos[i]["candidatos_preseleccionados"] != NaN && arrayProcesos[i]["candidatos_preseleccionados"] != "" && arrayProcesos[i]["candidatos_preseleccionados"] != undefined){
@@ -169,7 +199,7 @@ const app = Vue.createApp({
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
-                if (objeto.indexOf("0 candidatos") == - 1){
+                if (objeto.indexOf("0 candidatos") == -1){
                     objeto = JSON.parse(objeto);
                     console.log(objeto["candidatos"]);
                     this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
@@ -200,7 +230,7 @@ const app = Vue.createApp({
                     }else{
                         this.nombre_o_id_candidatos.push(arrayDatos[i]["id_candidato"]);
                     }
-                    this.edad_o_experiencia_candidatos.push(arrayDatos[i]["edad_o_experiencia_candidato"]);
+                    this.edad_o_experiencia_candidatos.push(parseInt(arrayDatos[i]["edad_o_experiencia_candidato"]));
                     this.id_candidatos.push(arrayDatos[i]["id_candidato"]);
                 }
             }
@@ -208,8 +238,8 @@ const app = Vue.createApp({
         imprimirProceso(referencia){
             let curriculumsCiegosSiNo = this.curriculums_ciegos[this.referencia.indexOf(referencia)];
             this.ocultaPanelPrincipal();
-            this.obtenerDatosProcesoSeleccionado(referencia, curriculumsCiegosSiNo);
-            this.obtenerDatosCandidatosProcesoSeleccionado(referencia);
+            this.obtenerDatosProcesoSeleccionado(referencia);
+            this.obtenerDatosCandidatosProcesoSeleccionado(referencia, curriculumsCiegosSiNo);
 
             if (curriculumsCiegosSiNo == "SI"){
                 this.estilo_container_candidato = "padding:0px;";

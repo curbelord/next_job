@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Gestionar procesos')
+@section('title', 'Principal procesos')
 
 @section('style')
     {{-- Estilos Gestionar procesos --}}
@@ -30,5 +30,5 @@
 
     </div>
 
-    <script type="module" src="{{ asset('build/assets/js/gestion_procesos/gestionar_procesos.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/js/principal_procesos.js') }}"></script>
 @endsection

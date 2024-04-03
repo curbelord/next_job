@@ -17,7 +17,7 @@ export default {
             telefono: "",
             email: "",
             nombre_estado: "",
-            fecha_estado: "",
+            fecha_ultimo_estado: "",
             nombre_experiencia: [],
             empresa_experiencia: [],
             fecha_inicio_experiencia: [],
@@ -29,7 +29,7 @@ export default {
             fecha_fin_formacion: [],
         }
     },
-    props: ['referencia', 'puesto_trabajo', 'numero_candidatos', 'candidatos_preseleccionados_proceso', 'candidatos_descartados_proceso', 'estilo_container_candidato', 'estilo_curriculum_visible', 'nombre_o_id_candidatos', 'edad_o_experiencia_candidatos', 'fecha_publicacion_proceso', 'salario_proceso', 'jornada_proceso', 'turno_proceso', 'id_candidatos', 'descripcion_oferta'],
+    props: ['referencia', 'puesto_trabajo', 'numero_candidatos', 'candidatos_preseleccionados_proceso', 'candidatos_descartados_proceso', 'estilo_container_candidato', 'estilo_curriculum_visible', 'nombre_o_id_candidatos', 'edad_o_experiencia_candidatos', 'fecha_publicacion_proceso', 'salario_proceso', 'jornada_proceso', 'turno_proceso', 'id_candidatos', 'descripcion_oferta', 'curriculums_ciegos'],
     components: {
         curriculum_simplificado,
         curriculum,
@@ -109,7 +109,7 @@ export default {
         </div>
     </div>
 
-    <curriculum v-if="curriculumVisible" @ocultarCurriculum="quitarCurriculum" :id_candidato="id_candidato" :id_oferta="referencia" :nombre="nombre" :fecha_nacimiento="fecha_nacimiento" :direccion_postal="direccion_postal" :telefono="telefono" :email="email" :nombre_estado="nombre_estado" :fecha_estado="fecha_estado" :nombre_experiencia="nombre_experiencia" :empresa_experiencia="empresa_experiencia" :fecha_inicio_experiencia="fecha_inicio_experiencia" :fecha_fin_experiencia="fecha_fin_experiencia" :descripcion_experiencia="descripcion_experiencia" :nombre_formacion="nombre_formacion" :centro_formacion="centro_formacion" :fecha_inicio_formacion="fecha_inicio_formacion" :fecha_fin_formacion="fecha_fin_formacion"></curriculum>
+    <curriculum v-if="curriculumVisible" @ocultarCurriculum="quitarCurriculum" :id_candidato="id_candidato" :id_oferta="referencia" :nombre="nombre" :fecha_nacimiento="fecha_nacimiento" :direccion_postal="direccion_postal" :telefono="telefono" :email="email" :nombre_estado="nombre_estado" :fecha_ultimo_estado="fecha_ultimo_estado" :nombre_experiencia="nombre_experiencia" :empresa_experiencia="empresa_experiencia" :fecha_inicio_experiencia="fecha_inicio_experiencia" :fecha_fin_experiencia="fecha_fin_experiencia" :descripcion_experiencia="descripcion_experiencia" :nombre_formacion="nombre_formacion" :centro_formacion="centro_formacion" :fecha_inicio_formacion="fecha_inicio_formacion" :fecha_fin_formacion="fecha_fin_formacion" :curriculums_ciegos="curriculums_ciegos"></curriculum>
     `,
     emits: ['ocultarProcesoDetalle'],
     methods: {
@@ -148,7 +148,7 @@ export default {
             this.telefono = arrayDatos[0][0]["telefono"];
             this.email = arrayDatos[0][0]["email"];
             this.nombre_estado = arrayDatos[0][0]["nombre_estado"];
-            this.fecha_estado = new Date(arrayDatos[0][0]["fecha_estado"]).toLocaleDateString("es-ES");
+            this.fecha_ultimo_estado = new Date(arrayDatos[0][0]["fecha_estado"]).toLocaleDateString("es-ES");
 
             for (let i = 0; i < arrayDatos[1].length; i++){
                 this.nombre_experiencia.push(arrayDatos[1][i]["nombre_experiencia"]);
