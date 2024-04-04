@@ -1,5 +1,6 @@
 import curriculum_simplificado from "./curriculum_simplificado.js";
 import curriculum from "./curriculum.js";
+import numeracion_slider from "./numeracion_slider.js";
 
 export default {
     data(){
@@ -7,6 +8,7 @@ export default {
             numeroOffset: 0,
             numeroLimiteCandidatos: 20,
             curriculumVisible: false,
+            numeroPagina: 1,
 
             // Datos componente "curriculum"
 
@@ -33,6 +35,7 @@ export default {
     components: {
         curriculum_simplificado,
         curriculum,
+        numeracion_slider,
     },
     template: `
     <div id="container_proceso_detalle">
@@ -72,9 +75,19 @@ export default {
             <div id="container_info_candidatos">
                 <div id="subcontainer_info_candidatos">
 
-                    <curriculum_simplificado @impresionCurriculum="imprimirCurriculum" v-for="i in numero_candidatos" :key="i" :i="i" :id_oferta="referencia" :id_candidato="id_candidatos[i - 1]" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos"></curriculum_simplificado>
+                    <curriculum_simplificado @impresionCurriculum="imprimirCurriculum" v-for="i in nombre_o_id_candidatos.length" :key="i" :i="i" :id_oferta="referencia" :id_candidato="id_candidatos[i - 1]" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos"></curriculum_simplificado>
+
+                    <div id="container_sin_candidatos" v-if="numero_candidatos.length == 0">
+                        <div id="titulo_sin_candidatos">
+                            <h3>No hay candidatos</h3>
+                        </div>
+                    </div>
 
                 </div>
+            </div>
+
+            <div id="container_slider_numeracion">
+                <numeracion_slider v-for="i in (parseInt(numero_candidatos / 10) + 1)" @avisarPadreRecargaCandidatos="avisoPadreRecargaCandidatos" :key="i" :numero_pagina="i" :metodo_boton="'recargaCandidatos'"></numeracion_slider>
             </div>
         </div>
 
@@ -111,7 +124,7 @@ export default {
 
     <curriculum v-if="curriculumVisible" @ocultarCurriculum="quitarCurriculum" :id_candidato="id_candidato" :id_oferta="referencia" :nombre="nombre" :fecha_nacimiento="fecha_nacimiento" :direccion_postal="direccion_postal" :telefono="telefono" :email="email" :nombre_estado="nombre_estado" :fecha_ultimo_estado="fecha_ultimo_estado" :nombre_experiencia="nombre_experiencia" :empresa_experiencia="empresa_experiencia" :fecha_inicio_experiencia="fecha_inicio_experiencia" :fecha_fin_experiencia="fecha_fin_experiencia" :descripcion_experiencia="descripcion_experiencia" :nombre_formacion="nombre_formacion" :centro_formacion="centro_formacion" :fecha_inicio_formacion="fecha_inicio_formacion" :fecha_fin_formacion="fecha_fin_formacion" :curriculums_ciegos="curriculums_ciegos"></curriculum>
     `,
-    emits: ['ocultarProcesoDetalle'],
+    emits: ['ocultarProcesoDetalle', 'recargarCandidatosProcesoDetalle'],
     methods: {
         avisoPadreOcultarProcesoDetalle(){
             this.$emit('ocultarProcesoDetalle', true);
@@ -180,6 +193,9 @@ export default {
         },
         muestraElementosProcesoDetalle(){
             $("#container_proceso_detalle").css("display", "grid");
+        },
+        avisoPadreRecargaCandidatos(numeroPagina){
+            this.$emit('recargarCandidatosProcesoDetalle', numeroPagina, this.referencia, this.curriculums_ciegos)
         },
     }
 }
