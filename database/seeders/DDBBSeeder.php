@@ -152,6 +152,102 @@ class DDBBSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
+        User::create([
+            'id' => 11,
+            'nombre' => 'Pepe',
+            'apellidos' => 'Gonzalez',
+            'genero' => 'Hombre',
+            'fecha_nacimiento' => '1999-06-15',
+            'direccion' => 'Callejon Claro 10',
+            'email' => 'pepe@gmail.com',
+            'telefono' => '+666600600',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::create([
+            'id' => 12,
+            'nombre' => 'María',
+            'apellidos' => 'Strauss',
+            'genero' => 'Mujer',
+            'fecha_nacimiento' => '1996-02-13',
+            'direccion' => 'Calle Alcalá 2',
+            'email' => 'mariastrauss@gmail.com',
+            'telefono' => '+666601601',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::create([
+            'id' => 13,
+            'nombre' => 'José Ignacio',
+            'apellidos' => 'Ramírez',
+            'genero' => 'Hombre',
+            'fecha_nacimiento' => '1990-08-24',
+            'direccion' => 'Calle Rosaleda 19',
+            'email' => 'joseignaciora@gmail.com',
+            'telefono' => '+666602602',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::create([
+            'id' => 14,
+            'nombre' => 'Magdalena',
+            'apellidos' => 'De los Santos',
+            'genero' => 'Mujer',
+            'fecha_nacimiento' => '1983-03-02',
+            'direccion' => 'Calle Rodeos 4',
+            'email' => 'magdasantos@gmail.com',
+            'telefono' => '+666603603',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::create([
+            'id' => 15,
+            'nombre' => 'Rodrigo',
+            'apellidos' => 'Fuentes',
+            'genero' => 'Hombre',
+            'fecha_nacimiento' => '1997-11-28',
+            'direccion' => 'Calle Manzanares 84',
+            'email' => 'rodrigofuentes@gmail.com',
+            'telefono' => '+666604604',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::create([
+            'id' => 16,
+            'nombre' => 'Jimena',
+            'apellidos' => 'Barrios',
+            'genero' => 'Mujer',
+            'fecha_nacimiento' => '1992-07-16',
+            'direccion' => 'Calle Esquina del Pensador 25',
+            'email' => 'jimenabarrios@gmail.com',
+            'telefono' => '+666605605',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::create([
+            'id' => 17,
+            'nombre' => 'Roberto',
+            'apellidos' => 'Martínez',
+            'genero' => 'Hombre',
+            'fecha_nacimiento' => '1985-05-12',
+            'direccion' => 'Avenida Principal 123',
+            'email' => 'robertomartinez@example.com',
+            'telefono' => '+123412341',
+            'password' => bcrypt('password123'),
+        ]);
+
+        User::create([
+            'id' => 18,
+            'nombre' => 'Laura',
+            'apellidos' => 'García',
+            'genero' => 'Mujer',
+            'fecha_nacimiento' => '1990-12-28',
+            'direccion' => 'Calle de la Luna 7',
+            'email' => 'lauragarcia@example.com',
+            'telefono' => '+987654541',
+            'password' => bcrypt('password'),
+        ]);
+
         // DEMANDANTES
 
         Demandante::create([
@@ -172,6 +268,38 @@ class DDBBSeeder extends Seeder
 
         Demandante::create([
             'id' => 9,
+        ]);
+
+        Demandante::create([
+            'id' => 11,
+        ]);
+
+        Demandante::create([
+            'id' => 12,
+        ]);
+
+        Demandante::create([
+            'id' => 13,
+        ]);
+
+        Demandante::create([
+            'id' => 14,
+        ]);
+
+        Demandante::create([
+            'id' => 15,
+        ]);
+
+        Demandante::create([
+            'id' => 16,
+        ]);
+
+        Demandante::create([
+            'id' => 17,
+        ]);
+
+        Demandante::create([
+            'id' => 18,
         ]);
 
         // EMPRESAS
@@ -822,7 +950,7 @@ class DDBBSeeder extends Seeder
 
         Inscripcion::create([
             'id_demandante' => 9,
-            'id_oferta' => 5,
+            'id_oferta' => 1,
             'anotacion' => 'Fuera de plazo de inscripción',
         ]);
 
@@ -834,8 +962,56 @@ class DDBBSeeder extends Seeder
 
         Inscripcion::create([
             'id_demandante' => 3,
-            'id_oferta' => 7,
+            'id_oferta' => 1,
             'anotacion' => 'Rechazado por el seleccionador',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 11,
+            'id_oferta' => 1,
+            'anotacion' => 'Interesante',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 12,
+            'id_oferta' => 1,
+            'anotacion' => 'Pendiente de revisión',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 13,
+            'id_oferta' => 1,
+            'anotacion' => 'Perfil no apto, pero se mantiene en reserva',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 14,
+            'id_oferta' => 1,
+            'anotacion' => 'Pendiente de entrevista',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 15,
+            'id_oferta' => 1,
+            'anotacion' => 'Rechazado por el seleccionador',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 16,
+            'id_oferta' => 1,
+            'anotacion' => '',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 17,
+            'id_oferta' => 1,
+            'anotacion' => '',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 18,
+            'id_oferta' => 1,
+            'anotacion' => '',
         ]);
 
         // Estado

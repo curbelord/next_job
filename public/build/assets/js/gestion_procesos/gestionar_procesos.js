@@ -11,7 +11,7 @@ const app = Vue.createApp({
             numeroProcesos: 0,
             candidatos_totales: 0,
             candidatos_preseleccionados: 0,
-            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 4,
+            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
             numeroOffset: 0,
 
             /* Datos componente proceso */
@@ -34,6 +34,7 @@ const app = Vue.createApp({
             jornada_proceso: "",
             turno_proceso: "",
             descripcion_oferta: "",
+            numeroOffsetProcesoDetalle: 0,
 
             /* Datos componentes proceso/proceso_detalle */
             referencia: [],
@@ -88,10 +89,10 @@ const app = Vue.createApp({
     </div>
 
     <div id="container_slider_numeracion">
-        <numeracion_slider v-for="i in (parseInt(numeroProcesos / 10) + 1)" @recargarProcesos="recargaProcesos" :key="i" :numero_pagina="i"></numeracion_slider>
+        <numeracion_slider v-for="i in (parseInt(numeroProcesos / 10) + 1)" @recargarProcesos="recargaProcesos" :key="i" :numero_pagina="i" :metodo_boton="'recargaProcesos'"></numeracion_slider>
     </div>
 
-    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta" :curriculums_ciegos="curriculums_ciegos[posicionProcesoSeleccionado]"></proceso_detalle>
+    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" @recargarCandidatosProcesoDetalle="recargaCandidatosProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta" :curriculums_ciegos="curriculums_ciegos[posicionProcesoSeleccionado]"></proceso_detalle>
     `,
     components: {
         proceso,
@@ -103,7 +104,7 @@ const app = Vue.createApp({
         imprimirElementosGestionProcesos(){
             $("#container_datos_top").css("display", "grid");
             $("#container_procesos").css("display", "grid");
-            $("#container_slider_numeracion").css("display", "grid");
+            $("#container_slider_numeracion").css("display", "flex");
         },
         async quitarProcesoDetalle(){
             this.procesoDetalle = false;
@@ -195,7 +196,7 @@ const app = Vue.createApp({
         },
         async obtenerDatosCandidatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo){
             try {
-                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/proceso_detalle_candidatos.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo);
+                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/proceso_detalle_candidatos.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + '&numero_offset=' + this.numeroOffsetProcesoDetalle);
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
@@ -257,10 +258,43 @@ const app = Vue.createApp({
             this.numero_candidatos = []
             this.curriculums_ciegos = []
         },
+        limpiaDatosCandidatosObtenidos(){
+            this.id_candidatos = [];
+            this.nombre_o_id_candidatos = [];
+            this.edad_o_experiencia_candidatos = [];
+        },
         recargaProcesos(numeroPagina){
-            this.numeroOffset = (numeroPagina * 10) - 10;
-            this.limpiaDatosProcesosObtenidos();
-            this.obtenerProcesos();
+            if (numeroPagina != this.numero_pagina){
+                this.numeroOffset = (numeroPagina * 10) - 10;
+                this.limpiaDatosProcesosObtenidos();
+                this.obtenerProcesos()
+                .then(() => {
+                    window.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth",
+                    });
+                })
+                .catch(error => {
+                    console.error("Error al obtener datos:", error);
+                });
+                this.numero_pagina = numeroPagina;
+            }
+        },
+        recargaCandidatosProcesoDetalle(numeroPagina, referencia, curriculumsCiegos){
+            this.numeroOffsetProcesoDetalle = (numeroPagina * 10) - 10;
+            this.limpiaDatosCandidatosObtenidos();
+            this.obtenerDatosCandidatosProcesoSeleccionado(referencia, curriculumsCiegos)
+            .then(() => {
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                });
+            })
+            .catch(error => {
+                console.error("Error al obtener datos:", error);
+            });
         },
     },
 
