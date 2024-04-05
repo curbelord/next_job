@@ -40,8 +40,22 @@
     min-height: 40px;
     min-width: 40px;
     margin-right: 10px;
-    background-color: var(--gris);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60% 60%;
     border-radius: 10px;
+}
+
+.imagen_inscritos{
+    background-image: url("../img/candidato.svg");
+}
+
+.imagen_preseleccionados{
+    background-image: url("../img/preseleccionado.svg");
+}
+
+.imagen_descartados{
+    background-image: url("../img/descartado.svg");
 }
 
 @media only screen and (max-width: 720px){
