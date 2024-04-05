@@ -40,8 +40,6 @@ const app = Vue.createApp({
             referencia: [],
             puesto_trabajo: [],
             numero_candidatos: [],
-
-            /* Se almacenan datos, pero no se usa */
             curriculums_ciegos: [],
 
             /* Datos componente numeracion_slider */
@@ -50,6 +48,9 @@ const app = Vue.createApp({
     },
     template: `
     <div id="container_datos_top">
+        <div class="container_boton_volver">
+            <a href="http://next-job.lan/vue/principal/procesos">Volver</a>
+        </div>
         <div id="titulo_gestion_procesos">
             <h3>Gestión de procesos</h3>
         </div>

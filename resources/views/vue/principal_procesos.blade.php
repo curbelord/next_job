@@ -3,20 +3,8 @@
 @section('title', 'Principal procesos')
 
 @section('style')
-    {{-- Estilos Gestionar procesos --}}
-
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleGestionarOfertas.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleComponenteProceso.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleNumeracionSlider.css') }}">
-
-    {{-- Estilos Ver proceso --}}
-
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleVerOferta.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCurriculumSimplificado.css') }}">
-
-    {{-- Estilos Perfil demandante --}}
-
-    <link rel="stylesheet" href="{{ asset('build/assets/css/stylePerfilDemandante.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/stylePrincipalEmpresa.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleUltimoProceso.css') }}">
 
     <script src="https://unpkg.com/vue@3"></script>
 

@@ -20,9 +20,10 @@
     justify-content: end;
 }
 
-.container_boton_volver button{
+.container_boton_volver button, .container_boton_volver a{
     display: block;
     cursor: pointer;
+    text-decoration: none;
     padding: 15px 30px;
     font-weight: bold;
     color: #FFF;
