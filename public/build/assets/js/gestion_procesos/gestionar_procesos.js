@@ -101,7 +101,7 @@ const app = Vue.createApp({
 
     <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" @recargarCandidatosProcesoDetalle="recargaCandidatosProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta" :curriculums_ciegos="curriculums_ciegos[posicionProcesoSeleccionado]"></proceso_detalle>
 
-    <editar_proceso v-if="editarProceso" @ocultarEditarProceso="ocultaEditarProceso" :puesto_trabajo="datosProcesoEdicion[0]" :ubicacion="datosProcesoEdicion[1]" :tipo_trabajo="datosProcesoEdicion[2]" :sector="datosProcesoEdicion[3]" :descripcion="datosProcesoEdicion[4]" :estudios_minimos="datosProcesoEdicion[5]" :experiencia_minima="datosProcesoEdicion[6]" :jornada="datosProcesoEdicion[7]" :turno="datosProcesoEdicion[8]" :numero_vacantes="datosProcesoEdicion[9]" :salario="datosProcesoEdicion[10]" :fecha_cierre="datosProcesoEdicion[11]" :estado="datosProcesoEdicion[12]" :referencia="datosProcesoEdicion[13]"></editar_proceso>
+    <editar_proceso v-if="editarProceso" @ocultarEditarProceso="ocultaEditarProceso" @retornarGestionProcesos="retornaGestionProcesos" :puesto_trabajo="datosProcesoEdicion[0]" :ubicacion="datosProcesoEdicion[1]" :tipo_trabajo="datosProcesoEdicion[2]" :sector="datosProcesoEdicion[3]" :descripcion="datosProcesoEdicion[4]" :estudios_minimos="datosProcesoEdicion[5]" :experiencia_minima="datosProcesoEdicion[6]" :jornada="datosProcesoEdicion[7]" :turno="datosProcesoEdicion[8]" :numero_vacantes="datosProcesoEdicion[9]" :salario="datosProcesoEdicion[10]" :fecha_cierre="datosProcesoEdicion[11]" :estado="datosProcesoEdicion[12]" :referencia="datosProcesoEdicion[13]"></editar_proceso>
     `,
     components: {
         proceso,
@@ -149,13 +149,28 @@ const app = Vue.createApp({
                     cancelButton: "boton_cancelar",
                 },
             }).then(async (result) => {
-                if (result.isConfirmed) {
+                if (result.isConfirmed){
                     this.reseteaValoresProcesosObtenidos();
                     await this.eliminaProceso(referenciaEntrante);
                     this.popUpConfirmaEliminacionProceso();
                     this.obtenerProcesos();
                 }
             });
+        },
+        async retornaGestionProcesos(){
+            try {
+                this.datosProcesoEdicion = [];
+                this.reseteaValoresProcesosObtenidos();
+                await this.obtenerProcesos();
+                this.ocultaEditarProceso();
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                });
+            } catch (error) {
+                console.error("Error al retornar la gestión de procesos:", error);
+            }
         },
         ocultaEditarProceso(){
             this.editarProceso = false;

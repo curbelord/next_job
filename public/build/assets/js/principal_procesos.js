@@ -1,16 +1,24 @@
 import ultimo_proceso from "./ultimo_proceso.js";
+import publicar_proceso from "./publicacion_proceso/publicar_proceso.js";
 
 const app = Vue.createApp({
     data(){
         return {
+            // Datos propios
+
             ultimosProcesos: [],
             idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
             nombreSeleccionador: "",
             generoSeleccionador: "",
+
+            // Datos componente publicar_proceso
+
+            publicarProceso: false,
         }
     },
     components: {
         ultimo_proceso,
+        publicar_proceso
     },
     template: `
     <div id="container_bienvenida_seleccionador">
@@ -65,6 +73,8 @@ const app = Vue.createApp({
 
         </div>
     </div>
+
+    <publicar_proceso v-if="publicarProceso"></publicar_proceso>
     `,
     methods: {
         almacenaNombreYGeneroSeleccionador(arrayDatos){

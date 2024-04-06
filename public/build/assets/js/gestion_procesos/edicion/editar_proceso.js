@@ -20,7 +20,7 @@ export default {
             <h3>Edita una oferta</h3>
         </div>
 
-        <form method="GET" action="#">
+        <form method="POST" action="#">
             <input type="text" id="titulo_crear_oferta" class="input_formulario" name="puesto_trabajo" placeholder="Título" :value="puesto_trabajo">
 
             <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Ubicación del centro de trabajo" :value="ubicacion">
@@ -164,6 +164,7 @@ export default {
                     let datosFormulario = this.obtieneDatosFormulario();
                     this.actualizarProceso(datosFormulario);
                     this.popUpConfirmaEdicion();
+                    this.$emit('retornarGestionProcesos');
                 }
             });
 
