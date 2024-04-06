@@ -37,13 +37,13 @@ export default {
             <div class="datos_mid_right_proceso">
                 <div class="hipervinculos">
                     <div class="imagen_datos_mid_right imagen_ojo">
-                        <a href="#" @click.prevent="avisoPadreImpresionProceso"></a>
+                        <a :href="'ver/' + referencia" @click.prevent="avisoPadreImpresionProceso"></a>
                     </div>
                     <div class="imagen_datos_mid_right imagen_lapiz">
-                        <a href="#" @click.prevent="avisoPadreEdicionProceso"></a>
+                        <a :href="'editar/' + referencia" @click.prevent="avisoPadreEdicionProceso"></a>
                     </div>
                     <div class="imagen_datos_mid_right imagen_papelera">
-                        <a href="#"></a>
+                        <a :href="'eliminar/' + referencia" @click.prevent="avisoPadreEliminacionProceso"></a>
                     </div>
                 </div>
             </div>
@@ -56,6 +56,9 @@ export default {
         },
         avisoPadreEdicionProceso(){
             this.$emit('editarProceso', this.referencia);
+        },
+        avisoPadreEliminacionProceso(){
+            this.$emit('eliminarProceso', this.referencia);
         },
         obtieneOpcionSeleccionada(){
             let opciones = document.querySelectorAll("option");

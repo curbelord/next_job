@@ -13,6 +13,9 @@ export default {
     },
     template: `
     <div id="container_publica_oferta">
+        <div class="container_boton_volver">
+            <button type="button" @click.prevent="avisoPadreOcultarEditarProceso">Volver</button>
+        </div>
         <div id="titulo_publica_oferta">
             <h3>Edita una oferta</h3>
         </div>
@@ -65,9 +68,9 @@ export default {
                 <select id="select_estado_crear_oferta" class="input_formulario" name="estado">
                     <option v-for="estadoActual in estados" :value="estadoActual" :selected="estado == estadoActual">{{ estadoActual }}</option>
                 </select>
-
-                <!--<button type="button" id="preguntas_crear_oferta" class="input_formulario">Killer questions</button>-->
             </div>
+
+            <!-- <button type="button" id="preguntas_crear_oferta" class="input_formulario">Killer questions</button>
 
             <div id="container_cuestionario">
                 <div id="titulo_cuestionario">
@@ -85,26 +88,29 @@ export default {
                                 <option value="null" selected>Abierta/cerrada</option>
                             </select>
 
-                            <!--
+
 
                                 Si la pregunta es abierta, entonces desplegar los campos para indicar las opciones que se permiten
 
                                 POSIBLEMENTE QUITAR EL SELECT Y AÑADIR UN INPUT TYPE RADIO, PORQUE EL SELECT IMPIDE HACER COSAS EN FUNCIÓN DE LA OPCIÓN ESCOGIDA
 
-                            -->
+
 
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div id="container_publicar_guardar_plantilla">
-                <input @click.prevent="editarProceso" name="publicada" type="button" id="enviar_oferta" class="input_formulario" value="Editar">
+                <input @click.prevent="popUpEditarProceso" name="publicada" type="button" id="enviar_oferta" class="input_formulario" value="Editar">
             </div>
         </form>
     </div>
     `,
     methods: {
+        avisoPadreOcultarEditarProceso(){
+            this.$emit('ocultarEditarProceso', true);
+        },
         popUpConfirmaEdicion(){
             const Toast = Swal.mixin({
                 toast: true,
@@ -140,7 +146,7 @@ export default {
                 console.log("Proceso editado");
             });
         },
-        async editarProceso(){
+        async popUpEditarProceso(){
             Swal.fire({
                 title: "¿Confirmas la edición del proceso?",
                 icon: "question",

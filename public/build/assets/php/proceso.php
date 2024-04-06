@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
     echo '{"referencia":"' . $row["referencia"] . '","puesto_trabajo":"' . $row["puesto_trabajo"] . '","estado":"' . $row['estado'] . '","ubicacion":"' . $row["ubicacion"]. '","fecha_creacion":"' . date('d/m/Y', strtotime($row["created_at"])) . '","candidatos_inscritos":"' . $row["candidatos_inscritos"] . '","candidatos_preseleccionados":"' . $row["candidatos_preseleccionados"] . '","curriculums_ciegos":"' . $row["curriculums_ciegos"] . '","cantidad_total_ofertas":"' . $row['cantidad_total_ofertas'] . '"},';
   }
 } else {
-  echo "0 results";
+  echo "'0 resultados'";
 }
 
 $conn->close();

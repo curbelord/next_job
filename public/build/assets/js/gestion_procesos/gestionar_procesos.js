@@ -9,6 +9,7 @@ const app = Vue.createApp({
     data(){
         return {
             /* Datos propios */
+            gestionarProcesos: true,
             numeroProcesos: 0,
             candidatos_totales: 0,
             candidatos_preseleccionados: 0,
@@ -52,7 +53,7 @@ const app = Vue.createApp({
         }
     },
     template: `
-    <div id="container_datos_top">
+    <div id="container_datos_top" v-if="gestionarProcesos">
         <div class="container_boton_volver">
             <a href="http://next-job.lan/vue/principal/procesos">Volver</a>
         </div>
@@ -81,10 +82,10 @@ const app = Vue.createApp({
         </div>
     </div>
 
-    <div id="container_procesos">
+    <div id="container_procesos" v-if="gestionarProcesos">
         <div id="subcontainer_procesos">
 
-            <proceso @abrirProceso="imprimirProceso" @editarProceso="editaProceso" v-for="i in referencia.length" :key="i" :referencia="referencia[i - 1]" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]" :estado="estado[i - 1]"></proceso>
+            <proceso @abrirProceso="imprimirProceso" @editarProceso="editaProceso" @eliminarProceso="popUpEliminaProceso" v-for="i in referencia.length" :key="i" :referencia="referencia[i - 1]" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]" :estado="estado[i - 1]"></proceso>
 
             <div id="container_sin_ofertas" v-if="numeroProcesos == 0">
                 <div id="titulo_sin_ofertas">
@@ -94,13 +95,13 @@ const app = Vue.createApp({
         </div>
     </div>
 
-    <div id="container_slider_numeracion">
-        <numeracion_slider v-for="i in (parseInt(numeroProcesos / 10) + 1)" @recargarProcesos="recargaProcesos" :key="i" :numero_pagina="i" :metodo_boton="'recargaProcesos'"></numeracion_slider>
+    <div id="container_slider_numeracion" v-if="gestionarProcesos">
+        <numeracion_slider v-for="i in (numeroProcesos <= 10 ? 1 : parseInt(numeroProcesos / 10) + 1)" @recargarProcesos="recargaProcesos" :key="i" :numero_pagina="i" :metodo_boton="'recargaProcesos'"></numeracion_slider>
     </div>
 
     <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" @recargarCandidatosProcesoDetalle="recargaCandidatosProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta" :curriculums_ciegos="curriculums_ciegos[posicionProcesoSeleccionado]"></proceso_detalle>
 
-    <editar_proceso v-if="editarProceso" :puesto_trabajo="datosProcesoEdicion[0]" :ubicacion="datosProcesoEdicion[1]" :tipo_trabajo="datosProcesoEdicion[2]" :sector="datosProcesoEdicion[3]" :descripcion="datosProcesoEdicion[4]" :estudios_minimos="datosProcesoEdicion[5]" :experiencia_minima="datosProcesoEdicion[6]" :jornada="datosProcesoEdicion[7]" :turno="datosProcesoEdicion[8]" :numero_vacantes="datosProcesoEdicion[9]" :salario="datosProcesoEdicion[10]" :fecha_cierre="datosProcesoEdicion[11]" :estado="datosProcesoEdicion[12]" :referencia="datosProcesoEdicion[13]"></editar_proceso>
+    <editar_proceso v-if="editarProceso" @ocultarEditarProceso="ocultaEditarProceso" :puesto_trabajo="datosProcesoEdicion[0]" :ubicacion="datosProcesoEdicion[1]" :tipo_trabajo="datosProcesoEdicion[2]" :sector="datosProcesoEdicion[3]" :descripcion="datosProcesoEdicion[4]" :estudios_minimos="datosProcesoEdicion[5]" :experiencia_minima="datosProcesoEdicion[6]" :jornada="datosProcesoEdicion[7]" :turno="datosProcesoEdicion[8]" :numero_vacantes="datosProcesoEdicion[9]" :salario="datosProcesoEdicion[10]" :fecha_cierre="datosProcesoEdicion[11]" :estado="datosProcesoEdicion[12]" :referencia="datosProcesoEdicion[13]"></editar_proceso>
     `,
     components: {
         proceso,
@@ -110,28 +111,77 @@ const app = Vue.createApp({
         editar_proceso
     },
     methods: {
-        imprimirElementosGestionProcesos(){
-            $("#container_datos_top").css("display", "grid");
-            $("#container_procesos").css("display", "grid");
-            $("#container_slider_numeracion").css("display", "flex");
+        async eliminaProceso(referenciaEntrante) {
+            let parametroConsulta = {
+                referencia: referenciaEntrante,
+            };
+
+            try {
+                await $.post('http://next-job.lan/build/assets/php/gestion_procesos/eliminacion/eliminar_proceso.php', parametroConsulta);
+                console.log("Proceso eliminado");
+            } catch (error) {
+                console.error("Error al eliminar el proceso:", error);
+            }
+        },
+        popUpConfirmaEliminacionProceso(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Proceso eliminado correctamente"
+            });
+        },
+        async popUpEliminaProceso(referenciaEntrante) {
+            Swal.fire({
+                title: "¿Confirmas la eliminación del proceso?",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: "Cancelar",
+                cancelButtonColor: "#FFFFFF",
+                confirmButtonText: "Eliminar",
+                confirmButtonColor: "#2FB9CE",
+                customClass: {
+                    confirmButton: "boton_confirmar",
+                    cancelButton: "boton_cancelar",
+                },
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    this.reseteaValoresProcesosObtenidos();
+                    await this.eliminaProceso(referenciaEntrante);
+                    this.popUpConfirmaEliminacionProceso();
+                    this.obtenerProcesos();
+                }
+            });
+        },
+        ocultaEditarProceso(){
+            this.editarProceso = false;
+            this.imprimirGestionProcesos();
+        },
+        imprimirGestionProcesos(){
+            this.gestionarProcesos = true;
         },
         async quitarProcesoDetalle(){
             this.procesoDetalle = false;
             this.reseteaValoresProcesoDetalle();
             // this.reseteaValoresProcesosObtenidos();  -> funcionalidad pendiente de adaptación por intervalos
             // this.obtenerProcesos();
-            this.imprimirElementosGestionProcesos();
+            this.imprimirGestionProcesos();
         },
         async obtenerProcesos(){
             try {
                 let datosProcesos = await $.get('http://next-job.lan/build/assets/php/proceso.php?id_seleccionador=' + this.idSeleccionador + '&numero_offset=' + this.numeroOffset);
 
                 let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
-                objeto = JSON.parse(objeto);
 
-                console.log(objeto["procesos"]);
-
-                this.almacenaProcesosObtenidos(objeto["procesos"]);
+                if (objeto.indexOf("0 resultados") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["procesos"]);
+                    this.almacenaProcesosObtenidos(objeto["procesos"]);
+                }
 
                 return objeto;
             } catch (error) {
@@ -182,10 +232,8 @@ const app = Vue.createApp({
             this.candidatos_totales = this.numero_candidatos.reduce((acumulador, valorActual) => acumulador + valorActual);
             this.numeroProcesos = arrayProcesos[0]["cantidad_total_ofertas"];
         },
-        ocultaPanelPrincipal(){
-            $("#container_datos_top").css("display", "none");
-            $("#container_procesos").css("display", "none");
-            $("#container_slider_numeracion").css("display", "none");
+        ocultaGestionProcesos(){
+            this.gestionarProcesos = false;
         },
         async obtenerDatosProcesoSeleccionado(referenciaProceso){
             try {
@@ -247,7 +295,7 @@ const app = Vue.createApp({
         },
         imprimirProceso(referencia){
             let curriculumsCiegosSiNo = this.curriculums_ciegos[this.referencia.indexOf(referencia)];
-            this.ocultaPanelPrincipal();
+            this.ocultaGestionProcesos();
             this.obtenerDatosProcesoSeleccionado(referencia);
             this.obtenerDatosCandidatosProcesoSeleccionado(referencia, curriculumsCiegosSiNo);
 
@@ -333,7 +381,7 @@ const app = Vue.createApp({
         },
         editaProceso(referencia){
             this.obtenerDatosProcesoEdicion(referencia);
-            this.ocultaPanelPrincipal();
+            this.ocultaGestionProcesos();
             this.editarProceso = true;
         },
     },
