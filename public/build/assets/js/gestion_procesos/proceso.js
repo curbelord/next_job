@@ -40,7 +40,7 @@ export default {
                         <a href="#" @click.prevent="avisoPadreImpresionProceso"></a>
                     </div>
                     <div class="imagen_datos_mid_right imagen_lapiz">
-                        <a href="#"></a>
+                        <a href="#" @click.prevent="avisoPadreEdicionProceso"></a>
                     </div>
                     <div class="imagen_datos_mid_right imagen_papelera">
                         <a href="#"></a>
@@ -53,6 +53,9 @@ export default {
     methods: {
         avisoPadreImpresionProceso(){
             this.$emit('abrirProceso', this.referencia);
+        },
+        avisoPadreEdicionProceso(){
+            this.$emit('editarProceso', this.referencia);
         },
         obtieneOpcionSeleccionada(){
             let opciones = document.querySelectorAll("option");

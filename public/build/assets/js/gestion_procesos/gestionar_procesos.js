@@ -2,6 +2,7 @@ import proceso from "./proceso.js";
 import numeracion_slider from "./numeracion_slider.js";
 import proceso_detalle from "./proceso_detalle.js";
 import curriculum_simplificado from "./curriculum_simplificado.js";
+import editar_proceso from "./edicion/editar_proceso.js";
 
 
 const app = Vue.createApp({
@@ -44,6 +45,10 @@ const app = Vue.createApp({
 
             /* Datos componente numeracion_slider */
             numero_pagina: 1,
+
+            /* Datos componente editar_proceso */
+            editarProceso: false,
+            datosProcesoEdicion: [],
         }
     },
     template: `
@@ -79,7 +84,7 @@ const app = Vue.createApp({
     <div id="container_procesos">
         <div id="subcontainer_procesos">
 
-            <proceso @abrirProceso="imprimirProceso" v-for="i in referencia.length" :key="i" :referencia="referencia[i - 1]" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]" :estado="estado[i - 1]"></proceso>
+            <proceso @abrirProceso="imprimirProceso" @editarProceso="editaProceso" v-for="i in referencia.length" :key="i" :referencia="referencia[i - 1]" :puesto_trabajo="puesto_trabajo[i - 1]" :ubicacion="ubicacion[i - 1]" :fecha_creacion="fecha_creacion[i - 1]" :numero_candidatos="numero_candidatos[i - 1]" :estado="estado[i - 1]"></proceso>
 
             <div id="container_sin_ofertas" v-if="numeroProcesos == 0">
                 <div id="titulo_sin_ofertas">
@@ -94,12 +99,15 @@ const app = Vue.createApp({
     </div>
 
     <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" @recargarCandidatosProcesoDetalle="recargaCandidatosProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta" :curriculums_ciegos="curriculums_ciegos[posicionProcesoSeleccionado]"></proceso_detalle>
+
+    <editar_proceso v-if="editarProceso" :puesto_trabajo="datosProcesoEdicion[0]" :ubicacion="datosProcesoEdicion[1]" :tipo_trabajo="datosProcesoEdicion[2]" :sector="datosProcesoEdicion[3]" :descripcion="datosProcesoEdicion[4]" :estudios_minimos="datosProcesoEdicion[5]" :experiencia_minima="datosProcesoEdicion[6]" :jornada="datosProcesoEdicion[7]" :turno="datosProcesoEdicion[8]" :numero_vacantes="datosProcesoEdicion[9]" :salario="datosProcesoEdicion[10]" :fecha_cierre="datosProcesoEdicion[11]" :estado="datosProcesoEdicion[12]" :referencia="datosProcesoEdicion[13]"></editar_proceso>
     `,
     components: {
         proceso,
         numeracion_slider,
         proceso_detalle,
-        curriculum_simplificado
+        curriculum_simplificado,
+        editar_proceso
     },
     methods: {
         imprimirElementosGestionProcesos(){
@@ -296,6 +304,37 @@ const app = Vue.createApp({
             .catch(error => {
                 console.error("Error al obtener datos:", error);
             });
+        },
+
+        // Métodos componente editar_proceso
+
+        almacenaDatosProcesoEdicion(arrayProceso, referencia){
+            let arrayClavesDatos = ["puesto_trabajo", "ubicacion", "tipo_trabajo", "sector", "descripcion", "estudios_minimos", "experiencia_minima", "jornada", "turno", "numero_vacantes", "salario", "fecha_cierre", "estado"];
+
+            arrayClavesDatos.forEach((clave) => this.datosProcesoEdicion.push(arrayProceso[0][clave]));
+            this.datosProcesoEdicion.push(referencia);
+        },
+        async obtenerDatosProcesoEdicion(referencia){
+            try {
+                let datosProceso = await $.get('http://next-job.lan/build/assets/php/gestion_procesos/edicion/obtener_proceso.php?referencia=' + referencia);
+
+                let objeto = '{"proceso":[' + datosProceso.substring(0, datosProceso.length - 1) + "]}";
+
+                if (objeto.indexOf("0 resultados") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["proceso"]);
+                    this.almacenaDatosProcesoEdicion(objeto["proceso"], referencia);
+                }
+
+                return objeto;
+            } catch (error) {
+                console.error('Error al hacer la petición', error);
+            }
+        },
+        editaProceso(referencia){
+            this.obtenerDatosProcesoEdicion(referencia);
+            this.ocultaPanelPrincipal();
+            this.editarProceso = true;
         },
     },
 
