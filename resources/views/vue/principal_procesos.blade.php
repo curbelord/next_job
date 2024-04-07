@@ -3,8 +3,15 @@
 @section('title', 'Principal procesos')
 
 @section('style')
+    {{-- Estilos principal_procesos --}}
+
     <link rel="stylesheet" href="{{ asset('build/assets/css/stylePrincipalEmpresa.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleUltimoProceso.css') }}">
+
+    {{-- Estilos publicar_proceso --}}
+
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearOferta.css') }}">
+
 
     <script src="https://unpkg.com/vue@3"></script>
 

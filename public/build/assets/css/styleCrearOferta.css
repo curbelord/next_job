@@ -55,7 +55,7 @@
     margin-right: 20px;
 }
 
-#select_jornada_crear_oferta, #select_turno_crear_oferta, #select_estudios_crear_oferta, #preguntas_crear_oferta, #sector_oferta, #tipo_trabajo_oferta, #select_estado_crear_oferta{
+#select_jornada_crear_oferta, #select_turno_crear_oferta, #select_estudios_crear_oferta, #preguntas_crear_oferta, #sector_oferta, #tipo_trabajo_oferta, #select_estado_crear_oferta, #select_curriculums_ciegos_crear_oferta{
     background: none;
 }
 
@@ -111,7 +111,7 @@
         flex-wrap: wrap;
     }
 
-    #container_jornada_turno select, #container_vacantes_salario input, #container_cierre_cuestionario input, #container_cierre_cuestionario button, #container_tipo_trabajo_sector select{
+    #container_jornada_turno select, #container_vacantes_salario input, #container_cierre_cuestionario input, #container_cierre_cuestionario select, #container_tipo_trabajo_sector select{
         width: 100%;
     }
 
