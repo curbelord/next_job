@@ -36,6 +36,10 @@ Route::get('/vue/principal/procesos', function (){
     return view('vue.principal_procesos');
 });
 
+Route::get('/vue/gestionar/plantillas', function (){
+    return view('vue.gestionar_plantillas');
+});
+
 
 
 

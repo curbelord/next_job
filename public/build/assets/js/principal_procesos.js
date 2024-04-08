@@ -48,10 +48,10 @@ const app = Vue.createApp({
         </div>
         <div id="bloque_gestion_3" class="bloque_gestion">
             <div class="imagen_gestion imagen_crear_plantilla">
-                <a href="#"></a>
+                <a href="http://next-job.lan/vue/gestionar/plantillas"></a>
             </div>
             <div class="texto_gestion">
-                <a href="#">Crear plantilla</a>
+                <a href="http://next-job.lan/vue/gestionar/plantillas">Gestionar plantillas</a>
             </div>
         </div>
     </div>

@@ -166,7 +166,6 @@ const app = Vue.createApp({
                 window.scrollTo({
                     top: 0,
                     left: 0,
-                    behavior: "smooth",
                 });
             } catch (error) {
                 console.error("Error al retornar la gestión de procesos:", error);
@@ -182,8 +181,8 @@ const app = Vue.createApp({
         async quitarProcesoDetalle(){
             this.procesoDetalle = false;
             this.reseteaValoresProcesoDetalle();
-            // this.reseteaValoresProcesosObtenidos();  -> funcionalidad pendiente de adaptación por intervalos
-            // this.obtenerProcesos();
+            this.reseteaValoresProcesosObtenidos();
+            this.obtenerProcesos();
             this.imprimirGestionProcesos();
         },
         async obtenerProcesos(){
@@ -321,6 +320,10 @@ const app = Vue.createApp({
             console.log(this.estilo_container_candidato, this.estilo_curriculum_visible);
             this.procesoDetalle = true;
             this.posicionProcesoSeleccionado = this.referencia.indexOf(referencia);
+            window.scrollTo({
+                top: 0,
+                left: 0,
+            });
         },
         limpiaDatosProcesosObtenidos(){
             this.referencia = [];
@@ -344,7 +347,6 @@ const app = Vue.createApp({
                     window.scrollTo({
                         top: 0,
                         left: 0,
-                        behavior: "smooth",
                     });
                 })
                 .catch(error => {
@@ -361,7 +363,6 @@ const app = Vue.createApp({
                 window.scrollTo({
                     top: 0,
                     left: 0,
-                    behavior: "smooth",
                 });
             })
             .catch(error => {

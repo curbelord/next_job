@@ -77,7 +77,7 @@ export default {
 
                     <curriculum_simplificado @impresionCurriculum="imprimirCurriculum" v-for="i in nombre_o_id_candidatos.length" :key="i" :i="i" :id_oferta="referencia" :id_candidato="id_candidatos[i - 1]" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos"></curriculum_simplificado>
 
-                    <div id="container_sin_candidatos" v-if="numero_candidatos.length == 0">
+                    <div id="container_sin_candidatos" v-if="numero_candidatos == 0">
                         <div id="titulo_sin_candidatos">
                             <h3>No hay candidatos</h3>
                         </div>
