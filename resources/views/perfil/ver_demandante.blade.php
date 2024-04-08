@@ -19,9 +19,6 @@
                     <div class="icono_editar">
                         <a href="#"></a>
                     </div>
-                    <div class="icono_eliminar">
-                        <a href="#"></a>
-                    </div>
                 </div>
             </div>
             <div id="container_datos_perfil_cvs">
@@ -45,16 +42,14 @@
                         </div>
                     </div>
                 </div>
-                <div id="cvs">
-                    <div id="titulo_cvs">
-                        <h3>CV's</h3>
+                <div id="container_checkin">
+                    <div id="titulo_checkin">
+                        <h3>Check-in</h3>
                     </div>
-                    <div id="nombres_cvs">
-                        @for($i = 1; $i < 6; $i++)
-                            <div id="cv_{{ $i }}" class="cv">
-                                <a href="#">CV NombreCV</a>
-                            </div>
-                        @endfor
+                    <div id="container_boton_checkin">
+                        <div id="boton_checkin">
+                            <a href="#">Pulsa aquí para realizar el check-in</a>
+                        </div>
                     </div>
                 </div>
             </div>

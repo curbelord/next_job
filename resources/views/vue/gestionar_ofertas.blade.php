@@ -18,6 +18,10 @@
 
     <link rel="stylesheet" href="{{ asset('build/assets/css/stylePerfilDemandante.css') }}">
 
+    {{-- Estilos Editar proceso --}}
+
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearOferta.css') }}">
+
     <script src="https://unpkg.com/vue@3"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>

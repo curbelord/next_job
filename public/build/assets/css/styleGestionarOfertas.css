@@ -76,14 +76,14 @@
     border-radius: 30px;
 }
 
-#container_sin_ofertas{
+#container_sin_ofertas, #container_sin_candidatos{
     padding: 25px;
     background-color: #FFF;
     border-radius: 30px;
     margin-bottom: 20px;
 }
 
-#titulo_sin_ofertas h3{
+#titulo_sin_ofertas h3, #container_sin_candidatos h3{
     font-size: 1.3em;
 }
 

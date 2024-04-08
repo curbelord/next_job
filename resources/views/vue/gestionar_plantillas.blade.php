@@ -3,15 +3,9 @@
 @section('title', 'Principal procesos')
 
 @section('style')
-    {{-- Estilos principal_procesos --}}
 
-    <link rel="stylesheet" href="{{ asset('build/assets/css/stylePrincipalEmpresa.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleUltimoProceso.css') }}">
-
-    {{-- Estilos publicar_proceso --}}
-
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearOferta.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleGestionarOfertas.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleComponentePlantilla.css') }}">
 
     <script src="https://unpkg.com/vue@3"></script>
 
@@ -25,5 +19,5 @@
 
     </div>
 
-    <script type="module" src="{{ asset('build/assets/js/principal_procesos.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/js/gestion_plantillas/gestionar_plantillas.js') }}"></script>
 @endsection
