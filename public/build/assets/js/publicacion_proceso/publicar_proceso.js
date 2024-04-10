@@ -160,7 +160,7 @@ export default {
                 customClass: {
                     confirmButton: "boton_confirmar",
                 },
-            })
+            });
         },
 
         // Publicar / guardar proceso
@@ -226,6 +226,27 @@ export default {
 
         // Autocandidaturas
 
+        async compruebaSiHayAutocandidatura(){
+            try {
+                let datosProcesos = await $.get('http://next-job.lan/build/assets/php/publicar_proceso/obtener_procesos_autocandidatura.php?id_seleccionador=' + this.id_seleccionador);
+
+                return datosProcesos.indexOf('0 resultados');
+
+            } catch (error) {
+                console.error('Error al hacer la petición', error);
+            }
+        },
+        popUpYaHayAutocandidatura(){
+            Swal.fire({
+                title: "Límite de procesos de autocandidaturas alcanzado",
+                icon: "warning",
+                confirmButtonText: "Vale",
+                confirmButtonColor: "#2FB9CE",
+                customClass: {
+                    confirmButton: "boton_confirmar",
+                },
+            });
+        },
         popUpConfirmaPublicacionAutocandidatura(){
             const Toast = Swal.mixin({
                 toast: true,
@@ -239,35 +260,47 @@ export default {
             });
         },
         async popUpAutocandidatura(){
-            let elementosVaciosSiNo = await this.compruebaSiElementosVaciosFormulario();
+            try{
+                let elementosVaciosSiNo = await this.compruebaSiElementosVaciosFormulario();
 
-            if (elementosVaciosSiNo == false){
-                const { valor: textoInsertado } = await Swal.fire({
-                    input: "textarea",
-                    inputLabel: "Palabras clave",
-                    inputPlaceholder: "Puedes escribir palabras separadas por espacios que estén relacionadas con la oferta",
-                    inputValue: "",
-                    inputAttributes: {
-                      "aria-label": "Escribe palabras clave"
-                    },
-                    confirmButtonText: "Añadir",
-                    confirmButtonColor: "#2FB9CE",
-                    showCancelButton: true,
-                    cancelButtonText: "Cancelar",
-                    cancelButtonColor: "#FFFFFF",
-                    customClass: {
-                        input: "text_area",
-                        confirmButton: "boton_confirmar",
-                        cancelButton: "boton_cancelar",
-                    },
-                    preConfirm: async () => {
-                        let palabrasClave = Swal.getPopup().querySelector("textarea").value;
-                        await this.publicarAutocandidatura(palabrasClave);
+                if (elementosVaciosSiNo == false){
+                    let datosAutocandidaturas = await this.compruebaSiHayAutocandidatura();
+
+                    if (datosAutocandidaturas > -1){
+                        const { valor: textoInsertado } = await Swal.fire({
+                            input: "textarea",
+                            inputLabel: "Palabras clave",
+                            inputPlaceholder: "Puedes escribir palabras separadas por espacios que estén relacionadas con la oferta",
+                            inputValue: "",
+                            inputAttributes: {
+                                "aria-label": "Escribe palabras clave"
+                            },
+                            confirmButtonText: "Añadir",
+                            confirmButtonColor: "#2FB9CE",
+                            showCancelButton: true,
+                            cancelButtonText: "Cancelar",
+                            cancelButtonColor: "#FFFFFF",
+                            customClass: {
+                                input: "text_area",
+                                confirmButton: "boton_confirmar",
+                                cancelButton: "boton_cancelar",
+                            },
+                            preConfirm: async () => {
+                                let palabrasClave = Swal.getPopup().querySelector("textarea").value;
+                                await this.publicarAutocandidatura(palabrasClave);
+                            }
+                        });
+                    }else{
+                        this.popUpYaHayAutocandidatura();
                     }
-                });
-            }else{
-                this.popUpElementosVaciosFormulario();
+
+                }else{
+                    this.popUpElementosVaciosFormulario();
+                }
+            }catch (error){
+                console.error(error);
             }
+
         },
         async publicarAutocandidatura(palabrasClave){
             try{

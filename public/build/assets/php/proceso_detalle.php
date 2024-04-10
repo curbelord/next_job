@@ -17,8 +17,6 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// SELECT oferta.descripcion AS 'descripcion_oferta', oferta.created_at AS 'oferta_fecha_publicacion', oferta.salario AS 'oferta_salario', oferta.jornada AS 'oferta_jornada', oferta.turno AS 'oferta_turno', (SELECT COUNT(*) FROM candidatos_preseleccionados WHERE candidatos_preseleccionados.id_oferta = oferta.referencia) AS 'candidatos_preseleccionados', (SELECT COUNT(*) FROM candidatos_descartados WHERE candidatos_descartados.id_oferta = oferta.referencia) AS 'candidatos_descartados' FROM oferta WHERE oferta.referencia=
-
 
 $sql = "SELECT oferta.descripcion AS 'descripcion_oferta', oferta.created_at AS 'oferta_fecha_publicacion', oferta.salario AS 'oferta_salario', oferta.jornada AS 'oferta_jornada', oferta.turno AS 'oferta_turno', (SELECT COUNT(*) FROM candidatos_preseleccionados WHERE candidatos_preseleccionados.id_oferta = oferta.referencia) AS 'candidatos_preseleccionados', (SELECT COUNT(*) FROM candidatos_descartados WHERE candidatos_descartados.id_oferta = oferta.referencia) AS 'candidatos_descartados' FROM oferta WHERE oferta.referencia=" . $_GET['referencia'];
 
@@ -34,7 +32,7 @@ if ($result->num_rows > 0) {
     }
 
 } else {
-    echo "0 results";
+    echo "'0 results'";
 }
 
 $conn->close();
