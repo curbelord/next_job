@@ -108,8 +108,9 @@ return new class extends Migration
             $table->integer('experiencia_minima');
             $table->string('ubicacion');
             $table->enum('turno', ['Mañana', 'Tarde', 'Noche']);
-            $table->enum('estado', ['Publicada', 'Plantilla', 'Borrador'])->nullable();
+            $table->enum('estado', ['Publicada', 'Oculta', 'Borrador', 'Autocandidatura'])->nullable();
             $table->enum('curriculums_ciegos', ["SI", "NO"]);
+            $table->text('palabras_clave')->nullable();
             $table->integer('id_seleccionador')->unsigned()->nullable();
             $table->foreign('id_seleccionador')->references('id')->on('seleccionador')->onDelete('cascade');
             $table->timestamps();

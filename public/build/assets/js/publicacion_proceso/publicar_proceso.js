@@ -92,10 +92,12 @@ export default {
                 </select>
             </div>
 
-            <div id="container_publicar_guardar_plantilla">
+            <div id="container_publicar_guardar_borrador">
                 <input @click.prevent="popUpConfirmaAccion('publicar', 'publicar_proceso')" name="publicada" type="button" id="enviar_oferta" class="input_formulario" value="Publicar">
 
-                <input @click.prevent="popUpConfirmaAccion('guardar', 'guardar_plantilla_proceso')" name="plantilla" type="button" id="guardar_plantilla" class="input_formulario" value="Guardar plantilla">
+                <input @click.prevent="popUpConfirmaAccion('guardar', 'guardar_borrador_proceso')" name="borrador" type="button" id="guardar_borrador" class="input_formulario" value="Guardar borrador">
+
+                <input @click.prevent="popUpAutocandidatura" name="autocandidatura" type="button" id="publicar_autocandidatura" class="input_formulario" value="Publicar autocandidatura">
             </div>
         </form>
     </div>
@@ -104,6 +106,9 @@ export default {
         avisoPadreOcultarPublicarProceso(){
             this.$emit('ocultarPublicarProceso');
         },
+
+        // Métodos generales
+
         obtenerFechaActual(){
             let fechaActual = new Date();
 
@@ -126,24 +131,25 @@ export default {
 
             return horaFormateada;
         },
-        async compruebaSiElementosVaciosFormulario(){
+        async compruebaSiElementosVaciosFormulario() {
+            let elementosVacios = false;
+
             $('.input_formulario').each(function() {
                 let valor = '';
 
                 if ($(this).is('input') || $(this).is('textarea')) {
                     valor = $(this).val().trim();
-                }
-                else if ($(this).is('select')) {
+                } else if ($(this).is('select')) {
                     valor = $(this).find('option:selected').val().trim();
                 }
 
-                console.log(valor);
-
-                if (valor == '') {
-                    this.popUpElementosVaciosFormulario();
+                if (valor === '') {
+                    elementosVacios = true;
+                    return false;
                 }
             });
-            return false;
+
+            return elementosVacios;
         },
         popUpElementosVaciosFormulario(){
             Swal.fire({
@@ -156,6 +162,9 @@ export default {
                 },
             })
         },
+
+        // Publicar / guardar proceso
+
         popUpConfirmaPublicacionOGuardadoProceso(publicadoOGuardado){
             const Toast = Swal.mixin({
                 toast: true,
@@ -188,6 +197,8 @@ export default {
                         await this.publicarOGuardarProceso(nombreArchivo);
                     }
                 });
+            }else{
+                this.popUpElementosVaciosFormulario();
             }
         },
         async publicarOGuardarProceso(nombreArchivo){
@@ -195,15 +206,85 @@ export default {
                 let fechaActual = await this.obtenerFechaActual();
                 let horaActual = await this.obtenerHoraActual();
                 let publicarOGuardar = nombreArchivo.indexOf("publicar") >= 0 ? "publicado" : "guardado";
+                let respuestaServidor = "";
 
                 let parametrosConsulta = "puesto_trabajo=" + this.puestoTrabajo + "&ubicacion=" + this.ubicacion + "&tipo_trabajo=" + this.tipoTrabajo + "&sector=" + this.sector + "&descripcion=" + this.descripcion + "&estudios_minimos=" + this.estudiosMinimos + "&experiencia_minima=" + this.experienciaMinima + "&jornada=" + this.jornada + "&turno=" + this.turno + "&numero_vacantes=" + this.numeroVacantes + "&salario=" + this.salario + "&fecha_cierre=" + this.fechaCierre + "&curriculums_ciegos=" + this.curriculumsCiegos + "&id_seleccionador=" + this.id_seleccionador + "&created_at=" + (fechaActual + ' ' + horaActual) + "&updated_at=" + (fechaActual + ' ' + horaActual);
 
-                await $.post(`http://next-job.lan/build/assets/php/publicar_proceso/${nombreArchivo}.php`, parametrosConsulta).done(function (){
-                    console.log("Petición realizada correctamente");
+                await $.post(`http://next-job.lan/build/assets/php/publicar_proceso/${nombreArchivo}.php`, parametrosConsulta).done(function (respuesta){
+                    respuestaServidor = respuesta;
                 });
 
-                await this.popUpConfirmaPublicacionOGuardadoProceso(publicarOGuardar);
-                await this.avisoPadreOcultarPublicarProceso();
+                if (respuestaServidor == "1"){
+                    await this.popUpConfirmaPublicacionOGuardadoProceso(publicarOGuardar);
+                    await this.avisoPadreOcultarPublicarProceso();
+                }
+            }catch (error){
+                console.error('Error al hacer la petición', error);
+            }
+
+        },
+
+        // Autocandidaturas
+
+        popUpConfirmaPublicacionAutocandidatura(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "success",
+                title: `Autocandidatura publicada correctamente`
+            });
+        },
+        async popUpAutocandidatura(){
+            let elementosVaciosSiNo = await this.compruebaSiElementosVaciosFormulario();
+
+            if (elementosVaciosSiNo == false){
+                const { valor: textoInsertado } = await Swal.fire({
+                    input: "textarea",
+                    inputLabel: "Palabras clave",
+                    inputPlaceholder: "Puedes escribir palabras separadas por espacios que estén relacionadas con la oferta",
+                    inputValue: "",
+                    inputAttributes: {
+                      "aria-label": "Escribe palabras clave"
+                    },
+                    confirmButtonText: "Añadir",
+                    confirmButtonColor: "#2FB9CE",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",
+                    cancelButtonColor: "#FFFFFF",
+                    customClass: {
+                        input: "text_area",
+                        confirmButton: "boton_confirmar",
+                        cancelButton: "boton_cancelar",
+                    },
+                    preConfirm: async () => {
+                        let palabrasClave = Swal.getPopup().querySelector("textarea").value;
+                        await this.publicarAutocandidatura(palabrasClave);
+                    }
+                });
+            }else{
+                this.popUpElementosVaciosFormulario();
+            }
+        },
+        async publicarAutocandidatura(palabrasClave){
+            try{
+                let fechaActual = await this.obtenerFechaActual();
+                let horaActual = await this.obtenerHoraActual();
+                let respuestaServidor = "";
+
+                let parametrosConsulta = "puesto_trabajo=" + this.puestoTrabajo + "&ubicacion=" + this.ubicacion + "&tipo_trabajo=" + this.tipoTrabajo + "&sector=" + this.sector + "&descripcion=" + this.descripcion + "&estudios_minimos=" + this.estudiosMinimos + "&experiencia_minima=" + this.experienciaMinima + "&jornada=" + this.jornada + "&turno=" + this.turno + "&numero_vacantes=" + this.numeroVacantes + "&salario=" + this.salario + "&fecha_cierre=" + this.fechaCierre + "&curriculums_ciegos=" + this.curriculumsCiegos + "&palabras_clave=" + palabrasClave + "&id_seleccionador=" + this.id_seleccionador + "&created_at=" + (fechaActual + ' ' + horaActual) + "&updated_at=" + (fechaActual + ' ' + horaActual);
+
+                await $.post(`http://next-job.lan/build/assets/php/publicar_proceso/publicar_autocandidatura.php`, parametrosConsulta).done(function (respuesta){
+                    respuestaServidor = respuesta;
+                });
+
+                if (respuestaServidor == "1"){
+                    await this.popUpConfirmaPublicacionAutocandidatura();
+                    await this.avisoPadreOcultarPublicarProceso();
+                }
             }catch (error){
                 console.error('Error al hacer la petición', error);
             }

@@ -87,7 +87,7 @@ export default {
             </div>
 
             <div id="container_slider_numeracion">
-                <numeracion_slider v-for="i in (parseInt(numero_candidatos / 10) + 1)" @avisarPadreRecargaCandidatos="avisoPadreRecargaCandidatos" :key="i" :numero_pagina="i" :metodo_boton="'recargaCandidatos'"></numeracion_slider>
+                <numeracion_slider v-for="i in (parseInt(numero_candidatos) <= 10 ? 0 : parseInt(numero_candidatos / 10) + 1)" @avisarPadreRecargaCandidatos="avisoPadreRecargaCandidatos" :key="i" :numero_pagina="i" :metodo_boton="'recargaCandidatos'"></numeracion_slider>
             </div>
         </div>
 
@@ -178,8 +178,30 @@ export default {
                 this.fecha_fin_formacion.push(new Date(arrayDatos[2][i]["fecha_fin_formacion"]).toLocaleDateString("es-ES"));
             }
         },
+        reseteaDatosCurriculum(){
+            this.id_candidato = "";
+            this.nombre = "";
+            this.fecha_nacimiento = "";
+            this.direccion_postal = "";
+            this.telefono = "";
+            this.email = "";
+            this.nombre_estado = "";
+            this.fecha_ultimo_estado = "";
+
+            this.nombre_experiencia = [];
+            this.empresa_experiencia = [];
+            this.fecha_inicio_experiencia = [];
+            this.fecha_fin_experiencia = [];
+            this.descripcion_experiencia = [];
+
+            this.nombre_formacion = [];
+            this.centro_formacion = [];
+            this.fecha_inicio_formacion = [];
+            this.fecha_fin_formacion = [];
+        },
         async imprimirCurriculum(idCandidato){
             try {
+                this.reseteaDatosCurriculum();
                 let objetoDatosCurriculum = await this.obtenerDatosCurriculum(idCandidato);
                 this.almacenaDatosCurriculum(objetoDatosCurriculum);
                 this.ocultaElementosProcesoDetalle();

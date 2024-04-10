@@ -79,14 +79,14 @@
     background: none;
 }
 
-#container_publicar_guardar_plantilla{
+#container_publicar_guardar_borrador{
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     margin-top: 30px;
 }
 
-#enviar_oferta, #guardar_plantilla{
+#enviar_oferta, #guardar_borrador, #publicar_autocandidatura{
     display: inline-block;
     width: auto;
     background: none;
@@ -94,8 +94,11 @@
     cursor: pointer;
 }
 
-#enviar_oferta{
+#enviar_oferta, #guardar_borrador{
     margin-right: 20px;
+}
+
+#enviar_oferta{
     background-color: var(--azul);
     color: var(--blanco);
 }
@@ -119,12 +122,12 @@
         margin-right: 0px;
     }
 
-    #container_publicar_guardar_plantilla{
+    #container_publicar_guardar_borrador{
         flex-wrap: wrap;
         margin-top: 50px;
     }
 
-    #enviar_oferta, #guardar_plantilla{
+    #enviar_oferta, #guardar_borrador, #publicar_autocandidatura{
         display: block;
         width: 100%;
     }

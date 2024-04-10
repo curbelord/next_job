@@ -48,10 +48,10 @@ const app = Vue.createApp({
         </div>
         <div id="bloque_gestion_3" class="bloque_gestion">
             <div class="imagen_gestion imagen_crear_plantilla">
-                <a href="http://next-job.lan/vue/gestionar/plantillas"></a>
+                <a href="http://next-job.lan/vue/gestionar/autocandidatura"></a>
             </div>
             <div class="texto_gestion">
-                <a href="http://next-job.lan/vue/gestionar/plantillas">Gestionar plantillas</a>
+                <a href="http://next-job.lan/vue/gestionar/autocandidatura">Autocandidaturas</a>
             </div>
         </div>
     </div>
@@ -84,16 +84,29 @@ const app = Vue.createApp({
             this.ocultaPrincipalProcesos();
             this.publicarProceso = true;
             this.scrollHaciaTop();
+
+            localStorage.setItem('pagina_impresa', 'publicar_proceso');
         },
+
+        // Métodos propios
 
         ocultaPublicarProceso(){
             this.publicarProceso = false;
             this.muestraPrincipalProcesos();
             this.scrollHaciaTop();
         },
-
-        // Métodos propios
-
+        imprimePrincipalProcesosOPublicarProceso(){
+            if (localStorage.getItem('pagina_impresa') != undefined){
+                if (localStorage.getItem('pagina_impresa') == 'publicar_proceso'){
+                    this.ocultaPrincipalProcesos();
+                    this.muestraPublicarProceso();
+                }else{
+                    this.ocultaPublicarProceso();
+                    this.muestraPrincipalProcesos();
+                    this.obtenerNombreYGeneroSeleccionador();
+                }
+            }
+        },
         scrollHaciaTop(){
             window.scrollTo({
                 top: 0,
@@ -154,8 +167,10 @@ const app = Vue.createApp({
         },
         muestraPrincipalProcesos(){
             this.principalProcesos = true;
+            localStorage.setItem('pagina_impresa', 'principal_procesos');
         },
     }
 }).mount('#container');
 
-app.obtenerNombreYGeneroSeleccionador();
+// app.obtenerNombreYGeneroSeleccionador();
+app.imprimePrincipalProcesosOPublicarProceso();
