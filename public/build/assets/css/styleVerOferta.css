@@ -72,6 +72,12 @@
     margin-top: 100px;
 }
 
+#titulo_candidatos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #titulo_candidatos h3{
     font-size: 1.5em;
 }

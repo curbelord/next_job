@@ -2,7 +2,7 @@ export default {
     props: ['nombre_experiencia', 'empresa_experiencia', 'fecha_inicio_experiencia', 'fecha_fin_experiencia', 'descripcion_experiencia'],
     template: `
     <div class="container_experiencia_curriculum">
-        <div class="datos_experiencia_iconos_curriculum">
+        <div class="datos_experiencia_iconos_curriculum" v-if="nombre_experiencia != ''">
             <div class="datos_experiencia_curriculum">
                 <div class="nombre_trabajo_curriculum">
                     <h3>{{ nombre_experiencia }}</h3>
@@ -15,8 +15,11 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="descripcion_experiencia_curriculum">
+        <div class="descripcion_experiencia_curriculum" v-if="nombre_experiencia != ''">
             <p>{{ descripcion_experiencia }}</p>
+        </div>
+        <div class="datos_experiencia_iconos_curriculum" v-else>
+            <h3>No hay experiencias registradas</h3>
         </div>
     </div>
     `,

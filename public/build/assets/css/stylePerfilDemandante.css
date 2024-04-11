@@ -15,12 +15,12 @@
     grid-row: 1 / 2;
 }
 
-.container_boton_volver{
+.container_boton_volver, #container_boton_anhadir_candidatos{
     display: flex;
     justify-content: end;
 }
 
-.container_boton_volver button, .container_boton_volver a{
+.container_boton_volver button, .container_boton_volver a, #container_boton_anhadir_candidatos button{
     display: block;
     cursor: pointer;
     text-decoration: none;

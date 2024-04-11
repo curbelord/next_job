@@ -47,7 +47,7 @@ const app = Vue.createApp({
             </div>
         </div>
         <div id="bloque_gestion_3" class="bloque_gestion">
-            <div class="imagen_gestion imagen_crear_plantilla">
+            <div class="imagen_gestion imagen_gestionar_autocandidaturas">
                 <a href="http://next-job.lan/vue/gestionar/autocandidatura"></a>
             </div>
             <div class="texto_gestion">
@@ -172,5 +172,5 @@ const app = Vue.createApp({
     }
 }).mount('#container');
 
-// app.obtenerNombreYGeneroSeleccionador();
+app.obtenerNombreYGeneroSeleccionador();
 app.imprimePrincipalProcesosOPublicarProceso();
