@@ -66,7 +66,7 @@ const app = Vue.createApp({
         </div>
     </div>
 
-    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" @recargarCandidatosProcesoDetalle="recargaCandidatosProcesoDetalle" @anhadirCandidatos="anhadeCandidatosCompatibles" :referencia="datosAutocandidatura[3]" :puesto_trabajo="datosAutocandidatura[4]" :numero_candidatos="datosAutocandidatura[0]" :candidatos_preseleccionados_proceso="datosAutocandidatura[1]" :candidatos_descartados_proceso="datosAutocandidatura[2]" :estilo_container_candidato="estiloContainerCandidato" :estilo_curriculum_visible="estiloCurriculumVisible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="datosAutocandidatura[6]" :salario_proceso="datosAutocandidatura[9]" :jornada_proceso="datosAutocandidatura[10]" :turno_proceso="datosAutocandidatura[11]" :descripcion_oferta="datosAutocandidatura[8]" :curriculums_ciegos="datosAutocandidatura[7]" :gestion_autocandidatura="true"></proceso_detalle>
+    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" @recargarCandidatosProcesoDetalle="recargaCandidatosProcesoDetalle" @filtrarCandidatos="filtroCandidatos" @anhadirCandidatos="anhadeCandidatosCompatibles" :referencia="datosAutocandidatura[3]" :puesto_trabajo="datosAutocandidatura[4]" :numero_candidatos="datosAutocandidatura[0]" :candidatos_preseleccionados_proceso="datosAutocandidatura[1]" :candidatos_descartados_proceso="datosAutocandidatura[2]" :estilo_container_candidato="estiloContainerCandidato" :estilo_curriculum_visible="estiloCurriculumVisible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="datosAutocandidatura[6]" :salario_proceso="datosAutocandidatura[9]" :jornada_proceso="datosAutocandidatura[10]" :turno_proceso="datosAutocandidatura[11]" :descripcion_oferta="datosAutocandidatura[8]" :curriculums_ciegos="datosAutocandidatura[7]" :gestion_autocandidatura="true"></proceso_detalle>
     `,
     components: {
         numeracion_slider,
@@ -137,6 +137,108 @@ const app = Vue.createApp({
 
         // Métodos proceso_detalle
 
+        async filtroCandidatos(referenciaProceso, filtro, curriculumsCiegosSiNo, numeroCandidatos){
+            try{
+                let numeroCandidatosPeticion = "";
+                this.numeroOffsetProcesoDetalle = 0;
+
+                if (filtro.toLowerCase() == "todos"){
+                    numeroCandidatosPeticion = await this.obtenerDatosCandidatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo);
+
+                }else if(filtro.toLowerCase() == "preseleccionados"){
+                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado') AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado')");
+
+                }else if(filtro.toLowerCase() == "descartados"){
+                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado') AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado')");
+                }
+
+                if (numeroCandidatosPeticion && numeroCandidatosPeticion.candidatos) {
+                    this.datosAutocandidatura.splice(0, 1, numeroCandidatosPeticion["candidatos"].length);
+                }else if (numeroCandidatosPeticion.indexOf('0 candidatos') == -1){
+                    this.datosAutocandidatura.splice(0, 1, parseInt(numeroCandidatosPeticion));
+                }else if (numeroCandidatosPeticion.indexOf('0 candidatos') > 0){
+                    this.datosAutocandidatura.splice(0, 1, 0);
+                }
+
+            }catch (error){
+                console.error("Error al hacer la petición:", error);
+            }
+        },
+        async obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, filtro){
+            try {
+                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/filtro_candidatos_proceso_detalle.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + "&filtro=" + filtro + '&numero_offset=' + this.numeroOffsetProcesoDetalle);
+
+                let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
+
+                if (objeto.indexOf("0 candidatos") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["candidatos"]);
+                    this.almacenaDatosCandidatosFiltrados(objeto["candidatos"]);
+                }else{
+                    this.nombre_o_id_candidatos = [];
+                    this.edad_o_experiencia_candidatos = [];
+                    this.id_candidatos = [];
+                }
+
+                return objeto;
+            } catch (error) {
+                console.error('Error al hacer la petición', error);
+            }
+        },
+        almacenaDatosCandidatosFiltrados(arrayDatos){
+            this.nombre_o_id_candidatos = [];
+            this.edad_o_experiencia_candidatos = [];
+            this.id_candidatos = [];
+
+            let copiaValorIterador = 0;
+
+            for (let i = 0; i < arrayDatos.length; i++){
+                if (arrayDatos[i]["nombre_o_id_candidato"]){
+                    this.nombre_o_id_candidatos.push(arrayDatos[i]["nombre_o_id_candidato"]);
+                }else{
+                    this.nombre_o_id_candidatos.push(arrayDatos[i]["id_candidato"]);
+                }
+                this.edad_o_experiencia_candidatos.push(parseInt(arrayDatos[i]["edad_o_experiencia_candidato"]));
+                this.id_candidatos.push(arrayDatos[i]["id_candidato"]);
+
+                copiaValorIterador++;
+            }
+            return copiaValorIterador;
+        },
+        async obtenerDatosCandidatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo){
+            this.nombre_o_id_candidatos = [];
+            this.edad_o_experiencia_candidatos = [];
+            this.id_candidatos = [];
+            try {
+                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/proceso_detalle_candidatos.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + '&numero_offset=' + this.numeroOffsetProcesoDetalle);
+
+                let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
+
+                if (objeto.indexOf("0 candidatos") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["candidatos"]);
+                    this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
+                    return objeto["candidatos"][0]["numero_inscritos"];
+                }
+
+                return objeto;
+            } catch (error) {
+                console.error('Error al hacer la petición', error);
+            }
+        },
+        almacenaDatosCandidatosProcesoSeleccionado(arrayDatos){
+            if (arrayDatos.indexOf("0 candidatos") == - 1){
+                for (let i = 0; i < arrayDatos.length; i++){
+                    if (arrayDatos[i]["nombre_o_id_candidato"]){
+                        this.nombre_o_id_candidatos.push(arrayDatos[i]["nombre_o_id_candidato"]);
+                    }else{
+                        this.nombre_o_id_candidatos.push(arrayDatos[i]["id_candidato"]);
+                    }
+                    this.edad_o_experiencia_candidatos.push(parseInt(arrayDatos[i]["edad_o_experiencia_candidato"]));
+                    this.id_candidatos.push(arrayDatos[i]["id_candidato"]);
+                }
+            }
+        },
         popUpConfirmaAccionInsercionCandidatos(icono, mensaje){
             const Toast = Swal.mixin({
                 toast: true,

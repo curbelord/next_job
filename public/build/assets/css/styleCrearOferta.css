@@ -38,8 +38,10 @@
     width: 100%;
     margin-bottom: 20px;
     padding: 15px;
+    text-align: center;
     border: 2px solid var(--azul);
     border-radius: 10px;
+    background: none;
 }
 
 #container_jornada_turno, #container_vacantes_salario, #container_cierre_cuestionario, #container_tipo_trabajo_sector, #container_estudios_experiencia{

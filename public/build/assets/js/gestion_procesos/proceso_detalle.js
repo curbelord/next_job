@@ -9,6 +9,7 @@ export default {
             numeroLimiteCandidatos: 20,
             curriculumVisible: false,
             numeroPagina: 1,
+            filtroSeleccionado: "todos",
 
             // Datos componente "curriculum"
 
@@ -71,6 +72,15 @@ export default {
         <div id="container_candidatos">
             <div id="titulo_candidatos">
                 <h3>Candidatos</h3>
+
+                <div id="container_filtro_candidatos">
+                    <select @change="avisoPadreFiltroCandidatos" v-model="filtroSeleccionado" class="input_formulario">
+                        <option value="todos" selected>Todos</option>
+                        <option value="preseleccionados">Preseleccionados</option>
+                        <option value="descartados">Descartados</option>
+                    </select>
+                </div>
+
                 <div id="container_boton_anhadir_candidatos" v-if="gestion_autocandidatura">
                     <button type="button" @click.prevent="avisoPadreAnhadirCandidatos">Añadir candidatos</button>
                 </div>
@@ -130,7 +140,7 @@ export default {
 
     <curriculum v-if="curriculumVisible" @ocultarCurriculum="quitarCurriculum" :id_candidato="id_candidato" :id_oferta="referencia" :nombre="nombre" :fecha_nacimiento="fecha_nacimiento" :direccion_postal="direccion_postal" :telefono="telefono" :email="email" :nombre_estado="nombre_estado" :fecha_ultimo_estado="fecha_ultimo_estado" :nombre_experiencia="nombre_experiencia" :empresa_experiencia="empresa_experiencia" :fecha_inicio_experiencia="fecha_inicio_experiencia" :fecha_fin_experiencia="fecha_fin_experiencia" :descripcion_experiencia="descripcion_experiencia" :nombre_formacion="nombre_formacion" :centro_formacion="centro_formacion" :fecha_inicio_formacion="fecha_inicio_formacion" :fecha_fin_formacion="fecha_fin_formacion" :curriculums_ciegos="curriculums_ciegos"></curriculum>
     `,
-    emits: ['ocultarProcesoDetalle', 'recargarCandidatosProcesoDetalle', 'anhadirCandidatos'],
+    emits: ['ocultarProcesoDetalle', 'recargarCandidatosProcesoDetalle', 'anhadirCandidatos', 'filtrarCandidatos'],
     methods: {
         // Método gestionar_autocandidatura
 
@@ -143,6 +153,9 @@ export default {
         avisoPadreOcultarProcesoDetalle(){
             this.$emit('ocultarProcesoDetalle', true);
         },
+        avisoPadreFiltroCandidatos(){
+            this.$emit('filtrarCandidatos', this.referencia, this.filtroSeleccionado, this.curriculums_ciegos, this.numero_candidatos);
+        },
 
         // Métodos propios
 
@@ -152,7 +165,7 @@ export default {
         },
         async obtenerDatosCurriculum(idCandidato){
             try {
-                let datosCurriculum = await $.get('http://next-job.lan/build/assets/php/obtener_datos_candidato.php?id_demandante=' + idCandidato);
+                let datosCurriculum = await $.get('http://next-job.lan/build/assets/php/obtener_datos_candidato.php?id_demandante=' + idCandidato + "&referencia=" + this.referencia);
 
                 let objetoCurriculum = '{"curriculum":[' + datosCurriculum.substring(0, datosCurriculum.length - 1) + "]}";
                 objetoCurriculum = JSON.parse(objetoCurriculum);

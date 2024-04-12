@@ -99,7 +99,7 @@ const app = Vue.createApp({
         <numeracion_slider v-for="i in (numeroProcesos <= 10 ? 1 : parseInt(numeroProcesos / 10) + 1)" @recargarProcesos="recargaProcesos" :key="i" :numero_pagina="i" :metodo_boton="'recargaProcesos'"></numeracion_slider>
     </div>
 
-    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" @recargarCandidatosProcesoDetalle="recargaCandidatosProcesoDetalle" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta" :curriculums_ciegos="curriculums_ciegos[posicionProcesoSeleccionado]" :gestion_autocandidatura="false"></proceso_detalle>
+    <proceso_detalle v-if="procesoDetalle" @ocultarProcesoDetalle="quitarProcesoDetalle" @recargarCandidatosProcesoDetalle="recargaCandidatosProcesoDetalle" @filtrarCandidatos="filtroCandidatos" :referencia="referencia[posicionProcesoSeleccionado]" :puesto_trabajo="puesto_trabajo[posicionProcesoSeleccionado]" :numero_candidatos="numero_candidatos[posicionProcesoSeleccionado]" :candidatos_preseleccionados_proceso="candidatos_preseleccionados_proceso" :candidatos_descartados_proceso="candidatos_descartados_proceso" :estilo_container_candidato="estilo_container_candidato" :estilo_curriculum_visible="estilo_curriculum_visible" :id_candidatos="id_candidatos" :nombre_o_id_candidatos="nombre_o_id_candidatos" :edad_o_experiencia_candidatos="edad_o_experiencia_candidatos" :fecha_publicacion_proceso="fecha_publicacion_proceso" :salario_proceso="salario_proceso" :jornada_proceso="jornada_proceso" :turno_proceso="turno_proceso" :descripcion_oferta="descripcion_oferta" :curriculums_ciegos="curriculums_ciegos[posicionProcesoSeleccionado]" :gestion_autocandidatura="false"></proceso_detalle>
 
     <editar_proceso v-if="editarProceso" @ocultarEditarProceso="ocultaEditarProceso" @retornarGestionProcesos="retornaGestionProcesos" :puesto_trabajo="datosProcesoEdicion[0]" :ubicacion="datosProcesoEdicion[1]" :tipo_trabajo="datosProcesoEdicion[2]" :sector="datosProcesoEdicion[3]" :descripcion="datosProcesoEdicion[4]" :estudios_minimos="datosProcesoEdicion[5]" :experiencia_minima="datosProcesoEdicion[6]" :jornada="datosProcesoEdicion[7]" :turno="datosProcesoEdicion[8]" :numero_vacantes="datosProcesoEdicion[9]" :salario="datosProcesoEdicion[10]" :fecha_cierre="datosProcesoEdicion[11]" :estado="datosProcesoEdicion[12]" :referencia="datosProcesoEdicion[13]"></editar_proceso>
     `,
@@ -177,6 +177,74 @@ const app = Vue.createApp({
         },
         imprimirGestionProcesos(){
             this.gestionarProcesos = true;
+        },
+        async filtroCandidatos(referenciaProceso, filtro, curriculumsCiegosSiNo, numeroCandidatos){
+            try{
+                let numeroCandidatosPeticion = "";
+                this.numeroOffsetProcesoDetalle = 0;
+
+                if (filtro.toLowerCase() == "todos"){
+                    numeroCandidatosPeticion = await this.obtenerDatosCandidatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo);
+
+                }else if(filtro.toLowerCase() == "preseleccionados"){
+                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado') AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado')");
+
+                }else if(filtro.toLowerCase() == "descartados"){
+                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado') AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado')");
+                }
+
+                if (numeroCandidatosPeticion && numeroCandidatosPeticion.candidatos) {
+                    this.numero_candidatos.splice(this.referencia.indexOf(referenciaProceso), 1, numeroCandidatosPeticion["candidatos"].length);
+                }else if (numeroCandidatosPeticion.indexOf('0 candidatos') == -1){
+                    this.numero_candidatos.splice(this.referencia.indexOf(referenciaProceso), 1, parseInt(numeroCandidatosPeticion));
+                }else if (numeroCandidatosPeticion.indexOf('0 candidatos') > 0){
+                    this.numero_candidatos.splice(this.referencia.indexOf(referenciaProceso), 1, 0);
+                }
+
+            }catch (error){
+                console.error("Error al hacer la petición:", error);
+            }
+        },
+        async obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, filtro){
+            try {
+                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/filtro_candidatos_proceso_detalle.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + "&filtro=" + filtro + '&numero_offset=' + this.numeroOffsetProcesoDetalle);
+
+                let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
+
+                if (objeto.indexOf("0 candidatos") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["candidatos"]);
+                    this.almacenaDatosCandidatosFiltrados(objeto["candidatos"]);
+                }else{
+                    this.nombre_o_id_candidatos = [];
+                    this.edad_o_experiencia_candidatos = [];
+                    this.id_candidatos = [];
+                }
+
+                return objeto;
+            } catch (error) {
+                console.error('Error al hacer la petición', error);
+            }
+        },
+        almacenaDatosCandidatosFiltrados(arrayDatos){
+            this.nombre_o_id_candidatos = [];
+            this.edad_o_experiencia_candidatos = [];
+            this.id_candidatos = [];
+
+            let copiaValorIterador = 0;
+
+            for (let i = 0; i < arrayDatos.length; i++){
+                if (arrayDatos[i]["nombre_o_id_candidato"]){
+                    this.nombre_o_id_candidatos.push(arrayDatos[i]["nombre_o_id_candidato"]);
+                }else{
+                    this.nombre_o_id_candidatos.push(arrayDatos[i]["id_candidato"]);
+                }
+                this.edad_o_experiencia_candidatos.push(parseInt(arrayDatos[i]["edad_o_experiencia_candidato"]));
+                this.id_candidatos.push(arrayDatos[i]["id_candidato"]);
+
+                copiaValorIterador++;
+            }
+            return copiaValorIterador;
         },
         async quitarProcesoDetalle(){
             this.procesoDetalle = false;
@@ -266,6 +334,9 @@ const app = Vue.createApp({
             }
         },
         async obtenerDatosCandidatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo){
+            this.nombre_o_id_candidatos = [];
+            this.edad_o_experiencia_candidatos = [];
+            this.id_candidatos = [];
             try {
                 let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/proceso_detalle_candidatos.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + '&numero_offset=' + this.numeroOffsetProcesoDetalle);
 
@@ -275,6 +346,7 @@ const app = Vue.createApp({
                     objeto = JSON.parse(objeto);
                     console.log(objeto["candidatos"]);
                     this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
+                    return objeto["candidatos"][0]["numero_inscritos"];
                 }
 
                 return objeto;
