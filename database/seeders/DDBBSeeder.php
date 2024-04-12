@@ -535,6 +535,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -554,6 +555,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'SI',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 4,
         ]);
 
@@ -571,8 +573,9 @@ class DDBBSeeder extends Seeder
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
-            'estado' => 'Plantilla',
+            'estado' => 'Borrador',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 6,
         ]);
 
@@ -592,6 +595,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Borrador',
             'curriculums_ciegos' => 'SI',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 8,
         ]);
 
@@ -611,6 +615,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 10,
         ]);
 
@@ -630,6 +635,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'SI',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -647,8 +653,9 @@ class DDBBSeeder extends Seeder
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'turno' => 'Mañana',
-            'estado' => 'Plantilla',
+            'estado' => 'Borrador',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 4,
         ]);
 
@@ -668,6 +675,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -687,6 +695,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -706,6 +715,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -725,6 +735,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -744,6 +755,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -763,6 +775,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -782,6 +795,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -801,6 +815,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -820,6 +835,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -839,6 +855,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 
@@ -858,6 +875,7 @@ class DDBBSeeder extends Seeder
             'turno' => 'Mañana',
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
             'id_seleccionador' => 2,
         ]);
 

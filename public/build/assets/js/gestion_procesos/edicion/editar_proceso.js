@@ -70,38 +70,7 @@ export default {
                 </select>
             </div>
 
-            <!-- <button type="button" id="preguntas_crear_oferta" class="input_formulario">Killer questions</button>
-
-            <div id="container_cuestionario">
-                <div id="titulo_cuestionario">
-                    <h3>Killer questions</h3>
-                </div>
-                <div id="preguntas_cuestionario">
-                    <div class="pregunta">
-                        <div class="titulo_pregunta">
-                            <input type="text" id="titulo_pregunta_" class="input_formulario" name="titulo_pregunta_" placeholder="Pregunta">
-                        </div>
-                        <div class="tipo_pregunta">
-                            <select id="select_tipo_pregunta" class="input_formulario" name="select_tipo_pregunta">
-                                <option value="Abierta">Abierta</option>
-                                <option value="Cerrada">Cerrada</option>
-                                <option value="null" selected>Abierta/cerrada</option>
-                            </select>
-
-
-
-                                Si la pregunta es abierta, entonces desplegar los campos para indicar las opciones que se permiten
-
-                                POSIBLEMENTE QUITAR EL SELECT Y AÑADIR UN INPUT TYPE RADIO, PORQUE EL SELECT IMPIDE HACER COSAS EN FUNCIÓN DE LA OPCIÓN ESCOGIDA
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <div id="container_publicar_guardar_plantilla">
+            <div id="container_publicar_guardar_borrador">
                 <input @click.prevent="popUpEditarProceso" name="publicada" type="button" id="enviar_oferta" class="input_formulario" value="Editar">
             </div>
         </form>

@@ -3,10 +3,10 @@
 @section('title', 'Gestionar procesos')
 
 @section('style')
-    {{-- Estilos Gestionar procesos --}}
+    {{-- Estilos Gestionar autocandidaturas --}}
 
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleGestionarOfertas.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleComponenteProceso.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleProcesoAutocandidatura.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleNumeracionSlider.css') }}">
 
     {{-- Estilos Ver proceso --}}
@@ -35,5 +35,5 @@
 
     </div>
 
-    <script type="module" src="{{ asset('build/assets/js/gestion_procesos/gestionar_procesos.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/js/gestion_autocandidaturas/gestionar_autocandidatura.js') }}"></script>
 @endsection
