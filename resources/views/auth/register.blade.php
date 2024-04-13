@@ -59,14 +59,6 @@
                     Seleccionador
                 </label>
             </div>
-            <!--p>
-                <input type="radio" name="empresa" id="empresa" value="Empresa">
-                <label for="empresa">Empresa</label>
-            </p>
-            <p>
-                <input type="radio" name="administrador" id="administrador" value="Administrador">
-                <label for="administrador">Administrador</label>
-            </p-->
         </div>
 
         <x-primary-button>

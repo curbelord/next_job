@@ -23,15 +23,6 @@ class RegistroController extends Controller
 
     public function registrar_empresa(Request $request)
     {
-        /*
-        $request->validate([
-            'nombre' => ['required', 'string', 'max:255'],
-            'descripcion' => ['required', 'string', 'max:255'],
-            'ubicacion' => ['required', 'string', 'max:255'],
-            'logo' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-        */
 
         $empresa = new Empresa;
         $empresa->nombre = $request->nombre;
@@ -45,10 +36,6 @@ class RegistroController extends Controller
         $seleccionador = Seleccionador::find($request->user()->id);
         $seleccionador->id_empresa = $empresa->id;
         $seleccionador->save();
-
-        // $request->user()->assignRole('seleccionador'); TÉCNICAMENTE NO ES NECESARIO, YA QUE EL USUARIO YA TIENE EL ROL DE SELECCIONADOR
-
-        // return redirect(RouteServiceProvider::HOME);
 
         return view('auth.registrar_empresa');
     }
