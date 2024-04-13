@@ -81,15 +81,26 @@
     z-index: 2;
 }
 
-#boton_inscripcion a{
+#boton_inscripcion form{
+    width: 140px;
+}
+
+#boton_inscripcion form #input_boton_inscripcion, #boton_inscripcion form #input_boton_inscripcion_inactivo{
     display: block;
     width: 140px;
     padding: 15px 20px;
+    background: none;
+    border: none;
     background-color: #373A37;
     color: #FFF;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
+}
+
+#boton_inscripcion form #input_boton_inscripcion_inactivo{
+    cursor: default;
 }
 
 #numero_inscritos{
@@ -102,6 +113,17 @@
     border: 2px solid #2FB9CE;
     border-radius: 8px;
     z-index: 1;
+}
+
+#numero_inscritos #imagen_candidatos_inscritos{
+    height: 18px;
+    width: 18px;
+    margin-bottom: 1px;
+    margin-right: 5px;
+    background-image: url("../img/candidato.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top top;
 }
 
 #numero_inscritos span{
@@ -294,7 +316,7 @@
         width: 100%;
     }
 
-    #boton_inscripcion, #boton_inscripcion a{
+    #boton_inscripcion, #boton_inscripcion form, #boton_inscripcion form #input_boton_inscripcion{
         width: 100%;
     }
 

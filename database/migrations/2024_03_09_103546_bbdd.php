@@ -144,7 +144,7 @@ return new class extends Migration
         Schema::create('inscripcion', function (Blueprint $table) {
             $table->integer('id_demandante')->unsigned();
             $table->unsignedBigInteger('id_oferta');
-            $table->string('anotacion');
+            $table->string('anotacion')->nullable();
             $table->primary(['id_demandante', 'id_oferta']);
             $table->foreign('id_demandante')->references('id')->on('demandante')->onDelete('cascade');
             $table->foreign('id_oferta')->references('referencia')->on('oferta')->onDelete('cascade');

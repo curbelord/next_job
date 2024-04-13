@@ -102,6 +102,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('gestionar.ofertas.ofertas');
 Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta'])->name('gestionar.ofertas.descripcion');
 
+// INSCRIPCIÓN EN LA OFERTA
+Route::post('/inscripcion/{oferta}', [OfertasController::class, 'realizarInscripcion'])->name('gestionar.ofertas.inscripcion');
+
 Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
 Route::get('/empresa', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa_buscada');
 

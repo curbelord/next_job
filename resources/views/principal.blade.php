@@ -81,7 +81,7 @@
         <div class="bloque"></div>
 
         <div class="seccion_relleno">
-            <div>IMAGEN</div>
+            <div></div>
 
             <span>Encuentra el trabajo que buscas</span>
         </div>
@@ -91,7 +91,7 @@
         <div class="seccion_valor">
             <span>Encuentra el trabajo que buscas</span>
 
-            <div>IMAGEN</div>
+            <div></div>
         </div>
 
         <div class="bloque"></div>
@@ -101,29 +101,47 @@
             <h2>Empleo por provincias</h2>
 
             <div class="provincia provincia_1-3">
-                <div class="imagen_provincia">IMAGEN</div>
+                <div class="imagen_provincia">
+                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                        @csrf
+                        <input type="submit" class="provincia" name="provincia" value="Las Palmas">
+                    </form>
+                </div>
                 <div class="nombre_provincia">
-                    <span>
-                        Provincia 1
-                    </span>
+                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                        @csrf
+                        <input type="submit" class="provincia" name="provincia" value="Las Palmas">
+                    </form>
                 </div>
             </div>
 
             <div class="provincia provincia_2-3">
-                <div class="imagen_provincia">IMAGEN</div>
+                <div class="imagen_provincia">
+                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                        @csrf
+                        <input type="submit" class="provincia" name="provincia" value="Santa Cruz de Tenerife">
+                    </form>
+                </div>
                 <div class="nombre_provincia">
-                    <span>
-                        Provincia 2
-                    </span>
+                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                        @csrf
+                        <input type="submit" class="provincia" name="provincia" value="Santa Cruz de Tenerife">
+                    </form>
                 </div>
             </div>
 
             <div class="provincia provincia_3-3">
-                <div class="imagen_provincia">IMAGEN</div>
+                <div class="imagen_provincia">
+                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                        @csrf
+                        <input type="submit" class="provincia" name="provincia" value="Madrid">
+                    </form>
+                </div>
                 <div class="nombre_provincia">
-                    <span>
-                        Provincia 3
-                    </span>
+                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                        @csrf
+                        <input type="submit" class="provincia" name="provincia" value="Madrid">
+                    </form>
                 </div>
             </div>
 
