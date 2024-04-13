@@ -68,8 +68,8 @@
 @section('title', 'Principal')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('build/assets/css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleBuscador.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/principal.css') }}">
 @endsection
 
 @section('content')
@@ -111,22 +111,22 @@
 
             <div class="provincia provincia_2-3">
                 <div class="imagen_provincia">IMAGEN</div>
-                <div class="nombre_provincia"> 
+                <div class="nombre_provincia">
                     <span>
                         Provincia 2
                     </span>
-                </div>            
+                </div>
             </div>
 
             <div class="provincia provincia_3-3">
                 <div class="imagen_provincia">IMAGEN</div>
-                <div class="nombre_provincia"> 
+                <div class="nombre_provincia">
                     <span>
                         Provincia 3
                     </span>
-                </div>            
+                </div>
             </div>
-            
+
         </div>
 
         <div class="bloque"></div>

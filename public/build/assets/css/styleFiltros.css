@@ -72,6 +72,7 @@
     .filtros > div {
         grid-column: 1 / 6;
         margin: 0;
+        justify-content: left;
     }
 
     .filtros > :nth-child(even) {

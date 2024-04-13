@@ -12,6 +12,10 @@
     font-family: "Manrope", sans-serif;
 }
 
+.tabla_filtros{
+    display: none;
+}
+
 .bloque {
     height: 25vh;
 }
@@ -135,11 +139,11 @@
     .provincia_1-3 {
         grid-row: 2;
     }
-    
+
     .provincia_2-3 {
         grid-row: 3;
     }
-    
+
     .provincia_3-3 {
         grid-row: 4;
     }
@@ -191,14 +195,14 @@
     }
 
     .provincia_1-3 {
-        
+
         grid-row: 2;
     }
-    
+
     .provincia_2-3 {
         grid-row: 3;
     }
-    
+
     .provincia_3-3 {
         grid-row: 4;
     }
@@ -209,11 +213,11 @@
     .provincia_1-3 {
         grid-row: 2;
     }
-    
+
     .provincia_2-3 {
         grid-row: 3;
     }
-    
+
     .provincia_3-3 {
         grid-row: 4;
     }

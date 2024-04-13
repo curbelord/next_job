@@ -23,12 +23,12 @@ span {
 
 .contenedor_ofertas {
     background-color: var(--gris);
-    border-radius: 10px;
+    border-radius: 30px;
     grid-column: 3 / 11;
-    padding: calc(1em + 10px);
+    padding: 15px;
     display: grid;
-    grid-gap: calc(1em + 10px);
-    margin: 2em 0;
+    grid-gap: 10px;
+    margin: 100px 0px;
 }
 
 .oferta {
@@ -36,7 +36,7 @@ span {
     grid-template-columns: 125px repeat(11, 1fr);
     grid-template-rows: repeat(3, 62.5px) 1fr;
     background-color: var(--blanco);
-    border-radius: 10px;
+    border-radius: 30px;
     color: var(--negro);
     background-color: var(--blanco);
     text-decoration: none;
