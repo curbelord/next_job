@@ -12,6 +12,10 @@
     font-family: "Manrope", sans-serif;
 }
 
+.tabla_filtros{
+    display: none;
+}
+
 .bloque {
     height: 25vh;
 }
@@ -80,6 +84,20 @@
     height: 200px;
 }
 
+.imagen_provincia form, .imagen_provincia form input{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.imagen_provincia form input{
+    padding: 0px;
+    background: none;
+    border: none;
+    opacity: 0;
+    cursor: pointer;
+}
+
 .nombre_provincia {
     grid-row: 2;
     display: flex;
@@ -94,6 +112,16 @@
     margin: 1em 0;
     padding: .5em 2em .5em .75em;
     height: 2em;
+}
+
+.nombre_provincia form input{
+    padding: 0px;
+    height: auto;
+    background: none;
+    border: none;
+    color: var(--blanco);
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .provincia_1-3 {
@@ -135,11 +163,11 @@
     .provincia_1-3 {
         grid-row: 2;
     }
-    
+
     .provincia_2-3 {
         grid-row: 3;
     }
-    
+
     .provincia_3-3 {
         grid-row: 4;
     }
@@ -191,14 +219,14 @@
     }
 
     .provincia_1-3 {
-        
+
         grid-row: 2;
     }
-    
+
     .provincia_2-3 {
         grid-row: 3;
     }
-    
+
     .provincia_3-3 {
         grid-row: 4;
     }
@@ -209,11 +237,11 @@
     .provincia_1-3 {
         grid-row: 2;
     }
-    
+
     .provincia_2-3 {
         grid-row: 3;
     }
-    
+
     .provincia_3-3 {
         grid-row: 4;
     }

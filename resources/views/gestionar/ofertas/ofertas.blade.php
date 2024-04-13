@@ -85,7 +85,7 @@
 
                     <a href="{{ url('descripcion', ['parametro' => $oferta->referencia]) }}" class="oferta">
 
-                        <div class="oferta_img">IMG</div>
+                        <div class="oferta_img"></div>
                         <div class="oferta_titulo">
                             <h3> {{ $oferta->puesto_trabajo }} </h3>
                         </div>

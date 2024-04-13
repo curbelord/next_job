@@ -26,9 +26,19 @@
                 </div>
                 <div id="container_boton_inscripcion">
                     <div id="boton_inscripcion">
-                        <a href="#">Inscribirme</a>
+                        <form method="POST" action="{{ route('gestionar.ofertas.inscripcion', $oferta) }}">
+                            @csrf
+
+                            @if ($inscrito)
+                                <input type="button" id="input_boton_inscripcion_inactivo" name="inscripcion" value="Inscrito">
+                            @else
+                                <input type="submit" id="input_boton_inscripcion" name="inscripcion" value="Inscribirme">
+                            @endif
+
+                        </form>
                     </div>
                     <div id="numero_inscritos">
+                        <div id="imagen_candidatos_inscritos"></div>
                         <span>{{ $inscripciones }}</span>
                     </div>
                 </div>
@@ -39,7 +49,7 @@
                         <p>{{ date('d/m/Y', strtotime($oferta->created_at)) }}</p>
                     </div>
                     <div id="salario" class="boton_outline_azul">
-                        <p>{{ $oferta->salario }}</p>
+                        <p>{{ intval($oferta->salario) }}€</p>
                     </div>
                 </div>
                 <div id="datos_bottom_fila_2">
@@ -51,9 +61,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- PENDIENTE IMPLEMENTAR EL VECTOR AZUL --}}
-
         </div>
 
         <div id="container_descripcion_cuestionario">
