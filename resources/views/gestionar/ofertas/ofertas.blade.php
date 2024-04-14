@@ -56,6 +56,8 @@
   $mostrarFiltros = true;
   $mostrarProvincias = true;
   $placeholder_buscador = 'Puesto, localidad, categoría...';
+  $offset = 0;
+  $noHayOfertas = false;
 
 ?>
 
@@ -67,55 +69,125 @@
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleOfertas.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleFiltros.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleBuscador.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleNumeracionSlider.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 @endsection
 
 @section('content')
 
     <div class="content">
 
-        @include('components.buscador')
+        <div class="seccion_buscador">
+            <form method="GET" action="{{ route('gestionar.ofertas.ofertas', $offset) }}">
+                @csrf
 
-        <div class="ofertas">
+                <div class="tabla">
+                    <h2>{{ $titulo }}</h2>
+                </div>
 
-            <div class="contenedor_ofertas">
+                <div class="tabla">
+                    <input type="text" name="buscador" id="buscador" placeholder="{{ $placeholder_buscador }}" value="{{ $buscador }}">
 
-                @foreach ($ofertas as $oferta)
+                    @if ($mostrarProvincias)
+                        <select name="provincia" id="provincia">
+                            <option value="0">Selecciona una provincia</option>
 
-                    <option value="{{ $oferta->provincia }}"></option>
+                                @foreach ($provincias as $provincia)
+                                    @if($ubicacion != "" && $ubicacion == $provincia)
+                                        <option value="{{ $provincia }}" selected>{{ $provincia }}</option>
+                                    @else
+                                        <option value="{{ $provincia }}">{{ $provincia }}</option>
+                                    @endif
+                                @endforeach
+                        </select>
+                    @endif
+                </div>
 
-                    <a href="{{ url('descripcion', ['parametro' => $oferta->referencia]) }}" class="oferta">
+                <div class="tabla tabla_filtros">
+                    @if ($mostrarFiltros)
+                        @include('components.filtros')
+                    @endif
+                </div>
 
-                        <div class="oferta_img"></div>
-                        <div class="oferta_titulo">
-                            <h3> {{ $oferta->puesto_trabajo }} </h3>
-                        </div>
+                <div class="tabla">
+                    <button type="submit">Buscar</button>
+                </div>
 
-                        <div class="oferta_info">
-                            <div class="oferta_empresa">
-                                <span> {{ $oferta->seleccionador->empresa->nombre }} </span>
+
+                <div class="ofertas">
+                    <div class="contenedor_ofertas">
+                        @forelse ($ofertas as $oferta)
+                            @component('components.oferta')
+                                @slot('provincia')
+                                    {{ $oferta->provincia }}
+                                @endslot
+
+                                @slot('referencia')
+                                    {{ $oferta->referencia }}
+                                @endslot
+
+                                @slot('puesto_trabajo')
+                                    {{ $oferta->puesto_trabajo }}
+                                @endslot
+
+                                @slot('nombre_empresa')
+                                    {{ $oferta->seleccionador->empresa->nombre }}
+                                @endslot
+
+                                @slot('ubicacion')
+                                    {{ $oferta->ubicacion }}
+                                @endslot
+
+                                @slot('jornada')
+                                    {{ $oferta->jornada }}
+                                @endslot
+
+                                @slot('tipo_trabajo')
+                                    {{ $oferta->tipo_trabajo }}
+                                @endslot
+
+                                @slot('descripcion')
+                                    {{ $oferta->descripcion }}
+                                @endslot
+                            @endcomponent
+                        @empty
+                            <div id="container_sin_ofertas">
+                                <div id="titulo_sin_ofertas">
+                                    <h3>No hay ofertas registradas</h3>
+                                </div>
                             </div>
-                            <div class="oferta_localizacion">
-                                <span> {{ $oferta->ubicacion }} </span>
-                            </div>
-                            <div class="oferta_jornada">
-                                <span> {{ $oferta->jornada }} </span>
-                            </div>
-                            <div class="oferta_tipo_contrato">
-                                <span> {{ $oferta->tipo_trabajo }} </span>
-                            </div>
-                        </div>
-                        <div class="oferta_descripcion">
-                            <span> {{ $oferta->descripcion }} </span>
-                        </div>
 
-                    </a>
+                            @php
+                                $noHayOfertas = true;
+                            @endphp
+                        @endforelse
+                    </div>
+                </div>
+                <div id="container_numeracion_slider">
+                    @if($noHayOfertas == false)
+                        @php
+                            $numIteraciones = ceil($cantidadTotalOfertas / 10);
+                        @endphp
 
-                @endforeach
-
-            </div>
-
+                        @for($i = 0; $i < $numIteraciones; $i++)
+                            @if($cantidadTotalOfertas > 0 && $cantidadTotalOfertas < 10)
+                                @php
+                                    $cantidadTotalOfertas = 10;
+                                @endphp
+                            @endif
+                            @component('components.numeracion_slider')
+                                @slot('numero_pagina')
+                                    {{ $i + 1 }}
+                                @endslot
+                                {{ $cantidadTotalOfertas -= 10 }}
+                            @endcomponent
+                        @endfor
+                    @endif
+                </div>
+            </form>
         </div>
-
     </div>
 
+    <script src="{{ asset('build/assets/js/js_vistas/ofertas.js') }}"></script>
 @endsection

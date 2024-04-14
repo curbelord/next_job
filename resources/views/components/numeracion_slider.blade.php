@@ -1,3 +1,3 @@
 <div class="numeracion_slider">
-    <span>{{ $numero }}</span>
+    <input type="submit" value="{{ $numero_pagina }}" class="elemento_numeracion_slider">
 </div>
