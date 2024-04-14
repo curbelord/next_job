@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 
 
 $sql = "SELECT oferta.puesto_trabajo, oferta.ubicacion, oferta.created_at, CASE WHEN inscritos.candidatos_inscritos IS NULL THEN 0 ELSE inscritos.candidatos_inscritos END AS candidatos_inscritos, candidatos_preseleccionados, candidatos_descartados FROM users INNER JOIN oferta ON users.id = oferta.id_seleccionador
-LEFT OUTER JOIN (SELECT id_oferta, COUNT(id_demandante) AS candidatos_inscritos FROM inscripcion GROUP BY id_oferta) AS inscritos ON oferta.referencia = inscritos.id_oferta LEFT OUTER JOIN candidatos_preseleccionados ON oferta.referencia = candidatos_preseleccionados.id_oferta LEFT OUTER JOIN candidatos_descartados ON oferta.referencia = candidatos_descartados.id_oferta WHERE oferta.id_seleccionador=" . $_GET['id_seleccionador'] . " ORDER BY created_at LIMIT 5";
+LEFT OUTER JOIN (SELECT id_oferta, COUNT(id_demandante) AS candidatos_inscritos FROM inscripcion GROUP BY id_oferta) AS inscritos ON oferta.referencia = inscritos.id_oferta LEFT OUTER JOIN candidatos_preseleccionados ON oferta.referencia = candidatos_preseleccionados.id_oferta LEFT OUTER JOIN candidatos_descartados ON oferta.referencia = candidatos_descartados.id_oferta WHERE oferta.id_seleccionador=" . $_GET['id_seleccionador'] . " ORDER BY created_at DESC LIMIT 5";
 
 
 $result = $conn->query($sql);

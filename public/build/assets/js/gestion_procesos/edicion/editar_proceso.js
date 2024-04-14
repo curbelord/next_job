@@ -9,6 +9,7 @@ export default {
             estudios: ['Graduado Escolar', 'ESO', 'Bachillerato', 'Formación Profesional Básica', 'Ciclo Formativo de Grado Medio', 'Ciclo Formativo de Grado Superior', 'Enseñanzas artísticas', 'Enseñanzas deportivas', 'Licenciatura', 'Máster', 'Doctorado', 'Grado Universitario', 'No requerida'],
             turnos: ["Mañana", "Tarde", "Noche"],
             estados: ["Publicada", "Plantilla", "Borrador"],
+            provincias: ['Álava','Albacete','Alicante','Almería','Ávila','Badajoz','Baleares','Barcelona','Burgos','Cáceres','Cádiz','Castellón','Ciudad Real','Córdoba','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Jaén','La Coruña','La Rioja','Las Palmas','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Pontevedra','Salamanca','Santa Cruz de Tenerife','Segovia','Sevilla','Soria','Tarragona','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza','Ceuta','Melilla'],
         }
     },
     template: `
@@ -24,6 +25,11 @@ export default {
             <input type="text" id="titulo_crear_oferta" class="input_formulario" name="puesto_trabajo" placeholder="Título" :value="puesto_trabajo">
 
             <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Ubicación del centro de trabajo" :value="ubicacion">
+
+            <select id="provincia_oferta" class="input_formulario" name="tipo_trabajo">
+                <option value="" disabled selected>Provincia</option>
+                <option v-for="provinciaActual in provincias" :value="provinciaActual">{{ provinciaActual }}</option>
+            </select>
 
             <div id="container_tipo_trabajo_sector">
                 <select id="tipo_trabajo_oferta" class="input_formulario" name="tipo_trabajo">

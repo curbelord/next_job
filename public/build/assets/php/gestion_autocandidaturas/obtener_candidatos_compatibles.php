@@ -22,11 +22,11 @@ $sql = "";
 
 if ($_GET['curriculumsCiegos'] == "SI"){
 
-    $sql = "SELECT users.id AS 'id_candidato', SUM(DATEDIFF(experiencia.fecha_fin, experiencia.fecha_inicio) / 365) AS 'experiencia_candidato' FROM users INNER JOIN demandante ON users.id = demandante.id LEFT JOIN cv ON demandante.id = cv.id_demandante LEFT JOIN experiencia ON cv.id = experiencia.id_cv WHERE experiencia.nombre LIKE '%desarrollador%' AND users.id NOT IN (SELECT id_demandante FROM inscripcion WHERE id_oferta=" . $_GET['referencia'] . ") GROUP BY users.id LIMIT 10";
+    $sql = "SELECT users.id AS 'id_candidato', SUM(DATEDIFF(experiencia.fecha_fin, experiencia.fecha_inicio) / 365) AS 'experiencia_candidato' FROM users INNER JOIN demandante ON users.id = demandante.id LEFT JOIN cv ON demandante.id = cv.id_demandante LEFT JOIN experiencia ON cv.id = experiencia.id_cv WHERE experiencia.nombre " . $_GET['palabras_clave'] . " AND users.id NOT IN (SELECT id_demandante FROM inscripcion WHERE id_oferta=" . $_GET['referencia'] . ") GROUP BY users.id LIMIT 10";
 
 }else{
 
-    $sql = "SELECT users.id AS 'id_candidato', CONCAT(users.nombre, ' ', users.apellidos) AS 'nombre_candidato', YEAR(CURDATE()) - YEAR(users.fecha_nacimiento) - (RIGHT(CURDATE(), 5) < RIGHT(users.fecha_nacimiento, 5)) AS 'edad_candidato' FROM users INNER JOIN demandante ON users.id = demandante.id LEFT JOIN cv ON demandante.id = cv.id_demandante LEFT JOIN estudios ON cv.id = estudios.id_cv LEFT JOIN experiencia ON cv.id = experiencia.id_cv WHERE experiencia.nombre LIKE '%desarrollador%' AND users.id NOT IN (SELECT id_demandante FROM inscripcion WHERE id_oferta=" . $_GET['referencia'] . ") LIMIT 10";
+    $sql = "SELECT users.id AS 'id_candidato', CONCAT(users.nombre, ' ', users.apellidos) AS 'nombre_candidato', YEAR(CURDATE()) - YEAR(users.fecha_nacimiento) - (RIGHT(CURDATE(), 5) < RIGHT(users.fecha_nacimiento, 5)) AS 'edad_candidato' FROM users INNER JOIN demandante ON users.id = demandante.id LEFT JOIN cv ON demandante.id = cv.id_demandante LEFT JOIN estudios ON cv.id = estudios.id_cv LEFT JOIN experiencia ON cv.id = experiencia.id_cv WHERE experiencia.nombre " . $_GET['palabras_clave'] . " AND users.id NOT IN (SELECT id_demandante FROM inscripcion WHERE id_oferta=" . $_GET['referencia'] . ") LIMIT 10";
 
 }
 

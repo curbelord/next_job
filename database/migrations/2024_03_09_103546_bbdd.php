@@ -107,6 +107,7 @@ return new class extends Migration
             $table->enum('estudios_minimos', ['Graduado Escolar', 'ESO', 'Bachillerato', 'Formación Profesional Básica', 'Ciclo Formativo de Grado Medio', 'Ciclo Formativo de Grado Superior', 'Enseñanzas artísticas', 'Enseñanzas deportivas', 'Licenciatura', 'Máster', 'Doctorado', 'Grado Universitario', 'No requerida']);
             $table->integer('experiencia_minima');
             $table->string('ubicacion');
+            $table->string('provincia');
             $table->enum('turno', ['Mañana', 'Tarde', 'Noche']);
             $table->enum('estado', ['Publicada', 'Oculta', 'Borrador', 'Autocandidatura'])->nullable();
             $table->enum('curriculums_ciegos', ["SI", "NO"]);

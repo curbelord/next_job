@@ -95,8 +95,7 @@ class OfertasController extends Controller
                     ->with(compact('oferta', 'inscripciones'))
                     ->with(['inscrito' => true]);
         }else{
-            return redirect()->route('');
+            return redirect('/login');
         }
-
     }
 }
