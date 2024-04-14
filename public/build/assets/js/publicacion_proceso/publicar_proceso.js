@@ -6,6 +6,7 @@ export default {
 
             puestoTrabajo: "",
             ubicacion: "",
+            provincia: "",
             tipoTrabajo: "",
             sector: "",
             descripcion: "",
@@ -24,6 +25,7 @@ export default {
             familiasProfesionales: ['Actividades Físicas y Deportivas', 'Administración y Gestión', 'Agroalimentario', 'Artes Gráficas', 'Construcción', 'Energía', 'Imagen Personal', 'Imagen y Sonido', 'Industrial', 'Informática y Comunicaciones', 'Logística, Transporte y Comercio', 'Mantenimiento', 'Medio Ambiente', 'Químico', 'Salud', 'Servicios Turísticos y Hosteleros', 'Textil'],
             estudios: ['Graduado Escolar', 'ESO', 'Bachillerato', 'Formación Profesional Básica', 'Ciclo Formativo de Grado Medio', 'Ciclo Formativo de Grado Superior', 'Enseñanzas artísticas', 'Enseñanzas deportivas', 'Licenciatura', 'Máster', 'Doctorado', 'Grado Universitario', 'No requerida'],
             turnos: ["Mañana", "Tarde", "Noche"],
+            provincias: ['Álava','Albacete','Alicante','Almería','Ávila','Badajoz','Baleares','Barcelona','Burgos','Cáceres','Cádiz','Castellón','Ciudad Real','Córdoba','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Jaén','La Coruña','La Rioja','Las Palmas','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Pontevedra','Salamanca','Santa Cruz de Tenerife','Segovia','Sevilla','Soria','Tarragona','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza','Ceuta','Melilla'],
         }
     },
     template: `
@@ -40,8 +42,13 @@ export default {
 
             <input v-model="ubicacion" type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Ubicación del centro de trabajo">
 
+            <select v-model="provincia" id="provincia_oferta" class="input_formulario" name="provincia">
+                <option value="" disabled selected>Provincia</option>
+                <option v-for="provinciaActual in provincias" :value="provinciaActual">{{ provinciaActual }}</option>
+            </select>
+
             <div id="container_tipo_trabajo_sector">
-                <select v-model="tipoTrabajo" id="tipo_trabajo_oferta" class="input_formulario" name="tipo_trabajo" placeholder="hola">
+                <select v-model="tipoTrabajo" id="tipo_trabajo_oferta" class="input_formulario" name="tipo_trabajo">
                     <option value="" disabled selected>Modalidad</option>
                     <option v-for="tipo in tiposTrabajo" :value="tipo">{{ tipo }}</option>
                 </select>
@@ -208,7 +215,7 @@ export default {
                 let publicarOGuardar = nombreArchivo.indexOf("publicar") >= 0 ? "publicado" : "guardado";
                 let respuestaServidor = "";
 
-                let parametrosConsulta = "puesto_trabajo=" + this.puestoTrabajo + "&ubicacion=" + this.ubicacion + "&tipo_trabajo=" + this.tipoTrabajo + "&sector=" + this.sector + "&descripcion=" + this.descripcion + "&estudios_minimos=" + this.estudiosMinimos + "&experiencia_minima=" + this.experienciaMinima + "&jornada=" + this.jornada + "&turno=" + this.turno + "&numero_vacantes=" + this.numeroVacantes + "&salario=" + this.salario + "&fecha_cierre=" + this.fechaCierre + "&curriculums_ciegos=" + this.curriculumsCiegos + "&id_seleccionador=" + this.id_seleccionador + "&created_at=" + (fechaActual + ' ' + horaActual) + "&updated_at=" + (fechaActual + ' ' + horaActual);
+                let parametrosConsulta = "puesto_trabajo=" + this.puestoTrabajo + "&ubicacion=" + this.ubicacion + "&provincia=" + this.provincia + "&tipo_trabajo=" + this.tipoTrabajo + "&sector=" + this.sector + "&descripcion=" + this.descripcion + "&estudios_minimos=" + this.estudiosMinimos + "&experiencia_minima=" + this.experienciaMinima + "&jornada=" + this.jornada + "&turno=" + this.turno + "&numero_vacantes=" + this.numeroVacantes + "&salario=" + this.salario + "&fecha_cierre=" + this.fechaCierre + "&curriculums_ciegos=" + this.curriculumsCiegos + "&id_seleccionador=" + this.id_seleccionador + "&created_at=" + (fechaActual + ' ' + horaActual) + "&updated_at=" + (fechaActual + ' ' + horaActual);
 
                 await $.post(`http://next-job.lan/build/assets/php/publicar_proceso/${nombreArchivo}.php`, parametrosConsulta).done(function (respuesta){
                     respuestaServidor = respuesta;
@@ -308,7 +315,7 @@ export default {
                 let horaActual = await this.obtenerHoraActual();
                 let respuestaServidor = "";
 
-                let parametrosConsulta = "puesto_trabajo=" + this.puestoTrabajo + "&ubicacion=" + this.ubicacion + "&tipo_trabajo=" + this.tipoTrabajo + "&sector=" + this.sector + "&descripcion=" + this.descripcion + "&estudios_minimos=" + this.estudiosMinimos + "&experiencia_minima=" + this.experienciaMinima + "&jornada=" + this.jornada + "&turno=" + this.turno + "&numero_vacantes=" + this.numeroVacantes + "&salario=" + this.salario + "&fecha_cierre=" + this.fechaCierre + "&curriculums_ciegos=" + this.curriculumsCiegos + "&palabras_clave=" + palabrasClave + "&id_seleccionador=" + this.id_seleccionador + "&created_at=" + (fechaActual + ' ' + horaActual) + "&updated_at=" + (fechaActual + ' ' + horaActual);
+                let parametrosConsulta = "puesto_trabajo=" + this.puestoTrabajo + "&ubicacion=" + this.ubicacion + "&provincia=" + this.provincia + "&tipo_trabajo=" + this.tipoTrabajo + "&sector=" + this.sector + "&descripcion=" + this.descripcion + "&estudios_minimos=" + this.estudiosMinimos + "&experiencia_minima=" + this.experienciaMinima + "&jornada=" + this.jornada + "&turno=" + this.turno + "&numero_vacantes=" + this.numeroVacantes + "&salario=" + this.salario + "&fecha_cierre=" + this.fechaCierre + "&curriculums_ciegos=" + this.curriculumsCiegos + "&palabras_clave=" + palabrasClave + "&id_seleccionador=" + this.id_seleccionador + "&created_at=" + (fechaActual + ' ' + horaActual) + "&updated_at=" + (fechaActual + ' ' + horaActual);
 
                 await $.post(`http://next-job.lan/build/assets/php/publicar_proceso/publicar_autocandidatura.php`, parametrosConsulta).done(function (respuesta){
                     respuestaServidor = respuesta;

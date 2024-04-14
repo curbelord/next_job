@@ -100,4 +100,8 @@ select {
     form button {
         grid-column: 5 / 9;
     }
+
+    .seccion_buscador button{
+        grid-column: 2 / 12;
+    }
 }

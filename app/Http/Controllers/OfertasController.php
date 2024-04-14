@@ -17,6 +17,11 @@ class OfertasController extends Controller
     {
 
         $ofertas = Oferta::query();
+        $offset = 0;
+
+        if (request('pagina')){
+            $offset = (intval(request('pagina')) * 10) - 10;
+        }
 
         if ($ubicacion = request('provincia')) {
             $ofertas->where('ubicacion', $ubicacion);
@@ -30,11 +35,13 @@ class OfertasController extends Controller
             });
         }
 
+        $cantidadTotalOfertas = $ofertas->count();
+        $ofertas->limit(10)->offset($offset);
         $ofertas = $ofertas->get();
 
         $ofertas->load('seleccionador.empresa');
 
-        return view('gestionar.ofertas.ofertas', compact('ofertas'));
+        return view('gestionar.ofertas.ofertas', compact('ofertas', 'cantidadTotalOfertas', 'ubicacion', 'buscador'));
     }
 
     public function buscaOfertaEInscritos($ofertaId): array
@@ -47,7 +54,7 @@ class OfertasController extends Controller
 
     public function usuarioInscrito($ofertaId): bool
     {
-        $inscrito = Inscripcion::where('id_oferta', $ofertaId)->where('id_demandante', 5)->exists();
+        $inscrito = Inscripcion::where('id_oferta', $ofertaId)->where('id_demandante', Auth::id())->exists();
 
         return $inscrito;
     }
@@ -73,18 +80,22 @@ class OfertasController extends Controller
 
     public function realizarInscripcion($ofertaId): RedirectResponse
     {
-        list($oferta, $inscripciones) = $this->buscaOfertaEInscritos($ofertaId);
+        if (Auth::check()){
+            list($oferta, $inscripciones) = $this->buscaOfertaEInscritos($ofertaId);
 
-        $inscripcion = Inscripcion::create([
-            'id_demandante' => 5,
-            'id_oferta' => $ofertaId,
-            'anotacion' => "",
-        ]);
+            $inscripcion = Inscripcion::create([
+                'id_demandante' => Auth::id(),
+                'id_oferta' => $ofertaId,
+                'anotacion' => "",
+            ]);
 
-        $this->anhadirEstadoInscrito(5, $ofertaId);
+            $this->anhadirEstadoInscrito(Auth::id(), $ofertaId);
 
-        return redirect()->route('gestionar.ofertas.descripcion', $ofertaId)
-                ->with(compact('oferta', 'inscripciones'))
-                ->with(['inscrito' => true]);
+            return redirect()->route('gestionar.ofertas.descripcion', $ofertaId)
+                    ->with(compact('oferta', 'inscripciones'))
+                    ->with(['inscrito' => true]);
+        }else{
+            return redirect('/login');
+        }
     }
 }

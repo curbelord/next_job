@@ -99,7 +99,7 @@ const app = Vue.createApp({
             arrayDatos[0]["candidatos_preseleccionados"] == "" ? this.datosAutocandidatura.push(0) : this.datosAutocandidatura.push(parseInt(arrayDatos[0]["candidatos_preseleccionados"]));
             arrayDatos[0]["candidatos_descartados"] == "" ? this.datosAutocandidatura.push(0) : this.datosAutocandidatura.push(arrayDatos[0]["candidatos_descartados"]);
 
-            let camposAAnhadir = ["referencia", "puesto_trabajo", "ubicacion", "fecha_creacion", "curriculums_ciegos", "descripcion", "salario", "jornada", "turno", "estado"];
+            let camposAAnhadir = ["referencia", "puesto_trabajo", "ubicacion", "fecha_creacion", "curriculums_ciegos", "descripcion", "salario", "jornada", "turno", "estado", "palabras_clave"];
 
             camposAAnhadir.forEach((elemento) => this.datosAutocandidatura.push(arrayDatos[0][`${elemento}`]));
 
@@ -251,9 +251,22 @@ const app = Vue.createApp({
                 title: mensaje
             });
         },
+        retornaFiltroCandidatosCompatibles(){
+            let palabrasClave = [];
+            palabrasClave = this.datosAutocandidatura[this.datosAutocandidatura.length - 1].split(" ");
+            let filtro = "";
+
+            palabrasClave.forEach((palabra) => filtro += `LIKE '%${palabra}%' OR experiencia.nombre `);
+
+            filtro = filtro.substring(0, filtro.length - 23);
+
+            return filtro;
+        },
         async anhadeCandidatosCompatibles(referenciaProceso, curriculumsCiegosSiNo){
             try {
-                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/gestion_autocandidaturas/obtener_candidatos_compatibles.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo);
+                let filtroCandidatosCompatibles = this.retornaFiltroCandidatosCompatibles();
+
+                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/gestion_autocandidaturas/obtener_candidatos_compatibles.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + "&palabras_clave=" + filtroCandidatosCompatibles);
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
@@ -263,6 +276,7 @@ const app = Vue.createApp({
 
                     this.almacenaDatosCandidatos(objeto["candidatos"]);
                     await this.insertarCandidatosCompatiblesBBDD(objeto["candidatos"], referenciaProceso, objeto["candidatos"].length);
+                    await this.insertarEstadoCandidatosCompatiblesBBDD(objeto["candidatos"], referenciaProceso);
                     this.datosAutocandidatura[0] = objeto["candidatos"].length;
                 }else{
                     this.popUpConfirmaAccionInsercionCandidatos("error", "No hay más candidatos compatibles");
@@ -273,7 +287,30 @@ const app = Vue.createApp({
                 console.error('Error al hacer la petición', error);
             }
         },
-        async insertarCandidatosCompatiblesBBDD(arrayCandidatos, referenciaProceso, cantidadCandidatos){
+        async insertarEstadoCandidatosCompatiblesBBDD(arrayCandidatos, referenciaProceso, cantidadCandidatos){
+            let parametroConsulta = "datos_candidatos=";
+
+            for (let i = 0; i < arrayCandidatos.length; i++){
+                parametroConsulta += "('Inscrito', '', " + arrayCandidatos[i]["id_candidato"] + "," + referenciaProceso + ", '" + this.obtenerFechaActualFormateada() + "', '" + this.obtenerFechaActualFormateada() + "'),";
+            }
+
+            parametroConsulta = parametroConsulta.substring(0, parametroConsulta.length - 1);
+
+            try {
+                let respuestaServidor = await $.post('http://next-job.lan/build/assets/php/gestion_autocandidaturas/insertar_estado_candidatos_compatibles.php', parametroConsulta);
+
+                if (respuestaServidor == "1"){
+                    this.popUpConfirmaAccionInsercionCandidatos("success", `Se han añadido ${cantidadCandidatos} candidatos`);
+                }
+
+                console.log(respuestaServidor);
+
+                console.log("Usuarios insertados correctamente");
+            } catch (error) {
+                console.error("Error al insertar los candidatos:", error);
+            }
+        },
+        async insertarCandidatosCompatiblesBBDD(arrayCandidatos, referenciaProceso){
             let parametroConsulta = "datos_candidatos=";
 
             for (let i = 0; i < arrayCandidatos.length; i++){
@@ -285,11 +322,6 @@ const app = Vue.createApp({
             try {
                 let respuestaServidor = await $.post('http://next-job.lan/build/assets/php/gestion_autocandidaturas/insertar_candidatos_compatibles.php', parametroConsulta);
 
-                if (respuestaServidor == "1"){
-                    this.popUpConfirmaAccionInsercionCandidatos("success", `Se han añadido ${cantidadCandidatos} candidatos`);
-                }
-
-                console.log("Usuarios insertados correctamente");
             } catch (error) {
                 console.error("Error al insertar los candidatos:", error);
             }

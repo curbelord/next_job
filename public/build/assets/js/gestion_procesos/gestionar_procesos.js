@@ -445,7 +445,7 @@ const app = Vue.createApp({
         // Métodos componente editar_proceso
 
         almacenaDatosProcesoEdicion(arrayProceso, referencia){
-            let arrayClavesDatos = ["puesto_trabajo", "ubicacion", "tipo_trabajo", "sector", "descripcion", "estudios_minimos", "experiencia_minima", "jornada", "turno", "numero_vacantes", "salario", "fecha_cierre", "estado"];
+            let arrayClavesDatos = ["puesto_trabajo", "ubicacion", "provincia", "tipo_trabajo", "sector", "descripcion", "estudios_minimos", "experiencia_minima", "jornada", "turno", "numero_vacantes", "salario", "fecha_cierre", "estado"];
 
             arrayClavesDatos.forEach((clave) => this.datosProcesoEdicion.push(arrayProceso[0][clave]));
             this.datosProcesoEdicion.push(referencia);
