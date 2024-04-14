@@ -1,5 +1,5 @@
 export default {
-    props: ['puesto_trabajo', 'ubicacion', 'tipo_trabajo', 'sector', 'descripcion', 'estudios_minimos', 'experiencia_minima', 'jornada', 'turno', 'numero_vacantes', 'salario', 'fecha_cierre', 'estado', 'referencia'],
+    props: ['puesto_trabajo', 'ubicacion', 'provincia', 'tipo_trabajo', 'sector', 'descripcion', 'estudios_minimos', 'experiencia_minima', 'jornada', 'turno', 'numero_vacantes', 'salario', 'fecha_cierre', 'estado', 'referencia'],
     data(){
         return {
             // Datos estructuras <select>
@@ -26,9 +26,8 @@ export default {
 
             <input type="text" id="centro_trabajo_oferta" class="input_formulario" name="ubicacion" placeholder="Ubicación del centro de trabajo" :value="ubicacion">
 
-            <select id="provincia_oferta" class="input_formulario" name="tipo_trabajo">
-                <option value="" disabled selected>Provincia</option>
-                <option v-for="provinciaActual in provincias" :value="provinciaActual">{{ provinciaActual }}</option>
+            <select id="provincia_oferta" class="input_formulario" name="provincia">
+                <option v-for="provinciaActual in provincias" :value="provinciaActual" :selected="provincia == provinciaActual">{{ provinciaActual }}</option>
             </select>
 
             <div id="container_tipo_trabajo_sector">
@@ -102,17 +101,18 @@ export default {
             let parametrosConsulta = {
                 puesto_trabajo: arrayDatos[0],
                 ubicacion: arrayDatos[1],
-                tipo_trabajo: arrayDatos[2],
-                sector: arrayDatos[3],
-                descripcion: arrayDatos[4],
-                estudios_minimos: arrayDatos[5],
-                experiencia_minima: arrayDatos[6],
-                jornada: arrayDatos[7],
-                turno: arrayDatos[8],
-                numero_vacantes: arrayDatos[9],
-                salario: arrayDatos[10],
-                fecha_cierre: arrayDatos[11],
-                estado: arrayDatos[12],
+                provincia: arrayDatos[2],
+                tipo_trabajo: arrayDatos[3],
+                sector: arrayDatos[4],
+                descripcion: arrayDatos[5],
+                estudios_minimos: arrayDatos[6],
+                experiencia_minima: arrayDatos[7],
+                jornada: arrayDatos[8],
+                turno: arrayDatos[9],
+                numero_vacantes: arrayDatos[10],
+                salario: arrayDatos[11],
+                fecha_cierre: arrayDatos[12],
+                estado: arrayDatos[13],
                 referencia: this.referencia
             };
 
@@ -149,7 +149,7 @@ export default {
             let arrayDatosObtenidos = [];
 
             $(".input_formulario").each(function (index){
-                if (index < 13){
+                if (index < 14){
                     arrayDatosObtenidos.push($(this).val());
                 }
             });
