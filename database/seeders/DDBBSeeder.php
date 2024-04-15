@@ -349,6 +349,56 @@ class DDBBSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
+        Empresa::create([
+            'id' => 6,
+            'nombre' => 'Comidad Sanas',
+            'descripcion' => 'Venta de alimentos saludables',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'comidas_sanas.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 7,
+            'nombre' => 'La Parrilla',
+            'descripcion' => 'Restaurante de carnes a la parrilla',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'parrilla.png',
+            'password' => bcrypt('password'),
+        ]);
+        Empresa::create([
+            'id' => 8,
+            'nombre' => 'Pizza rápida',
+            'descripcion' => 'Pizzería de servicio rápido',
+            'ubicacion' => 'Costa Teguise',
+            'logo' => 'pizza_rapida.png',
+            'password' => bcrypt('password'),
+        ]);
+        Empresa::create([
+            'id' => 9,
+            'nombre' => 'Mariscos del Sur',
+            'descripcion' => 'Restaurante especializado en mariscos',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'mariscos.png',
+            'password' => bcrypt('password'),
+        ]);
+        Empresa::create([
+            'id' => 10,
+            'nombre' => 'Restaurante italiano Milano',
+            'descripcion' => 'Restaurante gourmet de comida italiana fresca',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'milano.png',
+            'password' => bcrypt('password'),
+        ]);
+        Empresa::create([
+            'id' => 11,
+            'nombre' => 'Arquitectos Avada',
+            'descripcion' => 'Servicios de arquitectura',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'avada.png',
+            'password' => bcrypt('password'),
+        ]);
+
         // SELECCIONADORES
 
         Seleccionador::create([

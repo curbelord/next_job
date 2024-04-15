@@ -1,11 +1,7 @@
 <div class="seccion_buscador">
 
     @if ($titulo == 'Busca una empresa')
-
-                            <!--['empresa' => request('buscador')]
-                            url('empresa', ['empresa' => $empresa->nombre])-->
-        <form method="GET" action="{{ route('empresa_buscada') }}">
-
+        <form method="GET" action="{{ route('empresas_coincidentes') }}">
             @csrf
 
             <div class="tabla">
@@ -19,13 +15,11 @@
             <div class="tabla">
                 <button type="submit">Buscar</button>
             </div>
-
         </form>
 
     @else
 
         <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
-
             @csrf
 
             <div class="tabla">
@@ -55,7 +49,6 @@
             <div class="tabla">
                 <button type="submit">Buscar</button>
             </div>
-
         </form>
 
     @endif

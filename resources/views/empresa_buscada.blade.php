@@ -38,7 +38,7 @@
                     @component('components.ultima_oferta', ['oferta' => $oferta])
                     @endcomponent
                 @endforeach
-                
+
             </div>
         </div>
     </div>

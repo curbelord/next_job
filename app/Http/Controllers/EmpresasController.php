@@ -4,43 +4,61 @@ namespace App\Http\Controllers;
 use App\Models\Empresa;
 use App\Models\Seleccionador;
 use App\Models\Oferta;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Type\Integer;
 
 class EmpresasController extends Controller
 {
-    public function mostrar()
+    public function mostrar(): View
     {
         return view('empresas');
     }
 
-    public function mostrarEmpresa(Request $request)
+    public function mostrarEmpresasCoincidentes(Request $request): View
     {
+        $filtro = $request->buscador;
+        $offset = 0;
 
-        $nombre_empresa = $request->input('buscador');
+        if ($request->pagina) {
+            $offset = (intval($request->pagina) * 10) - 10;
+        }
 
-        if ($nombre_empresa == null) {
-            return view('empresas');
-        } else {
-            
-            $empresa = Empresa::where('nombre', $nombre_empresa)->first();
+        $empresas = Empresa::where('nombre', 'LIKE', '%' . $filtro . '%')
+                            ->limit(10)
+                            ->offset($offset)
+                            ->get();
 
-            $ofertas = Oferta::all();
-            $ofertas = $ofertas->load('seleccionador.empresa');
+        $cantidadTotalEmpresas = Empresa::where('nombre', 'LIKE', '%' . $filtro . '%')->count();
 
-            $empresa_id = Empresa::where('nombre', $nombre_empresa)->first()->value('id');
+        return view('empresas_coincidentes', compact('empresas', 'cantidadTotalEmpresas', 'filtro'));
+    }
 
-            $seleccionadores = Seleccionador::where('id_empresa', $empresa_id)->get();
+    public function mostrarEmpresa($idEmpresa): View
+    {
+        $copiaIdEmpresa = intval($idEmpresa);
+        $mensajeIdInvalida = "La ID enviada no es válida";
+        $filtro = "";
 
-            $ofertas_empresa = Oferta::whereIn('id_seleccionador', $seleccionadores->pluck('id'))->limit(5)->orderBy('created_at', 'DESC')->get();
+        if (is_int($copiaIdEmpresa)){
+            $empresa = Empresa::where('id', $copiaIdEmpresa)->first();
 
-            $empresa->ofertas = $ofertas_empresa;
+            if ($empresa == null){
+                return view('empresas_coincidentes', compact('mensajeIdInvalida', 'filtro'));
+            }else{
+                $ofertas = Oferta::all();
+                $ofertas = $ofertas->load('seleccionador.empresa');
 
-            if ($empresa == null) {
-                return view('empresas');
-            } else {
+                $seleccionadores = Seleccionador::where('id_empresa', $copiaIdEmpresa)->get();
+
+                $ofertas_empresa = Oferta::whereIn('id_seleccionador', $seleccionadores->pluck('id'))->limit(5)->orderBy('created_at', 'DESC')->get();
+
+                $empresa->ofertas = $ofertas_empresa;
+
                 return view('empresa_buscada', compact('empresa'));
             }
-            
+        }else{
+            return view('empresas_coincidentes', compact('mensajeIdInvalida', 'filtro'));
         }
     }
 }

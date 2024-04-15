@@ -1,0 +1,131 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 100px 0px;
+}
+
+form{
+    grid-column: 3 / 11;
+}
+
+#container_titulo{
+    margin-bottom: 50px;
+}
+
+#titulo_empresas_coincidentes h1{
+    font-size: 1.7em;
+}
+
+#container_empresas_coincidentes{
+    padding: 15px;
+    margin-bottom: 50px;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+}
+
+.container_empresa{
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.subcontainer_empresa{
+    display: flex;
+    position: relative;
+    padding: 25px;
+    z-index: 1;
+}
+
+.left_container_empresa{
+    margin-right: 25px;
+}
+
+.imagen_logo_empresa{
+    width: 125px;
+    height: 125px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+.nombre_empresa{
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+.container_enlace_empresa, .container_enlace_empresa a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    border-radius: 30px;
+}
+
+#container_sin_empresas{
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+/* Paginación */
+
+#container_numeracion_slider{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+#container_numeracion_slider .numeracion_slider input{
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    padding: 12px 15px;
+    background: none;
+    border: none;
+}
+
+@media only screen and (max-width: 720px){
+    form{
+        grid-column: 2 / 12;
+    }
+
+    #titulo_empresas_coincidentes h1{
+        font-size: 1.5em;
+    }
+
+    #container_empresas_coincidentes{
+        padding: 10px;
+    }
+
+    .subcontainer_empresa{
+        flex-wrap: wrap;
+    }
+
+    .left_container_empresa{
+        margin: 0px;
+        width: 100%;
+    }
+
+    .imagen_logo_empresa{
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+    .nombre_empresa{
+        font-size: 1.2em;
+    }
+}
