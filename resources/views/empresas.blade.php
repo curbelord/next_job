@@ -15,16 +15,15 @@
 @section('style')
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleBuscador.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleEmpresas.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleComponenteEmpresa.css') }}">
 @endsection
 
 @section('content')
 
     <div class="content">
-            
-        @include('components.buscador')
-    
-    </div>
 
-    <div class="bloque"></div>
+        @include('components.buscador')
+
+    </div>
 
 @endsection

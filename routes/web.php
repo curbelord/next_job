@@ -106,7 +106,8 @@ Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta
 Route::post('/inscripcion/{oferta}', [OfertasController::class, 'realizarInscripcion'])->name('gestionar.ofertas.inscripcion');
 
 Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
-Route::get('/empresa', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa_buscada');
+Route::get('/empresas-encontradas', [EmpresasController::class, 'mostrarEmpresasCoincidentes'])->name('empresas_coincidentes');
+Route::get('/empresa/{id}', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa_buscada');
 
 
 
