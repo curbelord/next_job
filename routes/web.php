@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CandidaturasController;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
@@ -85,19 +86,14 @@ Route::middleware('auth')->group(function () {
 
 // VISTAS DEL DEMANDANTE
 
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function () {
 
-    Route::get('/inscripciones', function () {  //  ESTA VISTA ES NECESARIA, PERO NO ESTÁ IMPLEMENTADA
-        return view('inscripciones');           //  VISTA PARA MOSTRAR LAS INSCRIPCIONES DEL DEMANDANTE, SERÍA UNA TABLA CON LAS OFERTAS A LAS QUE SE HA INSCRITO
-    });                                         //  ES LA PÁGINA PREVIA A INFO-PROCESO YA QUE AL HACER CLICK EN UNA INSCRIPCIÓN SE REDIRIGE A INFO-PROCESO
-
-    Route::get('/info-proceso', function (){
-        return view('process_info');
-    });
+    Route::get('/candidaturas', [CandidaturasController::class, 'mostrarCandidaturas'])->name('candidaturas'); // Vista previa que contiene todas las candidaturas del usuario
+    Route::get('/candidatura/{id}', [CandidaturasController::class, 'mostrarCandidatura'])->name('candidatura');
 
     Route::get('/rellenar-cv', [RegistroController::class, 'rellenar_cv'])->name('auth.rellenar_cv');
 
-});
+// });
 
 Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('gestionar.ofertas.ofertas');
 Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta'])->name('gestionar.ofertas.descripcion');
