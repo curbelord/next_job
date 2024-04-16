@@ -234,12 +234,25 @@ export default {
             this.fecha_inicio_formacion = [];
             this.fecha_fin_formacion = [];
         },
+        anhadeEstadoCVLeido(idCandidato){
+            let parametrosConsulta = {
+                nombre: "CV Leído",
+                descripcion: "El CV ha sido leído por el personal de selección",
+                id_demandante: idCandidato,
+                id_oferta: this.referencia
+            };
+
+            $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', $.param(parametrosConsulta)).done(function (respuesta){
+                console.log(respuesta);
+            });
+        },
         async imprimirCurriculum(idCandidato){
             try {
                 this.reseteaDatosCurriculum();
                 let objetoDatosCurriculum = await this.obtenerDatosCurriculum(idCandidato);
                 this.almacenaDatosCurriculum(objetoDatosCurriculum);
                 this.ocultaElementosProcesoDetalle();
+                this.anhadeEstadoCVLeido(idCandidato);
                 this.curriculumVisible = true;
             } catch (error){
                 console.error('Error al hacer la petición', error);

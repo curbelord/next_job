@@ -27,10 +27,40 @@
 }
 
 .imagen_cambio{
-    background-color: #D9D9D9;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60% 60%;
     height: 100%;
     width: 100%;
     border-radius: 10px;
+}
+
+.inscrito{
+    background-image: url("../img/inscrito.svg");
+}
+
+.cv_leido{
+    background-image: url("../img/ojo.svg");
+}
+
+.preseleccionado{
+    background-image: url("../img/preseleccionado.svg");
+}
+
+.seleccionado_entrevista{
+    background-image: url("../img/entrevista.svg");
+}
+
+.entrevista_positiva{
+    background-image: url("../img/entrevista_positiva.svg");
+}
+
+.entrevista_negativa{
+    background-image: url("../img/entrevista_negativa.svg");
+}
+
+.descartado{
+    background-image: url("../img/descartado.svg");
 }
 
 .container_right_cambio{
@@ -44,7 +74,7 @@
 .nombre_cambio{
     width: 100%;
     font-size: 1.3em;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .fecha_cambio{
