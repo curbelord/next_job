@@ -88,7 +88,7 @@ Route::middleware('auth')->group(function () {
 
 // Route::middleware('auth')->group(function () {
 
-    Route::get('/candidaturas', [CandidaturasController::class, 'mostrarCandidaturas'])->name('candidaturas'); // Vista previa que contiene todas las candidaturas del usuario
+    Route::get('/candidaturas', [CandidaturasController::class, 'mostrarCandidaturas'])->name('candidaturas'); // Vista previa que contiene todas las candidaturas del usuario. NO CREADA AÚN
     Route::get('/candidatura/{id}', [CandidaturasController::class, 'mostrarCandidatura'])->name('candidatura');
 
     Route::get('/rellenar-cv', [RegistroController::class, 'rellenar_cv'])->name('auth.rellenar_cv');

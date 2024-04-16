@@ -167,20 +167,20 @@
                 <div id="container_numeracion_slider">
                     @if($noHayOfertas == false)
                         @php
-                            $numIteraciones = ceil($cantidadTotalEmpresas / 10);
+                            $numIteraciones = ceil($cantidadTotalOfertas / 10);
                         @endphp
 
                         @for($i = 0; $i < $numIteraciones; $i++)
-                            @if($cantidadTotalEmpresas > 0 && $cantidadTotalEmpresas < 10)
+                            @if($cantidadTotalOfertas > 0 && $cantidadTotalOfertas < 10)
                                 @php
-                                    $cantidadTotalEmpresas = 10;
+                                    $cantidadTotalOfertas = 10;
                                 @endphp
                             @endif
                             @component('components.numeracion_slider')
                                 @slot('numero_pagina')
                                     {{ $i + 1 }}
                                 @endslot
-                                {{ $cantidadTotalEmpresas -= 10 }}
+                                {{ $cantidadTotalOfertas -= 10 }}
                             @endcomponent
                         @endfor
                     @endif

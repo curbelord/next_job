@@ -35,6 +35,8 @@ class OfertasController extends Controller
             });
         }
 
+        $ofertas->where('estado', 'Publicada');
+
         $cantidadTotalOfertas = $ofertas->count();
         $ofertas->limit(10)->offset($offset);
         $ofertas = $ofertas->get();
