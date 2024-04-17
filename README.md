@@ -20,29 +20,64 @@ Entre las características principales de Next Job se incluyen:
 
 - Publicación de Ofertas de Empleo: Las empresas pueden publicar ofertas de empleo detalladas, incluyendo descripciones del puesto, requisitos, responsabilidades y beneficios.
 
+## Innovaciones
+
+Novedades que implementa Next Job:
+
+- Next Job automatiza la gestión de ofertas temporales, agilizando el proceso tanto para los seleccionadores como para los candidatos. Esto garantiza una respuesta oportuna a las solicitudes y actualizaciones relacionadas con las ofertas de empleo.
+
+- Para promover la igualdad de oportunidades, Next Job ofrece la opción de CV ciegos en cada oferta de empleo. Esto permite que los candidatos apliquen sin revelar información personal que pueda generar prejuicios o discriminación.
+
+
+## Futuras Implementaciones
+
 - Alertas de Empleo: Los usuarios pueden configurar alertas para recibir notificaciones por correo electrónico o mensajes cuando se publiquen ofertas de empleo que coincidan con sus criterios de búsqueda.
 
 - Sistema de Mensajería: Facilita la comunicación entre empleadores y candidatos, permitiéndoles intercambiar información adicional y coordinar entrevistas.
 
 - Analítica y Seguimiento: Las empresas pueden utilizar herramientas de análisis para realizar un seguimiento del rendimiento de sus publicaciones de empleo y evaluar la efectividad de sus estrategias de contratación.
 
-## Innovaciones
-
-Novedades que implementa Next Job:
-
 - Implementación de un calendario integrado para gestionar entrevistas y eventos de reclutamiento. Esta función facilita la organización y coordinación de actividades relacionadas con el proceso de contratación.
 
-- Next Job cuenta con una sección especializada destinada a tutores de prácticas de FP, donde pueden acceder fácilmente a información sobre empresas adheridas a programas de formación así como a empresas de nuevo ingreso dispuestas a acoger a estudiantes en prácticas.
+- Next Job cuenta con una sección especializada y destinada a tutores de prácticas de FP, donde pueden acceder fácilmente a información sobre empresas adheridas a programas de formación así como a empresas de nuevo ingreso dispuestas a acoger a estudiantes en prácticas.
 
 - Integración de un sistema de chat que permite la comunicación directa entre demandantes de empleo y seleccionadores. Esta herramienta facilita la interacción y la resolución de dudas en tiempo real durante el proceso de selección.
-
-- Next Job automatiza la gestión de ofertas temporales, agilizando el proceso tanto para los seleccionadores como para los candidatos. Esto garantiza una respuesta oportuna a las solicitudes y actualizaciones relacionadas con las ofertas de empleo.
-
-- Para promover la igualdad de oportunidades, Next Job ofrece la opción de CV ciegos en cada oferta de empleo. Esto permite que los candidatos apliquen sin revelar información personal que pueda generar prejuicios o discriminación.
 
 - Cada oferta de empleo en Next Job incluye un foro de preguntas donde los candidatos pueden plantear sus inquietudes. Con la finalidad de fomentar la transparencia y proporcionar información adicional sobre las oportunidades laborales.
 
 - Además, los demandantes de empleo también podrán observar la compatibilidad de la oferta con su CV.
+
+## Instalación
+
+1. Clone el repositorio:
+
+> git clone https://github.com/curbelord/next_job.git
+
+2. Instale las dependencias con Composer en el directorio next_job:
+
+```cd next_job```
+
+```composer install```
+
+3. Haga una copia de `.env.example` y renombrélo como `.env`:
+
+```cp .env.example .env```
+
+4. Genere una nueva key:
+
+```php artisan key:generate```
+
+5. Configure la base de datos con los siguientes parámetros y modifique el archivo `.env`.
+
+6. Ejecute las migraciones:
+
+```php artisan migrate --seed```
+
+7. Ejecute los seeders:
+
+8. Active el servidor:
+
+```php artisan serve```
 
 ## Diagrama Entidad-Relación
 
@@ -55,6 +90,10 @@ Novedades que implementa Next Job:
 ## Diagrama de Clases
 
 **[Diagrama de caso de Uso](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=sharing)**
+
+## Pruebas Unitarias
+
+- Aquí iría alguna explicación
 
 ## Presentación YouTube
 
