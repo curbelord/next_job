@@ -7,24 +7,33 @@ use App\Models\Estado;
 use App\Models\Oferta;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CandidaturasController extends Controller
 {
-    public function mostrarCandidaturas(): View
+    public function mostrarCandidaturas(Request $request): View
     {
-        $ofertas = Oferta::join('inscripcion', 'oferta.referencia', '=', 'inscripcion.id_oferta')
-                         ->where('inscripcion.id_demandante', '=', 1)
-                         ->get();
+        $offset = 0;
 
-        $estados = Estado::where('id_demandante', 1)
-                         ->where(function ($query) {
-                            $query->where('created_at', '=', Estado::where('id_demandante', 1)
-                                  ->whereColumn('id_oferta', 'estado.id_oferta')
-                                  ->selectRaw('MAX(created_at)')
-                            );
-                        })->get();
+        if ($request->pagina) {
+            $offset = (intval($request->pagina) * 10) - 10;
+        }
 
-        return view('candidaturas', compact('ofertas', 'estados'));
+        $candidaturas = Oferta::join('inscripcion', 'oferta.referencia', '=', 'inscripcion.id_oferta')
+                              ->leftJoin('seleccionador', 'oferta.id_seleccionador', '=', 'seleccionador.id')
+                              ->leftJoin('empresa', 'seleccionador.id_empresa', '=', 'empresa.id')
+                              ->leftJoin('estado', function($join) {
+                                $join->on('oferta.referencia', '=', 'estado.id_oferta')
+                                    ->whereRaw('estado.created_at = (SELECT MAX(created_at) FROM estado WHERE estado.id_oferta = oferta.referencia)');
+                            })
+                              ->where('inscripcion.id_demandante', '=', Auth::id())
+                              ->select('oferta.referencia', 'oferta.puesto_trabajo', 'empresa.nombre as nombre_empresa', 'estado.nombre as nombre_estado')
+                              ->get();
+
+        $cantidadTotalCandidaturas = $candidaturas->count();
+        $candidaturas = $candidaturas->skip($offset)->take(10);
+
+        return view('candidaturas', compact('candidaturas', 'cantidadTotalCandidaturas'));
     }
 
     public function mostrarCandidatura($idOferta): View
@@ -38,24 +47,24 @@ class CandidaturasController extends Controller
                 return view('candidaturas');
             }
 
-            $ultimoEstado = Estado::where('id_demandante', 1)
-                      ->where('created_at', '=', function($query) {
+            $ultimoEstado = Estado::where('id_demandante', Auth::id())
+                      ->where('id_oferta', $copiaIdOferta)
+                      ->where('created_at', '=', function($query) use ($copiaIdOferta) {
                           $query->selectRaw('MAX(created_at)')
                                 ->from('estado')
-                                ->where('id_demandante', 1);
+                                ->where('id_demandante', 1)
+                                ->where('id_oferta', $copiaIdOferta);
                       })
-                      ->where('id_oferta', 1)
                       ->first();
 
             $empresa = Empresa::join('seleccionador', 'empresa.id', '=', 'seleccionador.id_empresa')
                               ->join('oferta', 'seleccionador.id', '=', 'oferta.id_seleccionador')
                               ->select('empresa.nombre')
-                              ->where('oferta.referencia', 1)
+                              ->where('oferta.referencia', $copiaIdOferta)
                               ->first();
 
-
             $estados = Estado::where('id_oferta', $copiaIdOferta)
-                             ->where('id_demandante', 1)
+                             ->where('id_demandante', Auth::id())
                              ->orderBy('created_at', 'desc')
                              ->get();
 
