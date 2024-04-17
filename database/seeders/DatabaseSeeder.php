@@ -38,8 +38,8 @@ class DatabaseSeeder extends Seeder
             'genero' => 'Hombre',
             'fecha_nacimiento' => '1990-05-15',
             'direccion' => 'Calle Mayor 123',
-            'telefono' => '+123456789',
             'email' => 'juan@gmail.com',
+            'telefono' => '+123456789',
             'password' => bcrypt('password'),
         ]);
 
@@ -267,7 +267,7 @@ class DatabaseSeeder extends Seeder
             'fecha_nacimiento' => '1995-06-25',
             'direccion' => 'Calle de la Luna 7',
             'email' => 'mariamartinez@gmail.com',
-            'telefono' => '+987654541',
+            'telefono' => '+987654542',
             'password' => bcrypt('password'),
         ]);
 
@@ -323,6 +323,14 @@ class DatabaseSeeder extends Seeder
 
         Demandante::create([
             'id' => 18,
+        ]);
+
+        Demandante::create([
+            'id' => 19,
+        ]);
+
+        Demandante::create([
+            'id' => 20,
         ]);
 
         // EMPRESAS
@@ -534,16 +542,6 @@ class DatabaseSeeder extends Seeder
             'id_empresa' => 5,
         ]);
 
-        Seleccionador::create([
-            'id' => 19,
-            'id_empresa' => 19,
-        ]);
-
-        Seleccionador::create([
-            'id' => 20,
-            'id_empresa' => 20,
-        ]);
-
         // CV
 
         CV::create([
@@ -655,7 +653,7 @@ class DatabaseSeeder extends Seeder
             'jornada_laboral' => 'Tiempo completo',
             'puesto_trabajo' => 'Limpieza',
             'tipo_trabajo' => 'Tiempo completo',
-            'id_demandante' => 19,
+            'id_demandante' => 18,
         ]);
 
         CV::create([
@@ -782,7 +780,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Formación Profesional Seguridad',
             'centro_estudios' => 'CIFP XYZ',
             'fecha_inicio' => '2013-10-01',
-            'fecha_fin' => '2015-06-31',
+            'fecha_fin' => '2015-07-31',
         ]);
 
         Estudios::create([
@@ -1345,7 +1343,7 @@ class DatabaseSeeder extends Seeder
             'tipo_trabajo' => 'Presencial',
             'puesto_trabajo' => 'Albañil',
             'descripcion' => 'Se busca albañil con experiencia.',
-            'estudios_minimos' => 'Formación Profesional',
+            'estudios_minimos' => 'Ciclo Formativo de Grado Superior',
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'provincia' => 'Las Palmas',
@@ -1366,7 +1364,7 @@ class DatabaseSeeder extends Seeder
             'tipo_trabajo' => 'Presencial',
             'puesto_trabajo' => 'Camarero',
             'descripcion' => 'Se busca camarero con experiencia.',
-            'estudios_minimos' => 'Formación Profesional',
+            'estudios_minimos' => 'Ciclo Formativo de Grado Superior',
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'provincia' => 'Las Palmas',
@@ -1387,7 +1385,7 @@ class DatabaseSeeder extends Seeder
             'tipo_trabajo' => 'Presencial',
             'puesto_trabajo' => 'Electricista',
             'descripcion' => 'Se busca electricista con experiencia.',
-            'estudios_minimos' => 'Formación Profesional',
+            'estudios_minimos' => 'Ciclo Formativo de Grado Superior',
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'provincia' => 'Las Palmas',
@@ -1408,7 +1406,7 @@ class DatabaseSeeder extends Seeder
             'tipo_trabajo' => 'Presencial',
             'puesto_trabajo' => 'Fontanero',
             'descripcion' => 'Se busca fontanero con experiencia.',
-            'estudios_minimos' => 'Formación Profesional',
+            'estudios_minimos' => 'Ciclo Formativo de Grado Superior',
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'provincia' => 'Las Palmas',
@@ -1429,7 +1427,7 @@ class DatabaseSeeder extends Seeder
             'tipo_trabajo' => 'Presencial',
             'puesto_trabajo' => 'Pintor',
             'descripcion' => 'Se busca pintor con experiencia.',
-            'estudios_minimos' => 'Formación Profesional',
+            'estudios_minimos' => 'Ciclo Formativo de Grado Superior',
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'provincia' => 'Las Palmas',
@@ -1467,11 +1465,11 @@ class DatabaseSeeder extends Seeder
             'numero_vacantes' => 2,
             'salario' => 2000.00,
             'jornada' => 'Completa',
-            'sector' => 'Seguridad',
-            'tipo_trabajo' => 'Logística, Transporte y Comercio',
+            'sector' => 'Logística, Transporte y Comercio',
+            'tipo_trabajo' => 'Presencial',
             'puesto_trabajo' => 'Segurata',
             'descripcion' => 'Se busca segurata con experiencia.',
-            'estudios_minimos' => 'Formación Profesional',
+            'estudios_minimos' => 'Ciclo Formativo de Grado Superior',
             'experiencia_minima' => 2,
             'ubicacion' => 'Ciudad',
             'provincia' => 'Las Palmas',
@@ -1723,7 +1721,7 @@ class DatabaseSeeder extends Seeder
 
         Estado::create([
             'id' => 7,
-            'nombre' => 'Fuera de plazo',
+            'nombre' => 'Descartado',
             'descripcion' => 'Fuera de plazo de inscripción',
             'id_demandante' => 9,
             'id_oferta' => 1,
@@ -1731,7 +1729,7 @@ class DatabaseSeeder extends Seeder
 
         Estado::create([
             'id' => 8,
-            'nombre' => 'Pendiente de revisión',
+            'nombre' => 'CV leído',
             'descripcion' => 'Pendiente de revisión',
             'id_demandante' => 1,
             'id_oferta' => 6,
@@ -1739,7 +1737,7 @@ class DatabaseSeeder extends Seeder
 
         Estado::create([
             'id' => 9,
-            'nombre' => 'Rechazado por el seleccionador',
+            'nombre' => 'Descartado',
             'descripcion' => 'Rechazado por el seleccionador',
             'id_demandante' => 3,
             'id_oferta' => 1,
@@ -1747,7 +1745,7 @@ class DatabaseSeeder extends Seeder
 
         Estado::create([
             'id' => 10,
-            'nombre' => 'Interesante',
+            'nombre' => 'Preseleccionado',
             'descripcion' => 'Interesante',
             'id_demandante' => 11,
             'id_oferta' => 1,
@@ -1755,7 +1753,7 @@ class DatabaseSeeder extends Seeder
 
         Estado::create([
             'id' => 11,
-            'nombre' => 'Pendiente de revisión',
+            'nombre' => 'CV leído',
             'descripcion' => 'Pendiente de revisión',
             'id_demandante' => 12,
             'id_oferta' => 1,
@@ -1763,7 +1761,7 @@ class DatabaseSeeder extends Seeder
 
         Estado::create([
             'id' => 12,
-            'nombre' => 'Perfil no apto',
+            'nombre' => 'CV leído',
             'descripcion' => 'Perfil no apto, pero se mantiene en reserva',
             'id_demandante' => 13,
             'id_oferta' => 1,
@@ -1771,7 +1769,7 @@ class DatabaseSeeder extends Seeder
 
         Estado::create([
             'id' => 13,
-            'nombre' => 'Pendiente de entrevista',
+            'nombre' => 'Seleccionado para entrevista',
             'descripcion' => 'Pendiente de entrevista',
             'id_demandante' => 14,
             'id_oferta' => 1,
@@ -1779,7 +1777,7 @@ class DatabaseSeeder extends Seeder
 
         Estado::create([
             'id' => 14,
-            'nombre' => 'Rechazado por el seleccionador',
+            'nombre' => 'Descartado',
             'descripcion' => 'Rechazado por el seleccionador',
             'id_demandante' => 15,
             'id_oferta' => 1,
