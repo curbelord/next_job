@@ -248,6 +248,30 @@ class DDBBSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
+        User::create([
+            'id' => 19,
+            'nombre' => 'Carlos',
+            'apellidos' => 'González',
+            'genero' => 'Hombre',
+            'fecha_nacimiento' => '1993-08-15',
+            'direccion' => 'Calle de la Estrella 12',
+            'email' => 'carlosgonzalez@gmail.com',
+            'telefono' => '+123456788',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::create([
+            'id' => 20,
+            'nombre' => 'María',
+            'apellidos' => 'Martínez',
+            'genero' => 'Mujer',
+            'fecha_nacimiento' => '1995-06-25',
+            'direccion' => 'Calle de la Luna 7',
+            'email' => 'mariamartinez@gmail.com',
+            'telefono' => '+987654541',
+            'password' => bcrypt('password'),
+        ]);
+
         // DEMANDANTES
 
         Demandante::create([
@@ -366,6 +390,7 @@ class DDBBSeeder extends Seeder
             'logo' => 'parrilla.png',
             'password' => bcrypt('password'),
         ]);
+
         Empresa::create([
             'id' => 8,
             'nombre' => 'Pizza rápida',
@@ -374,6 +399,7 @@ class DDBBSeeder extends Seeder
             'logo' => 'pizza_rapida.png',
             'password' => bcrypt('password'),
         ]);
+
         Empresa::create([
             'id' => 9,
             'nombre' => 'Mariscos del Sur',
@@ -382,6 +408,7 @@ class DDBBSeeder extends Seeder
             'logo' => 'mariscos.png',
             'password' => bcrypt('password'),
         ]);
+
         Empresa::create([
             'id' => 10,
             'nombre' => 'Restaurante italiano Milano',
@@ -390,12 +417,94 @@ class DDBBSeeder extends Seeder
             'logo' => 'milano.png',
             'password' => bcrypt('password'),
         ]);
+
         Empresa::create([
             'id' => 11,
             'nombre' => 'Arquitectos Avada',
             'descripcion' => 'Servicios de arquitectura',
             'ubicacion' => 'Arrecife',
             'logo' => 'avada.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 12,
+            'nombre' => 'Inmobiliaria Lanzarote',
+            'descripcion' => 'Venta y alquiler de propiedades',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'inmobiliaria.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 13,
+            'nombre' => 'Carpintería Madera',
+            'descripcion' => 'Carpintería de madera',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'carpinteria.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 14,
+            'nombre' => 'Electricidad Lanzarote',
+            'descripcion' => 'Servicios de electricidad',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'electricidad.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 15,
+            'nombre' => 'Fontanería Lanzarote',
+            'descripcion' => 'Servicios de fontanería',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'fontaneria.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 16,
+            'nombre' => 'Pintura Lanzarote',
+            'descripcion' => 'Servicios de pintura',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'pintura.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 17,
+            'nombre' => 'Reformas Lanzarote',
+            'descripcion' => 'Servicios de reformas',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'reformas.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 18,
+            'nombre' => 'Seguridad Lanzarote',
+            'descripcion' => 'Servicios de seguridad',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'seguridad.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 19,
+            'nombre' => 'Limpieza Lanzarote',
+            'descripcion' => 'Servicios de limpieza',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'limpieza.png',
+            'password' => bcrypt('password'),
+        ]);
+
+        Empresa::create([
+            'id' => 20,
+            'nombre' => 'Mantenimiento Lanzarote',
+            'descripcion' => 'Servicios de mantenimiento',
+            'ubicacion' => 'Arrecife',
+            'logo' => 'mantenimiento.png',
             'password' => bcrypt('password'),
         ]);
 
@@ -424,6 +533,16 @@ class DDBBSeeder extends Seeder
         Seleccionador::create([
             'id' => 10,
             'id_empresa' => 5,
+        ]);
+
+        Seleccionador::create([
+            'id' => 19,
+            'id_empresa' => 19,
+        ]);
+
+        Seleccionador::create([
+            'id' => 20,
+            'id_empresa' => 20,
         ]);
 
         // CV
@@ -466,6 +585,86 @@ class DDBBSeeder extends Seeder
             'puesto_trabajo' => 'Desarrollador web',
             'tipo_trabajo' => 'Tiempo completo',
             'id_demandante' => 9,
+        ]);
+
+        CV::create([
+            'id' => 6,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Obrero',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 11,
+        ]);
+
+        CV::create([
+            'id' => 7,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Camarero',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 12,
+        ]);
+
+        CV::create([
+            'id' => 8,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Cocinero',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 13,
+        ]);
+
+        CV::create([
+            'id' => 9,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Fontanero',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 14,
+        ]);
+
+        CV::create([
+            'id' => 10,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Electricista',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 15,
+        ]);
+
+        CV::create([
+            'id' => 11,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Pintor',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 16,
+        ]);
+
+        CV::create([
+            'id' => 12,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Asesor inmobiliario',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 17,
+        ]);
+
+        CV::create([
+            'id' => 13,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Segurata',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 18,
+        ]);
+
+        CV::create([
+            'id' => 14,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Limpieza',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 19,
+        ]);
+
+        CV::create([
+            'id' => 15,
+            'jornada_laboral' => 'Tiempo completo',
+            'puesto_trabajo' => 'Mantenimiento',
+            'tipo_trabajo' => 'Tiempo completo',
+            'id_demandante' => 20,
         ]);
 
         // Estudios
@@ -513,6 +712,96 @@ class DDBBSeeder extends Seeder
             'centro_estudios' => 'Universidad XYZ',
             'fecha_inicio' => '2015-09-01',
             'fecha_fin' => '2019-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 6,
+            'id_estudio' => 2,
+            'nombre' => 'Formación Profesional Obras y Servicios',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2013-09-01',
+            'fecha_fin' => '2015-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 7,
+            'id_estudio' => 3,
+            'nombre' => 'Formación Profesional Hostelería y Turismo',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2013-09-01',
+            'fecha_fin' => '2015-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 8,
+            'id_estudio' => 4,
+            'nombre' => 'Formación Profesional Hostelería y Turismo',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2013-09-01',
+            'fecha_fin' => '2015-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 9,
+            'id_estudio' => 5,
+            'nombre' => 'Formación Profesional Fontanería',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2013-09-01',
+            'fecha_fin' => '2015-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 10,
+            'id_estudio' => 6,
+            'nombre' => 'Formación Profesional Electricidad',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2013-09-01',
+            'fecha_fin' => '2015-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 11,
+            'id_estudio' => 7,
+            'nombre' => 'Formación Profesional Pintura',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2013-09-01',
+            'fecha_fin' => '2015-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 12,
+            'id_estudio' => 8,
+            'nombre' => 'Grado en Asesoría Inmobiliaria',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2016-02-10',
+            'fecha_fin' => '2018-06-23',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 13,
+            'id_estudio' => 9,
+            'nombre' => 'Formación Profesional Seguridad',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2013-10-01',
+            'fecha_fin' => '2015-06-31',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 14,
+            'id_estudio' => 10,
+            'nombre' => 'Formación Profesional Limpieza',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2015-09-01',
+            'fecha_fin' => '2017-06-30',
+        ]);
+
+        Estudios::create([
+            'id_cv' => 15,
+            'id_estudio' => 11,
+            'nombre' => 'Formación Profesional Mantenimiento',
+            'centro_estudios' => 'CIFP XYZ',
+            'fecha_inicio' => '2014-09-01',
+            'fecha_fin' => '2016-06-30',
         ]);
 
         // Experiencia
@@ -565,6 +854,106 @@ class DDBBSeeder extends Seeder
             'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
             'fecha_inicio' => '2020-01-01',
             'fecha_fin' => '2021-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 6,
+            'id_experiencia' => 2,
+            'nombre' => 'Obrero',
+            'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2016-01-01',
+            'fecha_fin' => '2018-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 7,
+            'id_experiencia' => 3,
+            'nombre' => 'Camarero',
+            'centro_laboral' => 'Restaurante XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2017-01-01',
+            'fecha_fin' => '2019-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 8,
+            'id_experiencia' => 4,
+            'nombre' => 'Cocinero',
+            'centro_laboral' => 'Restaurante XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2018-01-01',
+            'fecha_fin' => '2020-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 9,
+            'id_experiencia' => 5,
+            'nombre' => 'Fontanero',
+            'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2019-01-01',
+            'fecha_fin' => '2021-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 10,
+            'id_experiencia' => 6,
+            'nombre' => 'Electricista',
+            'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2019-01-01',
+            'fecha_fin' => '2021-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 11,
+            'id_experiencia' => 7,
+            'nombre' => 'Pintor',
+            'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2019-01-01',
+            'fecha_fin' => '2021-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 12,
+            'id_experiencia' => 8,
+            'nombre' => 'Asesor inmobiliario',
+            'centro_laboral' => 'Inmobiliaria XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2020-01-01',
+            'fecha_fin' => '2022-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 13,
+            'id_experiencia' => 9,
+            'nombre' => 'Segurata',
+            'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2019-01-01',
+            'fecha_fin' => '2021-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 14,
+            'id_experiencia' => 10,
+            'nombre' => 'Limpieza',
+            'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2017-01-01',
+            'fecha_fin' => '2019-12-31',
+        ]);
+
+        Experiencia::create([
+            'id_cv' => 15,
+            'id_experiencia' => 11,
+            'nombre' => 'Mantenimiento',
+            'centro_laboral' => 'Empresa XYZ',
+            'descripcion' => 'Lorem ipsum dolor sit amet adipiscing elit',
+            'fecha_inicio' => '2016-01-01',
+            'fecha_fin' => '2018-12-31',
         ]);
 
         // Oferta
@@ -947,6 +1336,153 @@ class DDBBSeeder extends Seeder
             'id_seleccionador' => 2,
         ]);
 
+        Oferta::create([
+            'referencia' => 19,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 2,
+            'salario' => 2000.00,
+            'jornada' => 'Completa',
+            'sector' => 'Construcción',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Albañil',
+            'descripcion' => 'Se busca albañil con experiencia.',
+            'estudios_minimos' => 'Formación Profesional',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'provincia' => 'Las Palmas',
+            'turno' => 'Mañana',
+            'estado' => 'Publicada',
+            'curriculums_ciegos' => 'SI',
+            'palabras_clave' => NULL,
+            'id_seleccionador' => 4,
+        ]);
+
+        Oferta::create([
+            'referencia' => 20,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 1,
+            'salario' => 1000.00,
+            'jornada' => 'Completa',
+            'sector' => 'Servicios Turísticos y Hosteleros',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Camarero',
+            'descripcion' => 'Se busca camarero con experiencia.',
+            'estudios_minimos' => 'Formación Profesional',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'provincia' => 'Las Palmas',
+            'turno' => 'Tarde',
+            'estado' => 'Publicada',
+            'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
+            'id_seleccionador' => 6,
+        ]);
+
+        Oferta::create([
+            'referencia' => 21,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 3,
+            'salario' => 3000.00,
+            'jornada' => 'Completa',
+            'sector' => 'Energía',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Electricista',
+            'descripcion' => 'Se busca electricista con experiencia.',
+            'estudios_minimos' => 'Formación Profesional',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'provincia' => 'Las Palmas',
+            'turno' => 'Tarde',
+            'estado' => 'Publicada',
+            'curriculums_ciegos' => 'SI',
+            'palabras_clave' => NULL,
+            'id_seleccionador' => 8,
+        ]);
+
+        Oferta::create([
+            'referencia' => 22,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 2,
+            'salario' => 2000.00,
+            'jornada' => 'Completa',
+            'sector' => 'Energía',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Fontanero',
+            'descripcion' => 'Se busca fontanero con experiencia.',
+            'estudios_minimos' => 'Formación Profesional',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'provincia' => 'Las Palmas',
+            'turno' => 'Tarde',
+            'estado' => 'Publicada',
+            'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
+            'id_seleccionador' => 10,
+        ]);
+
+        Oferta::create([
+            'referencia' => 23,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 1,
+            'salario' => 1000.00,
+            'jornada' => 'Completa',
+            'sector' => 'Mantenimiento',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Pintor',
+            'descripcion' => 'Se busca pintor con experiencia.',
+            'estudios_minimos' => 'Formación Profesional',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'provincia' => 'Las Palmas',
+            'turno' => 'Tarde',
+            'estado' => 'Publicada',
+            'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
+            'id_seleccionador' => 2,
+        ]);
+
+        Oferta::create([
+            'referencia' => 24,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 3,
+            'salario' => 3000.00,
+            'jornada' => 'Completa',
+            'sector' => 'Construcción',
+            'tipo_trabajo' => 'Presencial',
+            'puesto_trabajo' => 'Asesor inmobiliario',
+            'descripcion' => 'Se busca asesor inmobiliario con experiencia.',
+            'estudios_minimos' => 'Grado universitario',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'provincia' => 'Las Palmas',
+            'turno' => 'Tarde',
+            'estado' => 'Publicada',
+            'curriculums_ciegos' => 'NO',
+            'palabras_clave' => NULL,
+            'id_seleccionador' => 4,
+        ]);
+
+        Oferta::create([
+            'referencia' => 25,
+            'fecha_cierre' => '2024-03-15',
+            'numero_vacantes' => 2,
+            'salario' => 2000.00,
+            'jornada' => 'Completa',
+            'sector' => 'Seguridad',
+            'tipo_trabajo' => 'Logística, Transporte y Comercio',
+            'puesto_trabajo' => 'Segurata',
+            'descripcion' => 'Se busca segurata con experiencia.',
+            'estudios_minimos' => 'Formación Profesional',
+            'experiencia_minima' => 2,
+            'ubicacion' => 'Ciudad',
+            'provincia' => 'Las Palmas',
+            'turno' => 'Tarde',
+            'estado' => 'Publicada',
+            'curriculums_ciegos' => 'SI',
+            'palabras_clave' => NULL,
+            'id_seleccionador' => 6,
+        ]);
+
         // Calendario
 
         Calendario::create([
@@ -1100,6 +1636,42 @@ class DDBBSeeder extends Seeder
             'anotacion' => '',
         ]);
 
+        Inscripcion::create([
+            'id_demandante' => 19,
+            'id_oferta' => 1,
+            'anotacion' => '',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 20,
+            'id_oferta' => 1,
+            'anotacion' => '',
+        ]);
+        
+        Inscripcion::create([
+            'id_demandante' => 19,
+            'id_oferta' => 2,
+            'anotacion' => '',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 20,
+            'id_oferta' => 2,
+            'anotacion' => '',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 19,
+            'id_oferta' => 20,
+            'anotacion' => '',
+        ]);
+
+        Inscripcion::create([
+            'id_demandante' => 20,
+            'id_oferta' => 23,
+            'anotacion' => '',
+        ]);
+
         // Estado
 
         Estado::create([
@@ -1148,6 +1720,142 @@ class DDBBSeeder extends Seeder
             'descripcion' => 'Falló en la entrevista de trabajo',
             'id_demandante' => 7,
             'id_oferta' => 4,
+        ]);
+
+        Estado::create([
+            'id' => 7,
+            'nombre' => 'Fuera de plazo',
+            'descripcion' => 'Fuera de plazo de inscripción',
+            'id_demandante' => 9,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 8,
+            'nombre' => 'Pendiente de revisión',
+            'descripcion' => 'Pendiente de revisión',
+            'id_demandante' => 1,
+            'id_oferta' => 6,
+        ]);
+
+        Estado::create([
+            'id' => 9,
+            'nombre' => 'Rechazado por el seleccionador',
+            'descripcion' => 'Rechazado por el seleccionador',
+            'id_demandante' => 3,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 10,
+            'nombre' => 'Interesante',
+            'descripcion' => 'Interesante',
+            'id_demandante' => 11,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 11,
+            'nombre' => 'Pendiente de revisión',
+            'descripcion' => 'Pendiente de revisión',
+            'id_demandante' => 12,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 12,
+            'nombre' => 'Perfil no apto',
+            'descripcion' => 'Perfil no apto, pero se mantiene en reserva',
+            'id_demandante' => 13,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 13,
+            'nombre' => 'Pendiente de entrevista',
+            'descripcion' => 'Pendiente de entrevista',
+            'id_demandante' => 14,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 14,
+            'nombre' => 'Rechazado por el seleccionador',
+            'descripcion' => 'Rechazado por el seleccionador',
+            'id_demandante' => 15,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 15,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 16,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 16,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 17,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 17,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 18,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 18,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 19,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 19,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 20,
+            'id_oferta' => 1,
+        ]);
+
+        Estado::create([
+            'id' => 20,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 19,
+            'id_oferta' => 2,
+        ]);
+
+        Estado::create([
+            'id' => 21,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 20,
+            'id_oferta' => 2,
+        ]);
+
+        Estado::create([
+            'id' => 22,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 19,
+            'id_oferta' => 20,
+        ]);
+
+        Estado::create([
+            'id' => 23,
+            'nombre' => 'Inscrito',
+            'descripcion' => 'Inscrito en la oferta',
+            'id_demandante' => 20,
+            'id_oferta' => 23,
         ]);
 
         // Cuestionario
