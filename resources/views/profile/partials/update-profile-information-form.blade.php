@@ -19,7 +19,7 @@
 
         <div class="padding">
             <x-input-label for="name" :value="__('Nombre')" />
-            <x-text-input id="name" name="name" type="text" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" :value="old('nombre', $user->nombre)" required autocomplete="nombre" />
             <x-input-error :messages="$errors->get('name')" />
         </div>
 

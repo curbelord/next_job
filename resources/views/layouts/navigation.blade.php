@@ -59,10 +59,6 @@
             </div>
             @else
                 <li class="acceder"><a href="{{ url('/login') }}">Acceder</a></li>
-
-                <!--li class="iniciar_sesion"><a href="{{ route('login') }}">Iniciar sesión</a></li>
-                <li class="registro"><a href="{{ route('register') }}">Registro</a></li-->
-
             @endauth
         </ul>
   

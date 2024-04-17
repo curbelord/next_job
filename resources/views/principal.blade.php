@@ -76,6 +76,35 @@
 
     <div class="content">
 
+        @if(session('mensajeRegistro'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha registrado exitosamente!"
+                });
+            </script>
+        @elseif(session('mensajeLogin'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha iniciado sesión correctamente!"
+                });
+            </script>
+            <?php session()->forget('mensajeLogin'); ?>
+        @endif
+
         @include('components.buscador')
 
         <div class="bloque"></div>
