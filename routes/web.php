@@ -86,14 +86,14 @@ Route::middleware('auth')->group(function () {
 
 // VISTAS DEL DEMANDANTE
 
-// Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
 
-    Route::get('/candidaturas', [CandidaturasController::class, 'mostrarCandidaturas'])->name('candidaturas'); // Vista previa que contiene todas las candidaturas del usuario. NO CREADA AÚN
+    Route::get('/candidaturas', [CandidaturasController::class, 'mostrarCandidaturas'])->name('candidaturas');
     Route::get('/candidatura/{id}', [CandidaturasController::class, 'mostrarCandidatura'])->name('candidatura');
 
     Route::get('/rellenar-cv', [RegistroController::class, 'rellenar_cv'])->name('auth.rellenar_cv');
 
-// });
+});
 
 Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('gestionar.ofertas.ofertas');
 Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta'])->name('gestionar.ofertas.descripcion');

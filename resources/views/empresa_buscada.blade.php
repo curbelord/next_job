@@ -34,10 +34,14 @@
             </div>
             <div id="subcontainer_ultimas_ofertas">
 
-                @foreach ($empresa->ofertas as $oferta)
+                @forelse ($empresa->ofertas as $oferta)
                     @component('components.ultima_oferta', ['oferta' => $oferta])
                     @endcomponent
-                @endforeach
+                @empty
+                    <div id="container_sin_ofertas">
+                        <h3>No hay ofertas registradas</h3>
+                    </div>
+                @endforelse
 
             </div>
         </div>
