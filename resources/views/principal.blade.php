@@ -148,13 +148,13 @@
                 <div class="imagen_provincia">
                     <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
                         @csrf
-                        <input type="submit" class="provincia" name="provincia" value="Santa Cruz de Tenerife">
+                        <input type="submit" class="provincia" name="provincia" value="Madrid">
                     </form>
                 </div>
                 <div class="nombre_provincia">
                     <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
                         @csrf
-                        <input type="submit" class="provincia" name="provincia" value="Santa Cruz de Tenerife">
+                        <input type="submit" class="provincia" name="provincia" value="Madrid">
                     </form>
                 </div>
             </div>
@@ -163,13 +163,13 @@
                 <div class="imagen_provincia">
                     <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
                         @csrf
-                        <input type="submit" class="provincia" name="provincia" value="Madrid">
+                        <input type="submit" class="provincia" name="provincia" value="A Coruña">
                     </form>
                 </div>
                 <div class="nombre_provincia">
                     <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
                         @csrf
-                        <input type="submit" class="provincia" name="provincia" value="Madrid">
+                        <input type="submit" class="provincia" name="provincia" value="A Coruña">
                     </form>
                 </div>
             </div>

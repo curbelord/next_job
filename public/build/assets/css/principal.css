@@ -73,9 +73,23 @@
     grid-template-rows: repeat(2, 1fr);
 }
 
+.provincia_1-3 .imagen_provincia{
+    background-image: url("../img/lanzarote.jpg");
+}
+
+.provincia_2-3 .imagen_provincia{
+    background-image: url("../img/madrid.jpg");
+}
+
+.provincia_3-3 .imagen_provincia{
+    background-image: url("../img/torre_hercules_a_corunha.jpg");
+}
+
 .imagen_provincia {
     grid-row: 1;
-    background-color: var(--gris);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     border-radius: 10px;
     height: 360px;
     display: flex;

@@ -90,7 +90,7 @@ export default {
             </div>
 
             <div id="container_cierre_cuestionario">
-                <input v-model="fechaCierre" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="cierre_crear_oferta" class="input_formulario" name="fecha_cierre" placeholder="Fecha cierre">
+                <input v-model="fechaCierre" type="text" @focus="aplicaValorMinimoYMaximoInputFechaCierre(true)" @blur="aplicaValorMinimoYMaximoInputFechaCierre(false)" id="cierre_crear_oferta" class="input_formulario" name="fecha_cierre" placeholder="Fecha cierre">
 
                 <select v-model="curriculumsCiegos" id="select_curriculums_ciegos_crear_oferta" class="input_formulario" name="curriculums_ciegos">
                     <option value="" disabled selected>Currículums ciegos</option>
@@ -168,6 +168,50 @@ export default {
                     confirmButton: "boton_confirmar",
                 },
             });
+        },
+        aplicaValorMinimoYMaximoInputFechaCierre(esFocus) {
+            let fechaMinima = this.obtenerFechaActual();
+            let fechaMaxima = this.obtenerFechaLimiteCaducidad();
+            let inputFecha = document.getElementById("cierre_crear_oferta");
+
+            if (esFocus) {
+                inputFecha.type = "date";
+                inputFecha.setAttribute("min", fechaMinima);
+                inputFecha.setAttribute("max", fechaMaxima);
+            } else {
+                inputFecha.type = "text";
+            }
+        },
+        obtenerFechaActual(){
+            let fechaActual = new Date();
+            let anho = fechaActual.getFullYear();
+            let mes = fechaActual.getMonth() + 1;
+            let dia = fechaActual.getDate();
+
+            if (mes < 10) {
+                mes = '0' + mes;
+            }
+            if (dia < 10) {
+                dia = '0' + dia;
+            }
+
+            return anho + '-' + mes + '-' + dia;
+        },
+        obtenerFechaLimiteCaducidad(){
+            let fechaActual = new Date();
+            let fechaLimite = new Date(fechaActual.getTime() + 15 * 24 * 60 * 60 * 1000);
+            let anho = fechaLimite.getFullYear();
+            let mes = fechaLimite.getMonth() + 1;
+            let dia = fechaLimite.getDate();
+
+            if (mes < 10) {
+                mes = '0' + mes;
+            }
+            if (dia < 10) {
+                dia = '0' + dia;
+            }
+
+            return anho + '-' + mes + '-' + dia;
         },
 
         // Publicar / guardar proceso
