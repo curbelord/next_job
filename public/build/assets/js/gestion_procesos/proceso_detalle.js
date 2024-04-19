@@ -74,7 +74,7 @@ export default {
                 <h3>Candidatos</h3>
 
                 <div id="container_filtro_candidatos">
-                    <select @change="avisoPadreFiltroCandidatos" v-model="filtroSeleccionado" class="input_formulario">
+                    <select @change="avisoPadreFiltroCandidatos" v-model="filtroSeleccionado" id="select_filtro_candidatos" class="input_formulario" style="margin-bottom: 0px;">
                         <option value="todos" selected>Todos</option>
                         <option value="preseleccionados">Preseleccionados</option>
                         <option value="descartados">Descartados</option>

@@ -33,7 +33,7 @@
 
 #datos_candidatos_proceso_detalle, #datos_candidatos_proceso_detalle div{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 #datos_candidatos_proceso_detalle div{
@@ -74,12 +74,28 @@
 
 #titulo_candidatos{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 
 #titulo_candidatos h3{
     font-size: 1.5em;
+}
+
+#titulo_candidatos h3, #titulo_candidatos div, #titulo_candidatos button{
+    min-width: 30%;
+    margin-right: 20px;
+}
+
+#titulo_candidatos button{
+    margin-right: 0px;
+}
+
+#container_filtro_candidatos{
+    display: flex;
+    align-items: center;
+    min-width: 15%;
 }
 
 #container_info_candidatos{
@@ -164,8 +180,21 @@
 
     /* Candidatos */
 
+    #titulo_candidatos{
+        flex-wrap: wrap;
+    }
+
     #titulo_candidatos h3{
         font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+
+    #container_filtro_candidatos, #container_filtro_candidatos #select_filtro_candidatos{
+        width: 100%;
+    }
+
+    #container_filtro_candidatos{
+        margin-bottom: 20px;
     }
 
     #container_info_candidatos{
