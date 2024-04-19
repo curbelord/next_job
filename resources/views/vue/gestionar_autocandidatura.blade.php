@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleProcesoAutocandidatura.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleNumeracionSlider.css') }}">
 
-    {{-- Estilos Ver proceso --}}
-
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleVerOferta.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCurriculumSimplificado.css') }}">
-
     {{-- Estilos Perfil demandante --}}
 
     <link rel="stylesheet" href="{{ asset('build/assets/css/stylePerfilDemandante.css') }}">
@@ -21,6 +16,11 @@
     {{-- Estilos Editar proceso --}}
 
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearOferta.css') }}">
+
+    {{-- Estilos Ver proceso --}}
+
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleVerOferta.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCurriculumSimplificado.css') }}">
 
     {{-- <script src="https://unpkg.com/vue@3"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>

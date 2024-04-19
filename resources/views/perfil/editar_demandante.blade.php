@@ -26,28 +26,16 @@
 
                         <input type="number" id="telefonoUsuario" class="input_formulario" name="telefono" placeholder="Teléfono">
 
-                        <input type="file" id="fotoPerfil" class="input_formulario" name="fotoPerfil" value="Subir imagen perfil" placeholder="Subir imagen perfil">
+                        <label for="fotoPerfil" class="input_formulario label_subida_foto">Subir imagen perfil</label>
+                        <input type="file" id="fotoPerfil" name="fotoPerfil">
                     </div>
 
                     <input type="text" id="direccionPostal" class="input_formulario" name="direccionPostal" placeholder="Dirección postal">
 
                     <input type="email" id="correoElectronico" class="input_formulario" name="correoElectronico" placeholder="Correo electrónico">
                 </div>
-                <div id="container_cvs">
-                    <div id="titulo_cvs">
-                        <h3>CV's</h3>
-                    </div>
-                    <div id="container_inputs_cvs">
-                        {{-- Hacer un bucle para que en función de si hay currículums (forelse) imprima los inputs correspondientes con las id's acorde al número de CV --}}
-                        <div class="container_input_cv">
-                            <input type="text" id="nombreCV_1" class="input_formulario input_cv" name="nombreCV_1" placeholder="Nombre CV1">
 
-                            <div class="eliminar_cv"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <input type="submit" id="boton_actualizar_perfil" class="input_formulario" value="Actualizar perfil">
+                <input type="submit" id="boton_actualizar_perfil" class="input_formulario" value="Editar perfil">
             </form>
         </div>
     </div>

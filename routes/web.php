@@ -51,7 +51,7 @@ Route::get('/', [HomeController::class, 'index'])->name('principal');
 Route::get('/registro', [RegistroController::class, 'index'])->name('auth.registro');
 Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.incio_de_sesion');
 
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -79,7 +79,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/recuperar-contrasena', [LoginController::class, 'recuperar_contrasena'])->name('auth.recuperar_contrasena');
     // AÚN NO ESTÁ IMPLEMENTADA, PERO SERÍA UNA VISTA PARA RECUPERAR LA CONTRASEÑA MEDIANTE EL CORREO ELECTRÓNICO
 
-});
+// });
 
 
 
