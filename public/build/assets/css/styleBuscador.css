@@ -82,14 +82,14 @@ select {
     cursor: pointer;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 720px) {
 
     form h2 {
         grid-column: 2 / 12;
     }
 
     form input {
-        grid-column: 2 / 11;
+        grid-column: 2 / 12;
     }
 
     form select {

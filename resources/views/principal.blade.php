@@ -107,77 +107,74 @@
 
         @include('components.buscador')
 
-        <div class="bloque"></div>
-
-        <div class="seccion_relleno">
-            <div></div>
-
-            <span>Encuentra el trabajo que buscas</span>
-        </div>
-
-        <div class="bloque"></div>
-
-        <div class="seccion_valor">
-            <span>Encuentra el trabajo que buscas</span>
-
-            <div></div>
-        </div>
-
-        <div class="bloque"></div>
-
-        <div class="seccion_provincias">
-
-            <h2>Empleo por provincias</h2>
-
-            <div class="provincia provincia_1-3">
-                <div class="imagen_provincia">
-                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
-                        @csrf
-                        <input type="submit" class="provincia" name="provincia" value="Las Palmas">
-                    </form>
-                </div>
-                <div class="nombre_provincia">
-                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
-                        @csrf
-                        <input type="submit" class="provincia" name="provincia" value="Las Palmas">
-                    </form>
+        <div id="container_elementos_principal">
+            <div id="seccion_destaque_1" class="seccion_destaque">
+                <div id="imagen_seccion_destaque_1" class="imagen_seccion_destaque"></div>
+                <div class="texto_seccion_destaque">
+                    <h3 class="titulo_seccion_destaque">Lorem ipsum dolor. Sit amet.</h3>
+                    <p class="parrafo_seccion_destaque">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt, magna eget dictum efficitur, diam tellus lobortis diam, ut sagittis erat sapien sit amet felis. Praesent pharetra, nulla mattis rhoncus fringilla</p>
                 </div>
             </div>
 
-            <div class="provincia provincia_2-3">
-                <div class="imagen_provincia">
-                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
-                        @csrf
-                        <input type="submit" class="provincia" name="provincia" value="Madrid">
-                    </form>
+            <div id="seccion_destaque_2" class="seccion_destaque">
+                <div class="texto_seccion_destaque">
+                    <h3 class="titulo_seccion_destaque">Lorem ipsum dolor. Sit amet.</h3>
+                    <p class="parrafo_seccion_destaque">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt, magna eget dictum efficitur, diam tellus lobortis diam, ut sagittis erat sapien sit amet felis. Praesent pharetra, nulla mattis rhoncus fringilla</p>
                 </div>
-                <div class="nombre_provincia">
-                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
-                        @csrf
-                        <input type="submit" class="provincia" name="provincia" value="Madrid">
-                    </form>
-                </div>
+                <div id="imagen_seccion_destaque_2" class="imagen_seccion_destaque"></div>
             </div>
 
-            <div class="provincia provincia_3-3">
-                <div class="imagen_provincia">
-                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
-                        @csrf
-                        <input type="submit" class="provincia" name="provincia" value="A Coruña">
-                    </form>
-                </div>
-                <div class="nombre_provincia">
-                    <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
-                        @csrf
-                        <input type="submit" class="provincia" name="provincia" value="A Coruña">
-                    </form>
+            <div id="seccion_provincias">
+                <h3 id="titulo_seccion_provincias">Empleo por provincias</h3>
+
+                <div id="container_provincias">
+                    <div class="provincia provincia_1-3">
+                        <div class="imagen_provincia">
+                            <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                                @csrf
+                                <input type="submit" class="provincia" name="provincia" value="Las Palmas">
+                            </form>
+                        </div>
+                        <div class="nombre_provincia">
+                            <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                                @csrf
+                                <input type="submit" class="provincia" name="provincia" value="Las Palmas">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="provincia provincia_2-3">
+                        <div class="imagen_provincia">
+                            <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                                @csrf
+                                <input type="submit" class="provincia" name="provincia" value="Madrid">
+                            </form>
+                        </div>
+                        <div class="nombre_provincia">
+                            <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                                @csrf
+                                <input type="submit" class="provincia" name="provincia" value="Madrid">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="provincia provincia_3-3">
+                        <div class="imagen_provincia">
+                            <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                                @csrf
+                                <input type="submit" class="provincia" name="provincia" value="La Coruña">
+                            </form>
+                        </div>
+                        <div class="nombre_provincia">
+                            <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+                                @csrf
+                                <input type="submit" class="provincia" name="provincia" value="La Coruña">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
-
-        <div class="bloque"></div>
-
     </div>
 
 @endsection
