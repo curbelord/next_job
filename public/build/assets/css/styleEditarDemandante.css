@@ -47,45 +47,26 @@
     margin-right: 20px;
 }
 
-#fotoPerfil{
-    color: #FFF;
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
 }
 
-#container_cvs{
-    margin-top: 50px;
-}
-
-#titulo_cvs{
-    margin-bottom: 50px;
-}
-
-#titulo_cvs h3{
-    font-size: 1.5em;
-}
-
-.container_input_cv{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-
-#nombreCV_1{
-    display: inline-block;
-    width: 90%;
-}
-
-.eliminar_cv{
-    display: inline-block;
-    min-width: 50px;
-    max-height: 50px;
-    margin-left: 20px;
-    background-color: #D9D9D9;
-    border-radius: 10px;
+.label_subida_foto{
+    cursor: pointer;
+    font-size: .9em;
 }
 
 #boton_actualizar_perfil{
     width: auto;
     margin: 25px auto;
+    cursor: pointer;
     text-align: center;
     font-weight: bold;
     background-color: #2FB9CE;
@@ -108,10 +89,6 @@
         display: block;
         width: 100%;
         margin-right: 0px;
-    }
-
-    #titulo_cvs h3{
-        font-size: 1.3em;
     }
 
     #boton_actualizar_perfil{
