@@ -117,30 +117,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Calendario
-        Schema::create('calendario', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('evento');
-            $table->date('fecha');
-            $table->string('hora_inicio');
-            $table->string('hora_cierre');
-            $table->string('descripcion');
-            $table->integer('id_seleccionador')->unsigned();
-            $table->foreign('id_seleccionador')->references('id')->on('seleccionador')->onDelete('cascade');
-            $table->timestamps();
-        });
-
-        // Mensaje
-        Schema::create('mensaje', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_emisor')->unsigned();
-            $table->integer('id_receptor')->unsigned();
-            $table->string('mensaje');
-            $table->foreign('id_emisor')->references('id')->on('seleccionador')->onDelete('cascade');
-            $table->foreign('id_receptor')->references('id')->on('demandante')->onDelete('cascade');
-            $table->timestamps();
-        });
-
         // Inscripcion
         Schema::create('inscripcion', function (Blueprint $table) {
             $table->integer('id_demandante')->unsigned();
@@ -162,30 +138,6 @@ return new class extends Migration
             $table->foreign(['id_demandante', 'id_oferta'])->references(['id_demandante', 'id_oferta'])->on('inscripcion')->onDelete('cascade');
             $table->timestamps();
         });
-
-        // Cuestionario
-        Schema::create('cuestionario', function (Blueprint $table) {
-            $table->increments('id');
-            $table->date('fecha');
-            $table->string('tipo');
-            $table->integer('id_seleccionador')->unsigned();
-            $table->integer('id_demandante')->unsigned();
-            $table->unsignedBigInteger('id_oferta');
-            $table->foreign('id_seleccionador')->references('id')->on('seleccionador')->onDelete('cascade');
-            $table->foreign('id_demandante')->references('id_demandante')->on('inscripcion')->onDelete('cascade');
-            $table->foreign('id_oferta')->references('id_oferta')->on('inscripcion')->onDelete('cascade');
-            $table->timestamps();
-        });
-
-        // Pregunta
-        Schema::create('pregunta', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('pregunta');
-            $table->string('respuesta');
-            $table->integer('id_cuestionario')->unsigned();
-            $table->foreign('id_cuestionario')->references('id')->on('cuestionario')->onDelete('cascade');
-            $table->timestamps();
-        });
     }
 
     /**
@@ -195,12 +147,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pregunta');
-        Schema::dropIfExists('cuestionario');
         Schema::dropIfExists('estado');
         Schema::dropIfExists('inscripcion');
-        Schema::dropIfExists('mensaje');
-        Schema::dropIfExists('calendario');
         Schema::dropIfExists('oferta');
         Schema::dropIfExists('experiencia');
         Schema::dropIfExists('estudios');

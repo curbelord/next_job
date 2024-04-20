@@ -12,12 +12,8 @@ use App\Models\CV;
 use App\Models\Estudios;
 use App\Models\Experiencia;
 use App\Models\Oferta;
-use App\Models\Calendario;
-use App\Models\Mensaje;
 use App\Models\Inscripcion;
 use App\Models\Estado;
-use App\Models\Cuestionario;
-use App\Models\Pregunta;
 use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
 
@@ -1480,67 +1476,6 @@ class DatabaseSeeder extends Seeder
             'id_seleccionador' => 6,
         ]);
 
-        // Calendario
-
-        Calendario::create([
-            'id' => 1,
-            'evento' => 'Reunión de equipo',
-            'fecha' => '2024-03-08',
-            'hora_inicio' => '09:00',
-            'hora_cierre' => '10:00',
-            'descripcion' => 'Reunión semanal de equipo para discutir los avances del proyecto.',
-            'id_seleccionador' => 2,
-        ]);
-
-        Calendario::create([
-            'id' => 2,
-            'evento' => 'Entrevista de trabajo',
-            'fecha' => '2024-03-10',
-            'hora_inicio' => '11:00',
-            'hora_cierre' => '12:00',
-            'descripcion' => 'Entrevista de trabajo para el puesto de desarrollador web.',
-            'id_seleccionador' => 4,
-        ]);
-
-        Calendario::create([
-            'id' => 3,
-            'evento' => 'Reunión de equipo',
-            'fecha' => '2024-03-12',
-            'hora_inicio' => '09:00',
-            'hora_cierre' => '10:00',
-            'descripcion' => 'Reunión semanal de equipo para discutir los avances del proyecto.',
-            'id_seleccionador' => 6,
-        ]);
-
-        Calendario::create([
-            'id' => 4,
-            'evento' => 'Entrevista de trabajo',
-            'fecha' => '2024-03-14',
-            'hora_inicio' => '11:00',
-            'hora_cierre' => '12:00',
-            'descripcion' => 'Entrevista de trabajo para el puesto de desarrollador web.',
-            'id_seleccionador' => 8,
-        ]);
-
-        Calendario::create([
-            'id' => 5,
-            'evento' => 'Reunión de equipo',
-            'fecha' => '2024-03-16',
-            'hora_inicio' => '09:00',
-            'hora_cierre' => '10:00',
-            'descripcion' => 'Reunión semanal de equipo para discutir los avances del proyecto.',
-            'id_seleccionador' => 10,
-        ]);
-
-        // Mensaje
-
-        Mensaje::create([
-            'id' => 1,
-            'id_emisor' => 2,
-            'id_receptor' => 1,
-            'mensaje' => 'Hola, ¿cómo estás?',
-        ]);
-
         // Inscripcion
 
         Inscripcion::create([
@@ -1853,40 +1788,6 @@ class DatabaseSeeder extends Seeder
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 20,
             'id_oferta' => 23,
-        ]);
-
-        // Cuestionario
-
-        Cuestionario::create([
-            'fecha' => Carbon::now(),
-            'tipo' => 'Prueba técnica',
-            'id_seleccionador' => 2,
-            'id_demandante' => 1,
-            'id_oferta' => 1,
-        ]);
-
-        Cuestionario::create([
-            'fecha' => Carbon::now(),
-            'tipo' => 'Prueba técnica',
-            'id_seleccionador' => 4,
-            'id_demandante' => 3,
-            'id_oferta' => 2,
-        ]);
-
-        // Pregunta
-
-        Pregunta::create([
-            'id' => 1,
-            'pregunta' => '¿Cuál es tu mayor fortaleza?',
-            'respuesta' => 'Mi mayor fortaleza es mi capacidad para resolver problemas de manera creativa.',
-            'id_cuestionario' => 1,
-        ]);
-
-        Pregunta::create([
-            'id' => 2,
-            'pregunta' => '¿Cuál es tu mayor debilidad?',
-            'respuesta' => 'Mi mayor debilidad es que a veces me cuesta delegar tareas.',
-            'id_cuestionario' => 1,
         ]);
 
         // ROLES
