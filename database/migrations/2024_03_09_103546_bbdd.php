@@ -112,6 +112,7 @@ return new class extends Migration
             $table->enum('estado', ['Publicada', 'Oculta', 'Borrador', 'Autocandidatura'])->nullable();
             $table->enum('curriculums_ciegos', ["SI", "NO"]);
             $table->text('palabras_clave')->nullable();
+            $table->boolean('eliminada')->default(false);
             $table->integer('id_seleccionador')->unsigned()->nullable();
             $table->foreign('id_seleccionador')->references('id')->on('seleccionador')->onDelete('cascade');
             $table->timestamps();

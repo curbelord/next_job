@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP EVENT IF EXISTS update_field_daily');
+        DB::statement('DROP EVENT IF EXISTS actualiza_estado_ofertas_cerradas');
     }
 };

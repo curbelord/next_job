@@ -17,7 +17,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "DELETE FROM oferta WHERE referencia=" . $_POST['referencia'];
+$sql = "UPDATE oferta SET eliminada = true WHERE referencia=" . $_POST['referencia'];
 
 $result = $conn->query($sql);
 
