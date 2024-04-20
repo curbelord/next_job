@@ -2,7 +2,7 @@ export default {
     props: ['referencia', 'puesto_trabajo', 'ubicacion', 'fecha_creacion', 'numero_candidatos', 'estado'],
     data(){
         return{
-            estadosPosibles: ["Publicada", "Oculta", "Borrador"],
+            estadosPosibles: ["Publicada", "Oculta", "Borrador", "Autocandidatura"],
             estadoSeleccionado: this.estado,
             copiaEstadoEntrante: this.estado,
         }

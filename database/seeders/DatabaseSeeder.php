@@ -271,62 +271,77 @@ class DatabaseSeeder extends Seeder
 
         Demandante::create([
             'id' => 1,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 3,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 5,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 7,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 9,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 11,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 12,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 13,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 14,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 15,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 16,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 17,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 18,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 19,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 20,
+            'checkin' => false,
         ]);
 
         // EMPRESAS
@@ -969,6 +984,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -990,6 +1006,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'SI',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 4,
         ]);
 
@@ -1011,6 +1028,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Borrador',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 6,
         ]);
 
@@ -1032,6 +1050,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Borrador',
             'curriculums_ciegos' => 'SI',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 8,
         ]);
 
@@ -1053,6 +1072,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 10,
         ]);
 
@@ -1074,6 +1094,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'SI',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1095,6 +1116,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Borrador',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 4,
         ]);
 
@@ -1116,6 +1138,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1137,6 +1160,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1158,6 +1182,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1179,6 +1204,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1200,6 +1226,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1221,6 +1248,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1242,6 +1270,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1263,6 +1292,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1284,6 +1314,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1305,6 +1336,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1326,6 +1358,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1347,6 +1380,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'SI',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 4,
         ]);
 
@@ -1368,6 +1402,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 6,
         ]);
 
@@ -1389,6 +1424,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'SI',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 8,
         ]);
 
@@ -1410,6 +1446,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 10,
         ]);
 
@@ -1431,6 +1468,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 2,
         ]);
 
@@ -1452,6 +1490,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'NO',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 4,
         ]);
 
@@ -1473,6 +1512,7 @@ class DatabaseSeeder extends Seeder
             'estado' => 'Publicada',
             'curriculums_ciegos' => 'SI',
             'palabras_clave' => NULL,
+            'eliminada' => false,
             'id_seleccionador' => 6,
         ]);
 
@@ -1579,7 +1619,7 @@ class DatabaseSeeder extends Seeder
             'id_oferta' => 1,
             'anotacion' => '',
         ]);
-        
+
         Inscripcion::create([
             'id_demandante' => 19,
             'id_oferta' => 2,

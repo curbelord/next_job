@@ -111,6 +111,13 @@ const app = Vue.createApp({
         editar_proceso
     },
     methods: {
+        redirigeHaciaTop(){
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
+        },
         async eliminaProceso(referenciaEntrante) {
             let parametroConsulta = {
                 referencia: referenciaEntrante,
@@ -163,10 +170,7 @@ const app = Vue.createApp({
                 this.reseteaValoresProcesosObtenidos();
                 await this.obtenerProcesos();
                 this.ocultaEditarProceso();
-                window.scrollTo({
-                    top: 0,
-                    left: 0,
-                });
+                this.redirigeHaciaTop();
             } catch (error) {
                 console.error("Error al retornar la gestión de procesos:", error);
             }
@@ -187,10 +191,10 @@ const app = Vue.createApp({
                     numeroCandidatosPeticion = await this.obtenerDatosCandidatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo);
 
                 }else if(filtro.toLowerCase() == "preseleccionados"){
-                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado') AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado')");
+                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado' AND id_oferta=" + referenciaProceso + ") AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado' AND id_oferta=" + referenciaProceso + ")");
 
                 }else if(filtro.toLowerCase() == "descartados"){
-                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado') AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado')");
+                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado' AND id_oferta=" + referenciaProceso + ") AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado' AND id_oferta=" + referenciaProceso + ")");
                 }
 
                 if (numeroCandidatosPeticion && numeroCandidatosPeticion.candidatos) {
@@ -392,10 +396,7 @@ const app = Vue.createApp({
             console.log(this.estilo_container_candidato, this.estilo_curriculum_visible);
             this.procesoDetalle = true;
             this.posicionProcesoSeleccionado = this.referencia.indexOf(referencia);
-            window.scrollTo({
-                top: 0,
-                left: 0,
-            });
+            this.redirigeHaciaTop();
         },
         limpiaDatosProcesosObtenidos(){
             this.referencia = [];
@@ -416,10 +417,7 @@ const app = Vue.createApp({
                 this.limpiaDatosProcesosObtenidos();
                 this.obtenerProcesos()
                 .then(() => {
-                    window.scrollTo({
-                        top: 0,
-                        left: 0,
-                    });
+                    this.redirigeHaciaTop();
                 })
                 .catch(error => {
                     console.error("Error al obtener datos:", error);
@@ -432,10 +430,7 @@ const app = Vue.createApp({
             this.limpiaDatosCandidatosObtenidos();
             this.obtenerDatosCandidatosProcesoSeleccionado(referencia, curriculumsCiegos)
             .then(() => {
-                window.scrollTo({
-                    top: 0,
-                    left: 0,
-                });
+                this.redirigeHaciaTop();
             })
             .catch(error => {
                 console.error("Error al obtener datos:", error);

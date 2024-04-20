@@ -1,16 +1,13 @@
 <?php
 
+include 'env.php';
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $fecha_actual = date('Y-m-d H:i:s');
 
 // header('Access-Control-Allow-Origin: *');
-
-$servername = "localhost";
-$username = "laravel";
-$password = "password";
-$dbname = "next_job";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
