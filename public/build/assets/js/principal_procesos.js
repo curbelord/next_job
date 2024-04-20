@@ -172,5 +172,5 @@ const app = Vue.createApp({
     }
 }).mount('#container');
 
-app.obtenerNombreYGeneroSeleccionador();
+// app.obtenerNombreYGeneroSeleccionador();
 app.imprimePrincipalProcesosOPublicarProceso();

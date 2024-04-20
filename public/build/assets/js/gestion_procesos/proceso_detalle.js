@@ -159,6 +159,13 @@ export default {
 
         // Métodos propios
 
+        redirigeHaciaTop(){
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
+        },
         quitarCurriculum(){
             this.curriculumVisible = false;
             this.muestraElementosProcesoDetalle();
@@ -168,8 +175,11 @@ export default {
                 let datosCurriculum = await $.get('http://next-job.lan/build/assets/php/obtener_datos_candidato.php?id_demandante=' + idCandidato + "&referencia=" + this.referencia);
 
                 let objetoCurriculum = '{"curriculum":[' + datosCurriculum.substring(0, datosCurriculum.length - 1) + "]}";
-                objetoCurriculum = JSON.parse(objetoCurriculum);
-                console.log(objetoCurriculum["curriculum"]);
+
+                if (objetoCurriculum.indexOf("0 candidatos") == -1){
+                    objetoCurriculum = JSON.parse(objetoCurriculum);
+                    console.log(objetoCurriculum["curriculum"]);
+                }
 
                 return objetoCurriculum["curriculum"];
             } catch (error) {
@@ -254,6 +264,7 @@ export default {
                 this.ocultaElementosProcesoDetalle();
                 this.anhadeEstadoCVLeido(idCandidato);
                 this.curriculumVisible = true;
+                this.redirigeHaciaTop();
             } catch (error){
                 console.error('Error al hacer la petición', error);
             }

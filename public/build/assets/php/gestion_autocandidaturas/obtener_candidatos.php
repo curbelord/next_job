@@ -19,11 +19,11 @@ $sql = "";
 
 if ($_GET['curriculumsCiegos'] == "SI"){
 
-    $sql = "SELECT users.id AS 'id_candidato', SUM(DATEDIFF(experiencia.fecha_fin, experiencia.fecha_inicio) / 365) AS 'experiencia_candidato' FROM users LEFT JOIN experiencia ON users.id = experiencia.id_cv INNER JOIN demandante ON users.id = demandante.id INNER JOIN inscripcion ON demandante.id = inscripcion.id_demandante WHERE inscripcion.id_oferta=" . $_GET['referencia'] . " GROUP BY users.id LIMIT 10 OFFSET " . $_GET['numero_offset'];
+    $sql = "SELECT users.id AS 'id_candidato', SUM(DATEDIFF(experiencia.fecha_fin, experiencia.fecha_inicio) / 365) AS 'experiencia_candidato' FROM users LEFT JOIN experiencia ON users.id = experiencia.id_cv INNER JOIN demandante ON users.id = demandante.id INNER JOIN inscripcion ON demandante.id = inscripcion.id_demandante WHERE inscripcion.id_oferta=" . $_GET['referencia'] . " GROUP BY users.id ORDER BY demandante.checkin DESC LIMIT 10 OFFSET " . $_GET['numero_offset'];
 
 }else{
 
-    $sql = "SELECT users.id AS 'id_candidato', CONCAT(users.nombre, ' ', users.apellidos) AS 'nombre_candidato', YEAR(CURDATE()) - YEAR(users.fecha_nacimiento) - (RIGHT(CURDATE(), 5) < RIGHT(users.fecha_nacimiento, 5)) AS 'edad_candidato' FROM users INNER JOIN demandante ON users.id = demandante.id LEFT JOIN inscripcion ON demandante.id = inscripcion.id_demandante WHERE inscripcion.id_oferta=" . $_GET['referencia'] . " LIMIT 10 OFFSET " . $_GET['numero_offset'];
+    $sql = "SELECT users.id AS 'id_candidato', CONCAT(users.nombre, ' ', users.apellidos) AS 'nombre_candidato', YEAR(CURDATE()) - YEAR(users.fecha_nacimiento) - (RIGHT(CURDATE(), 5) < RIGHT(users.fecha_nacimiento, 5)) AS 'edad_candidato' FROM users INNER JOIN demandante ON users.id = demandante.id LEFT JOIN inscripcion ON demandante.id = inscripcion.id_demandante WHERE inscripcion.id_oferta=" . $_GET['referencia'] . " ORDER BY demandante.checkin DESC LIMIT 10 OFFSET " . $_GET['numero_offset'];
 
 }
 

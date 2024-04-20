@@ -146,10 +146,10 @@ const app = Vue.createApp({
                     numeroCandidatosPeticion = await this.obtenerDatosCandidatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo);
 
                 }else if(filtro.toLowerCase() == "preseleccionados"){
-                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado') AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado')");
+                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado' AND id_oferta=" + referenciaProceso + ") AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado' AND id_oferta=" + referenciaProceso + ")");
 
                 }else if(filtro.toLowerCase() == "descartados"){
-                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado') AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado')");
+                    numeroCandidatosPeticion = await this.obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, "AND inscripcion.id_oferta = estado.id_oferta AND estado.id_demandante IN (SELECT id_demandante FROM estado WHERE nombre = 'Descartado' AND id_oferta=" + referenciaProceso + ") AND estado.id_demandante NOT IN (SELECT id_demandante FROM estado WHERE nombre = 'Preseleccionado' AND id_oferta=" + referenciaProceso + ")");
                 }
 
                 if (numeroCandidatosPeticion && numeroCandidatosPeticion.candidatos) {
