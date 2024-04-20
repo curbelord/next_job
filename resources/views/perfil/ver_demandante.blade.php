@@ -17,7 +17,7 @@
                 </div>
                 <div class="iconos_edicion_eliminacion">
                     <div class="icono_editar">
-                        <a href="#"></a>
+                        <a href="{{ route('perfil.editar_demandante') }}"></a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,17 @@
                     </div>
                     <div id="container_boton_checkin">
                         <div id="boton_checkin">
-                            <a href="#">Pulsa aquí para realizar el check-in</a>
+                            @if ($checkin == false)
+                                <form method="POST" action="{{ route('perfil.checkin') }}">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <label for="checkin">Pulsa aquí para realizar el check-in</label>
+                                    <input type="submit" name="checkin" value="">
+                                </form>
+                            @else
+                                <span>Check-in realizado</span>
+                            @endif
                         </div>
                     </div>
                 </div>

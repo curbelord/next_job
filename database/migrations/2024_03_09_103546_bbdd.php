@@ -33,6 +33,7 @@ return new class extends Migration
         // Demandante
         Schema::create('demandante', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('checkin')->default(false);
             $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

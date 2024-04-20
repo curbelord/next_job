@@ -275,62 +275,77 @@ class DatabaseSeeder extends Seeder
 
         Demandante::create([
             'id' => 1,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 3,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 5,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 7,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 9,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 11,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 12,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 13,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 14,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 15,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 16,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 17,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 18,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 19,
+            'checkin' => false,
         ]);
 
         Demandante::create([
             'id' => 20,
+            'checkin' => false,
         ]);
 
         // EMPRESAS

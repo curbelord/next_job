@@ -15,11 +15,22 @@ return new class extends Migration
         DB::statement('
             CREATE EVENT actualiza_estado_ofertas_cerradas
             ON SCHEDULE EVERY 1 DAY
-            STARTS CURRENT_TIMESTAMP
+            STARTS TIMESTAMP(CURRENT_DATE) + INTERVAL 1 DAY + INTERVAL 0 HOUR
+            ON COMPLETION PRESERVE
             DO
                 UPDATE oferta
                 SET estado = "Oculta"
                 WHERE fecha_cierre = CURDATE();
+        ');
+
+        DB::statement('
+            CREATE EVENT resetea_checkin
+            ON SCHEDULE EVERY 1 DAY
+            STARTS TIMESTAMP(CURRENT_DATE) + INTERVAL 1 DAY + INTERVAL 0 HOUR
+            ON COMPLETION PRESERVE
+            DO
+                UPDATE demandantes
+                SET checkin = false;
         ');
     }
 
@@ -29,5 +40,6 @@ return new class extends Migration
     public function down(): void
     {
         DB::statement('DROP EVENT IF EXISTS actualiza_estado_ofertas_cerradas');
+        DB::statement('DROP EVENT IF EXISTS resetea_checkin');
     }
 };

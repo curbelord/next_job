@@ -16,6 +16,7 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\EmpresaBuscadaController;
+use App\Http\Controllers\PerfilController;
 use App\Models\Inscripcion;
 use App\Models\Oferta;
 use Illuminate\Support\Facades\Route;
@@ -60,13 +61,20 @@ Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.i
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
 
-    Route::get('/perfil/ver', function (){
-        return view('perfil.ver_demandante');
-    });
+    // Route::get('/perfil/ver', function (){
+    //     return view('perfil.ver_demandante');
+    // });
 
-    Route::get('/perfil/editar', function (){
-        return view('perfil.editar_demandante');
-    });
+    // Route::get('/perfil/editar', function (){
+    //     return view('perfil.editar_demandante');
+    // })->name('perfil.editar_demandante');
+
+    Route::get('/perfil/ver', [PerfilController::class, 'mostrar'])->name('perfil.ver_demandante');
+
+    Route::put('/perfil/checkin', [PerfilController::class, 'checkin'])->name('perfil.checkin');
+
+    Route::get('/perfil/editar', [PerfilController::class, 'editar'])->name('perfil.editar_demandante');
+    Route::post('/perfil/actualizar', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
 
     Route::get('/perfil/editar/experiencia-laboral', function (){
         return view('perfil.editar.experiencia_laboral');
