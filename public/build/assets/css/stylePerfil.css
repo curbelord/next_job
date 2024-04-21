@@ -76,6 +76,7 @@ input {
     border: 0;
     height: 50px;
     margin: 10px 0;
+    cursor: pointer;
 }
 
 .boton_derecha {
