@@ -6,8 +6,22 @@
     text-align: left;
 }
 
+#container{
+    margin-top: 100px;
+}
+
+.tabla_filtros{
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    justify-content: center;
+}
+
 .boton_desplegable{
     display: inline-block;
+    grid-row: 1 / 2;
+    width: fit-content;
+    margin-right: 20px;
+    margin-bottom: 20px;
     border: 2px solid #2FB9CE;
     border-radius: 10px;
 }
@@ -15,39 +29,111 @@
 .titulo_desplegable{
     display: inline-block;
     cursor : pointer;
-    padding : 20px;
-    font-size : 1.2em;
+    padding: 15px;
+}
+
+#container_listas_desplegables{
+    grid-column: 1 / 6;
+    grid-row: 2 / 3;
 }
 
 .lista_elementos_desplegable{
-    width: 50%;
+    width: 100%;
     height: 0px;
+    margin: 0px auto;
     overflow: hidden;
     text-align: center;
     transition: height .4s ease;
+    background-color:#2FB9CE;
+    border-radius: 10px;
 }
 
 .lista_elementos_desplegable li{
-    border: 1px solid #2FB9CE;
+    display: flex;
+    background-color: #FFF;
+    margin: 5px;
+    border-radius: 10px;
 }
 
-.lista_elementos_desplegable li button{
+.container_input_accionable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.lista_elementos_desplegable li button, .lista_elementos_desplegable li select{
     display: block;
-    width: 100%;
-    height: 100%;
-    padding : 30px;
-    cursor: pointer;
-    color: #000;
-    font-weight: bold;
+    padding : 15px;
     font-size: 1em;
+    color: #000;
+    font-weight: 400;
     background: none;
     border: none;
 }
 
 .boton_desplegar {
-    opacity: 0;
+    display: none;
 }
 
-#boton_desplegar_0:checked ~ #lista_elementos_desplegable_0, #boton_desplegar_1:checked ~ #lista_elementos_desplegable_1, #boton_desplegar_2:checked ~ #lista_elementos_desplegable_2,#boton_desplegar_3:checked ~ #lista_elementos_desplegable_3,#boton_desplegar_4:checked ~ #lista_elementos_desplegable_4{
-    height: 500px;
+#boton_desplegar_0:checked ~ #container_listas_desplegables #lista_elementos_desplegable_0{
+    height: 230px;
+}
+
+#boton_desplegar_1:checked ~ #container_listas_desplegables #lista_elementos_desplegable_1{
+    height: 230px;
+}
+
+#boton_desplegar_2:checked ~ #container_listas_desplegables #lista_elementos_desplegable_2{
+    height: 70px;
+}
+
+#boton_desplegar_3:checked ~ #container_listas_desplegables #lista_elementos_desplegable_3{
+    height: 80px;
+}
+
+#boton_desplegar_4:checked ~ #container_listas_desplegables #lista_elementos_desplegable_4{
+    height: 155px;
+}
+
+
+/* Estilos botones */
+
+.container_boton_desplegable, .boton_o_select_desplegable{
+    display: flex;
+}
+
+
+/* Estilos barra experiencia */
+
+#li_barra_experiencia{
+    display: block;
+    padding: 10px;
+}
+
+.barra {
+    width: 100%;
+    height: 20px;
+    position: relative;
+    margin: 0px auto;
+    border: 2px solid #D9D9D9;
+    border-radius: 10px;
+}
+
+.boton {
+    width: 20px;
+    height: 20px;
+    margin: 0px 5px 0px 0px;
+    background-color: #2FB9CE;
+    border-radius: 50%;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+#valor {
+    margin-top: 10px;
+    text-align: center;
 }
