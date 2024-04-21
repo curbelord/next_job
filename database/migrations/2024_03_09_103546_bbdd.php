@@ -104,7 +104,7 @@ return new class extends Migration
             $table->enum('sector', ['Actividades Físicas y Deportivas', 'Administración y Gestión', 'Agroalimentario', 'Artes Gráficas', 'Construcción', 'Energía', 'Imagen Personal', 'Imagen y Sonido', 'Industrial', 'Informática y Comunicaciones', 'Logística, Transporte y Comercio', 'Mantenimiento', 'Medio Ambiente', 'Químico', 'Salud', 'Servicios Turísticos y Hosteleros', 'Textil']);
             $table->enum('tipo_trabajo', ['Presencial', 'No presencial', 'Mixto']);
             $table->string('puesto_trabajo');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->enum('estudios_minimos', ['Graduado Escolar', 'ESO', 'Bachillerato', 'Formación Profesional Básica', 'Ciclo Formativo de Grado Medio', 'Ciclo Formativo de Grado Superior', 'Enseñanzas artísticas', 'Enseñanzas deportivas', 'Licenciatura', 'Máster', 'Doctorado', 'Grado Universitario', 'No requerida']);
             $table->integer('experiencia_minima');
             $table->string('ubicacion');

@@ -13,7 +13,7 @@
             </div>
 
             <div class="tabla">
-                <button type="submit">Buscar</button>
+                <button id="boton_envio_formulario" type="submit">Buscar</button>
             </div>
         </form>
 
@@ -42,12 +42,13 @@
 
             <div class="tabla tabla_filtros">
                 @if ($mostrarFiltros)
-                    @include('components.filtros')
+                    {{-- @include('components.filtros') --}}
+                    @include('desplegable')
                 @endif
             </div>
 
             <div class="tabla">
-                <button type="submit">Buscar</button>
+                <button id="boton_envio_formulario" type="submit">Buscar</button>
             </div>
         </form>
 
