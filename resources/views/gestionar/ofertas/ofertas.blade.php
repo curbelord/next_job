@@ -65,6 +65,7 @@
 
     $tipoTrabajosInputs = ["presencial", "no_presencial", "mixto"];
     $nombreFiltro = ["Fecha de publicación", "Tipo de trabajo", "Sector", "Experiencia", "Jornada"];
+    $selectRecibido = false;
     $i = 0;
 
 ?>
@@ -142,7 +143,11 @@
                                             @if($j == 0)
                                                 <li>
                                                     <div class="container_input_accionable">
-                                                        <input type="radio" name="fecha_publicacion" class="input_accionable radio_button_busqueda" value="{{ $elementos[$j][$i] }}">
+                                                        @if($elementos[$j][$i] == $fecha_publicacion)
+                                                            <input type="radio" name="fecha_publicacion" class="input_accionable radio_button_busqueda" value="{{ $elementos[$j][$i] }}" checked>
+                                                        @else
+                                                            <input type="radio" name="fecha_publicacion" class="input_accionable radio_button_busqueda" value="{{ $elementos[$j][$i] }}">
+                                                        @endif
                                                     </div>
                                                     <div class="container_boton_desplegable">
                                                         <button id="desplegable_{{ $j }}_{{ $i }}" class="boton_o_select_desplegable">{{ $elementos[$j][$i] }}</button>
@@ -152,7 +157,11 @@
                                             @elseif ($j == 1)
                                                 <li>
                                                     <div class="container_input_accionable">
-                                                        <input type="checkbox" name="{{ $tipoTrabajosInputs[$i] }}" class="input_accionable checkbox_busqueda" value="true">
+                                                        @if(str_contains($tipo_trabajo, $elementos[$j][$i]))
+                                                            <input type="checkbox" name="{{ $tipoTrabajosInputs[$i] }}" class="input_accionable checkbox_busqueda" value="true" checked>
+                                                        @else
+                                                            <input type="checkbox" name="{{ $tipoTrabajosInputs[$i] }}" class="input_accionable checkbox_busqueda" value="true">
+                                                        @endif
                                                     </div>
                                                     <div class="container_boton_desplegable">
                                                         <button id="desplegable_{{ $j }}_{{ $i }}" class="boton_o_select_desplegable">{{ $elementos[$j][$i] }}</button>
@@ -162,11 +171,21 @@
                                             @elseif ($j == 2)
                                                 <li>
                                                     <div class="container_boton_desplegable">
-                                                        <select id="desplegable_{{ $j }}_{{ $i }}" id="select_sectores" class="boton_o_select_desplegable">
-                                                            <option value="" disabled selected>Selecciona un sector</option>
-                                                            @foreach ($elementos[$j] as $sector)
-                                                                <option value="{{ $sector }}">{{ $sector }}</option>
+                                                        <select id="desplegable_{{ $j }}_{{ $i }}" id="select_sectores" class="boton_o_select_desplegable" name="sector">
+                                                            @foreach ($elementos[$j] as $sectorActual)
+                                                                @if($sector == $sectorActual)
+                                                                    @php
+                                                                        $selectRecibido = true;
+                                                                    @endphp
+                                                                    <option value="{{ $sectorActual }}" selected>{{ $sectorActual }}</option>
+                                                                @else
+                                                                    <option value="{{ $sectorActual }}">{{ $sectorActual }}</option>
+                                                                @endif
                                                             @endforeach
+
+                                                            @if($selectRecibido == false)
+                                                                <option value="" disabled selected>Selecciona un sector</option>
+                                                            @endif
                                                         </select>
                                                     </div>
                                                 </li>
@@ -190,7 +209,11 @@
                                             @elseif ($j == 4)
                                                 <li>
                                                     <div class="container_input_accionable">
-                                                        <input type="checkbox" name="{{ strtolower($elementos[$j][$i]) }}" class="input_accionable checkbox_busqueda" value="true">
+                                                        @if(str_contains($jornada, $elementos[$j][$i]))
+                                                            <input type="checkbox" name="{{ strtolower($elementos[$j][$i]) }}" class="input_accionable checkbox_busqueda" value="true" checked>
+                                                        @else
+                                                            <input type="checkbox" name="{{ strtolower($elementos[$j][$i]) }}" class="input_accionable checkbox_busqueda" value="true">
+                                                        @endif
                                                     </div>
                                                     <div class="container_boton_desplegable">
                                                         <button id="desplegable_{{ $j }}_{{ $i }}" class="boton_o_select_desplegable">{{ $elementos[$j][$i] }}</button>
