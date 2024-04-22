@@ -16,6 +16,12 @@ class OfertasController extends Controller
     public function mostrar(Request $request): View
     {
 
+        $fecha_publicacion = "";
+        $tipo_trabajo = "";
+        $sector = "";
+        $jornada = "";
+        $experiencia_minima = 0;
+
         $ofertas = Oferta::query();
         $offset = 0;
 
@@ -35,6 +41,66 @@ class OfertasController extends Controller
             });
         }
 
+        if (request('fecha_publicacion')){
+            switch (request('fecha_publicacion')) {
+                case "Cualquier fecha":
+                    $fecha_publicacion = "Cualquier fecha";
+                    break;
+                case "Últimas 24 horas":
+                    $fecha_publicacion = "Últimas 24 horas";
+                    $ofertas->where('created_at', '>=', now()->subDay());
+                    break;
+                case "Últimos 3 días":
+                    $fecha_publicacion = "Últimos 3 días";
+                    $ofertas->where('created_at', '>=', now()->subDays(3));
+                    break;
+                case "Últimos 7 días":
+                    $fecha_publicacion = "Últimos 7 días";
+                    $ofertas->where('created_at', '>=', now()->subDays(7));
+                    break;
+            }
+        }
+
+        if (request('presencial')){
+            $tipo_trabajo .= "Presencial";
+            $ofertas->orWhere('tipo_trabajo', 'Presencial');
+        }
+
+        if (request('no_presencial')){
+            $tipo_trabajo .= "No presencial";
+            $ofertas->orWhere('tipo_trabajo', 'No presencial');
+        }
+
+        if (request('mixto')){
+            $tipo_trabajo .= "Mixto";
+            $ofertas->orWhere('tipo_trabajo', 'Mixto');
+        }
+
+
+        if (request('sector')){
+            $sector = request('sector');
+            $ofertas->where('sector', $sector);
+        }
+
+
+        if (request('completa')){
+            $jornada .= "Completa";
+            $ofertas->orWhere('jornada', 'Completa');
+        }
+
+        if (request('parcial')){
+            $jornada .= "Parcial";
+            $ofertas->orWhere('jornada', 'Parcial');
+        }
+
+
+        if (request('experiencia')){
+            $experiencia_minima = intval(request('experiencia'));
+            $ofertas->where('experiencia_minima', '<=', $experiencia_minima);
+        } elseif (request('experiencia') === '0') {
+            $ofertas->where('experiencia_minima', 0);
+        }
+
         $ofertas->where('estado', 'Publicada');
 
         $cantidadTotalOfertas = $ofertas->count();
@@ -43,7 +109,7 @@ class OfertasController extends Controller
 
         $ofertas->load('seleccionador.empresa');
 
-        return view('gestionar.ofertas.ofertas', compact('ofertas', 'cantidadTotalOfertas', 'ubicacion', 'buscador'));
+        return view('gestionar.ofertas.ofertas', compact('ofertas', 'cantidadTotalOfertas', 'ubicacion', 'buscador', 'fecha_publicacion', 'tipo_trabajo', 'sector', 'jornada', 'experiencia_minima'));
     }
 
     public function buscaOfertaEInscritos($ofertaId): array

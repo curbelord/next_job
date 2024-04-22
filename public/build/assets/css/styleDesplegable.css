@@ -77,7 +77,7 @@
 }
 
 #boton_desplegar_0:checked ~ #container_listas_desplegables #lista_elementos_desplegable_0{
-    height: 230px;
+    height: 305px;
 }
 
 #boton_desplegar_1:checked ~ #container_listas_desplegables #lista_elementos_desplegable_1{
