@@ -48,6 +48,10 @@
     height: 50px;
 }
 
+select * {
+    text-align: left;
+}
+
 #formulario_registro > input {
     display: flex;
     align-items: center;
