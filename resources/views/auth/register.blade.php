@@ -40,10 +40,8 @@
             <h2>Registro</h2>
             
             <x-text-input id="nombre" type="text" name="nombre" placeholder="Nombre" :value="old('nombre')" autofocus autocomplete="nombre" />
-            <x-input-error :messages="$errors->get('nombre')" class="mt-2" />
 
             <x-text-input id="apellidos" type="apellidos" name="apellidos" placeholder="Apellidos" />
-            <x-input-error :messages="$errors->get('apellidos')" class="mt-2" />
 
             <select name="genero" id="genero">
                 <option value="" disabled selected>Género</option>
@@ -51,25 +49,18 @@
                 <option value="Mujer">Mujer</option>
                 <option value="Otro">Otro</option>
             </select>
-            <x-input-error :messages="$errors->get('genero')" class="mt-2" />
 
             <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento">
-            <x-input-error :messages="$errors->get('fecha_nacimiento')" class="mt-2" />
 
             <input type="text" name="direccion" id="direccion" placeholder="Dirección Postal">
-            <x-input-error :messages="$errors->get('direccion')" class="mt-2" />
 
             <input type="text" name="telefono" id="telefono" placeholder="Teléfono">
-            <x-input-error :messages="$errors->get('telefono')" class="mt-2" />
 
             <x-text-input id="email" placeholder="Correo electrónico" type="email" name="email" :value="old('email')" autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
             <x-text-input id="password" type="password" name="password" placeholder="Contraseña" autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
             <x-text-input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirmar contraseña" autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
             <button type="button" id="boton_registrar">
                 Registrar
