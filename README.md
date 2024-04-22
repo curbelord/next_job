@@ -6,6 +6,8 @@
     Plataforma de búsqueda de empleo
 </p>
 
+___
+
 ## Acerca de Next Job
 
 Next Job es una plataforma diseñada para simplificar la búsqueda de empleo y optimizar los procesos de contratación. Además, ofrece una interfaz sencilla y fácil de usar, con herramientas que mejoran la gestión de los procesos de contratación. Su objetivo es proporcionar una experiencia eficiente y transparente tanto para los buscadores de empleo como para los seleccionadores.
@@ -14,28 +16,28 @@ Next Job es una plataforma diseñada para simplificar la búsqueda de empleo y o
 
 Entre las características principales de Next Job se incluyen:
 
-- Búsqueda Avanzada: Los usuarios pueden buscar empleos utilizando filtros como ubicación, sector, salario, tipo de contrato, nivel de experiencia, entre otros.
+- 🔎 **Búsqueda Avanzada:** Los usuarios pueden buscar empleos utilizando filtros como ubicación 📍, sector 🏗️, salario 💵, tipo de contrato 📄, nivel de experiencia 📅, entre otros.
 
-- Creación de Perfiles: Los buscadores de empleo pueden crear perfiles que incluyan su experiencia laboral, educación, habilidades y otros detalles relevantes para que los empleadores los encuentren más fácilmente.
+- **Creación de Perfiles:** Los buscadores de empleo pueden crear perfiles que incluyan su experiencia laboral, educación, habilidades y otros detalles relevantes para que los empleadores los encuentren más fácilmente.
 
-- Publicación de Ofertas de Empleo: Las empresas pueden publicar ofertas de empleo detalladas, incluyendo descripciones del puesto, requisitos, responsabilidades y beneficios.
+- 💼 **Publicación de Ofertas de Empleo:** Las empresas pueden publicar ofertas de empleo detalladas, incluyendo descripciones del puesto, requisitos, responsabilidades y beneficios.
 
 ## Innovaciones
 
 Novedades que implementa Next Job:
 
-- Next Job automatiza la gestión de ofertas temporales, agilizando el proceso tanto para los seleccionadores como para los candidatos. Esto garantiza una respuesta oportuna a las solicitudes y actualizaciones relacionadas con las ofertas de empleo.
+- 🔎 **Autocandidaturas:** Next Job automatiza la gestión de ofertas temporales, agilizando el proceso tanto para los seleccionadores como para los candidatos. Esto garantiza una respuesta oportuna a las solicitudes y actualizaciones relacionadas con las ofertas de empleo.
 
-- Para promover la igualdad de oportunidades, Next Job ofrece la opción de CV ciegos en cada oferta de empleo. Esto permite que los candidatos apliquen sin revelar información personal que pueda generar prejuicios o discriminación.
+- 👁️🔒 **CV ciegos:** Para promover la igualdad de oportunidades, Next Job ofrece la opción de CV ciegos en cada oferta de empleo. Esto permite que los candidatos apliquen sin revelar información personal que pueda generar prejuicios o discriminación.
 
 
 ## Futuras Implementaciones
 
-- Alertas de Empleo: Los usuarios pueden configurar alertas para recibir notificaciones por correo electrónico o mensajes cuando se publiquen ofertas de empleo que coincidan con sus criterios de búsqueda.
+- 🚨 **Alertas de Empleo:** Los usuarios pueden configurar alertas para recibir notificaciones por correo electrónico o mensajes cuando se publiquen ofertas de empleo que coincidan con sus criterios de búsqueda.
 
-- Sistema de Mensajería: Facilita la comunicación entre empleadores y candidatos, permitiéndoles intercambiar información adicional y coordinar entrevistas.
+- 📬 **Sistema de Mensajería:** Facilita la comunicación entre empleadores y candidatos, permitiéndoles intercambiar información adicional y coordinar entrevistas.
 
-- Analítica y Seguimiento: Las empresas pueden utilizar herramientas de análisis para realizar un seguimiento del rendimiento de sus publicaciones de empleo y evaluar la efectividad de sus estrategias de contratación.
+- 🕵🏻‍♀️ **Analítica y Seguimiento:** Las empresas pueden utilizar herramientas de análisis para realizar un seguimiento del rendimiento de sus publicaciones de empleo y evaluar la efectividad de sus estrategias de contratación.
 
 - Implementación de un calendario integrado para gestionar entrevistas y eventos de reclutamiento. Esta función facilita la organización y coordinación de actividades relacionadas con el proceso de contratación.
 
@@ -49,36 +51,45 @@ Novedades que implementa Next Job:
 
 ## Instalación
 
-1. Clone el repositorio:
+Clone el repositorio
+~~~
+git clone https://github.com/curbelord/next_job.git
+~~~
+Muévase al directorio ǹext_job
+~~~
+cd next_job
+~~~
+Instale las dependencias con Composer
+~~~
+composer install
+~~~
+Haga una copia de `.env.example` y renombrélo como `.env`
+~~~
+cp .env.example .env
+~~~
+Genere una nueva clave
+~~~
+php artisan key:generate
+~~~
+Configure la base de datos con los siguientes parámetros y modifique el archivo `.env`
+~~~
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=next_job
+DB_USERNAME=laravel
+DB_PASSWORD=password
+~~~
+Ejecute las migraciones
+~~~
+php artisan migrate --seed
+~~~
+Ejecute los seeders
 
-> git clone https://github.com/curbelord/next_job.git
-
-2. Instale las dependencias con Composer en el directorio next_job:
-
-```cd next_job```
-
-```composer install```
-
-3. Haga una copia de `.env.example` y renombrélo como `.env`:
-
-```cp .env.example .env```
-
-4. Genere una nueva key:
-
-```php artisan key:generate```
-
-5. Configure la base de datos con los siguientes parámetros y modifique el archivo `.env`.
-
-6. Ejecute las migraciones:
-
-```php artisan migrate --seed```
-
-7. Ejecute los seeders:
-
-8. Active el servidor:
-
-```php artisan serve```
-
+Active el servidor
+~~~
+php artisan serve
+~~~
 ## Diagrama Entidad-Relación
 
 - Enlace al diagrama
@@ -99,4 +110,6 @@ Novedades que implementa Next Job:
 
 - Enlace a vídeo de YouTube
 
-- Aquí
+<br>
+
+> Hecho por Diego Curbelo Rodríguez y Acaymo Xerach Viciana Farias 🩵
