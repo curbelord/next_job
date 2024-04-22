@@ -53,7 +53,10 @@ input {
 select {
     grid-column: 8 / 11;
     background-color: var(--blanco);
+}
 
+select * {
+    text-align: left;
 }
 
 #buscador{
