@@ -3,6 +3,7 @@
 @section('style')
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleRegistro.css') }}">
     <script type="module" src="{{ asset('build/assets/js/registro/rol.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/js/registro/ajaxValidacion.js') }}"></script>
 @endsection
 
 <x-guest-layout>
