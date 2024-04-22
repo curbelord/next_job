@@ -10,7 +10,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Manrope", sans-serif;
-    text-align: left;
+    text-align: center;
 }
 
 body, #container_elementos_principal{
@@ -70,6 +70,10 @@ body, #container_elementos_principal{
     width: 50%;
 }
 
+.parrafo_seccion_destaque{
+    text-align: left;
+}
+
 h3{
     font-size: 1.3em;
 }
@@ -88,6 +92,7 @@ h3{
 
 #titulo_seccion_provincias{
     margin-bottom: 20px;
+    text-align: left;
 }
 
 .provincia {
