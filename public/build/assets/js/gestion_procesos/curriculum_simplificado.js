@@ -21,10 +21,10 @@ export default {
         <div class="container_right_candidato">
             <div class="imagen_nota_ojo">
                 <div class="imagen_nota">
-                    <a href="ver_nota" @click.prevent="muestraNota"></a>
+                    <button @click.prevent="muestraNota"></button>
                 </div>
                 <div class="imagen_ojo">
-                    <a href="ver_curriculum" @click.prevent="avisoPadreImpresionCurriculum"></a>
+                    <button @click.prevent="avisoPadreImpresionCurriculum"></button>
                 </div>
             </div>
         </div>

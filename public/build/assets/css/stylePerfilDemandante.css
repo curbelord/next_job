@@ -142,10 +142,14 @@
     background-image: url('../img/entrevista_negativa.svg');
 }
 
-.imagen_opciones_estado_curriculum a{
+.imagen_opciones_estado_curriculum button, .boton_opciones_estado_curriculum button{
     display: block;
     width: 100%;
     height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
 }
 
 .boton_opciones_estado_curriculum a{

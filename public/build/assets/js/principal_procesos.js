@@ -32,10 +32,10 @@ const app = Vue.createApp({
     <div id="container_seccion_gestion" v-if="principalProcesos">
         <div id="bloque_gestion_1" class="bloque_gestion">
             <div class="imagen_gestion imagen_publicar_proceso">
-                <a href="publicar" @click.prevent="muestraPublicarProceso"></a>
+                <button type="button" @click.prevent="muestraPublicarProceso"></button>
             </div>
             <div class="texto_gestion">
-                <a href="publicar" @click.prevent="muestraPublicarProceso">Publicar proceso</a>
+                <button type="button" @click.prevent="muestraPublicarProceso">Publicar proceso</button>
             </div>
         </div>
         <div id="bloque_gestion_2" class="bloque_gestion">
