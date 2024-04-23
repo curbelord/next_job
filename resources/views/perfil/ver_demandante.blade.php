@@ -44,7 +44,7 @@
                 </div>
 
                 @auth 
-                    @if (Auth::user()->hasRole('seleccionador'))
+                    @if (Auth::user()->hasRole('demandante'))
                         <div id="container_checkin">
                             <div id="titulo_checkin">
                                 <h3>Check-in</h3>
