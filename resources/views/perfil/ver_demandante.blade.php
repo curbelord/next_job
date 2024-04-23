@@ -42,26 +42,32 @@
                         </div>
                     </div>
                 </div>
-                <div id="container_checkin">
-                    <div id="titulo_checkin">
-                        <h3>Check-in</h3>
-                    </div>
-                    <div id="container_boton_checkin">
-                        <div id="boton_checkin">
-                            @if ($checkin == false)
-                                <form method="POST" action="{{ route('perfil.checkin') }}">
-                                    @csrf
-                                    @method('PUT')
 
-                                    <label for="checkin">Pulsa aquí para realizar el check-in</label>
-                                    <input type="submit" name="checkin" value="">
-                                </form>
-                            @else
-                                <span>Check-in realizado</span>
-                            @endif
+                @auth 
+                    @if (Auth::user()->hasRole('demandante'))
+                        <div id="container_checkin">
+                            <div id="titulo_checkin">
+                                <h3>Check-in</h3>
+                            </div>
+                            <div id="container_boton_checkin">
+                                <div id="boton_checkin">
+                                    @if ($checkin == false)
+                                        <form method="POST" action="{{ route('perfil.checkin') }}">
+                                            @csrf
+                                            @method('PUT')
+
+                                            <label for="checkin">Pulsa aquí para realizar el check-in</label>
+                                            <input type="submit" name="checkin" value="">
+                                        </form>
+                                    @else
+                                        <span>Check-in realizado</span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    @endif
+                @endauth
+
             </div>
         </div>
 

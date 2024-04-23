@@ -67,38 +67,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    /*public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
-
-    public function getEmailAttribute($email)
-    {
-        return strtolower($email);
-    }
-
-    public function setEmailAttribute($email)
-    {
-        $this->attributes['email'] = strtolower($email);
-    }
-
-    public function getNombreAttribute($nombre)
-    {
-        return ucfirst($nombre);
-    }
-
-    public function getApellidosAttribute($apellidos)
-    {
-        return ucfirst($apellidos);
-    }
-
-    public function getGeneroAttribute($genero)
-    {
-        return ucfirst($genero);
-    }
-
-    public function getDireccionAttribute($direccion)
-    {
-        return ucfirst($direccion);
-    }*/
 }

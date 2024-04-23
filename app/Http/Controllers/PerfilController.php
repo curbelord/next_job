@@ -12,10 +12,16 @@ class PerfilController extends Controller
 {
     public function mostrar(): View
     {
-        $demandante = Demandante::find(Auth::id());
-        $checkin = $demandante->checkin;
 
-        return view('perfil.ver_demandante', compact('checkin'));
+        if (Auth::user()->hasRole('demandante')) {
+            $demandante = Demandante::find(Auth::id());
+            $checkin = $demandante->checkin;
+
+            return view('perfil.ver_demandante', compact('checkin'));
+        } else {
+            return view('perfil.ver_demandante');
+        }
+
     }
 
     public function editar(): View
