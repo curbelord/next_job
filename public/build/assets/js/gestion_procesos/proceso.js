@@ -37,13 +37,13 @@ export default {
             <div class="datos_mid_right_proceso">
                 <div class="hipervinculos">
                     <div class="imagen_datos_mid_right imagen_ojo">
-                        <a :href="'ver/' + referencia" @click.prevent="avisoPadreImpresionProceso"></a>
+                        <button type="button" @click.prevent="avisoPadreImpresionProceso"></button>
                     </div>
                     <div class="imagen_datos_mid_right imagen_lapiz">
-                        <a :href="'editar/' + referencia" @click.prevent="avisoPadreEdicionProceso"></a>
+                        <button type="button" @click.prevent="avisoPadreEdicionProceso"></button>
                     </div>
                     <div class="imagen_datos_mid_right imagen_papelera">
-                        <a :href="'eliminar/' + referencia" @click.prevent="avisoPadreEliminacionProceso"></a>
+                        <button type="button" @click.prevent="avisoPadreEliminacionProceso"></button>
                     </div>
                 </div>
             </div>
