@@ -105,6 +105,34 @@
             <?php session()->forget('mensajeLogin'); ?>
         @endif
 
+        @if(session('mensajeVincularEmpresa'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha vinculado a su empresa exitosamente!"
+                });
+            </script>
+        @elseif(session('mensajeEmpresaNoVinculada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: "No se ha podido vincular a su empresa."
+                });
+            </script>
+        @endif
+
         @include('components.buscador')
 
         <div id="container_elementos_principal">

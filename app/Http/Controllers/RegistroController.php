@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Models\Seleccionador;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 
 
 
@@ -54,8 +55,13 @@ class RegistroController extends Controller
             $seleccionador = Seleccionador::find($request->user()->id);
             $seleccionador->id_empresa = $empresa->id;
             $seleccionador->save();
+
+            $request->session()->flash('mensajeVincularEmpresa', 'Se ha vinculado a su empresa correctamente.');
+            
+            return redirect(RouteServiceProvider::HOME);
+        
         } else {
-            return redirect('/'); // CONTRASEÑA INCORRECTA
+            $request->session()->flash('mensajeEmpresaNoVinculada', 'No se ha podido vincular a su empresa.');
         }
 
         /*
@@ -65,8 +71,6 @@ class RegistroController extends Controller
             return view('auth.vincular_empresa', compact('empresas')); // MENSAJE --> SE HA ENCONTRADO UNA EMPRESA PARA VINCULAR
         }
         */
-
-        return view('auth.vincular_empresa');
     }
 
     public function rellenar_cv()
