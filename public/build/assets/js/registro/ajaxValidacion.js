@@ -190,8 +190,6 @@ $(document).ready(function () {
                 title: "Registro completado con éxito."
             });
 
-            // $('#boton_registrar').attr('type', 'submit');
-
         } else {
             const Toast = Swal.mixin({
                 toast: true,
