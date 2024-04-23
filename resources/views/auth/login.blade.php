@@ -2,6 +2,7 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleInicio_de_sesion.css') }}">
+    <script type="module" src="{{ asset('build/assets/js/registro/ajaxValidacionLogin.js') }}"></script>
 @endsection
 
 <x-guest-layout>
