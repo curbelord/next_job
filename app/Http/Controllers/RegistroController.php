@@ -64,13 +64,6 @@ class RegistroController extends Controller
             $request->session()->flash('mensajeEmpresaNoVinculada', 'No se ha podido vincular a su empresa.');
         }
 
-        /*
-        if ($empresas->count() > 0) {
-            return redirect(RouteServiceProvider::HOME); // MENSAJE --> NO SE HA ENCONTRADO NINGUNA EMPRESA PARA VINCULAR
-        } else {
-            return view('auth.vincular_empresa', compact('empresas')); // MENSAJE --> SE HA ENCONTRADO UNA EMPRESA PARA VINCULAR
-        }
-        */
     }
 
     public function rellenar_cv()
