@@ -3,6 +3,7 @@
     --gris: #D8D8D8;
     --azul: #2FB9CE;
     --blanco: #FFFFFF;
+    --rojo: red;
 }
 
 * {
@@ -48,6 +49,29 @@
     height: 50px;
 }
 
+select * {
+    text-align: left;
+}
+
+.error-mensaje {
+    color: var(--rojo);
+    margin-top: -8px;
+    margin-bottom: 16px;
+}
+
+.invalid {
+    border: 2px solid var(--rojo) !important;
+}
+
+.error-visible {
+    display: block !important;
+    color: var(--rojo);
+}
+
+.error-mensaje {
+    display: none;
+}
+
 #formulario_registro > input {
     display: flex;
     align-items: center;
@@ -85,6 +109,7 @@
     height: 50px;
     margin: 10px 0;
     cursor: pointer;
+    font-weight: bold;
 }
 
 [id^="contenedor_"] {
