@@ -67,6 +67,6 @@ class RegisteredUserController extends Controller
 
         $request->session()->flash('mensajeRegistro', 'Se ha registrado correctamente.');
 
-        return redirect('/');
+        return redirect('/vincular-empresa');
     }
 }
