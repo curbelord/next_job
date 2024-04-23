@@ -69,7 +69,7 @@
 }
 
 #datos_perfil{
-    width: 70%;
+    width: 100%;
     margin-right: 20px;
 }
 
@@ -128,6 +128,7 @@
     font-weight: bold;
     color: #FFF;
     background-color: #2FB9CE;
+    border-radius: calc(10px - 2px);
 }
 
 #boton_checkin form{
