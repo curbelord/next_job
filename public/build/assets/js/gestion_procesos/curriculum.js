@@ -116,7 +116,7 @@ export default {
             this.$emit('ocultarCurriculum', true);
         },
         anhadirEstado(nombre, descripcion){
-            let parametrosConsulta = "nombre=" + nombre + "&descripcion=" + descripcion + '&id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta;
+            let parametrosConsulta = "nombre=" + nombre + "&descripcion=" + descripcion + '&id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta + "&visto=0";
 
             $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', parametrosConsulta).done(function (respuesta){
                 console.log(respuesta);

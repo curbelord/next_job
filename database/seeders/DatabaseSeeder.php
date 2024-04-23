@@ -1651,6 +1651,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 1,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1659,6 +1660,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Preseleccionado',
             'descripcion' => 'Candidato preseleccionado',
             'id_demandante' => 1,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1667,6 +1669,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Descartado',
             'descripcion' => 'Cancelado por el demandante',
             'id_demandante' => 3,
+            'visto' => false,
             'id_oferta' => 2,
         ]);
 
@@ -1675,6 +1678,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Seleccionado para entrevista',
             'descripcion' => 'Candidato seleccionado',
             'id_demandante' => 5,
+            'visto' => false,
             'id_oferta' => 3,
         ]);
 
@@ -1683,6 +1687,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Entrevista negativa',
             'descripcion' => 'Falló en la entrevista de trabajo',
             'id_demandante' => 7,
+            'visto' => false,
             'id_oferta' => 4,
         ]);
 
@@ -1691,6 +1696,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Descartado',
             'descripcion' => 'Falló en la entrevista de trabajo',
             'id_demandante' => 7,
+            'visto' => false,
             'id_oferta' => 4,
         ]);
 
@@ -1699,6 +1705,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Descartado',
             'descripcion' => 'Fuera de plazo de inscripción',
             'id_demandante' => 9,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1707,6 +1714,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'CV leído',
             'descripcion' => 'Pendiente de revisión',
             'id_demandante' => 1,
+            'visto' => false,
             'id_oferta' => 6,
         ]);
 
@@ -1715,6 +1723,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Descartado',
             'descripcion' => 'Rechazado por el seleccionador',
             'id_demandante' => 3,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1723,6 +1732,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Preseleccionado',
             'descripcion' => 'Interesante',
             'id_demandante' => 11,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1731,6 +1741,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'CV leído',
             'descripcion' => 'Pendiente de revisión',
             'id_demandante' => 12,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1739,6 +1750,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'CV leído',
             'descripcion' => 'Perfil no apto, pero se mantiene en reserva',
             'id_demandante' => 13,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1747,6 +1759,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Seleccionado para entrevista',
             'descripcion' => 'Pendiente de entrevista',
             'id_demandante' => 14,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1755,6 +1768,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Descartado',
             'descripcion' => 'Rechazado por el seleccionador',
             'id_demandante' => 15,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1763,6 +1777,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 16,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1771,6 +1786,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 17,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1779,6 +1795,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 18,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1787,6 +1804,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 19,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1795,6 +1813,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 20,
+            'visto' => false,
             'id_oferta' => 1,
         ]);
 
@@ -1803,6 +1822,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 19,
+            'visto' => false,
             'id_oferta' => 2,
         ]);
 
@@ -1811,6 +1831,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 20,
+            'visto' => false,
             'id_oferta' => 2,
         ]);
 
@@ -1819,6 +1840,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 19,
+            'visto' => false,
             'id_oferta' => 20,
         ]);
 
@@ -1827,6 +1849,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Inscrito',
             'descripcion' => 'Inscrito en la oferta',
             'id_demandante' => 20,
+            'visto' => false,
             'id_oferta' => 23,
         ]);
 
