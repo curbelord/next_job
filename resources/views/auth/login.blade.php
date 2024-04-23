@@ -15,14 +15,12 @@
         <h2>Inicio de sesión</h2>
 
         <x-text-input id="email" type="email" placeholder="Correo electrónico" name="email" :value="old('email')" autofocus autocomplete="username" />
-        <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
         <x-text-input id="password"
                         type="password"
                         name="password"
                         placeholder="Contraseña"
                         autocomplete="current-password" />
-        <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
         <x-primary-button class="ms-3">
             {{ __('Inicar sesión') }}
