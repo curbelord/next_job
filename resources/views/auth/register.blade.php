@@ -51,13 +51,11 @@
                 <option value="Mujer">Mujer</option>
                 <option value="Otro">Otro</option>
             </select>
-            <p class="error-mensaje"></p>
 
             <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento">
             <p class="error-mensaje">El campo "Fecha de nacimiento" no puede estar vacío.</p>
 
             <input type="text" name="direccion" id="direccion" placeholder="Dirección Postal">
-            <p class="error-mensaje"></p>
 
             <input type="text" name="telefono" id="telefono" placeholder="Teléfono">
             <p class="error-mensaje">El campo "Teléfono" no puede estar vacío.</p>
