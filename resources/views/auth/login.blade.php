@@ -22,9 +22,9 @@
                         placeholder="Contraseña"
                         autocomplete="current-password" />
 
-        <x-primary-button class="ms-3">
-            {{ __('Inicar sesión') }}
-        </x-primary-button>
+        <button type="button" id="boton_iniciar_sesion">
+            Inicar sesión
+        </button>
 
         <p>
             ¿No tienes una cuenta?
