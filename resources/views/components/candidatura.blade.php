@@ -10,6 +10,13 @@
             <h3 class="nombre_candidatura">{{ $nombreCandidatura }}</h3>
             <p class="nombre_empresa">{{ $nombreEmpresa }}</p>
             <p class="ultimo_estado">{{ $ultimoEstado }}</p>
+
+            @if($visto == "0")
+                <div class="container_no_visto">
+                    <div class="circulo_no_visto"></div>
+                    <p>Hay nuevos cambios</p>
+                </div>
+            @endif
         </div>
     </div>
 </div>

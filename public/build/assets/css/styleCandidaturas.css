@@ -61,8 +61,21 @@ form{
     margin-bottom: 10px;
 }
 
-.nombre_empresa{
+.nombre_empresa, .ultimo_estado{
     margin-bottom: 10px;
+}
+
+.container_no_visto{
+    display: flex;
+    align-items: center;
+}
+
+.circulo_no_visto{
+    width: 8px;
+    height: 8px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #2FB9CE;
 }
 
 .container_enlace_candidatura, .container_enlace_candidatura a{
