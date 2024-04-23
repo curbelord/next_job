@@ -71,7 +71,7 @@
             <x-text-input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirmar contraseña" autocomplete="new-password" />
             <p class="error-mensaje">El campo "Confirmar contraseña" no puede estar vacío.</p>
 
-            <button type="submit" id="boton_registrar">
+            <button type="button" id="boton_registrar">
                 Registrar
             </button>
 
