@@ -3,9 +3,7 @@ $(document).ready(function () {
     const formulario = {
         nombre: "",
         apellidos: "",
-        genero: "",
         fecha_nacimiento: "",
-        direccion: "",
         telefono: "",
         email: "",
         password: "",
@@ -15,18 +13,14 @@ $(document).ready(function () {
     const regex = {
         nombre: /^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/,
         apellidos: /^[A-Z][a-z]*(\s[A-Z][a-z]*)?$/,
-        genero: /^(Hombre|Mujer|Otro)$/,
-        fecha_nacimiento: /^(((0[1-9]|1[0-9]|2[0-8])\/(0[1-9]|1[0-2]))|((29|30)\/(0[13-9]|1[0-2]))|(31\/(0[13578]|1[02]))|((0[1-9]|1[0-9]|2[0-9])\/02))\/\d{4}$/,
         email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         telefono: /^[9|6]\d{8}$/,
-        contrasena: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/,
+        contrasena: /^.{6,}$/,
     };
 
     var nombre = $('#nombre');
     var apellidos = $('#apellidos');
-    var genero = $('#genero');
     var fecha_nacimiento = $('#fecha_nacimiento');
-    var direccion = $('#direccion');
     var telefono = $('#telefono');
     var email = $('#email');
     var password = $('#password');
@@ -73,42 +67,12 @@ $(document).ready(function () {
         }
     }
 
-    function validarGenero() {
-        if (campoNoNulo(genero)) {
-            if (regex.genero.test(genero.val())) {
-                eliminarError(genero);
-                return true;
-            } else {
-                mostrarError(genero);
-                return false;
-            }
-        } else {
-            mostrarError(genero);
-            return false;
-        }
-    }
-
     function validarFechaNacimiento() {
         if (campoNoNulo(fecha_nacimiento)) {
-            if (regex.fecha_nacimiento.test(fecha_nacimiento.val())) {
-                eliminarError(fecha_nacimiento);
-                return true;
-            } else {
-                mostrarError(fecha_nacimiento);
-                return false;
-            }
-        } else {
-            mostrarError(fecha_nacimiento);
-            return false;
-        }
-    }
-
-    function validarDireccion() {
-        if (campoNoNulo(direccion)) {
-            eliminarError(direccion);
+            eliminarError(fecha_nacimiento);
             return true;
         } else {
-            mostrarError(direccion);
+            mostrarError(fecha_nacimiento);
             return false;
         }
     }
@@ -174,12 +138,12 @@ $(document).ready(function () {
     }
 
     function eliminarError(campo) {
-        campo.next().removeClass("error-visible");
+        campo.attr('placeholder', campo);
         campo.removeClass("invalid");
     }
 
     function mostrarError(campo) {
-        campo.next().addClass("error-visible");
+        campo.attr('placeholder', campo.next().text());
         campo.addClass("invalid");
     }
 
@@ -192,12 +156,8 @@ $(document).ready(function () {
                 validarNombre();
             } else if (campo === "apellidos") {
                 validarApellidos();
-            } else if (campo === "genero") {
-                validarGenero();
             } else if (campo === "fecha_nacimiento") {
                 validarFechaNacimiento();
-            } else if (campo === "direccion") {
-                validarDireccion();
             } else if (campo === "telefono") {
                 validarTelefono();
             } else if (campo === "email") {
@@ -207,25 +167,12 @@ $(document).ready(function () {
             } else if (campo === "password_confirmation") {
                 validarPasswordConfirmation();
             }
-            
-            /*function actualizarFormularioYEliminarError() {
-                formulario[campo] = valor;
-                mensajeError.removeClass("error-visible");
-                $(`input#${campo}`).removeClass("invalid");
-            }
-            
-            function mostrarError() {
-                mensajeError.addClass("error-visible");
-                $(`input#${campo}`).addClass("invalid");
-            }*/
         });
             
         if (
                validarNombre() 
             && validarApellidos() 
-            && validarGenero() 
             && validarFechaNacimiento() 
-            && validarDireccion() 
             && validarTelefono() 
             && validarEmail() 
             && validarPassword() 
@@ -239,11 +186,11 @@ $(document).ready(function () {
                 timer: 3000,
             });
             Toast.fire({
-                icon: "error",
+                icon: "success",
                 title: "Registro completado con éxito."
             });
 
-            this.submit();
+            // $('#boton_registrar').attr('type', 'submit');
 
         } else {
             const Toast = Swal.mixin({
@@ -257,43 +204,6 @@ $(document).ready(function () {
                 title: "¡Por favor, rellene todos los campos correctamente!"
             });
         }
-    });
-
-    $('#nombre').on('change', function () {
-        (validarNombre()) ? (eliminarError()): (mostrarError());
-        console.log('aqui estoy');
-    });
-
-    $('#apellidos').on('change', function () {
-        (validarApellidos()) ? (eliminarError()): (mostrarError());
-    });
-
-    $('#genero').on('change', function () {
-        (validarGenero()) ? (eliminarError()): (mostrarError());
-    });
-
-    $('#fecha_nacimiento').on('change', function () {
-        (validarFechaNacimiento()) ? (eliminarError()): (mostrarError());
-    });
-
-    $('#direccion').on('change', function () {
-        (validarDireccion()) ? (eliminarError()): (mostrarError());
-    });
-
-    $('#telefono').on('change', function () {
-        (validarTelefono()) ? (eliminarError()): (mostrarError());
-    });
-
-    $('#email').on('change', function () {
-        (validarEmail()) ? (eliminarError()): (mostrarError());
-    });
-
-    $('#password').on('change', function () {
-        (validarPassword()) ? (eliminarError()): (mostrarError());
-    });
-
-    $('#password_confirmation').on('change', function () {
-        (validarPasswordConfirmation()) ? (eliminarError()): (mostrarError());
     });
 
 });
