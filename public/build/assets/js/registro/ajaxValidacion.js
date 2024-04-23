@@ -1,15 +1,5 @@
 $(document).ready(function () {
 
-    const formulario = {
-        nombre: "",
-        apellidos: "",
-        fecha_nacimiento: "",
-        telefono: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
-    };
-
     const regex = {
         nombre: /^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/,
         apellidos: /^[A-Z][a-z]*(\s[A-Z][a-z]*)?$/,
@@ -189,8 +179,6 @@ $(document).ready(function () {
                 icon: "success",
                 title: "Registro completado con éxito."
             });
-
-            // $('#boton_registrar').attr('type', 'submit');
 
         } else {
             const Toast = Swal.mixin({

@@ -20,7 +20,17 @@ $(document).ready(function () {
     $('#rol_seleccionado').click(function () {
 
         if(validarSeleccion() === false){
-            alert('No se ha seleccionado ningún rol. Por favor, seleccione un rol para continuar.');
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "No se ha seleccionado ningún rol. Por favor, seleccione un rol para continuar."
+            });
+
         } else {
             $('#formulario_registro').show();
             $('#componente_rol').hide();
