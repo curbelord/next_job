@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                @auth 
+                @auth
                     @if (Auth::user()->hasRole('demandante'))
                         <div id="container_checkin">
                             <div id="titulo_checkin">
