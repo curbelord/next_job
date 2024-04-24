@@ -86,51 +86,54 @@
                 <div id="titulo_experiencia_laboral">
                     <h3>Experiencia laboral</h3>
                 </div>
-                <div id="subcontainer_experiencia_laboral">
-                    @component('components.experiencia_laboral')
-                        @slot('nombreTrabajo')
-                            {{ "Nombre trabajo" }}
-                        @endslot
+                @foreach ($experiencia as $exp)
+                    <div id="subcontainer_experiencia_laboral">
+                        @component('components.experiencia_laboral')
+                            @slot('nombreTrabajo')
+                                {{ $exp->nombre }}
+                            @endslot
 
-                        @slot('nombreEmpresa')
-                            {{ "Nombre empresa" }}
-                        @endslot
+                            @slot('nombreEmpresa')
+                                {{ $exp->centro_laboral }}
+                            @endslot
 
-                        @slot('fechaInicioFin')
-                            {{ "Fecha inicio - Fecha fin" }}
-                        @endslot
+                            @slot('fechaInicioFin')
+                                {{ $exp->fecha_inicio }} - {{ $exp->fecha_fin }}
+                            @endslot
 
-                        @slot('rutaEdicion')
-                            {{ "Ruta icono edición" }}
-                        @endslot
+                            @slot('rutaEdicion')
+                                {{ "Ruta icono edición" }}
+                            @endslot
 
-                        @slot('rutaEliminacion')
-                            {{ "Ruta icono eliminación" }}
-                        @endslot
+                            @slot('rutaEliminacion')
+                                {{ "Ruta icono eliminación" }}
+                            @endslot
 
-                        @slot('descripcion')
-                            {{ "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dignissimos illo, adipisci a ratione sit recusandae cumque voluptates? Minus, et nam molestiae cupiditate adipisci sapiente quisquam architecto aperiam aliquid dicta?" }}
-                        @endslot
-                    @endcomponent
-                </div>
+                            @slot('descripcion')
+                                {{ $exp->descripcion }}
+                            @endslot
+                        @endcomponent
+                    </div>
+                @endforeach
             </div>
 
             <div id="container_formacion">
                 <div id="titulo_formacion">
                     <h3>Formación</h3>
                 </div>
+                @foreach ($estudios as $est)
                 <div id="subcontainer_formacion">
                     @component('components.formacion')
                         @slot('nombreFormacion')
-                            {{ "Nombre estudio" }}
+                            {{ $est->nombre }}
                         @endslot
 
                         @slot('nombreCentro')
-                            {{ "Nombre centro" }}
+                            {{ $est->centro_estudios }}
                         @endslot
 
                         @slot('fechaInicioFin')
-                            {{ "Fecha inicio - Fecha fin" }}
+                            {{ $est->fecha_inicio }} - {{ $est->fecha_fin }}
                         @endslot
 
                         @slot('rutaEdicion')
@@ -142,6 +145,7 @@
                         @endslot
                     @endcomponent
                 </div>
+                @endforeach
             </div>
         @else
             <div id="container_seccion_empresa">
