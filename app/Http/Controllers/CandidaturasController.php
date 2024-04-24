@@ -52,7 +52,7 @@ class CandidaturasController extends Controller
                       ->where('created_at', '=', function($query) use ($copiaIdOferta) {
                           $query->selectRaw('MAX(created_at)')
                                 ->from('estado')
-                                ->where('id_demandante', 1)
+                                ->where('id_demandante', Auth::id())
                                 ->where('id_oferta', $copiaIdOferta);
                       })
                       ->first();
