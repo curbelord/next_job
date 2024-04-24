@@ -9,8 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Manrope", sans-serif;
-    text-align: center;
+    text-align: left;
 }
 
 body, #container_elementos_principal{
@@ -54,32 +53,42 @@ body, #container_elementos_principal{
     min-width: 320px;
     width: 500px;
     height: 300px;
-    background-color: var(--gris);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
     border-radius: 30px;
 }
 
 #imagen_seccion_destaque_1{
     margin-right: 50px;
+    background-image: url("../img/limita_busqueda_ofertas.svg");
 }
 
 #imagen_seccion_destaque_2{
     margin-left: 50px;
+    background-image: url("../img/igualdad_candidatos.svg");
 }
 
 .texto_seccion_destaque{
+    display: flex;
+    flex-wrap: wrap;
     width: 50%;
+    align-items: center;
 }
 
 .parrafo_seccion_destaque{
     text-align: left;
+    align-self: start;
 }
 
 h3{
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 .titulo_seccion_destaque{
     margin-bottom: 20px;
+    align-self: end;
+    height: fit-content;
 }
 
 #seccion_provincias{
@@ -228,7 +237,7 @@ h3{
     }
 
     h3{
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
 
     .provincia{
@@ -245,6 +254,7 @@ h3{
 
 @media only screen and (max-width: 360px){
     .imagen_seccion_destaque{
-        height: 250px !important;
+        height: 200px !important;
+        background-size: cover;
     }
 }

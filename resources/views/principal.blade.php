@@ -111,15 +111,15 @@
             <div id="seccion_destaque_1" class="seccion_destaque">
                 <div id="imagen_seccion_destaque_1" class="imagen_seccion_destaque"></div>
                 <div class="texto_seccion_destaque">
-                    <h3 class="titulo_seccion_destaque">Lorem ipsum dolor. Sit amet.</h3>
-                    <p class="parrafo_seccion_destaque">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt, magna eget dictum efficitur, diam tellus lobortis diam, ut sagittis erat sapien sit amet felis. Praesent pharetra, nulla mattis rhoncus fringilla</p>
+                    <h3 class="titulo_seccion_destaque">Busca. Encuentra. Rápido.</h3>
+                    <p class="parrafo_seccion_destaque">Next Job es una plataforma que permite simplificar la búsqueda de empleo para que sea un proceso fácil y rápido.<br><br>Para ello se pone a disposición de los usuarios una amplia variedad de filtros con los que las búsquedas se delimitan para encontrar lo que realmente estás buscando.</p>
                 </div>
             </div>
 
             <div id="seccion_destaque_2" class="seccion_destaque">
                 <div class="texto_seccion_destaque">
-                    <h3 class="titulo_seccion_destaque">Lorem ipsum dolor. Sit amet.</h3>
-                    <p class="parrafo_seccion_destaque">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt, magna eget dictum efficitur, diam tellus lobortis diam, ut sagittis erat sapien sit amet felis. Praesent pharetra, nulla mattis rhoncus fringilla</p>
+                    <h3 class="titulo_seccion_destaque">Un sistema basado en la igualdad.</h3>
+                    <p class="parrafo_seccion_destaque">Next Job ofrece una opción para las empresas denominada “currículums ciegos”, la cual permite la visualización de los CV’s sin revelar información personal.<br><br>De esta manera la selección de personal se realiza de una manera justa y libre de prejuicios.</p>
                 </div>
                 <div id="imagen_seccion_destaque_2" class="imagen_seccion_destaque"></div>
             </div>

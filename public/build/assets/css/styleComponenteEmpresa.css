@@ -2,7 +2,6 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: sans-serif;
     text-align: left;
 }
 
@@ -22,6 +21,7 @@ form{
 
 #titulo_empresas_coincidentes h1{
     font-size: 1.7em;
+    font-weight: bold;
 }
 
 #container_empresas_coincidentes{
