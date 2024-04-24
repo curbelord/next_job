@@ -27,7 +27,7 @@ class CandidaturasController extends Controller
                                     ->whereRaw('estado.created_at = (SELECT MAX(created_at) FROM estado WHERE estado.id_oferta = oferta.referencia)');
                             })
                               ->where('inscripcion.id_demandante', '=', Auth::id())
-                              ->select('oferta.referencia', 'oferta.puesto_trabajo', 'empresa.nombre as nombre_empresa', 'estado.nombre as nombre_estado')
+                              ->select('oferta.referencia', 'oferta.puesto_trabajo', 'empresa.nombre as nombre_empresa', 'estado.nombre as nombre_estado', 'estado.visto as visto')
                               ->get();
 
         $cantidadTotalCandidaturas = $candidaturas->count();
@@ -52,7 +52,7 @@ class CandidaturasController extends Controller
                       ->where('created_at', '=', function($query) use ($copiaIdOferta) {
                           $query->selectRaw('MAX(created_at)')
                                 ->from('estado')
-                                ->where('id_demandante', 1)
+                                ->where('id_demandante', Auth::id())
                                 ->where('id_oferta', $copiaIdOferta);
                       })
                       ->first();
@@ -68,7 +68,19 @@ class CandidaturasController extends Controller
                              ->orderBy('created_at', 'desc')
                              ->get();
 
+            $this->cambiarCandidaturaAVista($estados);
+
             return view('candidatura', compact('oferta', 'estados', 'ultimoEstado', 'empresa'));
+        }
+    }
+
+    public function cambiarCandidaturaAVista($estados): void
+    {
+        $copiaEstados = $estados;
+
+        foreach ($copiaEstados as $estado) {
+            $estado->visto = true;
+            $estado->save();
         }
     }
 

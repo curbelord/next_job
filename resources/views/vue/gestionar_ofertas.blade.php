@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleComponenteProceso.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleNumeracionSlider.css') }}">
 
+    {{-- Estilos Editar proceso --}}
+
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearOferta.css') }}">
+
     {{-- Estilos Ver proceso --}}
 
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleVerOferta.css') }}">
@@ -18,9 +22,6 @@
 
     <link rel="stylesheet" href="{{ asset('build/assets/css/stylePerfilDemandante.css') }}">
 
-    {{-- Estilos Editar proceso --}}
-
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearOferta.css') }}">
 
     {{-- <script src="https://unpkg.com/vue@3"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>

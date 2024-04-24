@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Demandante;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -12,12 +13,13 @@ class PerfilController extends Controller
 {
     public function mostrar(): View
     {
+        $usuario = User::find(Auth::id());
 
         if (Auth::user()->hasRole('demandante')) {
             $demandante = Demandante::find(Auth::id());
             $checkin = $demandante->checkin;
 
-            return view('perfil.ver_demandante', compact('checkin'));
+            return view('perfil.ver_demandante', compact('checkin', 'usuario'));
         } else {
             return view('perfil.ver_demandante');
         }

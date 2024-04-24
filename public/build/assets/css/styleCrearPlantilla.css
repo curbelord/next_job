@@ -9,7 +9,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Manrope", sans-serif;
 }
 
 .crear_plantilla {
@@ -103,8 +102,8 @@
 }
 
 @media (max-width: 720px) {
-    .crear_plantilla h2, .crear_plantilla > input, .crear_plantilla p, .crear_plantilla textarea, .crear_plantilla button, 
-    .crear_plantilla #jornada, .crear_plantilla #horario, .crear_plantilla #n_vacantes, 
+    .crear_plantilla h2, .crear_plantilla > input, .crear_plantilla p, .crear_plantilla textarea, .crear_plantilla button,
+    .crear_plantilla #jornada, .crear_plantilla #horario, .crear_plantilla #n_vacantes,
     .crear_plantilla #salario, .crear_plantilla #killer_questions {
         grid-column: 2 / 12;
     }
@@ -112,11 +111,11 @@
     .crear_plantilla #clave_acceso {
         grid-row: 8;
     }
-    
+
     .crear_plantilla #confirmar_clave {
         grid-row: 9;
     }
-    
+
     .crear_plantilla button {
         grid-row: 10;
     }
@@ -124,23 +123,23 @@
     .crear_plantilla p {
         grid-row: 11;
     }
-    
+
     #horario {
         grid-row: 8;
     }
-    
+
     #n_vacantes {
         grid-row: 9;
     }
-    
+
     #salario {
         grid-row: 10;
     }
-    
+
     #killer_questions {
         grid-row: 11;
     }
-    
+
     .crear_plantilla button {
         grid-row: 12;
     }

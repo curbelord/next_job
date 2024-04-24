@@ -137,6 +137,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->integer('id_demandante')->unsigned();
             $table->unsignedBigInteger('id_oferta');
+            $table->boolean('visto')->default(false);
             $table->foreign(['id_demandante', 'id_oferta'])->references(['id_demandante', 'id_oferta'])->on('inscripcion')->onDelete('cascade');
             $table->timestamps();
         });

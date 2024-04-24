@@ -10,11 +10,15 @@
     padding: 0;
     box-sizing: border-box;
     text-align: center;
+    font-family: "Manrope", sans-serif;
     -webkit-tap-highlight-color: transparent;
 }
 
+.container{
+    margin-top: 150px;
+}
+
 .menu {
-    font-family: "Manrope", sans-serif;
     position: fixed;
     top: 0;
     width: 100%;
@@ -103,7 +107,7 @@
     width: 20px;
     height: 20px;
 }
-  
+
 @media (max-width: 1000px) {
 
     .menu ul {
@@ -113,15 +117,15 @@
     .logo {
         grid-column: 2 ;
     }
-    
+
     .empleo {
         grid-column: 3 ;
     }
-    
+
     .empresas {
         grid-column: 4;
     }
-    
+
     .acceder, .menu_perfil {
         grid-column: 9;
     }
@@ -148,15 +152,15 @@
     .logo {
         grid-column: 2;
     }
-    
+
     .empleo {
         grid-column: 3;
     }
-    
+
     .empresas {
         grid-column: 4;
     }
-    
+
     .acceder, .menu_perfil {
         grid-column: 8;
     }
@@ -190,10 +194,6 @@
         grid-column: 8;
     }
 
-}
-
-@media (max-width: 500px) {
-    
     .logo {
         height: 40px;
     }
@@ -205,4 +205,5 @@
     .logo_extendido {
         display: none;
     }
+
 }

@@ -2,7 +2,6 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: sans-serif;
     text-align: left;
 }
 
@@ -136,4 +135,21 @@
 #valor {
     margin-top: 10px;
     text-align: center;
+}
+
+
+@media only screen and (max-width: 720px) {
+    .tabla_filtros{
+        display: flex;
+        flex-wrap: wrap;
+        width: 84%;
+        margin: 0px auto;
+        margin-top: 10px;
+    }
+
+    .tabla_filtros .boton_desplegable{
+        display: block;
+        width: 100%;
+        margin-right: 0px;
+    }
 }

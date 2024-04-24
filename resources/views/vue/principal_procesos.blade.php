@@ -3,14 +3,14 @@
 @section('title', 'Principal procesos')
 
 @section('style')
+    {{-- Estilos publicar_proceso --}}
+
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearOferta.css') }}">
+
     {{-- Estilos principal_procesos --}}
 
     <link rel="stylesheet" href="{{ asset('build/assets/css/stylePrincipalEmpresa.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleUltimoProceso.css') }}">
-
-    {{-- Estilos publicar_proceso --}}
-
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearOferta.css') }}">
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>

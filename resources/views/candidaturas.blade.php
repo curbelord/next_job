@@ -41,6 +41,10 @@
                         @slot('ultimoEstado')
                             {{ $candidaturas[$clave]->nombre_estado }}
                         @endslot
+
+                        @slot('visto')
+                            {{ $candidaturas[$clave]->visto }}
+                        @endslot
                     @endcomponent
                 @empty
                     <div id="container_sin_candidaturas">

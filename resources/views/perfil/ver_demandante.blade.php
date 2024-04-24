@@ -10,11 +10,21 @@
 
 @section('content')
     <div id="container">
-        <div id="container_datos_top">
+        @if (Auth::user()->hasRole('demandante'))
+            <div id="container_datos_top">
+        @else
+            <div id="container_datos_top" class="width_100">
+        @endif
             <div id="container_nombre_cv_iconos">
-                <div id="nombre_cv">
-                    <h3>CV NombreCV</h3>
-                </div>
+                @if(Auth::user()->hasRole('demandante'))
+                    <div id="nombre_cv">
+                        <h3>CV NombreCV</h3>
+                    </div>
+                @else
+                    <div id="titulo_perfil">
+                        <h3>Perfil</h3>
+                    </div>
+                @endif
                 <div class="iconos_edicion_eliminacion">
                     <div class="icono_editar">
                         <a href="{{ route('perfil.editar_demandante') }}"></a>
@@ -26,24 +36,24 @@
                     <div id="imagen_usuario"></div>
                     <div id="valor_datos_perfil">
                         <div id="nombre_usuario">
-                            <h3>Nombre Apellido Apellido</h3>
+                            <h3>{{ $usuario->nombre }} {{ $usuario->apellidos }}</h3>
                         </div>
                         <div id="fecha_nacimiento">
-                            <p>Fecha de nacimiento</p>
+                            <p>{{ $usuario->fecha_nacimiento }}</p>
                         </div>
                         <div id="direccion_postal">
-                            <p>Dirección postal</p>
+                            <p>{{ $usuario->direccion }}</p>
                         </div>
                         <div id="telefono">
-                            <p>Teléfono</p>
+                            <p>{{ $usuario->telefono }}</p>
                         </div>
                         <div id="correo_electronico">
-                            <p>Correo electrónico</p>
+                            <p>{{ $usuario->email }}</p>
                         </div>
                     </div>
                 </div>
 
-                @auth 
+                @auth
                     @if (Auth::user()->hasRole('demandante'))
                         <div id="container_checkin">
                             <div id="titulo_checkin">
@@ -71,66 +81,90 @@
             </div>
         </div>
 
-        <div id="container_experiencia_laboral">
-            <div id="titulo_experiencia_laboral">
-                <h3>Experiencia laboral</h3>
+        @if(Auth::user()->hasRole('demandante'))
+            <div id="container_experiencia_laboral">
+                <div id="titulo_experiencia_laboral">
+                    <h3>Experiencia laboral</h3>
+                </div>
+                <div id="subcontainer_experiencia_laboral">
+                    @component('components.experiencia_laboral')
+                        @slot('nombreTrabajo')
+                            {{ "Nombre trabajo" }}
+                        @endslot
+
+                        @slot('nombreEmpresa')
+                            {{ "Nombre empresa" }}
+                        @endslot
+
+                        @slot('fechaInicioFin')
+                            {{ "Fecha inicio - Fecha fin" }}
+                        @endslot
+
+                        @slot('rutaEdicion')
+                            {{ "Ruta icono edición" }}
+                        @endslot
+
+                        @slot('rutaEliminacion')
+                            {{ "Ruta icono eliminación" }}
+                        @endslot
+
+                        @slot('descripcion')
+                            {{ "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dignissimos illo, adipisci a ratione sit recusandae cumque voluptates? Minus, et nam molestiae cupiditate adipisci sapiente quisquam architecto aperiam aliquid dicta?" }}
+                        @endslot
+                    @endcomponent
+                </div>
             </div>
-            <div id="subcontainer_experiencia_laboral">
-                @component('components.experiencia_laboral')
-                    @slot('nombreTrabajo')
-                        {{ "Nombre trabajo" }}
-                    @endslot
 
-                    @slot('nombreEmpresa')
-                        {{ "Nombre empresa" }}
-                    @endslot
+            <div id="container_formacion">
+                <div id="titulo_formacion">
+                    <h3>Formación</h3>
+                </div>
+                <div id="subcontainer_formacion">
+                    @component('components.formacion')
+                        @slot('nombreFormacion')
+                            {{ "Nombre estudio" }}
+                        @endslot
 
-                    @slot('fechaInicioFin')
-                        {{ "Fecha inicio - Fecha fin" }}
-                    @endslot
+                        @slot('nombreCentro')
+                            {{ "Nombre centro" }}
+                        @endslot
 
-                    @slot('rutaEdicion')
-                        {{ "Ruta icono edición" }}
-                    @endslot
+                        @slot('fechaInicioFin')
+                            {{ "Fecha inicio - Fecha fin" }}
+                        @endslot
 
-                    @slot('rutaEliminacion')
-                        {{ "Ruta icono eliminación" }}
-                    @endslot
+                        @slot('rutaEdicion')
+                            {{ "Ruta icono edición" }}
+                        @endslot
 
-                    @slot('descripcion')
-                        {{ "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dignissimos illo, adipisci a ratione sit recusandae cumque voluptates? Minus, et nam molestiae cupiditate adipisci sapiente quisquam architecto aperiam aliquid dicta?" }}
-                    @endslot
-                @endcomponent
+                        @slot('rutaEliminacion')
+                            {{ "Ruta icono eliminación" }}
+                        @endslot
+                    @endcomponent
+                </div>
             </div>
-        </div>
-
-        <div id="container_formacion">
-            <div id="titulo_formacion">
-                <h3>Formación</h3>
+        @else
+            <div id="container_seccion_empresa">
+                <div id="titulo_seccion_empresa">
+                    <h3>Empresa</h3>
+                </div>
+                <div id="container_datos_empresa">
+                    <div id="datos_empresa">
+                        <div id="imagen_empresa"></div>
+                        <div id="valor_datos_empresa">
+                            <div id="nombre_empresa">
+                                <h3>NombreEmpresa</h3>
+                            </div>
+                            <div id="sede_empresa">
+                                <p>Sede</p>
+                            </div>
+                            <div id="id_empresa">
+                                <p>#IDEmpresa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="subcontainer_formacion">
-                @component('components.formacion')
-                    @slot('nombreFormacion')
-                        {{ "Nombre estudio" }}
-                    @endslot
-
-                    @slot('nombreCentro')
-                        {{ "Nombre centro" }}
-                    @endslot
-
-                    @slot('fechaInicioFin')
-                        {{ "Fecha inicio - Fecha fin" }}
-                    @endslot
-
-                    @slot('rutaEdicion')
-                        {{ "Ruta icono edición" }}
-                    @endslot
-
-                    @slot('rutaEliminacion')
-                        {{ "Ruta icono eliminación" }}
-                    @endslot
-                @endcomponent
-            </div>
-        </div>
+        @endif
     </div>
 @endsection

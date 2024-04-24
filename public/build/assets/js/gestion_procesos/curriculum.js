@@ -51,42 +51,42 @@ export default {
         <div id="container_opciones_estado_curriculum">
             <div id="preseleccionar_curriculum" class="opcion_estado_curriculum">
                 <div id="imagen_preseleccionar_curriculum" class="imagen_opciones_estado_curriculum">
-                    <a href="preseleccionar" @click.prevent="muestraPopUpAccion('Preseleccionado')"></a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Preseleccionado')"></button>
                 </div>
                 <div id="boton_preseleccionar_curriculum" class="boton_opciones_estado_curriculum">
-                    <a href="preseleccionar" @click.prevent="muestraPopUpAccion('Preseleccionado')">Preseleccionar</a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Preseleccionado')">Preseleccionar</button>
                 </div>
             </div>
             <div id="descartar_curriculum" class="opcion_estado_curriculum">
                 <div id="imagen_descartar_curriculum" class="imagen_opciones_estado_curriculum">
-                    <a href="descartar" @click.prevent="muestraPopUpAccion('Descartado')"></a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Descartado')"></button>
                 </div>
                 <div id="boton_descartar_curriculum" class="boton_opciones_estado_curriculum">
-                    <a href="descartar" @click.prevent="muestraPopUpAccion('Descartado')">Descartar</a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Descartado')">Descartar</button>
                 </div>
             </div>
             <div id="seleccionar_entrevista_curriculum" class="opcion_estado_curriculum">
                 <div id="imagen_seleccionar_entrevista_curriculum" class="imagen_opciones_estado_curriculum">
-                    <a href="seleccionar_entrevista" @click.prevent="muestraPopUpAccion('Seleccionado para entrevista')"></a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Seleccionado para entrevista')"></button>
                 </div>
                 <div id="boton_seleccionar_entrevista_curriculum" class="boton_opciones_estado_curriculum">
-                    <a href="seleccionar_entrevista" @click.prevent="muestraPopUpAccion('Seleccionado para entrevista')">Seleccionar para entrevista</a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Seleccionado para entrevista')">Seleccionar para entrevista</button>
                 </div>
             </div>
             <div id="entrevista_positiva_curriculum" class="opcion_estado_curriculum">
                 <div id="imagen_entrevista_positiva_curriculum" class="imagen_opciones_estado_curriculum">
-                    <a href="entrevista_positiva" @click.prevent="muestraPopUpAccion('Entrevista positiva')"></a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Entrevista positiva')"></button>
                 </div>
                 <div id="boton_entrevista_positiva_curriculum" class="boton_opciones_estado_curriculum">
-                    <a href="entrevista_positiva" @click.prevent="muestraPopUpAccion('Entrevista positiva')">Entrevista positiva</a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Entrevista positiva')">Entrevista positiva</button>
                 </div>
             </div>
             <div id="entrevista_negativa_curriculum" class="opcion_estado_curriculum">
                 <div id="imagen_entrevista_negativa_curriculum" class="imagen_opciones_estado_curriculum">
-                    <a href="entrevista_negativa" @click.prevent="muestraPopUpAccion('Entrevista negativa')"></a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Entrevista negativa')"></button>
                 </div>
                 <div id="boton_entrevista_negativa_curriculum" class="boton_opciones_estado_curriculum">
-                    <a href="entrevista_negativa" @click.prevent="muestraPopUpAccion('Entrevista negativa')">Entrevista negativa</a>
+                    <button type="button" @click.prevent="muestraPopUpAccion('Entrevista negativa')">Entrevista negativa</button>
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@ export default {
             this.$emit('ocultarCurriculum', true);
         },
         anhadirEstado(nombre, descripcion){
-            let parametrosConsulta = "nombre=" + nombre + "&descripcion=" + descripcion + '&id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta;
+            let parametrosConsulta = "nombre=" + nombre + "&descripcion=" + descripcion + '&id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta + "&visto=0";
 
             $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', parametrosConsulta).done(function (respuesta){
                 console.log(respuesta);
