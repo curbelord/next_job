@@ -29,7 +29,11 @@
 
         <div id="container_ultimo_cambio">
             <div id="subcontainer_ultimo_cambio">
-                <p>{{ $ultimoEstado->nombre }} <br> <span>{{ date('d/m/Y', strtotime($ultimoEstado->created_at)) }}</span></p>
+                @if($oferta->fecha_cierre == date("Y-m-d"))
+                    <p>El proceso selectivo ha vencido <br> <span>{{ date('d/m/Y', strtotime($oferta->fecha_cierre)) }}</span></p>
+                @else
+                    <p>{{ $ultimoEstado->nombre }} <br> <span>{{ date('d/m/Y', strtotime($ultimoEstado->created_at)) }}</span></p>
+                @endif
             </div>
         </div>
 

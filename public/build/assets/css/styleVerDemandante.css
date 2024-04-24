@@ -15,11 +15,15 @@
 
 /* Sección 1 */
 
-/* Perfil */
+/* Perfil demandante */
 
 #container_datos_top{
     grid-column: 3 / 11;
     grid-row: 1 / 2;
+}
+
+.width_100{
+    width: 100%;
 }
 
 #container_nombre_cv_iconos{
@@ -201,6 +205,48 @@
     border-radius: 30px;
 }
 
+/* Sección 2 v2 */
+
+/* Datos empresa seleccionador */
+
+#container_seccion_empresa{
+    grid-column: 3 / 11;
+    grid-row: 2 / 3;
+    margin: 100px 0px;
+}
+
+#titulo_seccion_empresa{
+    margin-bottom: 50px;
+}
+
+#titulo_perfil h3, #titulo_seccion_empresa h3{
+    font-size: 1.5em;
+}
+
+#datos_empresa{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #2FB9CE;
+    border-radius: 10px;
+}
+
+#imagen_usuario, #imagen_empresa{
+    min-width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+}
+
+#nombre_usuario h3, #nombre_empresa h3{
+    font-size: 1.3em;
+}
+
+#fecha_nacimiento, #direccion_postal, #telefono, #correo_electronico, #sede_empresa, #id_empresa{
+    margin-top: 10px;
+}
+
 @media only screen and (max-width: 1024px){
     /* Sección 1 */
 
@@ -214,7 +260,7 @@
 @media only screen and (max-width: 720px){
     /* Sección 1 */
 
-    /* Perfil */
+    /* Perfil demandante */
 
     #nombre_cv h3{
         font-size: 1.5em;
@@ -291,5 +337,35 @@
 
     #subcontainer_formacion{
         padding: 10px;
+    }
+
+    /* Sección 1 v2 */
+
+    /* Perfil seleccionador */
+
+    #titulo_perfil h3, #titulo_seccion_empresa h3{
+        font-size: 1.3em;
+    }
+
+    #container_datos_top, #container_seccion_empresa{
+        grid-column: 2 / 12;
+    }
+
+    #container_datos_perfil, #container_datos_empresa{
+        flex-wrap: wrap;
+    }
+
+    #datos_perfil, #datos_empresa{
+        width: 100%;
+        margin-right: 0px;
+        flex-wrap: wrap;
+    }
+
+    #imagen_usuario, #imagen_empresa{
+        margin-bottom: 20px;
+    }
+
+    #nombre_usuario h3, #nombre_empresa h3{
+        font-size: 1.2em;
     }
 }
