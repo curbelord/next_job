@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Demandante;
+use App\Models\Estudios;
+use App\Models\Experiencia;
+use App\Models\CV;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,14 +16,19 @@ class PerfilController extends Controller
 {
     public function mostrar(): View
     {
+        $usuario = User::find(Auth::id());
 
         if (Auth::user()->hasRole('demandante')) {
             $demandante = Demandante::find(Auth::id());
             $checkin = $demandante->checkin;
 
-            return view('perfil.ver_demandante', compact('checkin'));
+            $cv = CV::where('id_demandante', Auth::id())->first();
+            $estudios = Estudios::where('id_cv', $cv->id)->get();
+            $experiencia = Experiencia::where('id_cv', $cv->id)->get();
+
+            return view('perfil.ver_demandante', compact('checkin', 'usuario', 'cv', 'estudios', 'experiencia'));
         } else {
-            return view('perfil.ver_demandante');
+            return view('perfil.ver_demandante', compact('usuario'));
         }
 
     }

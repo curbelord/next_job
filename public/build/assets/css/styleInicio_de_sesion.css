@@ -3,6 +3,7 @@
     --gris: #D8D8D8;
     --azul: #2FB9CE;
     --blanco: #FFFFFF;
+    --rojo: red;
 }
 
 * {
@@ -82,6 +83,17 @@
 .login a {
     color: var(--azul);
     text-decoration: none;
+}
+
+.error-mensaje {
+    color: var(--rojo);
+    margin-top: -8px;
+    margin-bottom: 16px;
+    display: none;
+}
+
+.invalid {
+    border: 2px solid var(--rojo) !important;
 }
 
 @media (max-width: 720px) {

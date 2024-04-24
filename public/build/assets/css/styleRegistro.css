@@ -57,19 +57,11 @@ select * {
     color: var(--rojo);
     margin-top: -8px;
     margin-bottom: 16px;
+    display: none;
 }
 
 .invalid {
     border: 2px solid var(--rojo) !important;
-}
-
-.error-visible {
-    display: block !important;
-    color: var(--rojo);
-}
-
-.error-mensaje {
-    display: none;
 }
 
 #formulario_registro > input {

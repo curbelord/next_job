@@ -42,6 +42,9 @@ Route::get('/vue/gestionar/autocandidatura', function (){
     return view('vue.gestionar_autocandidatura');
 });
 
+Route::get('/cv', function (){
+    return view('cv');
+});
 
 
 

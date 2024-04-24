@@ -26,7 +26,7 @@
             <button>Registrar empresa</button>
 
             <p>
-                <a href="{{ url('/inicio-de-sesion') }}">¿Ya tienes una empresa registrada?</a>
+                <a href="{{ url('/vincular-empresa') }}">¿Ya tienes una empresa registrada?</a>
             </p>
 
         </form>
