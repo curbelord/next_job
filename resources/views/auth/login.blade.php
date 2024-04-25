@@ -25,7 +25,7 @@
         <p class="error-mensaje">El campo "Confirmar contraseña" no puede estar vacío.</p>
 
         <button type="button" id="boton_iniciar_sesion">
-            Inicar sesión
+            Iniciar sesión
         </button>
 
         <p>

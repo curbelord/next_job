@@ -148,27 +148,46 @@
                 @endforeach
             </div>
         @else
-            <div id="container_seccion_empresa">
-                <div id="titulo_seccion_empresa">
-                    <h3>Empresa</h3>
-                </div>
-                <div id="container_datos_empresa">
-                    <div id="datos_empresa">
-                        <div id="imagen_empresa"></div>
-                        <div id="valor_datos_empresa">
-                            <div id="nombre_empresa">
-                                <h3>NombreEmpresa</h3>
-                            </div>
-                            <div id="sede_empresa">
-                                <p>Sede</p>
-                            </div>
-                            <div id="id_empresa">
-                                <p>#IDEmpresa</p>
+            @if (isset($empresa))
+                <div id="container_seccion_empresa">
+                    <div id="titulo_seccion_empresa">
+                        <h3>Empresa</h3>
+                    </div>
+                    <div id="container_datos_empresa">
+                        <div id="datos_empresa">
+                            <div id="imagen_empresa"></div>
+                            <div id="valor_datos_empresa">
+                                <div id="nombre_empresa">
+                                    <h3>{{ $empresa->nombre }}</h3>
+                                </div>
+                                <div id="sede_empresa">
+                                    <p>{{ $empresa->ubicacion }}</p>
+                                </div>
+                                <div id="id_empresa">
+                                    <p>ID {{ $empresa->id }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <div id="container_seccion_empresa">
+                    <div id="titulo_seccion_empresa">
+                        <h3>Empresa</h3>
+                    </div>
+                    <div id="container_datos_empresa">
+                        <div id="datos_empresa">
+                            <div>
+                                No tienes ninguna empresa asociada, ¿qué deseas hacer?
+                            </div>
+                        </div>
+                    </div>
+                    <div id="container_decision_empresa">
+                        <a href="{{ route('auth.registrar_empresa') }}" class="decision_empresa decision_empresa_registrar">Registrar empresa</a>
+                        <a href="{{ route('auth.vincular_empresa') }}" class="decision_empresa decision_empresa_vincular">Vincular empresa</a>
+                    </div>
+                </div>
+            @endif
         @endif
     </div>
 @endsection
