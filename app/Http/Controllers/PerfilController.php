@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Demandante;
+use App\Models\Seleccionador;
+use App\Models\Empresa;
 use App\Models\Estudios;
 use App\Models\Experiencia;
 use App\Models\CV;
@@ -28,7 +30,16 @@ class PerfilController extends Controller
 
             return view('perfil.ver_demandante', compact('checkin', 'usuario', 'cv', 'estudios', 'experiencia'));
         } else {
-            return view('perfil.ver_demandante', compact('usuario'));
+
+            $seleccionador = Seleccionador::find(Auth::id());
+
+            if ($seleccionador->id_empresa == null) {
+                return view('perfil.ver_demandante', compact('usuario', 'seleccionador'));
+            } else {
+                $empresa = Empresa::where('id', $seleccionador->id_empresa)->first();
+                return view('perfil.ver_demandante', compact('usuario', 'seleccionador', 'empresa'));
+            }
+
         }
 
     }
