@@ -18,7 +18,7 @@
             <div id="container_nombre_cv_iconos">
                 @if(Auth::user()->hasRole('demandante'))
                     <div id="nombre_cv">
-                        <h3>CV NombreCV</h3>
+                        <h3>Datos personales</h3>
                     </div>
                 @else
                     <div id="titulo_perfil">
@@ -39,7 +39,7 @@
                             <h3>{{ $usuario->nombre }} {{ $usuario->apellidos }}</h3>
                         </div>
                         <div id="fecha_nacimiento">
-                            <p>{{ $usuario->fecha_nacimiento }}</p>
+                            <p>{{ date('d/m/Y', strtotime($usuario->fecha_nacimiento)) }}</p>
                         </div>
                         <div id="direccion_postal">
                             <p>{{ $usuario->direccion }}</p>
@@ -98,7 +98,7 @@
                             @endslot
 
                             @slot('fechaInicioFin')
-                                {{ $exp->fecha_inicio }} - {{ $exp->fecha_fin }}
+                                {{ date('d/m/Y', strtotime($exp->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($exp->fecha_fin)) }}
                             @endslot
 
                             @slot('rutaEdicion')
@@ -133,7 +133,7 @@
                         @endslot
 
                         @slot('fechaInicioFin')
-                            {{ $est->fecha_inicio }} - {{ $est->fecha_fin }}
+                            {{ date('d/m/Y', strtotime($est->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($est->fecha_fin)) }}
                         @endslot
 
                         @slot('rutaEdicion')
