@@ -15,7 +15,13 @@
 }
 
 .container{
-    margin-top: 150px;
+    position: absolute;
+    margin-top: 50px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
 }
 
 .menu {
@@ -101,11 +107,44 @@
     font-size: 16px;
     background-color: transparent;
     display: inline-flex;
+    cursor: pointer;
 }
 
 .menu_perfil_boton svg {
     width: 20px;
     height: 20px;
+}
+
+#container_lista_menu{
+    overflow: hidden;
+    position: relative;
+    top: 100px;
+    z-index: 100;
+}
+
+#lista_menu{
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    position: absolute;
+    list-style-type: none;
+    right: -300px;
+    color: #000;
+    background-color: #FFF;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+#lista_menu li{
+    width: 100%;
+    text-decoration: none;
+    margin: 10px 0px;
+    border-bottom: 1px solid lightgrey;
+}
+
+#lista_menu li a, #lista_menu li form{
+    text-decoration: none;
+    color: #000;
 }
 
 @media (max-width: 1000px) {

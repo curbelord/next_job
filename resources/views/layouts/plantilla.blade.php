@@ -29,12 +29,66 @@
         </div>
 
         <div class="container">
+            <div id="container_lista_menu">
+                <ul id="lista_menu">
+                    <li>
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Perfil') }}
+                        </x-dropdown-link>
+                    </li>
+                    @if (Auth::user() && Auth::user()->hasRole('demandante'))
+                        <li>
+                            <x-dropdown-link :href="route('gestionar.ofertas.ofertas')">
+                                {{ __('Empleo') }}
+                            </x-dropdown-link>
+                        </li>
+                        <li>
+                            <x-dropdown-link :href="route('candidaturas')">
+                                {{ __('Candidaturas') }}
+                            </x-dropdown-link>
+                        </li>
+                    @elseif (Auth::user() && Auth::user()->hasRole('seleccionador'))
+                        <li>
+                            <x-dropdown-link :href="route('vue.principal_procesos')">
+                                {{ __('Inicio') }}
+                            </x-dropdown-link>
+                        </li>
+                        <li>
+                            <x-dropdown-link :href="route('vue.gestionar_ofertas')">
+                                {{ __('Gestionar procesos') }}
+                            </x-dropdown-link>
+                        </li>
+                        <li>
+                            <x-dropdown-link :href="route('vue.gestionar_autocandidatura')">
+                                {{ __('Autocandidaturas') }}
+                            </x-dropdown-link>
+                        </li>
+                    @endif
+
+                    @if(Auth::user())
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Cerrar sesión') }}
+                                </x-dropdown-link>
+                            </form>
+                        </li>
+                    @endif
+                </ul>
+            </div>
             @yield('content')
+            <div>
+                @include('components.footer')
+            </div>
         </div>
 
-        <div>
-            @include('components.footer')
-        </div>
+
+
+        <script src="{{ asset('build/assets/js/js_vistas/menu_desplegable.js') }}"></script>
     </body>
 
 </html>
