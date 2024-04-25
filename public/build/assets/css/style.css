@@ -5,6 +5,8 @@
 }
 
 footer{
+    /* position: absolute; */
+    bottom: 0px;
     background-color: #373A37;
     color: #FFF;
 }

@@ -1,11 +1,11 @@
 <div class="menu">
     <nav x-data="{ open: false }">
         <ul>
- 
+
             <img src="{{ asset('build/assets/img/logo_next_job.svg') }}" alt="Next Job" class="logo logo_no_extendido">
             <img src="{{ asset('build/assets/img/logo_next_job_ext.svg') }}" alt="Next Job" class="logo logo_extendido">
 
-            @auth 
+            @auth
                 @if (Auth::user()->hasRole('seleccionador'))
                     <li class="empleo"><a href="{{ route('gestionar.ofertas.crear_oferta') }}">Publicar oferta</a></li>
                     <li class="empresas"><a href="{{ route('gestionar.principal_empresa') }}">Procesos</a></li>
@@ -23,12 +23,12 @@
             <div class="menu_perfil">
                 <x-dropdown class="desplegable_perfil" width="48">
                     <x-slot name="trigger">
-                        <button class="menu_perfil_boton">
+                        <button id="boton_menu" class="menu_perfil_boton">
                             <div>
-                                
+
                                 {{ Auth::user()->nombre }}
                                 <!--img src="{{ asset('build/assets/img/usuario.svg') }}" alt="Usuario" class="usuario"-->
-                                
+
                             </div>
 
                             <div>
@@ -40,20 +40,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('perfil.ver_demandante')">
-                            {{ __('Perfil') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Cerrar sesión') }}
-                            </x-dropdown-link>
-                        </form>
                     </x-slot>
                 </x-dropdown>
             </div>
@@ -61,7 +47,7 @@
                 <li class="acceder"><a href="{{ url('/login') }}">Acceder</a></li>
             @endauth
         </ul>
-  
+
         <div class="contenedor_vector">
             <div class="vector_borde_gris"></div>
             <div class="vector_borde_azul"></div>
