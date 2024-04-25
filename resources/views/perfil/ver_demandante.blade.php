@@ -18,7 +18,7 @@
             <div id="container_nombre_cv_iconos">
                 @if(Auth::user()->hasRole('demandante'))
                     <div id="nombre_cv">
-                        <h3>CV NombreCV</h3>
+                        <h3>Datos personales</h3>
                     </div>
                 @else
                     <div id="titulo_perfil">
@@ -39,7 +39,7 @@
                             <h3>{{ $usuario->nombre }} {{ $usuario->apellidos }}</h3>
                         </div>
                         <div id="fecha_nacimiento">
-                            <p>{{ $usuario->fecha_nacimiento }}</p>
+                            <p>{{ date('d/m/Y', strtotime($usuario->fecha_nacimiento)) }}</p>
                         </div>
                         <div id="direccion_postal">
                             <p>{{ $usuario->direccion }}</p>
@@ -98,7 +98,7 @@
                             @endslot
 
                             @slot('fechaInicioFin')
-                                {{ $exp->fecha_inicio }} - {{ $exp->fecha_fin }}
+                                {{ date('d/m/Y', strtotime($exp->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($exp->fecha_fin)) }}
                             @endslot
 
                             @slot('rutaEdicion')
@@ -133,7 +133,7 @@
                         @endslot
 
                         @slot('fechaInicioFin')
-                            {{ $est->fecha_inicio }} - {{ $est->fecha_fin }}
+                            {{ date('d/m/Y', strtotime($est->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($est->fecha_fin)) }}
                         @endslot
 
                         @slot('rutaEdicion')
@@ -148,27 +148,46 @@
                 @endforeach
             </div>
         @else
-            <div id="container_seccion_empresa">
-                <div id="titulo_seccion_empresa">
-                    <h3>Empresa</h3>
-                </div>
-                <div id="container_datos_empresa">
-                    <div id="datos_empresa">
-                        <div id="imagen_empresa"></div>
-                        <div id="valor_datos_empresa">
-                            <div id="nombre_empresa">
-                                <h3>NombreEmpresa</h3>
-                            </div>
-                            <div id="sede_empresa">
-                                <p>Sede</p>
-                            </div>
-                            <div id="id_empresa">
-                                <p>#IDEmpresa</p>
+            @if (isset($empresa))
+                <div id="container_seccion_empresa">
+                    <div id="titulo_seccion_empresa">
+                        <h3>Empresa</h3>
+                    </div>
+                    <div id="container_datos_empresa">
+                        <div id="datos_empresa">
+                            <div id="imagen_empresa"></div>
+                            <div id="valor_datos_empresa">
+                                <div id="nombre_empresa">
+                                    <h3>{{ $empresa->nombre }}</h3>
+                                </div>
+                                <div id="sede_empresa">
+                                    <p>{{ $empresa->ubicacion }}</p>
+                                </div>
+                                <div id="id_empresa">
+                                    <p>ID {{ $empresa->id }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <div id="container_seccion_empresa">
+                    <div id="titulo_seccion_empresa">
+                        <h3>Empresa</h3>
+                    </div>
+                    <div id="container_datos_empresa">
+                        <div id="datos_empresa">
+                            <div>
+                                No tienes ninguna empresa asociada, ¿qué deseas hacer?
+                            </div>
+                        </div>
+                    </div>
+                    <div id="container_decision_empresa">
+                        <a href="{{ route('auth.registrar_empresa') }}" class="decision_empresa decision_empresa_registrar">Registrar empresa</a>
+                        <a href="{{ route('auth.vincular_empresa') }}" class="decision_empresa decision_empresa_vincular">Vincular empresa</a>
+                    </div>
+                </div>
+            @endif
         @endif
     </div>
 @endsection

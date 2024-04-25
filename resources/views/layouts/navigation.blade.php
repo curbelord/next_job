@@ -40,29 +40,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        {{-- <div id="container_lista_menu">
-                            <ul id="lista_menu">
-                                <li>Empleo</li>
-                                <li>Empresas</li>
-                                <li>Candidaturas</li>
-                            </ul>
-                        </div> --}}
-
-
-                        {{-- <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Perfil') }}
-                        </x-dropdown-link> --}}
-
-                        <!-- Authentication -->
-                        {{-- <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Cerrar sesión') }}
-                            </x-dropdown-link>
-                        </form> --}}
                     </x-slot>
                 </x-dropdown>
             </div>

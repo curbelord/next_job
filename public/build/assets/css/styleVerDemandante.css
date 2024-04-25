@@ -247,6 +247,34 @@
     margin-top: 10px;
 }
 
+#container_decision_empresa {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.decision_empresa {
+    background-color: #2FB9CE;
+    color: #FFF;
+    padding: 1em;
+    border-radius: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.decision_empresa_registrar {
+    grid-column: 1;
+}
+
+.decision_empresa_vincular {
+    grid-column: 2;
+}
+
 @media only screen and (max-width: 1024px){
     /* Sección 1 */
 
@@ -367,5 +395,20 @@
 
     #nombre_usuario h3, #nombre_empresa h3{
         font-size: 1.2em;
+    }
+
+    #container_decision_empresa {
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 0px;
+    }
+
+    .decision_empresa_registrar {
+        grid-column: 1 / 3;
+        grid-row: 1;
+    }
+    
+    .decision_empresa_vincular {
+        grid-column: 1 / 3;
+        grid-row: 2;
     }
 }
