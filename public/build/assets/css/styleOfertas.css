@@ -12,6 +12,28 @@
     font-family: "Manrope", sans-serif;
 }
 
+.container_boton_volver{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin-bottom: 25px;
+}
+
+.container_boton_volver a{
+    display: block;
+    grid-column: 10 / 11;
+    width: fit-content;
+    justify-self: end;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #2FB9CE;
+    border: none;
+    border-radius: 10px;
+}
+
 span {
     text-align: left;
 }
@@ -26,8 +48,6 @@ span {
     border-radius: 30px;
     grid-column: 3 / 11;
     padding: 15px;
-    display: grid;
-    grid-gap: 10px;
     margin: 100px 0px 50px;
 }
 
@@ -35,6 +55,7 @@ span {
     display: grid;
     grid-template-columns: 125px repeat(11, 1fr);
     grid-template-rows: repeat(3, 62.5px) 1fr;
+    margin-bottom: 20px;
     background-color: var(--blanco);
     border-radius: 30px;
     color: var(--negro);
@@ -46,13 +67,12 @@ span {
     position: relative;
 }
 
-/*
-.oferta:hover {
+
+/* .oferta:hover {
     border: 3px solid var(--azul);
-    background-color: rgba(47, 185, 206, 0.1);
     transition: ease-in .3s;
-}
-*/
+} */
+
 
 .oferta > * {
     grid-column: 2 / 13;
@@ -85,7 +105,10 @@ span {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: var(--gris);
+    background-image: url("../img/empresa_gris.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 70% 70%;
     display: flex;
     transition: ease-in .3s;
 }
@@ -177,6 +200,10 @@ span {
 }
 
 @media (max-width: 720px) {
+
+    .container_boton_volver a{
+        grid-column: 11 / 12;
+    }
 
     .oferta {
         grid-template-columns: 125px repeat(1, 1fr);

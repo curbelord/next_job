@@ -21,6 +21,10 @@
     margin-bottom: 20px;
 }
 
+#formulario_empresas{
+    height: 50vh;
+}
+
 form {
     grid-template-rows: 40px repeat(2, 1fr);
 }

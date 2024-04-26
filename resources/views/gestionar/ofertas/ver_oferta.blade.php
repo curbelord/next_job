@@ -51,20 +51,6 @@
                                 {{ "Edad" }}
                             @endslot
 
-                            {{--
-
-                            Si es un currículum ciego, entonces pasar esas variables con estos estilos. Si no, vacías
-
-                            @slot('estiloContainerCandidato')
-                                {{ "style=padding:0px;" }}
-                            @endslot
-
-                            @slot('estiloCurriculumVisible')
-                                {{ "style=display:none;" }}
-                            @endslot
-
-                            --}}
-
                             @slot('estiloContainerCandidato')
                                 {{ "" }}
                             @endslot

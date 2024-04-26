@@ -22,6 +22,24 @@
     grid-row: 1 / 2;
 }
 
+.container_boton_volver{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 25px;
+}
+
+.container_boton_volver a{
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #2FB9CE;
+    border: none;
+    border-radius: 10px;
+}
+
 #container_datos_top{
     display: grid;
     grid-template-columns: 150px 4fr 1fr;
@@ -71,6 +89,7 @@
 #container_boton_inscripcion{
     grid-column: 3 / 4;
     grid-row: 1 / 2;
+    justify-self: end;
 }
 
 #boton_inscripcion{
@@ -315,7 +334,7 @@
         width: 100%;
     }
 
-    #boton_inscripcion, #boton_inscripcion form, #boton_inscripcion form #input_boton_inscripcion{
+    #boton_inscripcion, #boton_inscripcion form, #boton_inscripcion form #input_boton_inscripcion, #boton_inscripcion form #input_boton_inscripcion_inactivo{
         width: 100%;
     }
 

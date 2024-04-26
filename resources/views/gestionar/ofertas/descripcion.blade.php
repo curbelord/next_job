@@ -9,6 +9,9 @@
 @section('content')
     <div id="container">
         <div id="container_datos">
+            <div class="container_boton_volver">
+                <a onclick="goBack(); return false;">Volver</a>
+            </div>
             <div id="container_datos_top">
                 <div id="container_imagen">
                     <div id="imagen_empresa"></div>
@@ -72,26 +75,8 @@
                     <p>{{ $oferta->descripcion }}</p>
                 </div>
             </div>
-            <div id="subcontainer_cuestionario">
-                <div id="titulo_cuestionario">
-                    <h3>Cuestionario</h3>
-                </div>
-                <div id="cuerpo_cuestionario">
-                    <div id="cuestionario_fila_1">
-                        <div id="cantidad_preguntas">
-                            <p>Cantidad preguntas</p>
-                        </div>
-                        <div id="tipo_preguntas">
-                            <p>Tipo preguntas</p>
-                        </div>
-                    </div>
-                    <div id="cuestionario_fila_2">
-                        <div id="tiempo_aproximado">
-                            <p>Tiempo aproximado</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+
+    <script src="{{ asset('build/assets/js/js_vistas/redireccion_hacia_atras.js') }}"></script>
 @endsection

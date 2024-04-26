@@ -21,20 +21,43 @@
 #container_datos_proceso{
     display: grid;
     grid-template-columns: 150px 1fr;
-    grid-template-rows: 150px;
+    grid-template-rows: auto 150px;
     grid-column: 3 / 11;
     grid-row: 1 / 2;
 }
 
+.container_boton_volver{
+    display: flex;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-content: end;
+    margin-bottom: 25px;
+}
+
+.container_boton_volver a{
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #2FB9CE;
+    border: none;
+    border-radius: 10px;
+}
+
 #container_imagen{
     grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-row: 2 / 3;
 }
 
 #imagen_empresa{
     width: 150px;
     height: 150px;
-    background-color: #D9D9D9;
+    background-image: url("../img/empresa_gris.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 70% 70%;
     border-radius: 10px;
 }
 
@@ -42,7 +65,7 @@
     display: flex;
     flex-wrap: wrap;
     grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    grid-row: 2 / 3;
     margin-left: 50px;
 }
 
@@ -52,6 +75,10 @@
 
 #nombre_empresa, #centro_trabajo{
     margin-top: -20px;
+}
+
+#titulo_oferta, #nombre_empresa, #centro_trabajo{
+    height: fit-content;
 }
 
 #titulo_oferta h1{
@@ -106,7 +133,7 @@
     margin-top: 100px;
     padding: 15px;
     background-color: #D9D9D9;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 
@@ -214,6 +241,15 @@
         grid-column: 2 / 12;
     }
 
+    .container_boton_volver{
+        width: 100%;
+    }
+
+    #container_imagen{
+        margin-right: 20px;
+        margin-bottom: 25px;
+    }
+
     #imagen_empresa{
         width: 125px;
         height: 125px;
@@ -224,7 +260,8 @@
     #container_texto_datos{
         display: flex;
         flex-wrap: wrap;
-        margin: 25px 0px;
+        margin-left: 0px;
+        /* margin: 25px 0px; */
     }
 
     #titulo_oferta{
@@ -245,6 +282,10 @@
 
     #container_ultimo_cambio, #container_cambios{
         grid-column: 2 / 12;
+    }
+
+    #container_ultimo_cambio{
+        margin-top: 25px;
     }
 
     /* Sección 2 */

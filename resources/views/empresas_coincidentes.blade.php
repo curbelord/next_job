@@ -22,6 +22,9 @@
 
     <div id="container">
         <form method="GET" action="{{ route('empresas_coincidentes', $offset) }}">
+            <div class="container_boton_volver">
+                <a onclick="goBack(); return false;">Volver</a>
+            </div>
             <div id="container_titulo">
                 <div id="titulo_empresas_coincidentes">
                     @if($filtro != "")
@@ -89,4 +92,5 @@
     </div>
 
     <script src="{{ asset('build/assets/js/js_vistas/empresas.js') }}"></script>
+    <script src="{{ asset('build/assets/js/js_vistas/redireccion_hacia_atras.js') }}"></script>
 @endsection

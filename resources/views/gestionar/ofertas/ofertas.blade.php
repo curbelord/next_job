@@ -89,6 +89,10 @@
     <div class="content">
 
         <div class="seccion_buscador">
+            <div class="container_boton_volver">
+                <a href="{{ route('principal') }}">Volver</a>
+            </div>
+
             <form method="GET" action="{{ route('gestionar.ofertas.ofertas', $offset) }}">
                 @csrf
 
@@ -116,9 +120,6 @@
 
                 <div class="tabla_filtros">
                     @if ($mostrarFiltros)
-                        {{-- @include('components.filtros') --}}
-
-
                         @for($j = 0; $j < 5; $j++)
                             @component('components.desplegable')
                                 @slot('nombreBoton')
@@ -234,7 +235,6 @@
                 <div class="tabla">
                     <button id="boton_envio_formulario" type="submit">Buscar</button>
                 </div>
-
 
                 <div class="ofertas">
                     <div class="contenedor_ofertas">

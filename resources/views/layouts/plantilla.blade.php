@@ -50,19 +50,19 @@
                         </li>
                     @elseif (Auth::user() && Auth::user()->hasRole('seleccionador'))
                         <li>
-                            <x-dropdown-link :href="route('vue.principal_procesos')">
+                            {{-- <x-dropdown-link :href="route('vue.principal_procesos')">
                                 {{ __('Inicio') }}
-                            </x-dropdown-link>
+                            </x-dropdown-link> --}}
                         </li>
                         <li>
-                            <x-dropdown-link :href="route('vue.gestionar_ofertas')">
+                            {{-- <x-dropdown-link :href="route('vue.gestionar_ofertas')">
                                 {{ __('Gestionar procesos') }}
-                            </x-dropdown-link>
+                            </x-dropdown-link> --}}
                         </li>
                         <li>
-                            <x-dropdown-link :href="route('vue.gestionar_autocandidatura')">
+                            {{-- <x-dropdown-link :href="route('vue.gestionar_autocandidatura')">
                                 {{ __('Autocandidaturas') }}
-                            </x-dropdown-link>
+                            </x-dropdown-link> --}}
                         </li>
                     @endif
 
