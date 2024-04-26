@@ -6,10 +6,40 @@
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleVerDemandante.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleExperienciaLaboral.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleFormacion.css') }}">
+    <script type="module" src="{{ asset('build/assets/js/perfil/perfil.js') }}"></script>
 @endsection
 
 @section('content')
     <div id="container">
+
+        @if(session('mensajeFormacionEliminada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha eliminado la formación correctamente!"
+                });
+            </script>
+        @elseif(session('mensajeExperienciaEliminada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha eliminado la experiencia correctamente!"
+                });
+            </script>
+        @endif
+
         @if (Auth::user()->hasRole('demandante'))
             <div id="container_datos_top">
         @else
@@ -82,71 +112,119 @@
         </div>
 
         @if(Auth::user()->hasRole('demandante'))
-            <div id="container_experiencia_laboral">
-                <div id="titulo_experiencia_laboral">
-                    <h3>Experiencia laboral</h3>
-                </div>
-                @foreach ($experiencia as $exp)
-                    <div id="subcontainer_experiencia_laboral">
-                        @component('components.experiencia_laboral')
-                            @slot('nombreTrabajo')
-                                {{ $exp->nombre }}
-                            @endslot
-
-                            @slot('nombreEmpresa')
-                                {{ $exp->centro_laboral }}
-                            @endslot
-
-                            @slot('fechaInicioFin')
-                                {{ date('d/m/Y', strtotime($exp->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($exp->fecha_fin)) }}
-                            @endslot
-
-                            @slot('rutaEdicion')
-                                {{ "Ruta icono edición" }}
-                            @endslot
-
-                            @slot('rutaEliminacion')
-                                {{ "Ruta icono eliminación" }}
-                            @endslot
-
-                            @slot('descripcion')
-                                {{ $exp->descripcion }}
-                            @endslot
-                        @endcomponent
+            @if ($experiencia !== null)
+                <div id="container_experiencia_laboral">
+                    <div id="titulo_experiencia_laboral">
+                        <h3>Experiencia laboral</h3>
                     </div>
-                @endforeach
-            </div>
+                    @foreach ($experiencia as $exp)
+                        <form action="{{ route('perfil.ver_demandante.eliminar_experiencia', ['id_cv' => $cv->id, 'id' => $exp->id_experiencia]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <div id="subcontainer_experiencia_laboral">
+                                @component('components.experiencia_laboral')
+                                    @slot('nombreTrabajo')
+                                        {{ $exp->nombre }}
+                                    @endslot
 
-            <div id="container_formacion">
-                <div id="titulo_formacion">
-                    <h3>Formación</h3>
+                                    @slot('nombreEmpresa')
+                                        {{ $exp->centro_laboral }}
+                                    @endslot
+
+                                    @slot('fechaInicioFin')
+                                        {{ date('d/m/Y', strtotime($exp->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($exp->fecha_fin)) }}
+                                    @endslot
+
+                                    @slot('rutaEdicion')
+                                        {{ "Ruta icono edición" }}
+                                    @endslot
+
+                                    @slot('descripcion')
+                                        {{ $exp->descripcion }}
+                                    @endslot
+                                @endcomponent
+                            </div>
+                        </form>
+                    @endforeach
+
+                    <button type="button" class="perfil_anadir">
+                        Añadir
+                    </button>
+
                 </div>
-                @foreach ($estudios as $est)
-                <div id="subcontainer_formacion">
-                    @component('components.formacion')
-                        @slot('nombreFormacion')
-                            {{ $est->nombre }}
-                        @endslot
-
-                        @slot('nombreCentro')
-                            {{ $est->centro_estudios }}
-                        @endslot
-
-                        @slot('fechaInicioFin')
-                            {{ date('d/m/Y', strtotime($est->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($est->fecha_fin)) }}
-                        @endslot
-
-                        @slot('rutaEdicion')
-                            {{ "Ruta icono edición" }}
-                        @endslot
-
-                        @slot('rutaEliminacion')
-                            {{ "Ruta icono eliminación" }}
-                        @endslot
-                    @endcomponent
+            @else
+                <div id="container_experiencia_laboral">
+                    <div id="titulo_seccion_empresa">
+                        <h3>Experiencia laboral</h3>
+                    </div>
+                    <div id="container_datos_empresa">
+                        <div id="datos_empresa">
+                            <div>
+                                No ha añadido ninguna experiencia, ¿quiere añadirla ahora?
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="perfil_anadir">
+                        Añadir
+                    </button>
                 </div>
-                @endforeach
-            </div>
+            @endif
+            
+            @if ($estudios !== null)
+
+                <div id="container_formacion">
+                    <div id="titulo_formacion">
+                        <h3>Formación</h3>
+                    </div>
+
+                    @foreach ($estudios as $est)
+                        <form action="{{ route('perfil.ver_demandante.eliminar_estudios', ['id_cv' => $cv->id, 'id' => $est->id_estudio]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <div id="subcontainer_formacion">
+                                @component('components.formacion')
+                                    @slot('nombreFormacion')
+                                        {{ $est->nombre }}
+                                    @endslot
+
+                                    @slot('nombreCentro')
+                                        {{ $est->centro_estudios }}
+                                    @endslot
+
+                                    @slot('fechaInicioFin')
+                                        {{ date('d/m/Y', strtotime($est->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($est->fecha_fin)) }}
+                                    @endslot
+
+                                    @slot('rutaEdicion')
+                                        {{ "Ruta icono edición" }}
+                                    @endslot
+                                @endcomponent
+                            </div>
+                        </form>
+                    @endforeach
+                
+                    <button type="button" class="perfil_anadir">
+                        Añadir
+                    </button>
+                </div>
+            @else
+                <div id="container_formacion">
+                    <div id="titulo_seccion_empresa">
+                        <h3>Formación</h3>
+                    </div>
+                    <div id="container_datos_empresa">
+                        <div id="datos_empresa">
+                            <div>
+                                No ha añadido ninguna formación, ¿quiere añadirla ahora?
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="perfil_anadir">
+                        Añadir
+                    </button>
+                </div>
+            @endif
+
         @else
             @if (isset($empresa))
                 <div id="container_seccion_empresa">

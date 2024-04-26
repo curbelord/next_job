@@ -24,9 +24,23 @@ class PerfilController extends Controller
             $demandante = Demandante::find(Auth::id());
             $checkin = $demandante->checkin;
 
-            $cv = CV::where('id_demandante', Auth::id())->first();
+            $cv = CV::where('id_demandante', Auth::id())->first(); 
+
+            if ($cv == null) {
+                return view('perfil.ver_demandante', compact('usuario', 'checkin'));
+            }
+
             $estudios = Estudios::where('id_cv', $cv->id)->get();
+
+            if ($estudios->isEmpty()) {
+                $estudios = null;
+            }
+
             $experiencia = Experiencia::where('id_cv', $cv->id)->get();
+
+            if ($experiencia->isEmpty()) {
+                $experiencia = null;
+            }
 
             return view('perfil.ver_demandante', compact('checkin', 'usuario', 'cv', 'estudios', 'experiencia'));
         } else {
@@ -59,6 +73,39 @@ class PerfilController extends Controller
         $user = Demandante::find(Auth::id());
         $user->checkin = true;
         $user->save();
+
+        return redirect()->route('perfil.ver_demandante');
+    }
+
+    public function eliminarExperiencia(string $id_cv, string $id, Request $request): RedirectResponse
+    {
+        $experiencia = Experiencia::where('id_cv', $id_cv)
+                                    ->where('id_experiencia', $id)
+                                    ->first();
+
+        if ($experiencia) {
+            Experiencia::where('id_cv', $id_cv)
+                         ->where('id_experiencia', $id)
+                         ->delete();
+
+            $request->session()->flash('mensajeExperienciaEliminada', 'Se ha eliminado la experiencia correctamente.');
+        }
+
+        return redirect()->route('perfil.ver_demandante');
+    }
+
+    public function eliminarEstudios(string $id_cv, string $id, Request $request): RedirectResponse
+    {
+        $estudio = Estudios::where('id_cv', $id_cv)
+                            ->where('id_estudio', $id)
+                            ->first();
+
+        if ($estudio) {
+            Estudios::where('id_cv', $id_cv)
+                      ->where('id_estudio', $id)
+                      ->delete();
+            $request->session()->flash('mensajeFormacionEliminada', 'Se ha eliminado la formación correctamente.');
+        }
 
         return redirect()->route('perfil.ver_demandante');
     }
