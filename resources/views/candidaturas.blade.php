@@ -17,6 +17,10 @@
 @section('content')
     <div id="container">
         <form method="GET" action="{{ route('candidaturas', $offset) }}">
+            <div class="container_boton_volver">
+                <a href="{{ route('principal') }}">Volver</a>
+            </div>
+
             <div id="container_titulo">
                 <div id="titulo_candidaturas">
                     <h1>Candidaturas</h1>

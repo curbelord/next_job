@@ -1,7 +1,7 @@
 <div class="seccion_buscador">
 
     @if ($titulo == 'Busca una empresa')
-        <form method="GET" action="{{ route('empresas_coincidentes') }}">
+        <form method="GET" action="{{ route('empresas_coincidentes') }}" id="formulario_empresas">
             @csrf
 
             <div class="tabla">

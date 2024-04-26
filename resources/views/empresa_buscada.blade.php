@@ -9,6 +9,9 @@
 @section('content')
     <div id="container">
         <div id="container_datos_empresa">
+            <div class="container_boton_volver">
+                <a onclick="goBack(); return false;">Volver</a>
+            </div>
             <div id="container_imagen">
                 <div id="imagen_empresa"></div>
             </div>
@@ -46,4 +49,6 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('build/assets/js/js_vistas/redireccion_hacia_atras.js') }}"></script>
 @endsection

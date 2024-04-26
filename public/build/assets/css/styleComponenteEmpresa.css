@@ -15,6 +15,27 @@ form{
     grid-column: 3 / 11;
 }
 
+.container_boton_volver{
+    display: flex;
+    grid-template-columns: repeat(12, 1fr);
+    justify-content: end;
+    margin-bottom: 25px;
+}
+
+.container_boton_volver a{
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #2FB9CE;
+    border: none;
+    border-radius: 10px;
+    z-index: 10;
+}
+
 #container_titulo{
     margin-bottom: 50px;
 }
@@ -52,7 +73,10 @@ form{
 .imagen_logo_empresa{
     width: 125px;
     height: 125px;
-    background-color: #D9D9D9;
+    background-image: url("../img/empresa_gris.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 70% 70%;
     border-radius: 10px;
 }
 

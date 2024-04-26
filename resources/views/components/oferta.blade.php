@@ -1,5 +1,3 @@
-<option value="{{ $provincia }}"></option>
-
 <a href="{{ url('descripcion', ['parametro' => $referencia]) }}" class="oferta">
 
     <div class="oferta_img"></div>

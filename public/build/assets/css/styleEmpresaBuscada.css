@@ -20,26 +20,51 @@
 #container_datos_empresa{
     display: grid;
     grid-template-columns: 150px 1fr;
-    grid-template-rows: 150px;
+    grid-template-rows: auto 150px;
     grid-column: 3 / 11;
     grid-row: 1 / 2;
 }
 
+.container_boton_volver{
+    display: flex;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-content: end;
+    margin-bottom: 25px;
+}
+
+.container_boton_volver a{
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #2FB9CE;
+    border: none;
+    border-radius: 10px;
+    z-index: 10;
+}
+
 #container_imagen{
     grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-row: 2 / 3;
 }
 
 #imagen_empresa{
     width: 150px;
     height: 150px;
-    background-color: #D9D9D9;
+    background-image: url("../img/empresa_gris.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 70% 70%;
     border-radius: 10px;
 }
 
 #container_texto_datos{
     grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    grid-row: 2 / 3;
     margin-left: 50px;
 }
 
@@ -190,6 +215,10 @@
     /* Sección 1 */
 
     /* Datos proceso */
+
+    .container_boton_volver{
+        width: 100%;
+    }
 
     #container_datos_empresa{
         grid-template-columns: 125px 1fr;
