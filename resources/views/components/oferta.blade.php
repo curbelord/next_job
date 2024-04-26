@@ -1,4 +1,4 @@
-<a href="{{ url('descripcion', ['parametro' => $referencia]) }}" class="oferta">
+<a href="{{ url('oferta', ['id' => $referencia]) }}" class="oferta">
 
     <div class="oferta_img"></div>
     <div class="oferta_titulo">

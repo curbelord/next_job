@@ -19,7 +19,7 @@
 
     @else
 
-        <form method="GET" action="{{ route('gestionar.ofertas.ofertas') }}">
+        <form method="GET" action="{{ route('ofertas.ofertas') }}">
             @csrf
 
             <div class="tabla">

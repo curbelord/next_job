@@ -26,7 +26,7 @@
     <body>
 
         <div>
-            @include('layouts.navigation')
+            @include('layouts.header')
         </div>
 
         <div class="container">
@@ -39,7 +39,7 @@
                     </li>
                     @if (Auth::user() && Auth::user()->hasRole('demandante'))
                         <li>
-                            <x-dropdown-link :href="route('gestionar.ofertas.ofertas')">
+                            <x-dropdown-link :href="route('ofertas.ofertas')">
                                 {{ __('Empleo') }}
                             </x-dropdown-link>
                         </li>

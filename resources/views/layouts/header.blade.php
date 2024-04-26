@@ -7,8 +7,8 @@
 
             @auth
                 @if (Auth::user()->hasRole('seleccionador'))
-                    <li class="empleo"><a href="{{ route('gestionar.ofertas.crear_oferta') }}">Publicar oferta</a></li>
-                    <li class="empresas"><a href="{{ route('gestionar.principal_empresa') }}">Procesos</a></li>
+                    <li class="empleo"><a href="{{ route('vue.principal_procesos') }}">Publicar oferta</a></li>
+                    <li class="empresas"><a href="{{ route('vue.principal_procesos') }}">Procesos</a></li>
                 @else
                     <li class="empleo"><a href="{{ route('principal') }}">Empleo</a></li>
                     <li class="empresas"><a href="{{ route('empresas') }}">Empresas</a></li>

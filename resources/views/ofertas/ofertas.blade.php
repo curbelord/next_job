@@ -93,7 +93,7 @@
                 <a href="{{ route('principal') }}">Volver</a>
             </div>
 
-            <form method="GET" action="{{ route('gestionar.ofertas.ofertas', $offset) }}">
+            <form method="GET" action="{{ route('ofertas.ofertas', $offset) }}">
                 @csrf
 
                 <div class="tabla">
