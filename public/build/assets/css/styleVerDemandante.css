@@ -13,6 +13,25 @@
     margin-top: 100px;
 }
 
+/* Global */
+
+button.perfil_anadir {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 1em 2em;
+    border-radius: 10px;
+    border: 0;
+    height: 50px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-weight: bold;    
+    margin-left: auto;
+}
+
 /* Sección 1 */
 
 /* Perfil demandante */
@@ -44,6 +63,9 @@
     background-position: center center;
     background-size: 50% 50%;
     border-radius: 10px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .icono_editar{
@@ -54,7 +76,7 @@
     background-image: url('../img/papelera.svg');
 }
 
-.icono_editar a, .icono_eliminar a{
+.icono_editar a {
     display: block;
     width: 100%;
     height: 100%;

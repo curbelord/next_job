@@ -60,6 +60,9 @@ Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.i
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::delete('/eliminar-experiencia/{id_cv}/{id}', [PerfilController::class, 'eliminarExperiencia'])->name('perfil.ver_demandante.eliminar_experiencia');
+    Route::delete('/eliminar-estudios/{id_cv}/{id}', [PerfilController::class, 'eliminarEstudios'])->name('perfil.ver_demandante.eliminar_estudios');
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
