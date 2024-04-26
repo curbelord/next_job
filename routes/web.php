@@ -26,10 +26,6 @@ use Illuminate\Support\Facades\Route;
 
 // VISTAS DE PRUEBA
 
-Route::get('/desplegable', function (){
-    return view('desplegable');
-});
-
 Route::get('/vue/gestionar/procesos', function (){
     return view('vue.gestionar_ofertas');
 });
@@ -41,12 +37,6 @@ Route::get('/vue/principal/procesos', function (){
 Route::get('/vue/gestionar/autocandidatura', function (){
     return view('vue.gestionar_autocandidatura');
 });
-
-Route::get('/cv', function (){
-    return view('cv');
-});
-
-
 
 // VISTAS GLOBALES
 
@@ -63,35 +53,20 @@ Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.i
     Route::delete('/eliminar-experiencia/{id_cv}/{id}', [PerfilController::class, 'eliminarExperiencia'])->name('perfil.ver_demandante.eliminar_experiencia');
     Route::delete('/eliminar-estudios/{id_cv}/{id}', [PerfilController::class, 'eliminarEstudios'])->name('perfil.ver_demandante.eliminar_estudios');
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('dashboard');
-
-    // Route::get('/perfil/ver', function (){
-    //     return view('perfil.ver_demandante');
-    // });
-
-    // Route::get('/perfil/editar', function (){
-    //     return view('perfil.editar_demandante');
-    // })->name('perfil.editar_demandante');
-
     Route::get('/perfil/ver', [PerfilController::class, 'mostrar'])->name('perfil.ver_demandante');
 
     Route::put('/perfil/checkin', [PerfilController::class, 'checkin'])->name('perfil.checkin');
 
     Route::get('/perfil/editar', [PerfilController::class, 'editar'])->name('perfil.editar_demandante');
+
     Route::post('/perfil/actualizar', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
 
     Route::get('/perfil/editar/experiencia-laboral', function (){
         return view('perfil.editar.experiencia_laboral');
     });
-
     Route::get('/perfil/editar/formacion', function (){
         return view('perfil.editar.formacion');
     });
-
-    Route::get('/recuperar-contrasena', [LoginController::class, 'recuperar_contrasena'])->name('auth.recuperar_contrasena');
-    // AÚN NO ESTÁ IMPLEMENTADA, PERO SERÍA UNA VISTA PARA RECUPERAR LA CONTRASEÑA MEDIANTE EL CORREO ELECTRÓNICO
 
 // });
 
@@ -105,15 +80,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/candidaturas', [CandidaturasController::class, 'mostrarCandidaturas'])->name('candidaturas');
     Route::get('/candidatura/{id}', [CandidaturasController::class, 'mostrarCandidatura'])->name('candidatura');
 
-    Route::get('/rellenar-cv', [RegistroController::class, 'rellenar_cv'])->name('auth.rellenar_cv');
-
 });
 
-Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('gestionar.ofertas.ofertas');
-Route::get('/descripcion/{parametro}', [OfertasController::class, 'mostrarOferta'])->name('gestionar.ofertas.descripcion');
+Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('ofertas.ofertas');
+Route::get('/oferta/{id}', [OfertasController::class, 'mostrarOferta'])->name('ofertas.descripcion');
 
 // INSCRIPCIÓN EN LA OFERTA
-Route::post('/inscripcion/{oferta}', [OfertasController::class, 'realizarInscripcion'])->name('gestionar.ofertas.inscripcion');
+Route::post('/inscripcion/{oferta}', [OfertasController::class, 'realizarInscripcion'])->name('ofertas.inscripcion');
 
 Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
 Route::get('/empresas-encontradas', [EmpresasController::class, 'mostrarEmpresasCoincidentes'])->name('empresas_coincidentes');
@@ -124,7 +97,6 @@ Route::get('/empresa/{id}', [EmpresasController::class, 'mostrarEmpresa'])->name
 
 // VISTAS DEL SELECCIONADOR
 
-
     // Proteger las rutas de seleccionador para que sólo puedan acceder los seleccionadores
 
     Route::middleware(['auth', CheckSeleccionadorRole::class])->group(function () {
@@ -133,31 +105,6 @@ Route::get('/empresa/{id}', [EmpresasController::class, 'mostrarEmpresa'])->name
         Route::post('/registrar-empresa/store', [RegistroController::class, 'registrar_empresa'])->name('auth.registrar_empresa.almacenar');
         Route::get('/vincular-empresa', [RegistroController::class, 'mostrar_vincular_empresa'])->name('auth.vincular_empresa');
         Route::post('/vincular-empresa/store', [RegistroController::class, 'vincular_empresa'])->name('auth.vincular_empresa.almacenar');
-
-        Route::prefix('gestionar')->group(function () {
-
-            Route::get('/', [GestionOfertaController::class, 'index'])->name('gestionar.principal_empresa');
-
-            Route::prefix('ofertas')->group(function () {
-
-                Route::get('/', [GestionOfertaController::class, 'manageOffers'])->name('gestionar.gestionar_ofertas');
-                Route::get('/crear', [GestionOfertaController::class, 'create'])->name('gestionar.ofertas.crear_oferta');
-                Route::get('/editar/{id}', [GestionOfertaController::class, 'edit'])->name('gestionar.ofertas.editar_oferta');
-                Route::put('/update/{id}', [GestionOfertaController::class, 'update'])->name('gestionar.ofertas.actualizar_oferta');
-                Route::post('/store', [GestionOfertaController::class, 'store'])->name('gestionar.ofertas.ofertas.almacenar');
-                Route::get('/ver/{id}', [GestionOfertaController::class, 'show'])->name('gestionar.ofertas.ver_oferta');
-                Route::delete('/delete/{id}', [GestionOfertaController::class, 'destroy'])->name('gestionar.ofertas.eliminar_oferta');
-
-            });
-
-            Route::prefix('plantillas')->group(function () {
-
-                Route::get('/crear', [GestionPlantillaController::class, 'create'])->name('gestionar.plantillas.crear_plantilla');
-                Route::get('/editar/{id}', [GestionPlantillaController::class, 'edit'])->name('gestionar.plantillas.editar_plantilla');
-
-            });
-
-        });
     });
 
 require __DIR__.'/auth.php';

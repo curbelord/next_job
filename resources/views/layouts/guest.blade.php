@@ -43,7 +43,7 @@
     <body>
 
         <div>
-            @include('components.header')
+            @include('layouts.header')
         </div>
 
         {{ $slot }}

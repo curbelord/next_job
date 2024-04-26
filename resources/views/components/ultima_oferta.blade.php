@@ -14,6 +14,6 @@
         <p> {{ $oferta->descripcion }} </p>
     </div>
     <div class="boton_ver_oferta">
-        <a href="{{ url('descripcion', ['parametro' => $oferta->referencia]) }}">Ver oferta</a>
+        <a href="{{ url('oferta', ['id' => $oferta->referencia]) }}">Ver oferta</a>
     </div>
 </div>

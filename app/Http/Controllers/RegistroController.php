@@ -66,8 +66,4 @@ class RegistroController extends Controller
 
     }
 
-    public function rellenar_cv()
-    {
-        return view('auth.rellenar_cv');
-    }
 }

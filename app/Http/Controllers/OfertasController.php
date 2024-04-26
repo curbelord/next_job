@@ -109,7 +109,7 @@ class OfertasController extends Controller
 
         $ofertas->load('seleccionador.empresa');
 
-        return view('gestionar.ofertas.ofertas', compact('ofertas', 'cantidadTotalOfertas', 'ubicacion', 'buscador', 'fecha_publicacion', 'tipo_trabajo', 'sector', 'jornada', 'experiencia_minima'));
+        return view('ofertas.ofertas', compact('ofertas', 'cantidadTotalOfertas', 'ubicacion', 'buscador', 'fecha_publicacion', 'tipo_trabajo', 'sector', 'jornada', 'experiencia_minima'));
     }
 
     public function buscaOfertaEInscritos($ofertaId): array
@@ -127,13 +127,13 @@ class OfertasController extends Controller
         return $inscrito;
     }
 
-    public function mostrarOferta($ofertaId): View
+    public function mostrarOferta(string $ofertaId): View
     {
         list($oferta, $inscripciones) = $this->buscaOfertaEInscritos($ofertaId);
 
         $oferta->load('seleccionador.empresa');
 
-        return view('gestionar.ofertas.descripcion', compact('oferta', 'inscripciones'), ['inscrito' => $this->usuarioInscrito($ofertaId)]);
+        return view('ofertas.descripcion', compact('oferta', 'inscripciones'), ['inscrito' => $this->usuarioInscrito($ofertaId)]);
     }
 
     public function anhadirEstadoInscrito($idDemandante, $ofertaId): void
@@ -159,7 +159,7 @@ class OfertasController extends Controller
 
             $this->anhadirEstadoInscrito(Auth::id(), $ofertaId);
 
-            return redirect()->route('gestionar.ofertas.descripcion', $ofertaId)
+            return redirect()->route('ofertas.descripcion', $ofertaId)
                     ->with(compact('oferta', 'inscripciones'))
                     ->with(['inscrito' => true]);
         }else{

@@ -29,7 +29,7 @@
                 </div>
                 <div id="container_boton_inscripcion">
                     <div id="boton_inscripcion">
-                        <form method="POST" action="{{ route('gestionar.ofertas.inscripcion', $oferta) }}">
+                        <form method="POST" action="{{ route('ofertas.inscripcion', $oferta) }}">
                             @csrf
 
                             @if ($inscrito)

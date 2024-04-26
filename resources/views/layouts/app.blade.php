@@ -30,7 +30,7 @@
     <body>
 
         <div>
-            @include('layouts.navigation')
+            @include('layouts.header')
         </div>
 
         {{ $slot }}
