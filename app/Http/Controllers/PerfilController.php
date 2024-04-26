@@ -77,7 +77,7 @@ class PerfilController extends Controller
         return redirect()->route('perfil.ver_demandante');
     }
 
-    public function eliminarExperiencia(string $id_cv, string $id)
+    public function eliminarExperiencia(string $id_cv, string $id, Request $request): RedirectResponse
     {
         $experiencia = Experiencia::where('id_cv', $id_cv)
                                     ->where('id_experiencia', $id)
@@ -87,12 +87,14 @@ class PerfilController extends Controller
             Experiencia::where('id_cv', $id_cv)
                          ->where('id_experiencia', $id)
                          ->delete();
+
+            $request->session()->flash('mensajeExperienciaEliminada', 'Se ha eliminado la experiencia correctamente.');
         }
 
         return redirect()->route('perfil.ver_demandante');
     }
 
-    public function eliminarEstudios(string $id_cv, string $id)
+    public function eliminarEstudios(string $id_cv, string $id, Request $request): RedirectResponse
     {
         $estudio = Estudios::where('id_cv', $id_cv)
                             ->where('id_estudio', $id)
@@ -102,6 +104,7 @@ class PerfilController extends Controller
             Estudios::where('id_cv', $id_cv)
                       ->where('id_estudio', $id)
                       ->delete();
+            $request->session()->flash('mensajeFormacionEliminada', 'Se ha eliminado la formación correctamente.');
         }
 
         return redirect()->route('perfil.ver_demandante');

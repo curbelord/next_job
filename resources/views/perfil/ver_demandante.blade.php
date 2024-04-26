@@ -6,10 +6,40 @@
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleVerDemandante.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleExperienciaLaboral.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/styleFormacion.css') }}">
+    <script type="module" src="{{ asset('build/assets/js/perfil/perfil.js') }}"></script>
 @endsection
 
 @section('content')
     <div id="container">
+
+        @if(session('mensajeFormacionEliminada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha eliminado la formación correctamente!"
+                });
+            </script>
+        @elseif(session('mensajeExperienciaEliminada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha eliminado la experiencia correctamente!"
+                });
+            </script>
+        @endif
+
         @if (Auth::user()->hasRole('demandante'))
             <div id="container_datos_top">
         @else

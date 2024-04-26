@@ -15,7 +15,7 @@
             <div class="icono_editar">
                 <a href="{{ $rutaEdicion }}"></a>
             </div>
-            <button type="submit" class="icono_eliminar"></button>
+            <button type="submit" class="icono_eliminar" id="eliminar_formacion"></button>
         </div>
     </div>
 </div>
