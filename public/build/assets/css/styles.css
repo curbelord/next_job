@@ -123,6 +123,7 @@
 }
 
 #lista_menu{
+    width: 300px;
     display: flex;
     padding: 10px;
     flex-wrap: wrap;
@@ -142,7 +143,6 @@
     margin: 10px 0px;
     border-bottom: 1px solid lightgrey;
     text-align: left;
-
 }
 
 #lista_menu li a, #lista_menu li form{
