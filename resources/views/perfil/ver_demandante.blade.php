@@ -57,7 +57,7 @@
                 @endif
                 <div class="iconos_edicion_eliminacion">
                     <div class="icono_editar">
-                        <a href="{{ route('perfil.editar_demandante') }}"></a>
+                        <a href="{{ route('perfil.editar_demandante.ver', ['id' => Auth::id()]) }}"></a>
                     </div>
                 </div>
             </div>
