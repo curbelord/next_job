@@ -7,7 +7,7 @@ botonMenu.addEventListener("click", function (){
 
     if (listaMenu.style.right == "0px"){
         listaMenu.style.transition = "right 1s";
-        listaMenu.style.right = "-300px";
+        listaMenu.style.right = "-318px";
         setTimeout(function() {
             containerListaMenu.style.overflow = "hidden";
         }, 500);
