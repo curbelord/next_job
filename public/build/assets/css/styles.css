@@ -141,11 +141,14 @@
     text-decoration: none;
     margin: 10px 0px;
     border-bottom: 1px solid lightgrey;
+    text-align: left;
+
 }
 
 #lista_menu li a, #lista_menu li form{
     text-decoration: none;
     color: #000;
+    text-align: left;
 }
 
 @media (max-width: 1000px) {

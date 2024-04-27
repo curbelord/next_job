@@ -75,7 +75,7 @@
 
             <p>
                 ¿Tienes una cuenta?
-                <a href="{{ url('/inicio-de-sesion') }}">Inicia sesión</a>
+                <a href="{{ route('login') }}">Inicia sesión</a>
             </p>
 
         </div>
