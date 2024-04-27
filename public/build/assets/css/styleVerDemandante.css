@@ -15,21 +15,21 @@
 
 /* Global */
 
-button.perfil_anadir {
-    display: flex;
-    align-items: center;
-    align-self: center;
-    justify-content: center;
+.perfil_anadir {
+    display: inline-block;
     background-color: var(--azul);
-    color: var(--blanco);
     padding: 1em 2em;
     border-radius: 10px;
-    border: 0;
     height: 50px;
     margin: 10px 0;
     cursor: pointer;
-    font-weight: bold;    
-    margin-left: auto;
+    font-weight: bold;
+    float: right;
+}
+
+.perfil_anadir a {
+    color: var(--blanco);
+    text-decoration: none;
 }
 
 /* Sección 1 */

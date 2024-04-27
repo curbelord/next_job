@@ -150,8 +150,10 @@
                             </form>
                         @endforeach
 
-                        <a href="{{ route('perfil.crear.experiencia_laboral') }}" class="perfil_anadir">Añadir</a>
-
+                        <div class="perfil_anadir">
+                            <a href="{{ route('perfil.crear.experiencia_laboral') }}">Añadir</a>
+                        </div>
+                        
                     </div>
                 @else
                     <div id="container_experiencia_laboral">
@@ -166,7 +168,9 @@
                             </div>
                         </div>
 
-                        <a href="{{ route('perfil.crear.experiencia_laboral') }}" class="perfil_anadir">Añadir</a>
+                        <div class="perfil_anadir">
+                            <a href="{{ route('perfil.crear.experiencia_laboral') }}">Añadir</a>
+                        </div>
 
                     </div>
                 @endif
@@ -204,7 +208,9 @@
                             </form>
                         @endforeach
                     
-                        <a href="{{ route('perfil.crear.formacion') }}" class="perfil_anadir">Añadir</a>
+                        <div class="perfil_anadir">
+                            <a href="{{ route('perfil.crear.formacion') }}">Añadir</a>
+                        </div>
 
                     </div>
                 @else
@@ -220,8 +226,10 @@
                             </div>
                         </div>
 
-                        <a href="{{ route('perfil.crear.formacion') }}" class="perfil_anadir">Añadir</a>
-
+                        <div class="perfil_anadir">
+                            <a href="{{ route('perfil.crear.formacion') }}">Añadir</a>
+                        </div>
+                        
                     </div>
                 @endif
                 
