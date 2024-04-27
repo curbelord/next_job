@@ -18,7 +18,7 @@
     <div id="container">
         <form method="GET" action="{{ route('candidaturas', $offset) }}">
             <div class="container_boton_volver">
-                <a href="{{ route('principal') }}">Volver</a>
+                <a href="{{ url()->previous() }}">Volver</a>
             </div>
 
             <div id="container_titulo">

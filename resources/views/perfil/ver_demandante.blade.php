@@ -12,6 +12,62 @@
 @section('content')
     <div id="container">
 
+        @if(session('mensajeFormacionCreada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha creado la formación correctamente!"
+                });
+            </script>
+        @elseif(session('mensajeExperienciaCreada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha creado la experiencia correctamente!"
+                });
+            </script>
+        @endif
+
+        @if(session('mensajeFormacionEditada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha actualizado la formación correctamente!"
+                });
+            </script>
+        @elseif(session('mensajeExperienciaEditada'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha actualizado la experiencia correctamente!"
+                });
+            </script>
+        @endif
+
         @if(session('mensajeFormacionEliminada'))
             <script>
                 const Toast = Swal.mixin({
@@ -36,6 +92,21 @@
                 Toast.fire({
                     icon: "success",
                     title: "¡Se ha eliminado la experiencia correctamente!"
+                });
+            </script>
+        @endif
+
+        @if(session('mensajePerfilEditado'))
+            <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "¡Se ha actualizado el perfil correctamente!"
                 });
             </script>
         @endif
