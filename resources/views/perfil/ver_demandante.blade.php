@@ -150,10 +150,10 @@
                             </form>
                         @endforeach
 
-                        <button type="button" class="perfil_anadir">
-                            Añadir
-                        </button>
-
+                        <div class="perfil_anadir">
+                            <a href="{{ route('perfil.crear.experiencia_laboral.ver') }}">Añadir</a>
+                        </div>
+                        
                     </div>
                 @else
                     <div id="container_experiencia_laboral">
@@ -167,9 +167,11 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="perfil_anadir">
-                            Añadir
-                        </button>
+
+                        <div class="perfil_anadir">
+                            <a href="{{ route('perfil.crear.experiencia_laboral.ver') }}">Añadir</a>
+                        </div>
+
                     </div>
                 @endif
                 
@@ -206,9 +208,10 @@
                             </form>
                         @endforeach
                     
-                        <button type="button" class="perfil_anadir">
-                            Añadir
-                        </button>
+                        <div class="perfil_anadir">
+                            <a href="{{ route('perfil.crear.formacion.ver') }}">Añadir</a>
+                        </div>
+
                     </div>
                 @else
                     <div id="container_formacion">
@@ -222,9 +225,11 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="perfil_anadir">
-                            Añadir
-                        </button>
+
+                        <div class="perfil_anadir">
+                            <a href="{{ route('perfil.crear.formacion.ver') }}">Añadir</a>
+                        </div>
+
                     </div>
                 @endif
                 

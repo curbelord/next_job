@@ -158,4 +158,52 @@ class PerfilController extends Controller
 
         return redirect()->route('perfil.ver_demandante');
     }
+
+    public function crearExperiencia(string $id_cv, string $id, Request $request): RedirectResponse
+    {
+
+        // Si el usuario actual no tiene ningún CV, se crea uno
+
+        $cv = CV::where('id_demandante', Auth::id())->first();
+
+        if (!$cv) {
+            $cv = new CV();
+            $cv->id_demandante = Auth::id();
+            $cv->save();
+        }
+
+        $experiencia = new Experiencia();
+        $experiencia->id_cv = $id_cv;
+        $experiencia->centro_laboral = $request->centro_laboral;
+        $experiencia->nombre = $request->nombre;
+        $experiencia->descripcion = $request->descripcion;
+        $experiencia->fecha_inicio = $request->fecha_inicio;
+        $experiencia->fecha_fin = $request->fecha_fin;
+        $experiencia->save();
+
+        return redirect()->route('perfil.ver_demandante');
+    }
+
+    public function crearEstudios(string $id_cv, string $id, Request $request): RedirectResponse
+    {
+        $estudio = new Estudios();
+        $estudio->id_cv = $id_cv;
+        $estudio->nombre = $request->nombre;
+        $estudio->centro_estudios = $request->centro_estudios;
+        $estudio->fecha_inicio = $request->fecha_inicio;
+        $estudio->fecha_fin = $request->fecha_fin;
+        $estudio->save();
+
+        return redirect()->route('perfil.ver_demandante');
+    }
+
+    public function mostrarExperiencia(): View
+    {
+        return view('perfil.crear.experiencia_laboral');
+    }
+
+    public function mostrarEstudios(): View
+    {
+        return view('perfil.crear.formacion');
+    }
 }
