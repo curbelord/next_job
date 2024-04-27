@@ -110,6 +110,14 @@ php artisan serve
 
 - Enlace a vídeo de YouTube
 
+## Guía de instalación completa de los recursos necesarios
+
+**[Guía de instalación]([https://www.figma.com/file/1tRa2b5FSW4VuoCMJRVAvG/Diagrama-Entidad-Relaci%C3%B3n?type=whiteboard&node-id=0%3A1&t=kTCtA2pTPIE0xrOd-1](https://docs.google.com/document/d/1bUNrxmiI227XMSrMRrBsugIw1gLHGQecDdysPuhjTB4/edit?usp=sharing))**
+
+## Otros recursos
+
+- Otros recursos si los hubiera
+
 <br>
 
 > Hecho por Diego Curbelo Rodríguez y Acaymo Xerach Viciana Farias 🩵
