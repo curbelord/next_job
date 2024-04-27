@@ -159,11 +159,8 @@ class PerfilController extends Controller
         return redirect()->route('perfil.ver_demandante');
     }
 
-    public function crearExperiencia(string $id_cv, string $id, Request $request): RedirectResponse
+    public function crearExperiencia(): RedirectResponse
     {
-
-        // Si el usuario actual no tiene ningún CV, se crea uno
-
         $cv = CV::where('id_demandante', Auth::id())->first();
 
         if (!$cv) {
@@ -173,25 +170,36 @@ class PerfilController extends Controller
         }
 
         $experiencia = new Experiencia();
-        $experiencia->id_cv = $id_cv;
-        $experiencia->centro_laboral = $request->centro_laboral;
-        $experiencia->nombre = $request->nombre;
-        $experiencia->descripcion = $request->descripcion;
-        $experiencia->fecha_inicio = $request->fecha_inicio;
-        $experiencia->fecha_fin = $request->fecha_fin;
+        $experiencia->id_cv = $cv->id;
+        $experiencia->id_experiencia = Experiencia::where('id_cv', $cv->id)->count() + 1;
+        $experiencia->centro_laboral = request('centro_laboral');
+        $experiencia->nombre = request('nombre');
+        $experiencia->descripcion = request('descripcion');
+        $experiencia->fecha_inicio = request('fecha_inicio');
+        $experiencia->fecha_fin = request('fecha_fin');
         $experiencia->save();
 
         return redirect()->route('perfil.ver_demandante');
     }
 
-    public function crearEstudios(string $id_cv, string $id, Request $request): RedirectResponse
+    public function crearEstudios(): RedirectResponse
     {
+
+        $cv = CV::where('id_demandante', Auth::id())->first();
+
+        if (!$cv) {
+            $cv = new CV();
+            $cv->id_demandante = Auth::id();
+            $cv->save();
+        }
+
         $estudio = new Estudios();
-        $estudio->id_cv = $id_cv;
-        $estudio->nombre = $request->nombre;
-        $estudio->centro_estudios = $request->centro_estudios;
-        $estudio->fecha_inicio = $request->fecha_inicio;
-        $estudio->fecha_fin = $request->fecha_fin;
+        $estudio->id_cv = $cv->id;
+        $estudio->id_estudio = Estudios::where('id_cv', $cv->id)->count() + 1;
+        $estudio->nombre = request('nombre');
+        $estudio->centro_estudios = request('centro_estudios');
+        $estudio->fecha_inicio = request('fecha_inicio');
+        $estudio->fecha_fin = request('fecha_fin');
         $estudio->save();
 
         return redirect()->route('perfil.ver_demandante');
