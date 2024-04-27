@@ -46,9 +46,24 @@ class PerfilController extends Controller
 
     }
 
-    public function editar(): View
+    public function ver($id): View 
     {
-        return view('perfil.editar_demandante');
+        $usuario = User::find($id);
+
+        return view('perfil.editar_demandante', compact('usuario'));
+    }
+
+    public function editar(): RedirectResponse
+    {
+        $usuario = User::find(Auth::id());
+
+        $usuario->nombre = request('nombre');
+        $usuario->email = request('email');
+        $usuario->telefono = request('telefono');
+        $usuario->direccion = request('direccion');
+        $usuario->save();
+
+        return redirect()->route('perfil.ver_demandante', compact('usuario'));
     }
 
     public function actualizar()

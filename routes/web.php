@@ -51,7 +51,8 @@ Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.i
 
     Route::put('/perfil/checkin', [PerfilController::class, 'checkin'])->name('perfil.checkin');
 
-    Route::get('/perfil/editar', [PerfilController::class, 'editar'])->name('perfil.editar_demandante');
+    Route::get('/perfil/editar/{id}', [PerfilController::class, 'ver'])->name('perfil.editar_demandante.ver');
+    Route::post('/perfil/editar/{id}', [PerfilController::class, 'editar'])->name('perfil.editar_demandante');
 
     Route::post('/perfil/actualizar', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
 
