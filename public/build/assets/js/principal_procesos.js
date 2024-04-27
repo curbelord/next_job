@@ -101,16 +101,26 @@ const app = Vue.createApp({
             this.scrollHaciaTop();
         },
         imprimePrincipalProcesosOPublicarProceso(){
+            let entraEnCondicional = false;
+
             if (localStorage.getItem('pagina_impresa') != undefined){
                 if (localStorage.getItem('pagina_impresa') == 'publicar_proceso'){
                     this.ocultaPrincipalProcesos();
                     this.muestraPublicarProceso();
-                }else{
+                }
+                else{
                     this.ocultaPublicarProceso();
                     this.muestraPrincipalProcesos();
-                    this.obtenerNombreYGeneroSeleccionador();
                 }
+                entraEnCondicional = true;
             }
+
+            this.obtenerNombreYGeneroSeleccionador();
+            if (entraEnCondicional){
+                return true;
+            }
+            this.ocultaPublicarProceso();
+            this.muestraPrincipalProcesos();
         },
         scrollHaciaTop(){
             window.scrollTo({
