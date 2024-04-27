@@ -10,7 +10,7 @@ const app = Vue.createApp({
 
             gestionarProcesos: true,
             hayAutocandidatura: false,
-            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
+            idSeleccionador: this.obtenerIdSeleccionador(),
             numeroOffset: 0,
             datosAutocandidatura: [],
 
@@ -28,7 +28,7 @@ const app = Vue.createApp({
     template: `
     <div id="container_datos_top" v-if="gestionarProcesos">
         <div class="container_boton_volver">
-            <a href="http://next-job.lan/vue/principal/procesos">Volver</a>
+            <a href="http://next-job.lan/gestionar">Volver</a>
         </div>
         <div id="titulo_gestion_procesos">
             <h3>Gestión de autocandidatura</h3>
@@ -76,21 +76,37 @@ const app = Vue.createApp({
     methods: {
         // Métodos propios
 
+        obtenerIdSeleccionador(){
+            let etiquetaScript = document.querySelector('script[src="http://next-job.lan/build/assets/js/gestion_autocandidaturas/gestionar_autocandidatura.js"]');
+            let idSeleccionador = parseInt(etiquetaScript.dataset.id);
+            return idSeleccionador;
+        },
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
         async obtenerAutocandidatura(){
             try {
                 let datosAutocandidatura = await $.get('http://next-job.lan/build/assets/php/gestion_autocandidaturas/obtener_autocandidatura.php?id_seleccionador=' + this.idSeleccionador);
 
                 let objeto = '{"autocandidatura":[' + datosAutocandidatura.substring(0, datosAutocandidatura.length - 1) + "]}";
 
-                if (objeto.indexOf("0 resultados") == -1){
-                    objeto = JSON.parse(objeto);
-                    console.log(objeto["autocandidatura"]);
-                    this.almacenaAutocandidatura(objeto["autocandidatura"]);
-                    await this.obtenerDatosCandidatos(objeto["autocandidatura"][0]["referencia"], objeto["autocandidatura"][0]["curriculums_ciegos"]);
-                }
+                objeto = JSON.parse(objeto);
+                console.log(objeto["autocandidatura"]);
+                this.almacenaAutocandidatura(objeto["autocandidatura"]);
+                await this.obtenerDatosCandidatos(objeto["autocandidatura"][0]["referencia"], objeto["autocandidatura"][0]["curriculums_ciegos"]);
 
                 return objeto;
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
@@ -214,12 +230,9 @@ const app = Vue.createApp({
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
-                if (objeto.indexOf("0 candidatos") == -1){
-                    objeto = JSON.parse(objeto);
-                    console.log(objeto["candidatos"]);
-                    this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
-                    return objeto["candidatos"][0]["numero_inscritos"];
-                }
+                objeto = JSON.parse(objeto);
+                console.log(objeto["candidatos"]);
+                this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
 
                 return objeto;
             } catch (error) {
@@ -307,6 +320,7 @@ const app = Vue.createApp({
 
                 console.log("Usuarios insertados correctamente");
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error("Error al insertar los candidatos:", error);
             }
         },
@@ -323,6 +337,7 @@ const app = Vue.createApp({
                 let respuestaServidor = await $.post('http://next-job.lan/build/assets/php/gestion_autocandidaturas/insertar_candidatos_compatibles.php', parametroConsulta);
 
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error("Error al insertar los candidatos:", error);
             }
         },
@@ -332,14 +347,13 @@ const app = Vue.createApp({
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
-                if (objeto.indexOf("0 candidatos") == -1){
-                    objeto = JSON.parse(objeto);
-                    console.log(objeto["candidatos"]);
-                    this.almacenaDatosCandidatos(objeto["candidatos"]);
-                }
+                objeto = JSON.parse(objeto);
+                console.log(objeto["candidatos"]);
+                this.almacenaDatosCandidatos(objeto["candidatos"]);
 
                 return objeto;
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
@@ -357,7 +371,7 @@ const app = Vue.createApp({
             }
         },
         quitarProcesoDetalle(){
-            location.href = "http://next-job.lan/vue/principal/procesos";
+            location.href = "http://next-job.lan/gestionar";
         },
         recargaCandidatosProcesoDetalle(){},
     },

@@ -32,6 +32,18 @@ export default {
     `,
     name: "curriculum_simplificado",
     methods: {
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
         async obtenerDatosNota(){
             try {
                 let datosNota = await $.get('http://next-job.lan/build/assets/php/obtener_nota.php?id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta);
@@ -43,15 +55,20 @@ export default {
 
                 return objeto["nota"];
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
         editarNota(texto){
-            let parametrosConsulta = "texto=" + texto + "&id_demandante=" + this.id_candidato + '&id_oferta=' + this.id_oferta;
+            try{
+                let parametrosConsulta = "texto=" + texto + "&id_demandante=" + this.id_candidato + '&id_oferta=' + this.id_oferta;
 
-            $.post('http://next-job.lan/build/assets/php/editar_nota.php', parametrosConsulta).done(function (){
-                console.log("Nota editada");
-            });
+                $.post('http://next-job.lan/build/assets/php/editar_nota.php', parametrosConsulta).done(function (){
+                    console.log("Nota editada");
+                });
+            } catch(error){
+                this.avisoErrorPeticion();
+            }
         },
         popUpConfirmaEdicion(){
             const Toast = Swal.mixin({
