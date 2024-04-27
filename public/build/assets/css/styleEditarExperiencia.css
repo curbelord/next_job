@@ -59,6 +59,24 @@ textarea{
     cursor: pointer;
 }
 
+.container_boton_volver{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 25px;
+}
+
+.container_boton_volver a{
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #2FB9CE;
+    border: none;
+    border-radius: 10px;
+}
+
 @media only screen and (max-width: 720px){
     #container_experiencia_laboral{
         grid-column: 2 / 12;

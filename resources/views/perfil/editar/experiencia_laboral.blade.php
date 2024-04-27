@@ -9,6 +9,11 @@
 @section('content')
     <div id="container">
         <div id="container_experiencia_laboral">
+
+            <div class="container_boton_volver">
+                <a href="{{ url()->previous() }}">Volver</a>
+            </div>
+
             <div id="titulo_experiencia_laboral">
                 <h3>Experiencia laboral</h3>
             </div>

@@ -9,6 +9,11 @@
 @section('content')
     <div id="container">
         <div id="container_formacion">
+
+            <div class="container_boton_volver">
+                <a href="{{ url()->previous() }}">Volver</a>
+            </div>
+
             <div id="titulo_formacion">
                 <h3>Formación</h3>
             </div>
