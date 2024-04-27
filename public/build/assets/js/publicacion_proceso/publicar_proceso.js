@@ -116,6 +116,18 @@ export default {
 
         // Métodos generales
 
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
         obtenerFechaActual(){
             let fechaActual = new Date();
 
@@ -270,6 +282,7 @@ export default {
                     await this.avisoPadreOcultarPublicarProceso();
                 }
             }catch (error){
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
 
@@ -284,6 +297,7 @@ export default {
                 return datosProcesos.indexOf('0 resultados');
 
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
@@ -370,6 +384,7 @@ export default {
                     await this.avisoPadreOcultarPublicarProceso();
                 }
             }catch (error){
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
 

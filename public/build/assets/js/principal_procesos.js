@@ -95,6 +95,18 @@ const app = Vue.createApp({
             let idSeleccionador = parseInt(etiquetaScript.dataset.id);
             return idSeleccionador;
         },
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
         ocultaPublicarProceso(){
             this.publicarProceso = false;
             this.muestraPrincipalProcesos();
@@ -142,19 +154,18 @@ const app = Vue.createApp({
             try {
                 let datosSeleccionador = await $.get('http://next-job.lan/build/assets/php/obtener_nombre_genero_seleccionador.php?id_seleccionador=' + this.idSeleccionador);
 
-                if (datosSeleccionador.indexOf("0 resultados") == -1){
-                    let objeto = '{"datosSeleccionador":[' + datosSeleccionador.substring(0, datosSeleccionador.length - 1) + "]}";
-                    objeto = JSON.parse(objeto);
+                let objeto = '{"datosSeleccionador":[' + datosSeleccionador.substring(0, datosSeleccionador.length - 1) + "]}";
+                objeto = JSON.parse(objeto);
 
-                    console.log(objeto["datosSeleccionador"]);
+                console.log(objeto["datosSeleccionador"]);
 
-                    this.almacenaNombreYGeneroSeleccionador(objeto["datosSeleccionador"]);
-                    this.obtenerUltimosProcesos();
+                this.almacenaNombreYGeneroSeleccionador(objeto["datosSeleccionador"]);
+                this.obtenerUltimosProcesos();
 
-                    return objeto;
-                }
+                return objeto;
 
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
@@ -162,18 +173,17 @@ const app = Vue.createApp({
             try {
                 let datosProcesos = await $.get('http://next-job.lan/build/assets/php/obtener_ultimos_procesos.php?id_seleccionador=' + this.idSeleccionador);
 
-                if (datosProcesos.indexOf("0 resultados") == -1){
-                    let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
-                    objeto = JSON.parse(objeto);
+                let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
+                objeto = JSON.parse(objeto);
 
-                    console.log(objeto["procesos"]);
+                console.log(objeto["procesos"]);
 
-                    this.almacenaProcesosObtenidos(objeto["procesos"]);
+                this.almacenaProcesosObtenidos(objeto["procesos"]);
 
-                    return objeto;
-                }
+                return objeto;
 
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
