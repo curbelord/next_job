@@ -196,4 +196,14 @@ class PerfilController extends Controller
 
         return redirect()->route('perfil.ver_demandante');
     }
+
+    public function mostrarExperiencia(): View
+    {
+        return view('perfil.crear.experiencia_laboral');
+    }
+
+    public function mostrarEstudios(): View
+    {
+        return view('perfil.crear.formacion');
+    }
 }

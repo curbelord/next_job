@@ -12,7 +12,7 @@
             <div id="titulo_experiencia_laboral">
                 <h3>Experiencia laboral</h3>
             </div>
-            <form method="POST" action="{{ route('perfil.editar.experiencia_laboral', ['id_cv' => $cv->id, 'id' => $exp->id_experiencia]) }}">
+            <form method="POST" action="{{ route('perfil.crear.experiencia_laboral') }}">
                 @csrf
 
                 <input type="text" id="nombre_trabajo" class="input_formulario" name="nombre" value="" placeholder="Puesto de trabajo">

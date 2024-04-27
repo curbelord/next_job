@@ -12,7 +12,7 @@
             <div id="titulo_formacion">
                 <h3>Formación</h3>
             </div>
-            <form method="POST" action="{{ route('perfil.editar.formacion', ['id_cv' => $cv->id, 'id' => $est->id_estudio]) }}">
+            <form method="POST" action="{{ route('perfil.crear.formacion') }}">
                 @csrf
 
                 <input type="text" id="nombre_estudio" class="input_formulario" name="nombre" value="" placeholder="Nombre de formación">
