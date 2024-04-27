@@ -3,7 +3,7 @@
 @section('title', 'Añadir experiencia laboral')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleEditarExperiencia.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearExperiencia.css') }}">
 @endsection
 
 @section('content')

@@ -3,7 +3,7 @@
 @section('title', 'Añadir formación')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleEditarFormacion.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearFormacion.css') }}">
 @endsection
 
 @section('content')
