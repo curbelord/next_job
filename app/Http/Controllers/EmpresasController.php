@@ -57,7 +57,7 @@ class EmpresasController extends Controller
 
                 return view('empresa_buscada', compact('empresa'));
             }
-        }else{
+        } else {
             return view('empresas_coincidentes', compact('mensajeIdInvalida', 'filtro'));
         }
     }

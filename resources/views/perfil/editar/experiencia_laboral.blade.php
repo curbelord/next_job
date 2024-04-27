@@ -12,21 +12,20 @@
             <div id="titulo_experiencia_laboral">
                 <h3>Experiencia laboral</h3>
             </div>
-            <form method="POST" action="#">
+            <form method="POST" action="{{ route('perfil.editar.experiencia_laboral', ['id_cv' => $cv->id, 'id' => $exp->id_experiencia]) }}">
                 @csrf
-                @method('PUT')
 
-                <input type="text" id="nombre_trabajo" class="input_formulario" name="nombreTrabajo" value="" placeholder="Puesto de trabajo">
+                <input type="text" id="nombre_trabajo" class="input_formulario" name="nombre" value="" placeholder="Puesto de trabajo">
 
-                <input type="text" id="nombre_empresa" class="input_formulario" name="nombreEmpresa" value="" placeholder="Nombre de empresa">
+                <input type="text" id="nombre_empresa" class="input_formulario" name="centro_laboral" value="" placeholder="Nombre de empresa">
 
                 <div id="fecha_inicio_fecha_fin">
-                    <input type="date" id="fecha_inicio" onfocus="(this.type='date')" onblur="(this.type='text')" class="input_formulario" name="fechaInicio" value="" placeholder="Fecha de inicio">
+                    <input type="date" id="fecha_inicio" onfocus="(this.type='date')" onblur="(this.type='text')" class="input_formulario" name="fecha_inicio" value="" placeholder="Fecha de inicio">
 
-                    <input type="date" id="fecha_fin" onfocus="(this.type='date')" onblur="(this.type='text')" class="input_formulario" name="fechaFin" value="" placeholder="Fecha de fin">
+                    <input type="date" id="fecha_fin" onfocus="(this.type='date')" onblur="(this.type='text')" class="input_formulario" name="fecha_fin" value="" placeholder="Fecha de fin">
                 </div>
 
-                <textarea rows="10" id="descripcion_oferta" class="input_formulario" name="descripcionOferta" placeholder="Descripción"></textarea>
+                <textarea rows="10" id="descripcion_oferta" class="input_formulario" name="descripcion" placeholder="Descripción"></textarea>
 
                 <input type="submit" id="boton_actualizar_experiencia" class="input_formulario" value="Actualizar experiencia">
             </form>
