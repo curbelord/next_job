@@ -100,6 +100,8 @@ php artisan serve
 
 **[Guía de instalación de los recursos necesarios](https://docs.google.com/document/d/1bUNrxmiI227XMSrMRrBsugIw1gLHGQecDdysPuhjTB4/edit?usp=sharing)**
 
+**[Prototipo Figma](https://www.figma.com/file/IBgdRkwBNz9d0NIPzp5gN9/Next-Job?type=design&mode=design&t=ELzEGLpZiXastLko-1)**
+
 ## Pruebas Unitarias
 
 - Aquí iría alguna explicación
