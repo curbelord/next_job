@@ -67,6 +67,12 @@ Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.i
     Route::post('/perfil/editar/experiencia-laboral/{id_cv}/{id}', [PerfilController::class, 'editarExperiencia'])->name('perfil.editar.experiencia_laboral');
     Route::post('/perfil/editar/formacion/{id_cv}/{id}', [PerfilController::class, 'editarEstudios'])->name('perfil.editar.formacion');
 
+    Route::get('/perfil/crear/experiencia-laboral/', [PerfilController::class, 'verExperiencia'])->name('perfil.crear.experiencia_laboral.ver');
+    Route::get('/perfil/crear/formacion/', [PerfilController::class, 'verEstudios'])->name('perfil.crear.formacion.ver');
+
+    Route::get('/perfil/crear/experiencia-laboral/', [PerfilController::class, 'crearExperiencia'])->name('perfil.crear.experiencia_laboral');
+    Route::get('/perfil/crear/formacion/', [PerfilController::class, 'crearEstudios'])->name('perfil.crear.formacion');
+
 // });
 
 

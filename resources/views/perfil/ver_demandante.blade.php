@@ -150,9 +150,7 @@
                             </form>
                         @endforeach
 
-                        <button type="button" class="perfil_anadir">
-                            Añadir
-                        </button>
+                        <a href="{{ route('perfil.crear.experiencia_laboral') }}" class="perfil_anadir">Añadir</a>
 
                     </div>
                 @else
@@ -167,9 +165,9 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="perfil_anadir">
-                            Añadir
-                        </button>
+
+                        <a href="{{ route('perfil.crear.experiencia_laboral') }}" class="perfil_anadir">Añadir</a>
+
                     </div>
                 @endif
                 
@@ -206,9 +204,8 @@
                             </form>
                         @endforeach
                     
-                        <button type="button" class="perfil_anadir">
-                            Añadir
-                        </button>
+                        <a href="{{ route('perfil.crear.formacion') }}" class="perfil_anadir">Añadir</a>
+
                     </div>
                 @else
                     <div id="container_formacion">
@@ -222,9 +219,9 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="perfil_anadir">
-                            Añadir
-                        </button>
+
+                        <a href="{{ route('perfil.crear.formacion') }}" class="perfil_anadir">Añadir</a>
+
                     </div>
                 @endif
                 
