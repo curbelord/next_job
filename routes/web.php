@@ -61,12 +61,11 @@ Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.i
 
     Route::post('/perfil/actualizar', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
 
-    Route::get('/perfil/editar/experiencia-laboral', function (){
-        return view('perfil.editar.experiencia_laboral');
-    });
-    Route::get('/perfil/editar/formacion', function (){
-        return view('perfil.editar.formacion');
-    });
+    Route::get('/perfil/editar/experiencia-laboral/{id_cv}/{id}', [PerfilController::class, 'verExperiencia'])->name('perfil.editar.experiencia_laboral.ver');
+    Route::get('/perfil/editar/formacion/{id_cv}/{id}', [PerfilController::class, 'verEstudios'])->name('perfil.editar.formacion.ver');
+
+    Route::post('/perfil/editar/experiencia-laboral/{id_cv}/{id}', [PerfilController::class, 'editarExperiencia'])->name('perfil.editar.experiencia_laboral');
+    Route::post('/perfil/editar/formacion/{id_cv}/{id}', [PerfilController::class, 'editarEstudios'])->name('perfil.editar.formacion');
 
 // });
 

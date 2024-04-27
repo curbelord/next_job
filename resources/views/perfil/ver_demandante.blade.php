@@ -112,117 +112,122 @@
         </div>
 
         @if(Auth::user()->hasRole('demandante'))
-            @if ($experiencia !== null)
-                <div id="container_experiencia_laboral">
-                    <div id="titulo_experiencia_laboral">
-                        <h3>Experiencia laboral</h3>
+
+            @if (isset($cv))
+
+                @if (isset($experiencia))
+                    <div id="container_experiencia_laboral">
+                        <div id="titulo_experiencia_laboral">
+                            <h3>Experiencia laboral</h3>
+                        </div>
+                        @foreach ($experiencia as $exp)
+                            <form action="{{ route('perfil.ver_demandante.eliminar_experiencia', ['id_cv' => $cv->id, 'id' => $exp->id_experiencia]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <div id="subcontainer_experiencia_laboral">
+                                    @component('components.experiencia_laboral')
+                                        @slot('nombreTrabajo')
+                                            {{ $exp->nombre }}
+                                        @endslot
+
+                                        @slot('nombreEmpresa')
+                                            {{ $exp->centro_laboral }}
+                                        @endslot
+
+                                        @slot('fechaInicioFin')
+                                            {{ date('d/m/Y', strtotime($exp->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($exp->fecha_fin)) }}
+                                        @endslot
+
+                                        @slot('rutaEdicion')
+                                            {{ route('perfil.editar.experiencia_laboral.ver', ['id_cv' => $cv->id, 'id' => $exp->id_experiencia]) }}
+                                        @endslot
+
+                                        @slot('descripcion')
+                                            {{ $exp->descripcion }}
+                                        @endslot
+                                    @endcomponent
+                                </div>
+                            </form>
+                        @endforeach
+
+                        <button type="button" class="perfil_anadir">
+                            Añadir
+                        </button>
+
                     </div>
-                    @foreach ($experiencia as $exp)
-                        <form action="{{ route('perfil.ver_demandante.eliminar_experiencia', ['id_cv' => $cv->id, 'id' => $exp->id_experiencia]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <div id="subcontainer_experiencia_laboral">
-                                @component('components.experiencia_laboral')
-                                    @slot('nombreTrabajo')
-                                        {{ $exp->nombre }}
-                                    @endslot
-
-                                    @slot('nombreEmpresa')
-                                        {{ $exp->centro_laboral }}
-                                    @endslot
-
-                                    @slot('fechaInicioFin')
-                                        {{ date('d/m/Y', strtotime($exp->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($exp->fecha_fin)) }}
-                                    @endslot
-
-                                    @slot('rutaEdicion')
-                                        {{ "Ruta icono edición" }}
-                                    @endslot
-
-                                    @slot('descripcion')
-                                        {{ $exp->descripcion }}
-                                    @endslot
-                                @endcomponent
-                            </div>
-                        </form>
-                    @endforeach
-
-                    <button type="button" class="perfil_anadir">
-                        Añadir
-                    </button>
-
-                </div>
-            @else
-                <div id="container_experiencia_laboral">
-                    <div id="titulo_seccion_empresa">
-                        <h3>Experiencia laboral</h3>
-                    </div>
-                    <div id="container_datos_empresa">
-                        <div id="datos_empresa">
-                            <div>
-                                No ha añadido ninguna experiencia, ¿quiere añadirla ahora?
+                @else
+                    <div id="container_experiencia_laboral">
+                        <div id="titulo_seccion_empresa">
+                            <h3>Experiencia laboral</h3>
+                        </div>
+                        <div id="container_datos_empresa">
+                            <div id="datos_empresa">
+                                <div>
+                                    No ha añadido ninguna experiencia, ¿quiere añadirla ahora?
+                                </div>
                             </div>
                         </div>
+                        <button type="button" class="perfil_anadir">
+                            Añadir
+                        </button>
                     </div>
-                    <button type="button" class="perfil_anadir">
-                        Añadir
-                    </button>
-                </div>
-            @endif
-            
-            @if ($estudios !== null)
-
-                <div id="container_formacion">
-                    <div id="titulo_formacion">
-                        <h3>Formación</h3>
-                    </div>
-
-                    @foreach ($estudios as $est)
-                        <form action="{{ route('perfil.ver_demandante.eliminar_estudios', ['id_cv' => $cv->id, 'id' => $est->id_estudio]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <div id="subcontainer_formacion">
-                                @component('components.formacion')
-                                    @slot('nombreFormacion')
-                                        {{ $est->nombre }}
-                                    @endslot
-
-                                    @slot('nombreCentro')
-                                        {{ $est->centro_estudios }}
-                                    @endslot
-
-                                    @slot('fechaInicioFin')
-                                        {{ date('d/m/Y', strtotime($est->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($est->fecha_fin)) }}
-                                    @endslot
-
-                                    @slot('rutaEdicion')
-                                        {{ "Ruta icono edición" }}
-                                    @endslot
-                                @endcomponent
-                            </div>
-                        </form>
-                    @endforeach
+                @endif
                 
-                    <button type="button" class="perfil_anadir">
-                        Añadir
-                    </button>
-                </div>
-            @else
-                <div id="container_formacion">
-                    <div id="titulo_seccion_empresa">
-                        <h3>Formación</h3>
+                @if (isset($estudios))
+
+                    <div id="container_formacion">
+                        <div id="titulo_formacion">
+                            <h3>Formación</h3>
+                        </div>
+
+                        @foreach ($estudios as $est)
+                            <form action="{{ route('perfil.ver_demandante.eliminar_estudios', ['id_cv' => $cv->id, 'id' => $est->id_estudio]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <div id="subcontainer_formacion">
+                                    @component('components.formacion')
+                                        @slot('nombreFormacion')
+                                            {{ $est->nombre }}
+                                        @endslot
+
+                                        @slot('nombreCentro')
+                                            {{ $est->centro_estudios }}
+                                        @endslot
+
+                                        @slot('fechaInicioFin')
+                                            {{ date('d/m/Y', strtotime($est->fecha_inicio)) }} - {{ date('d/m/Y', strtotime($est->fecha_fin)) }}
+                                        @endslot
+
+                                        @slot('rutaEdicion')
+                                            {{ route('perfil.editar.formacion.ver', ['id_cv' => $cv->id, 'id' => $est->id_estudio]) }}
+                                        @endslot
+                                    @endcomponent
+                                </div>
+                            </form>
+                        @endforeach
+                    
+                        <button type="button" class="perfil_anadir">
+                            Añadir
+                        </button>
                     </div>
-                    <div id="container_datos_empresa">
-                        <div id="datos_empresa">
-                            <div>
-                                No ha añadido ninguna formación, ¿quiere añadirla ahora?
+                @else
+                    <div id="container_formacion">
+                        <div id="titulo_seccion_empresa">
+                            <h3>Formación</h3>
+                        </div>
+                        <div id="container_datos_empresa">
+                            <div id="datos_empresa">
+                                <div>
+                                    No ha añadido ninguna formación, ¿quiere añadirla ahora?
+                                </div>
                             </div>
                         </div>
+                        <button type="button" class="perfil_anadir">
+                            Añadir
+                        </button>
                     </div>
-                    <button type="button" class="perfil_anadir">
-                        Añadir
-                    </button>
-                </div>
+                @endif
+                
             @endif
 
         @else
