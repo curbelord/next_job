@@ -55,7 +55,7 @@ Clone el repositorio
 ~~~
 git clone https://github.com/curbelord/next_job.git
 ~~~
-Muévase al directorio ǹext_job
+Muévase al directorio next_job
 ~~~
 cd next_job
 ~~~
@@ -63,7 +63,7 @@ Instale las dependencias con Composer
 ~~~
 composer install
 ~~~
-Haga una copia de `.env.example` y renombrélo como `.env`
+Haga una copia de `.env.example` y renómbrelo como `.env`
 ~~~
 cp .env.example .env
 ~~~
