@@ -92,7 +92,7 @@ php artisan serve
 ~~~
 ## Diagrama Entidad-Relación
 
-- Enlace al diagrama
+**[Diagrama Entidad-Relación](https://www.figma.com/file/1tRa2b5FSW4VuoCMJRVAvG/Diagrama-Entidad-Relaci%C3%B3n?type=whiteboard&node-id=0%3A1&t=kTCtA2pTPIE0xrOd-1)**
 
 ## Diagrama Caso de Uso
 
