@@ -13,6 +13,10 @@
 
                 @csrf
 
+                <div class="container_boton_volver">
+                    <a href="{{ url()->previous() }}">Volver</a>
+                </div>
+
                 <div id="titulo_informacion_personal">
                     <h3>Información personal</h3>
                 </div>
