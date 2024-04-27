@@ -17,6 +17,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\EmpresaBuscadaController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\VueController;
 use App\Models\Inscripcion;
 use App\Models\Oferta;
 use Illuminate\Support\Facades\Route;
@@ -24,19 +25,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
-// VISTAS DE PRUEBA
+// VISTAS DE EMPRESA
 
-Route::get('/vue/gestionar/procesos', function (){
-    return view('vue.gestionar_ofertas');
-});
+Route::get('/gestionar', [VueController::class, 'principal'])->name('vue.principal_procesos');
+Route::get('/gestionar/procesos', [VueController::class, 'gestionarOfertas'])->name('vue.gestionar_ofertas');
+Route::get('/gestionar/autocandidatura', [VueController::class, 'gestionarAutocandidatura'])->name('vue.gestionar_autocandidatura');
 
-Route::get('/vue/principal/procesos', function (){
-    return view('vue.principal_procesos');
-});
-
-Route::get('/vue/gestionar/autocandidatura', function (){
-    return view('vue.gestionar_autocandidatura');
-});
 
 // VISTAS GLOBALES
 
@@ -71,8 +65,6 @@ Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.i
 // });
 
 
-
-
 // VISTAS DEL DEMANDANTE
 
 Route::middleware('auth')->group(function () {
@@ -91,8 +83,6 @@ Route::post('/inscripcion/{oferta}', [OfertasController::class, 'realizarInscrip
 Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
 Route::get('/empresas-encontradas', [EmpresasController::class, 'mostrarEmpresasCoincidentes'])->name('empresas_coincidentes');
 Route::get('/empresa/{id}', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa_buscada');
-
-
 
 
 // VISTAS DEL SELECCIONADOR

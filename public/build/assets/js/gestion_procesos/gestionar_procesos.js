@@ -13,7 +13,7 @@ const app = Vue.createApp({
             numeroProcesos: 0,
             candidatos_totales: 0,
             candidatos_preseleccionados: 0,
-            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
+            idSeleccionador: this.obtenerIdSeleccionador(),
             numeroOffset: 0,
 
             /* Datos componente proceso */
@@ -55,7 +55,7 @@ const app = Vue.createApp({
     template: `
     <div id="container_datos_top" v-if="gestionarProcesos">
         <div class="container_boton_volver">
-            <a href="http://next-job.lan/vue/principal/procesos">Volver</a>
+            <a href="http://next-job.lan/gestionar">Volver</a>
         </div>
         <div id="titulo_gestion_procesos">
             <h3>Gestión de procesos</h3>
@@ -111,6 +111,11 @@ const app = Vue.createApp({
         editar_proceso
     },
     methods: {
+        obtenerIdSeleccionador(){
+            let etiquetaScript = document.querySelector('script[src="http://next-job.lan/build/assets/js/gestion_procesos/gestionar_procesos.js"]');
+            let idSeleccionador = parseInt(etiquetaScript.dataset.id);
+            return idSeleccionador;
+        },
         redirigeHaciaTop(){
             window.scrollTo({
                 top: 0,

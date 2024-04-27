@@ -8,7 +8,7 @@ const app = Vue.createApp({
 
             principalProcesos: true,
             ultimosProcesos: [],
-            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
+            idSeleccionador: this.obtenerIdSeleccionador(),
             nombreSeleccionador: "",
             generoSeleccionador: "",
 
@@ -40,18 +40,18 @@ const app = Vue.createApp({
         </div>
         <div id="bloque_gestion_2" class="bloque_gestion">
             <div class="imagen_gestion imagen_gestionar_procesos">
-                <a href="http://next-job.lan/vue/gestionar/procesos"></a>
+                <a href="http://next-job.lan/gestionar/procesos"></a>
             </div>
             <div class="texto_gestion">
-                <a href="http://next-job.lan/vue/gestionar/procesos">Gestionar procesos</a>
+                <a href="http://next-job.lan/gestionar/procesos">Gestionar procesos</a>
             </div>
         </div>
         <div id="bloque_gestion_3" class="bloque_gestion">
             <div class="imagen_gestion imagen_gestionar_autocandidaturas">
-                <a href="http://next-job.lan/vue/gestionar/autocandidatura"></a>
+                <a href="http://next-job.lan/gestionar/autocandidatura"></a>
             </div>
             <div class="texto_gestion">
-                <a href="http://next-job.lan/vue/gestionar/autocandidatura">Autocandidaturas</a>
+                <a href="http://next-job.lan/gestionar/autocandidatura">Autocandidaturas</a>
             </div>
         </div>
     </div>
@@ -90,6 +90,11 @@ const app = Vue.createApp({
 
         // Métodos propios
 
+        obtenerIdSeleccionador(){
+            let etiquetaScript = document.querySelector('script[src="http://next-job.lan/build/assets/js/principal_procesos.js"]');
+            let idSeleccionador = parseInt(etiquetaScript.dataset.id);
+            return idSeleccionador;
+        },
         ocultaPublicarProceso(){
             this.publicarProceso = false;
             this.muestraPrincipalProcesos();
