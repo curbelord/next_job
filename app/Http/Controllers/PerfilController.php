@@ -53,7 +53,7 @@ class PerfilController extends Controller
         return view('perfil.editar_demandante', compact('usuario'));
     }
 
-    public function editar(): RedirectResponse
+    public function editar(Request $request): RedirectResponse
     {
         $usuario = User::find(Auth::id());
 
@@ -62,6 +62,8 @@ class PerfilController extends Controller
         $usuario->telefono = request('telefono');
         $usuario->direccion = request('direccion');
         $usuario->save();
+
+        $request->session()->flash('mensajePerfilEditado', 'Se ha editado el perfil correctamente.');
 
         return redirect()->route('perfil.ver_demandante', compact('usuario'));
     }
@@ -153,6 +155,8 @@ class PerfilController extends Controller
             $experiencia->save();
         }
 
+        $request->session()->flash('mensajeExperienciaEditada', 'Se ha editado la experiencia correctamente.');
+
         return redirect()->route('perfil.ver_demandante');
     }
 
@@ -171,10 +175,12 @@ class PerfilController extends Controller
             $estudio->save();
         }
 
+        $request->session()->flash('mensajeFormacionEditada', 'Se ha editado la formación correctamente.');
+
         return redirect()->route('perfil.ver_demandante');
     }
 
-    public function crearExperiencia(): RedirectResponse
+    public function crearExperiencia(Request $request): RedirectResponse
     {
         $cv = CV::where('id_demandante', Auth::id())->first();
 
@@ -194,10 +200,12 @@ class PerfilController extends Controller
         $experiencia->fecha_fin = request('fecha_fin');
         $experiencia->save();
 
+        $request->session()->flash('mensajeExperienciaCreada', 'Se ha creado la experiencia correctamente.');
+
         return redirect()->route('perfil.ver_demandante');
     }
 
-    public function crearEstudios(): RedirectResponse
+    public function crearEstudios(Request $request): RedirectResponse
     {
 
         $cv = CV::where('id_demandante', Auth::id())->first();
@@ -216,6 +224,8 @@ class PerfilController extends Controller
         $estudio->fecha_inicio = request('fecha_inicio');
         $estudio->fecha_fin = request('fecha_fin');
         $estudio->save();
+
+        $request->session()->flash('mensajeFormacionCreada', 'Se ha creado la formación correctamente.');
 
         return redirect()->route('perfil.ver_demandante');
     }
