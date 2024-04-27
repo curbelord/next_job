@@ -3,12 +3,17 @@
 @section('title', 'Añadir formación')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleEditarFormacion.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearFormacion.css') }}">
 @endsection
 
 @section('content')
     <div id="container">
         <div id="container_formacion">
+
+            <div class="container_boton_volver">
+                <a href="{{ url()->previous() }}">Volver</a>
+            </div>
+
             <div id="titulo_formacion">
                 <h3>Formación</h3>
             </div>

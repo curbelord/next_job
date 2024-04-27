@@ -3,12 +3,17 @@
 @section('title', 'Añadir experiencia laboral')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('build/assets/css/styleEditarExperiencia.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/styleCrearExperiencia.css') }}">
 @endsection
 
 @section('content')
     <div id="container">
         <div id="container_experiencia_laboral">
+
+            <div class="container_boton_volver">
+                <a href="{{ url()->previous() }}">Volver</a>
+            </div>
+
             <div id="titulo_experiencia_laboral">
                 <h3>Experiencia laboral</h3>
             </div>
