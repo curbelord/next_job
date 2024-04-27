@@ -90,17 +90,17 @@ Active el servidor
 ~~~
 php artisan serve
 ~~~
-## Diagrama Entidad-Relación
+## Documentación
 
-- Enlace al diagrama
-
-## Diagrama Caso de Uso
+**[Diagrama Entidad-Relación](https://www.figma.com/file/1tRa2b5FSW4VuoCMJRVAvG/Diagrama-Entidad-Relaci%C3%B3n?type=whiteboard&node-id=0%3A1&t=kTCtA2pTPIE0xrOd-1)**
 
 **[Diagrama de caso de Uso](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=sharing)**
 
-## Diagrama de Clases
-
 **[Diagrama de caso de Uso](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=sharing)**
+
+**[Guía de instalación de los recursos necesarios](https://docs.google.com/document/d/1bUNrxmiI227XMSrMRrBsugIw1gLHGQecDdysPuhjTB4/edit?usp=sharing)**
+
+**[Prototipo Figma](https://www.figma.com/file/IBgdRkwBNz9d0NIPzp5gN9/Next-Job?type=design&mode=design&t=ELzEGLpZiXastLko-1)**
 
 ## Pruebas Unitarias
 
@@ -109,6 +109,10 @@ php artisan serve
 ## Presentación YouTube
 
 - Enlace a vídeo de YouTube
+
+## Otros recursos
+
+- Otros recursos si los hubiera
 
 <br>
 

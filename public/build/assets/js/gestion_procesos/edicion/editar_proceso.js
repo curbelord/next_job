@@ -85,6 +85,18 @@ export default {
         avisoPadreOcultarEditarProceso(){
             this.$emit('ocultarEditarProceso', true);
         },
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
         popUpConfirmaEdicion(){
             const Toast = Swal.mixin({
                 toast: true,
@@ -98,28 +110,34 @@ export default {
             });
         },
         actualizarProceso(arrayDatos){
-            let parametrosConsulta = {
-                puesto_trabajo: arrayDatos[0],
-                ubicacion: arrayDatos[1],
-                provincia: arrayDatos[2],
-                tipo_trabajo: arrayDatos[3],
-                sector: arrayDatos[4],
-                descripcion: arrayDatos[5],
-                estudios_minimos: arrayDatos[6],
-                experiencia_minima: arrayDatos[7],
-                jornada: arrayDatos[8],
-                turno: arrayDatos[9],
-                numero_vacantes: arrayDatos[10],
-                salario: arrayDatos[11],
-                fecha_cierre: arrayDatos[12],
-                estado: arrayDatos[13],
-                referencia: this.referencia
-            };
+            try{
+                let parametrosConsulta = {
+                    puesto_trabajo: arrayDatos[0],
+                    ubicacion: arrayDatos[1],
+                    provincia: arrayDatos[2],
+                    tipo_trabajo: arrayDatos[3],
+                    sector: arrayDatos[4],
+                    descripcion: arrayDatos[5],
+                    estudios_minimos: arrayDatos[6],
+                    experiencia_minima: arrayDatos[7],
+                    jornada: arrayDatos[8],
+                    turno: arrayDatos[9],
+                    numero_vacantes: arrayDatos[10],
+                    salario: arrayDatos[11],
+                    fecha_cierre: arrayDatos[12],
+                    estado: arrayDatos[13],
+                    referencia: this.referencia
+                };
 
-            $.post('http://next-job.lan/build/assets/php/gestion_procesos/edicion/editar_proceso.php', parametrosConsulta).done(function (respuesta){
-                console.log(respuesta);
-                console.log("Proceso editado");
-            });
+                $.post('http://next-job.lan/build/assets/php/gestion_procesos/edicion/editar_proceso.php', parametrosConsulta).done(function (respuesta){
+                    console.log(respuesta);
+                    console.log("Proceso editado");
+                });
+
+            } catch(error){
+                this.avisoErrorPeticion();
+                console.error("Error en la petición", error);
+            }
         },
         async popUpEditarProceso(){
             Swal.fire({

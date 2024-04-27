@@ -35,5 +35,5 @@
 
     </div>
 
-    <script type="module" src="{{ asset('build/assets/js/gestion_autocandidaturas/gestionar_autocandidatura.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/js/gestion_autocandidaturas/gestionar_autocandidatura.js') }}" data-id="{{ $id }}"></script>
 @endsection
