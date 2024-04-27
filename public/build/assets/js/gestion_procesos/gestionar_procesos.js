@@ -13,7 +13,7 @@ const app = Vue.createApp({
             numeroProcesos: 0,
             candidatos_totales: 0,
             candidatos_preseleccionados: 0,
-            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
+            idSeleccionador: this.obtenerIdSeleccionador(),
             numeroOffset: 0,
 
             /* Datos componente proceso */
@@ -55,7 +55,7 @@ const app = Vue.createApp({
     template: `
     <div id="container_datos_top" v-if="gestionarProcesos">
         <div class="container_boton_volver">
-            <a href="http://next-job.lan/vue/principal/procesos">Volver</a>
+            <a href="http://next-job.lan/gestionar">Volver</a>
         </div>
         <div id="titulo_gestion_procesos">
             <h3>Gestión de procesos</h3>
@@ -111,6 +111,23 @@ const app = Vue.createApp({
         editar_proceso
     },
     methods: {
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
+        obtenerIdSeleccionador(){
+            let etiquetaScript = document.querySelector('script[src="http://next-job.lan/build/assets/js/gestion_procesos/gestionar_procesos.js"]');
+            let idSeleccionador = parseInt(etiquetaScript.dataset.id);
+            return idSeleccionador;
+        },
         redirigeHaciaTop(){
             window.scrollTo({
                 top: 0,
@@ -127,6 +144,7 @@ const app = Vue.createApp({
                 await $.post('http://next-job.lan/build/assets/php/gestion_procesos/eliminacion/eliminar_proceso.php', parametroConsulta);
                 console.log("Proceso eliminado");
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error("Error al eliminar el proceso:", error);
             }
         },
@@ -263,11 +281,9 @@ const app = Vue.createApp({
 
                 let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
 
-                if (objeto.indexOf("0 resultados") == -1){
-                    objeto = JSON.parse(objeto);
-                    console.log(objeto["procesos"]);
-                    this.almacenaProcesosObtenidos(objeto["procesos"]);
-                }
+                objeto = JSON.parse(objeto);
+                console.log(objeto["procesos"]);
+                this.almacenaProcesosObtenidos(objeto["procesos"]);
 
                 return objeto;
             } catch (error) {
@@ -334,6 +350,7 @@ const app = Vue.createApp({
 
                 return objeto;
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
@@ -346,12 +363,9 @@ const app = Vue.createApp({
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
-                if (objeto.indexOf("0 candidatos") == -1){
-                    objeto = JSON.parse(objeto);
-                    console.log(objeto["candidatos"]);
-                    this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
-                    return objeto["candidatos"][0]["numero_inscritos"];
-                }
+                objeto = JSON.parse(objeto);
+                console.log(objeto["candidatos"]);
+                this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
 
                 return objeto;
             } catch (error) {
@@ -451,14 +465,13 @@ const app = Vue.createApp({
 
                 let objeto = '{"proceso":[' + datosProceso.substring(0, datosProceso.length - 1) + "]}";
 
-                if (objeto.indexOf("0 resultados") == -1){
-                    objeto = JSON.parse(objeto);
-                    console.log(objeto["proceso"]);
-                    this.almacenaDatosProcesoEdicion(objeto["proceso"], referencia);
-                }
+                objeto = JSON.parse(objeto);
+                console.log(objeto["proceso"]);
+                this.almacenaDatosProcesoEdicion(objeto["proceso"], referencia);
 
                 return objeto;
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },

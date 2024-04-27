@@ -148,7 +148,7 @@ export default {
             this.$emit('anhadirCandidatos', this.referencia, this.curriculums_ciegos);
         },
 
-        // Método gestionar_procesos
+        // Métodos gestionar_procesos
 
         avisoPadreOcultarProcesoDetalle(){
             this.$emit('ocultarProcesoDetalle', true);
@@ -159,6 +159,18 @@ export default {
 
         // Métodos propios
 
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
         redirigeHaciaTop(){
             window.scrollTo({
                 top: 0,
@@ -176,13 +188,12 @@ export default {
 
                 let objetoCurriculum = '{"curriculum":[' + datosCurriculum.substring(0, datosCurriculum.length - 1) + "]}";
 
-                if (objetoCurriculum.indexOf("0 candidatos") == -1){
-                    objetoCurriculum = JSON.parse(objetoCurriculum);
-                    console.log(objetoCurriculum["curriculum"]);
-                }
+                objetoCurriculum = JSON.parse(objetoCurriculum);
+                console.log(objetoCurriculum["curriculum"]);
 
                 return objetoCurriculum["curriculum"];
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
@@ -245,16 +256,22 @@ export default {
             this.fecha_fin_formacion = [];
         },
         anhadeEstadoCVLeido(idCandidato){
-            let parametrosConsulta = {
-                nombre: "CV Leído",
-                descripcion: "El CV ha sido leído por el personal de selección",
-                id_demandante: idCandidato,
-                id_oferta: this.referencia
-            };
+            try{
+                let parametrosConsulta = {
+                    nombre: "CV Leído",
+                    descripcion: "El CV ha sido leído por el personal de selección",
+                    id_demandante: idCandidato,
+                    id_oferta: this.referencia
+                };
 
-            $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', $.param(parametrosConsulta)).done(function (respuesta){
-                console.log(respuesta);
-            });
+                $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', $.param(parametrosConsulta)).done(function (respuesta){
+                    console.log(respuesta);
+                });
+            } catch (error){
+                this.avisoErrorPeticion();
+                console.error("Error en la petición", error);
+            }
+
         },
         async imprimirCurriculum(idCandidato){
             try {

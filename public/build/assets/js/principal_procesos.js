@@ -8,7 +8,7 @@ const app = Vue.createApp({
 
             principalProcesos: true,
             ultimosProcesos: [],
-            idSeleccionador: sessionStorage.getItem("id_seleccionador") ? sessionStorage.getItem("id_seleccionador") : 2,
+            idSeleccionador: this.obtenerIdSeleccionador(),
             nombreSeleccionador: "",
             generoSeleccionador: "",
 
@@ -40,18 +40,18 @@ const app = Vue.createApp({
         </div>
         <div id="bloque_gestion_2" class="bloque_gestion">
             <div class="imagen_gestion imagen_gestionar_procesos">
-                <a href="http://next-job.lan/vue/gestionar/procesos"></a>
+                <a href="http://next-job.lan/gestionar/procesos"></a>
             </div>
             <div class="texto_gestion">
-                <a href="http://next-job.lan/vue/gestionar/procesos">Gestionar procesos</a>
+                <a href="http://next-job.lan/gestionar/procesos">Gestionar procesos</a>
             </div>
         </div>
         <div id="bloque_gestion_3" class="bloque_gestion">
             <div class="imagen_gestion imagen_gestionar_autocandidaturas">
-                <a href="http://next-job.lan/vue/gestionar/autocandidatura"></a>
+                <a href="http://next-job.lan/gestionar/autocandidatura"></a>
             </div>
             <div class="texto_gestion">
-                <a href="http://next-job.lan/vue/gestionar/autocandidatura">Autocandidaturas</a>
+                <a href="http://next-job.lan/gestionar/autocandidatura">Autocandidaturas</a>
             </div>
         </div>
     </div>
@@ -90,22 +90,49 @@ const app = Vue.createApp({
 
         // Métodos propios
 
+        obtenerIdSeleccionador(){
+            let etiquetaScript = document.querySelector('script[src="http://next-job.lan/build/assets/js/principal_procesos.js"]');
+            let idSeleccionador = parseInt(etiquetaScript.dataset.id);
+            return idSeleccionador;
+        },
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
         ocultaPublicarProceso(){
             this.publicarProceso = false;
             this.muestraPrincipalProcesos();
             this.scrollHaciaTop();
         },
         imprimePrincipalProcesosOPublicarProceso(){
+            let entraEnCondicional = false;
+
             if (localStorage.getItem('pagina_impresa') != undefined){
                 if (localStorage.getItem('pagina_impresa') == 'publicar_proceso'){
                     this.ocultaPrincipalProcesos();
                     this.muestraPublicarProceso();
-                }else{
+                }
+                else{
                     this.ocultaPublicarProceso();
                     this.muestraPrincipalProcesos();
-                    this.obtenerNombreYGeneroSeleccionador();
                 }
+                entraEnCondicional = true;
             }
+
+            this.obtenerNombreYGeneroSeleccionador();
+            if (entraEnCondicional){
+                return true;
+            }
+            this.ocultaPublicarProceso();
+            this.muestraPrincipalProcesos();
         },
         scrollHaciaTop(){
             window.scrollTo({
@@ -127,19 +154,18 @@ const app = Vue.createApp({
             try {
                 let datosSeleccionador = await $.get('http://next-job.lan/build/assets/php/obtener_nombre_genero_seleccionador.php?id_seleccionador=' + this.idSeleccionador);
 
-                if (datosSeleccionador.indexOf("0 resultados") == -1){
-                    let objeto = '{"datosSeleccionador":[' + datosSeleccionador.substring(0, datosSeleccionador.length - 1) + "]}";
-                    objeto = JSON.parse(objeto);
+                let objeto = '{"datosSeleccionador":[' + datosSeleccionador.substring(0, datosSeleccionador.length - 1) + "]}";
+                objeto = JSON.parse(objeto);
 
-                    console.log(objeto["datosSeleccionador"]);
+                console.log(objeto["datosSeleccionador"]);
 
-                    this.almacenaNombreYGeneroSeleccionador(objeto["datosSeleccionador"]);
-                    this.obtenerUltimosProcesos();
+                this.almacenaNombreYGeneroSeleccionador(objeto["datosSeleccionador"]);
+                this.obtenerUltimosProcesos();
 
-                    return objeto;
-                }
+                return objeto;
 
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
@@ -147,18 +173,17 @@ const app = Vue.createApp({
             try {
                 let datosProcesos = await $.get('http://next-job.lan/build/assets/php/obtener_ultimos_procesos.php?id_seleccionador=' + this.idSeleccionador);
 
-                if (datosProcesos.indexOf("0 resultados") == -1){
-                    let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
-                    objeto = JSON.parse(objeto);
+                let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
+                objeto = JSON.parse(objeto);
 
-                    console.log(objeto["procesos"]);
+                console.log(objeto["procesos"]);
 
-                    this.almacenaProcesosObtenidos(objeto["procesos"]);
+                this.almacenaProcesosObtenidos(objeto["procesos"]);
 
-                    return objeto;
-                }
+                return objeto;
 
             } catch (error) {
+                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },

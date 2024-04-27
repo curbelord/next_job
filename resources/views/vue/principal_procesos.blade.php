@@ -25,5 +25,5 @@
 
     </div>
 
-    <script type="module" src="{{ asset('build/assets/js/principal_procesos.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/js/principal_procesos.js') }}" data-id="{{ $id }}"></script>
 @endsection

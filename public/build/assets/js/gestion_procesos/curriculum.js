@@ -115,12 +115,29 @@ export default {
         avisoPadreocultarCurriculum(){
             this.$emit('ocultarCurriculum', true);
         },
-        anhadirEstado(nombre, descripcion){
-            let parametrosConsulta = "nombre=" + nombre + "&descripcion=" + descripcion + '&id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta + "&visto=0";
-
-            $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', parametrosConsulta).done(function (respuesta){
-                console.log(respuesta);
+        avisoErrorPeticion(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
             });
+            Toast.fire({
+                icon: "error",
+                title: "Se ha producido un error"
+            });
+        },
+        anhadirEstado(nombre, descripcion){
+            try{
+                let parametrosConsulta = "nombre=" + nombre + "&descripcion=" + descripcion + '&id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta + "&visto=0";
+
+                $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', parametrosConsulta).done(function (respuesta){
+                    console.log(respuesta);
+                });
+            } catch (error){
+                this.avisoErrorPeticion();
+                console.error("Error en la petición", error);
+            }
         },
         popUpConfirmaCambioEstado(){
             const Toast = Swal.mixin({
