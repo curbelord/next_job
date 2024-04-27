@@ -126,13 +126,14 @@
     display: flex;
     padding: 10px;
     flex-wrap: wrap;
-    position: absolute;
+    position: fixed;
     list-style-type: none;
-    right: -300px;
+    right: -318px;
     color: #000;
     background-color: #FFF;
     border-radius: 10px;
     z-index: 100;
+    border: 2px solid var(--azul);
 }
 
 #lista_menu li{
