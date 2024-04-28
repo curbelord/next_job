@@ -275,6 +275,8 @@ export default {
 
                 await $.post(`http://next-job.lan/build/assets/php/publicar_proceso/${nombreArchivo}.php`, parametrosConsulta).done(function (respuesta){
                     respuestaServidor = respuesta;
+                }).fail(() => {
+                    this.avisoErrorPeticion();
                 });
 
                 if (respuestaServidor == "1"){
@@ -282,8 +284,7 @@ export default {
                     await this.avisoPadreOcultarPublicarProceso();
                 }
             }catch (error){
-                this.avisoErrorPeticion();
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
 
         },
@@ -292,13 +293,14 @@ export default {
 
         async compruebaSiHayAutocandidatura(){
             try {
-                let datosProcesos = await $.get('http://next-job.lan/build/assets/php/publicar_proceso/obtener_procesos_autocandidatura.php?id_seleccionador=' + this.id_seleccionador);
+                let datosProcesos = await $.get('http://next-job.lan/build/assets/php/publicar_proceso/obtener_procesos_autocandidatura.php?id_seleccionador=' + this.id_seleccionador).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 return datosProcesos.indexOf('0 resultados');
 
             } catch (error) {
-                this.avisoErrorPeticion();
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         popUpYaHayAutocandidatura(){
@@ -377,6 +379,8 @@ export default {
 
                 await $.post(`http://next-job.lan/build/assets/php/publicar_proceso/publicar_autocandidatura.php`, parametrosConsulta).done(function (respuesta){
                     respuestaServidor = respuesta;
+                }).fail(() => {
+                    this.avisoErrorPeticion();
                 });
 
                 if (respuestaServidor == "1"){
@@ -384,8 +388,7 @@ export default {
                     await this.avisoPadreOcultarPublicarProceso();
                 }
             }catch (error){
-                this.avisoErrorPeticion();
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
 
         },

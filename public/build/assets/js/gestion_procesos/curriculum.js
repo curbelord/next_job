@@ -133,10 +133,11 @@ export default {
 
                 $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', parametrosConsulta).done(function (respuesta){
                     console.log(respuesta);
+                }).fail(() => {
+                    this.avisoErrorPeticion();
                 });
             } catch (error){
-                this.avisoErrorPeticion();
-                console.error("Error en la petición", error);
+                console.error("Se ha producido un error", error);
             }
         },
         popUpConfirmaCambioEstado(){
