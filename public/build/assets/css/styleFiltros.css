@@ -45,6 +45,11 @@
     grid-row: 4;
 }
 
+select {
+    position: relative;
+    top: 2.5px;
+}
+
 @media (max-width: 800px) {
 
     h2 {

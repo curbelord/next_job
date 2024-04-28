@@ -250,7 +250,7 @@
 
                     <div id="container_formacion">
                         <div id="titulo_formacion">
-                            <h3>Formación</h3>
+                            <h3>Formación académica</h3>
                         </div>
 
                         @foreach ($estudios as $est)
@@ -287,7 +287,7 @@
                 @else
                     <div id="container_formacion">
                         <div id="titulo_seccion_empresa">
-                            <h3>Formación</h3>
+                            <h3>Formación académica</h3>
                         </div>
                         <div id="container_datos_empresa">
                             <div id="datos_empresa">
