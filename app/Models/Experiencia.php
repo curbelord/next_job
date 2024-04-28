@@ -21,6 +21,7 @@ class Experiencia extends Model
         'centro_laboral',
         'fecha_inicio',
         'fecha_fin',
+        'descripcion'
     ];
 
     public function cv()

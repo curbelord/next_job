@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         DB::statement('
-            CREATE EVENT actualiza_estado_ofertas_cerradas
+            CREATE EVENT IF NOT EXISTS actualiza_estado_ofertas_cerradas
             ON SCHEDULE EVERY 1 DAY
             STARTS TIMESTAMP(CURRENT_DATE) + INTERVAL 1 DAY + INTERVAL 0 HOUR
             ON COMPLETION PRESERVE
@@ -24,7 +24,7 @@ return new class extends Migration
         ');
 
         DB::statement('
-            CREATE EVENT resetea_checkin
+            CREATE EVENT IF NOT EXISTS resetea_checkin
             ON SCHEDULE EVERY 1 DAY
             STARTS TIMESTAMP(CURRENT_DATE) + INTERVAL 1 DAY + INTERVAL 0 HOUR
             ON COMPLETION PRESERVE
