@@ -50,7 +50,7 @@
                         </li>
                     @elseif (Auth::user() && Auth::user()->hasRole('seleccionador'))
                         <li>
-                            <x-dropdown-link :href="route('vue.principal_procesos')">
+                            <x-dropdown-link :href="route('vue.principal_procesos')" id="enlace_inicio_seleccionador_menu_desplegable">
                                 {{ __('Inicio') }}
                             </x-dropdown-link>
                         </li>

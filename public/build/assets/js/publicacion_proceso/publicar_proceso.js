@@ -11,11 +11,11 @@ export default {
             sector: "",
             descripcion: "",
             estudiosMinimos: "",
-            experienciaMinima: 0,
+            experienciaMinima: "",
             jornada: "",
             turno: "",
-            numeroVacantes: 0,
-            salario: 0,
+            numeroVacantes: "",
+            salario: "",
             fechaCierre: "",
             curriculumsCiegos: "",
 
@@ -67,7 +67,7 @@ export default {
                     <option v-for="estudio in estudios" :value="estudio">{{ estudio }}</option>
                 </select>
 
-                <input v-model="experienciaMinima" type="number" id="experiencia_crear_oferta" class="input_formulario" name="experiencia_minima" placeholder="Experiencia mínima" min="0">
+                <input v-model="experienciaMinima" type="text" @focus="cambiaTipoInputNumberAText(true, $event.target)" @blur="cambiaTipoInputNumberAText(false, $event.target)" id="experiencia_crear_oferta" class="input_formulario" name="experiencia_minima" placeholder="Experiencia mínima" min="0">
             </div>
 
             <div id="container_jornada_turno">
@@ -84,9 +84,9 @@ export default {
             </div>
 
             <div id="container_vacantes_salario">
-                <input v-model="numeroVacantes" type="number" id="vacantes_crear_oferta" class="input_formulario" name="numero_vacantes" placeholder="Nº vacantes" min="1">
+                <input v-model="numeroVacantes" type="text" @focus="cambiaTipoInputNumberAText(true, $event.target)" @blur="cambiaTipoInputNumberAText(false, $event.target)" id="vacantes_crear_oferta" class="input_formulario" name="numero_vacantes" placeholder="Nº vacantes" value="">
 
-                <input v-model="salario" type="number" id="salario_crear_oferta" class="input_formulario" name="salario" placeholder="Salario">
+                <input v-model="salario" type="text" @focus="cambiaTipoInputNumberAText(true, $event.target)" @blur="cambiaTipoInputNumberAText(false, $event.target)" id="salario_crear_oferta" class="input_formulario" name="salario" placeholder="Salario">
             </div>
 
             <div id="container_cierre_cuestionario">
@@ -127,6 +127,16 @@ export default {
                 icon: "error",
                 title: "Se ha producido un error"
             });
+        },
+        cambiaTipoInputNumberAText(esFocus, input){
+            if (esFocus) {
+                input.type = "number";
+                input.min = 1;
+                input.value = 1;
+            } else {
+                input.type = "text";
+            }
+            console.log("Hola");
         },
         obtenerFechaActual(){
             let fechaActual = new Date();
