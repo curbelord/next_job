@@ -141,11 +141,12 @@ const app = Vue.createApp({
             };
 
             try {
-                await $.post('http://next-job.lan/build/assets/php/gestion_procesos/eliminacion/eliminar_proceso.php', parametroConsulta);
+                await $.post('http://next-job.lan/build/assets/php/gestion_procesos/eliminacion/eliminar_proceso.php', parametroConsulta).fail(() => {
+                    this.avisoErrorPeticion();
+                });
                 console.log("Proceso eliminado");
             } catch (error) {
-                this.avisoErrorPeticion();
-                console.error("Error al eliminar el proceso:", error);
+                console.error("Error al eliminar el proceso", error);
             }
         },
         popUpConfirmaEliminacionProceso(){
@@ -229,7 +230,9 @@ const app = Vue.createApp({
         },
         async obtenerCandidatosSegunFiltro(referenciaProceso, curriculumsCiegosSiNo, filtro){
             try {
-                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/filtro_candidatos_proceso_detalle.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + "&filtro=" + filtro + '&numero_offset=' + this.numeroOffsetProcesoDetalle);
+                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/filtro_candidatos_proceso_detalle.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + "&filtro=" + filtro + '&numero_offset=' + this.numeroOffsetProcesoDetalle).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
@@ -277,17 +280,21 @@ const app = Vue.createApp({
         },
         async obtenerProcesos(){
             try {
-                let datosProcesos = await $.get('http://next-job.lan/build/assets/php/proceso.php?id_seleccionador=' + this.idSeleccionador + '&numero_offset=' + this.numeroOffset);
+                let datosProcesos = await $.get('http://next-job.lan/build/assets/php/proceso.php?id_seleccionador=' + this.idSeleccionador + '&numero_offset=' + this.numeroOffset).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 let objeto = '{"procesos":[' + datosProcesos.substring(0, datosProcesos.length - 1) + "]}";
 
-                objeto = JSON.parse(objeto);
-                console.log(objeto["procesos"]);
-                this.almacenaProcesosObtenidos(objeto["procesos"]);
+                if (objeto.indexOf("0 resultados") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["procesos"]);
+                    this.almacenaProcesosObtenidos(objeto["procesos"]);
+                }
 
                 return objeto;
             } catch (error) {
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         reseteaValoresProcesosObtenidos(){
@@ -339,19 +346,21 @@ const app = Vue.createApp({
         },
         async obtenerDatosProcesoSeleccionado(referenciaProceso){
             try {
-                let datosProceso = await $.get('http://next-job.lan/build/assets/php/proceso_detalle.php?referencia=' + referenciaProceso);
+                let datosProceso = await $.get('http://next-job.lan/build/assets/php/proceso_detalle.php?referencia=' + referenciaProceso).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 let objeto = '{"proceso":[' + datosProceso.substring(0, datosProceso.length - 1) + "]}";
-                objeto = JSON.parse(objeto);
 
-                console.log(objeto["proceso"]);
-
-                this.almacenaDatosProcesoSeleccionado(objeto["proceso"]);
+                if (objeto.indexOf("0 results") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["proceso"]);
+                    this.almacenaDatosProcesoSeleccionado(objeto["proceso"]);
+                }
 
                 return objeto;
             } catch (error) {
-                this.avisoErrorPeticion();
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         async obtenerDatosCandidatosProcesoSeleccionado(referenciaProceso, curriculumsCiegosSiNo){
@@ -363,18 +372,22 @@ const app = Vue.createApp({
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
-                objeto = JSON.parse(objeto);
-                console.log(objeto["candidatos"]);
-                this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
+                if (objeto.indexOf("0 candidatos") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["candidatos"]);
+                    this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
+                    return objeto["candidatos"][0]["numero_inscritos"];
+                }
 
                 return objeto;
             } catch (error) {
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         almacenaDatosProcesoSeleccionado(arrayDatos){
-            this.candidatos_preseleccionados_proceso = parseInt(arrayDatos[0]["candidatos_preseleccionados"]);
-            this.candidatos_descartados_proceso = parseInt(arrayDatos[0]["candidatos_descartados"]);
+            this.candidatos_preseleccionados_proceso = arrayDatos[0]["candidatos_preseleccionados"] === "" ? 0 : parseInt(arrayDatos[0]["candidatos_preseleccionados"]);
+            this.candidatos_descartados_proceso = arrayDatos[0]["candidatos_descartados"] === "" ? 0 : parseInt(arrayDatos[0]["candidatos_descartados"]);
+
 
             let fechaATipoDate = new Date(arrayDatos[0]["oferta_fecha_publicacion"]);
             this.fecha_publicacion_proceso = fechaATipoDate.toLocaleDateString("es-ES");
@@ -465,14 +478,15 @@ const app = Vue.createApp({
 
                 let objeto = '{"proceso":[' + datosProceso.substring(0, datosProceso.length - 1) + "]}";
 
-                objeto = JSON.parse(objeto);
-                console.log(objeto["proceso"]);
-                this.almacenaDatosProcesoEdicion(objeto["proceso"], referencia);
+                if (objeto.indexOf('0 resultados') == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["proceso"]);
+                    this.almacenaDatosProcesoEdicion(objeto["proceso"], referencia);
+                }
 
                 return objeto;
             } catch (error) {
-                this.avisoErrorPeticion();
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         editaProceso(referencia){

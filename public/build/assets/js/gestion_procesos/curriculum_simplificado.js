@@ -46,7 +46,9 @@ export default {
         },
         async obtenerDatosNota(){
             try {
-                let datosNota = await $.get('http://next-job.lan/build/assets/php/obtener_nota.php?id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta);
+                let datosNota = await $.get('http://next-job.lan/build/assets/php/obtener_nota.php?id_demandante=' + this.id_candidato + '&id_oferta=' + this.id_oferta).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 let objeto = datosNota;
                 objeto = JSON.parse(objeto);
@@ -55,8 +57,7 @@ export default {
 
                 return objeto["nota"];
             } catch (error) {
-                this.avisoErrorPeticion();
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         editarNota(texto){
@@ -65,9 +66,11 @@ export default {
 
                 $.post('http://next-job.lan/build/assets/php/editar_nota.php', parametrosConsulta).done(function (){
                     console.log("Nota editada");
+                }).fail(() => {
+                    this.avisoErrorPeticion();
                 });
             } catch(error){
-                this.avisoErrorPeticion();
+                console.error("Se ha producido un error", error);
             }
         },
         popUpConfirmaEdicion(){

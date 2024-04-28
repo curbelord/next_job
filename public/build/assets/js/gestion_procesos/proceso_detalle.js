@@ -184,17 +184,21 @@ export default {
         },
         async obtenerDatosCurriculum(idCandidato){
             try {
-                let datosCurriculum = await $.get('http://next-job.lan/build/assets/php/obtener_datos_candidato.php?id_demandante=' + idCandidato + "&referencia=" + this.referencia);
+                let datosCurriculum = await $.get('http://next-job.lan/build/assets/php/obtener_datos_candidato.php?id_demandante=' + idCandidato + "&referencia=" + this.referencia).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 let objetoCurriculum = '{"curriculum":[' + datosCurriculum.substring(0, datosCurriculum.length - 1) + "]}";
 
-                objetoCurriculum = JSON.parse(objetoCurriculum);
-                console.log(objetoCurriculum["curriculum"]);
+                if (objetoCurriculum.indexOf("0 resultados") == -1){
+                    objetoCurriculum = JSON.parse(objetoCurriculum);
+                    console.log(objetoCurriculum["curriculum"]);
+                }
 
                 return objetoCurriculum["curriculum"];
             } catch (error) {
                 this.avisoErrorPeticion();
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         eliminaEstudiosOExperienciasDuplicadas(){
@@ -266,10 +270,11 @@ export default {
 
                 $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', $.param(parametrosConsulta)).done(function (respuesta){
                     console.log(respuesta);
+                }).fail(() => {
+                    this.avisoErrorPeticion();
                 });
             } catch (error){
-                this.avisoErrorPeticion();
-                console.error("Error en la petición", error);
+                console.error("Se ha producido un error", error);
             }
 
         },
@@ -283,7 +288,8 @@ export default {
                 this.curriculumVisible = true;
                 this.redirigeHaciaTop();
             } catch (error){
-                console.error('Error al hacer la petición', error);
+                this.avisoErrorPeticion();
+                console.error('Se ha producido un error', error);
             }
         },
         ocultaElementosProcesoDetalle(){
