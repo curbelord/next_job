@@ -994,7 +994,7 @@ class DatabaseSeeder extends Seeder
             'numero_vacantes' => 1,
             'salario' => 2500.00,
             'jornada' => 'Completa',
-            'sector' => 'Marketing y Publicidad',
+            'sector' => 'Informática y Comunicaciones',
             'tipo_trabajo' => 'Presencial',
             'puesto_trabajo' => 'Especialista en redes sociales',
             'descripcion' => 'Se busca especialista en redes sociales con experiencia en estrategias de marketing digital.',
