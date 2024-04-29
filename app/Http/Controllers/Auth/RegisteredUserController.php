@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\CV;
 use App\Models\User;
 use App\Models\CV;
 use App\Models\Demandante;
@@ -48,7 +49,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        
+
         $user->save();
 
         if ($request->rol === 'Demandante') {
@@ -62,6 +63,7 @@ class RegisteredUserController extends Controller
                 'puesto_trabajo' => 'Desarrollador web',
                 'tipo_trabajo' => 'Presencial'
             ]);
+
             $cv->save();
 
         } else {
