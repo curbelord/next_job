@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\CV;
 use App\Models\Demandante;
 use App\Models\Seleccionador;
 use App\Providers\RouteServiceProvider;
@@ -55,7 +56,12 @@ class RegisteredUserController extends Controller
             $demandante->save();
             $user->assignRole('demandante');
 
-            $cv = CV::create(['id_demandante' => $user->id]);
+            $cv = CV::create([
+                'id_demandante' => $user->id,
+                'jornada_laboral' => 'Tiempo completo',
+                'puesto_trabajo' => 'Desarrollador web',
+                'tipo_trabajo' => 'Presencial'
+            ]);
             $cv->save();
 
         } else {
