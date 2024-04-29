@@ -6,6 +6,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 use App\Http\Middleware\CheckSeleccionadorRole;
+use App\Http\Middleware\CheckDemandanteRole;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GestionOfertaController;
@@ -27,9 +28,11 @@ use Illuminate\Support\Facades\Route;
 
 // VISTAS DE EMPRESA
 
-Route::get('/gestionar', [VueController::class, 'principal'])->name('vue.principal_procesos');
-Route::get('/gestionar/procesos', [VueController::class, 'gestionarOfertas'])->name('vue.gestionar_ofertas');
-Route::get('/gestionar/autocandidatura', [VueController::class, 'gestionarAutocandidatura'])->name('vue.gestionar_autocandidatura');
+Route::middleware(['auth', CheckSeleccionadorRole::class])->group(function () {
+    Route::get('/gestionar', [VueController::class, 'principal'])->name('vue.principal_procesos');
+    Route::get('/gestionar/procesos', [VueController::class, 'gestionarOfertas'])->name('vue.gestionar_ofertas');
+    Route::get('/gestionar/autocandidatura', [VueController::class, 'gestionarAutocandidatura'])->name('vue.gestionar_autocandidatura');
+});
 
 
 // VISTAS GLOBALES
@@ -39,22 +42,32 @@ Route::get('/', [HomeController::class, 'index'])->name('principal');
 Route::get('/registro', [RegistroController::class, 'index'])->name('auth.registro');
 Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.incio_de_sesion');
 
-// Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('ofertas.ofertas');
 
-    Route::delete('/eliminar-experiencia/{id_cv}/{id}', [PerfilController::class, 'eliminarExperiencia'])->name('perfil.ver_demandante.eliminar_experiencia');
-    Route::delete('/eliminar-estudios/{id_cv}/{id}', [PerfilController::class, 'eliminarEstudios'])->name('perfil.ver_demandante.eliminar_estudios');
+Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
+Route::get('/empresas-encontradas', [EmpresasController::class, 'mostrarEmpresasCoincidentes'])->name('empresas_coincidentes');
+Route::get('/empresa/{id}', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa_buscada');
 
+Route::middleware('auth')->group(function () {
+    
     Route::get('/perfil/ver', [PerfilController::class, 'mostrar'])->name('perfil.ver_demandante');
-
-    Route::put('/perfil/checkin', [PerfilController::class, 'checkin'])->name('perfil.checkin');
-
     Route::get('/perfil/editar/{id}', [PerfilController::class, 'ver'])->name('perfil.editar_demandante.ver');
     Route::post('/perfil/editar/{id}', [PerfilController::class, 'editar'])->name('perfil.editar_demandante');
 
-    Route::post('/perfil/actualizar', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
+});
+
+
+// VISTAS DEL DEMANDANTE
+
+Route::middleware(['auth', CheckDemandanteRole::class])->group(function () {
+
+    // Proteger las rutas de demandante para que sólo puedan acceder los demandantes
+
+    Route::get('/candidaturas', [CandidaturasController::class, 'mostrarCandidaturas'])->name('candidaturas');
+    Route::get('/candidatura/{id}', [CandidaturasController::class, 'mostrarCandidatura'])->name('candidatura');
+   
+    Route::delete('/eliminar-experiencia/{id_cv}/{id}', [PerfilController::class, 'eliminarExperiencia'])->name('perfil.ver_demandante.eliminar_experiencia');
+    Route::delete('/eliminar-estudios/{id_cv}/{id}', [PerfilController::class, 'eliminarEstudios'])->name('perfil.ver_demandante.eliminar_estudios');
 
     Route::get('/perfil/editar/experiencia-laboral/{id_cv}/{id}', [PerfilController::class, 'verExperiencia'])->name('perfil.editar.experiencia_laboral.ver');
     Route::get('/perfil/editar/formacion/{id_cv}/{id}', [PerfilController::class, 'verEstudios'])->name('perfil.editar.formacion.ver');
@@ -68,27 +81,13 @@ Route::get('/inicio-de-sesion', [LoginController::class, 'index'])->name('auth.i
     Route::post('/perfil/crear/experiencia-laboral/', [PerfilController::class, 'crearExperiencia'])->name('perfil.crear.experiencia_laboral');
     Route::post('/perfil/crear/formacion/', [PerfilController::class, 'crearEstudios'])->name('perfil.crear.formacion');
 
-// });
+    Route::put('/perfil/checkin', [PerfilController::class, 'checkin'])->name('perfil.checkin');
 
+    Route::get('/oferta/{id}', [OfertasController::class, 'mostrarOferta'])->name('ofertas.descripcion');
 
-// VISTAS DEL DEMANDANTE
-
-Route::middleware('auth')->group(function () {
-
-    Route::get('/candidaturas', [CandidaturasController::class, 'mostrarCandidaturas'])->name('candidaturas');
-    Route::get('/candidatura/{id}', [CandidaturasController::class, 'mostrarCandidatura'])->name('candidatura');
+    Route::post('/inscripcion/{oferta}', [OfertasController::class, 'realizarInscripcion'])->name('ofertas.inscripcion');
 
 });
-
-Route::get('/ofertas', [OfertasController::class, 'mostrar'])->name('ofertas.ofertas');
-Route::get('/oferta/{id}', [OfertasController::class, 'mostrarOferta'])->name('ofertas.descripcion');
-
-// INSCRIPCIÓN EN LA OFERTA
-Route::post('/inscripcion/{oferta}', [OfertasController::class, 'realizarInscripcion'])->name('ofertas.inscripcion');
-
-Route::get('/empresas', [EmpresasController::class, 'mostrar'])->name('empresas');
-Route::get('/empresas-encontradas', [EmpresasController::class, 'mostrarEmpresasCoincidentes'])->name('empresas_coincidentes');
-Route::get('/empresa/{id}', [EmpresasController::class, 'mostrarEmpresa'])->name('empresa_buscada');
 
 
 // VISTAS DEL SELECCIONADOR
