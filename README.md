@@ -10,7 +10,7 @@ ___
 
 ## Acerca de Next Job
 
-Next Job es una plataforma diseñada para simplificar la búsqueda de empleo y optimizar los procesos de contratación. Además, ofrece una interfaz sencilla y fácil de usar, con herramientas que mejoran la gestión de los procesos de contratación. Su objetivo es proporcionar una experiencia eficiente y transparente tanto para los buscadores de empleo como para los seleccionadores.
+Next Job es una plataforma de búsqueda de empleo diseñada para simplificar y optimizar los procesos de contratación. Además, ofrece una interfaz sencilla y fácil de usar, con herramientas que mejoran la gestión de los procesos de contratación. Su objetivo es proporcionar una experiencia eficiente y transparente tanto para los demandantes de empleo como para los seleccionadores.
 
 ## Características
 
@@ -18,9 +18,9 @@ Entre las características principales de Next Job se incluyen:
 
 - 🔎 **Búsqueda Avanzada:** Los usuarios pueden buscar empleos utilizando filtros como ubicación 📍, sector 🏗️, salario 💵, tipo de contrato 📄, nivel de experiencia 📅, entre otros.
 
-- **Creación de Perfiles:** Los buscadores de empleo pueden crear perfiles que incluyan su experiencia laboral, educación, habilidades y otros detalles relevantes para que los empleadores los encuentren más fácilmente.
+- **Creación de Perfiles:** Los candidatos pueden crear perfiles que incluyan su experiencia laboral, educación, habilidades y otros detalles relevantes para que los empleadores los encuentren más fácilmente.
 
-- 💼 **Publicación de Ofertas de Empleo:** Las empresas pueden publicar ofertas de empleo detalladas, incluyendo descripciones del puesto, requisitos, responsabilidades y beneficios.
+- 💼 **Gestión de Ofertas de Empleo:** Las empresas pueden realizar una gestión completa, incluyendo la publicación, edición y eliminación de los procesos selectivos.
 
 ## Innovaciones
 
@@ -29,6 +29,8 @@ Novedades que implementa Next Job:
 - 🔎 **Autocandidaturas:** Next Job automatiza la gestión de ofertas temporales, agilizando el proceso tanto para los seleccionadores como para los candidatos. Esto garantiza una respuesta oportuna a las solicitudes y actualizaciones relacionadas con las ofertas de empleo.
 
 - 👁️🔒 **CV ciegos:** Para promover la igualdad de oportunidades, Next Job ofrece la opción de CV ciegos en cada oferta de empleo. Esto permite que los candidatos apliquen sin revelar información personal que pueda generar prejuicios o discriminación.
+
+- 🔝🕛 **Check-in preferente** Para incentivar el uso de Next Job y aportar una ventaja a aquellos candidatos más fieles, Next Job aporta un sistema de check-in diario que sirve para estar mejor posicionado en los procesos selectivos.
 
 
 ## Futuras Implementaciones
@@ -39,15 +41,7 @@ Novedades que implementa Next Job:
 
 - 🕵🏻‍♀️ **Analítica y Seguimiento:** Las empresas pueden utilizar herramientas de análisis para realizar un seguimiento del rendimiento de sus publicaciones de empleo y evaluar la efectividad de sus estrategias de contratación.
 
-- Implementación de un calendario integrado para gestionar entrevistas y eventos de reclutamiento. Esta función facilita la organización y coordinación de actividades relacionadas con el proceso de contratación.
-
-- Next Job cuenta con una sección especializada y destinada a tutores de prácticas de FP, donde pueden acceder fácilmente a información sobre empresas adheridas a programas de formación así como a empresas de nuevo ingreso dispuestas a acoger a estudiantes en prácticas.
-
-- Integración de un sistema de chat que permite la comunicación directa entre demandantes de empleo y seleccionadores. Esta herramienta facilita la interacción y la resolución de dudas en tiempo real durante el proceso de selección.
-
-- Cada oferta de empleo en Next Job incluye un foro de preguntas donde los candidatos pueden plantear sus inquietudes. Con la finalidad de fomentar la transparencia y proporcionar información adicional sobre las oportunidades laborales.
-
-- Además, los demandantes de empleo también podrán observar la compatibilidad de la oferta con su CV.
+- 🗓️ **Calendario integrado:** Implementación de un calendario para gestionar entrevistas y eventos de reclutamiento. Esta función facilita la organización y coordinación de actividades relacionadas con el proceso de contratación.
 
 ## Instalación
 
@@ -92,11 +86,13 @@ php artisan serve
 ~~~
 ## Documentación
 
+**[Análisis de requisitos previos](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=drive_link)**
+
 **[Diagrama Entidad-Relación](https://www.figma.com/file/1tRa2b5FSW4VuoCMJRVAvG/Diagrama-Entidad-Relaci%C3%B3n?type=whiteboard&node-id=0%3A1&t=kTCtA2pTPIE0xrOd-1)**
 
-**[Diagrama de caso de Uso](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=sharing)**
+**[Diagrama de Casos de Uso](https://drive.google.com/file/d/1ylPLLrqhLSvCfAuEMVfxVjCcdt_4WnUi/view?usp=drive_link)**
 
-**[Diagrama de clases](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=sharing)**
+**[Diagrama de Clases](https://drive.google.com/file/d/1toxFUnc9ynqszSocu3c3SRwjSyaOQZF0/view?usp=drive_link)**
 
 **[Guía de instalación de los recursos necesarios](https://docs.google.com/document/d/1bUNrxmiI227XMSrMRrBsugIw1gLHGQecDdysPuhjTB4/edit?usp=sharing)**
 
@@ -109,10 +105,6 @@ php artisan serve
 ## Presentación YouTube
 
 **[Enlace a vídeo de YouTube](https://www.youtube.com/watch?v=NIFciuI63CE)**
-
-## Otros recursos
-
-- Otros recursos si los hubiera
 
 <br>
 
