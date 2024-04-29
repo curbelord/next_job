@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "SELECT puesto_trabajo, ubicacion, provincia, tipo_trabajo, sector, descripcion, estudios_minimos, experiencia_minima, jornada, turno, numero_vacantes, salario, fecha_cierre, estado FROM oferta WHERE referencia=" . $_GET['referencia'];
+$sql = "SELECT puesto_trabajo, ubicacion, provincia, tipo_trabajo, sector, descripcion, estudios_minimos, experiencia_minima, jornada, turno, numero_vacantes, salario, fecha_cierre, estado FROM oferta WHERE referencia=" . $_GET['referencia'] . " AND oferta.eliminada = false";
 
 
 $result = $conn->query($sql);

@@ -20,3 +20,12 @@ if (botonMenu){
     });
 
 }
+
+
+let botonInicioSeleccionadorMenu = document.getElementById("enlace_inicio_seleccionador_menu_desplegable");
+
+if (botonInicioSeleccionadorMenu){
+    botonInicioSeleccionadorMenu.addEventListener("mouseover", function (){
+        localStorage.setItem("pagina_impresa", "principal_empresa");
+    });
+}

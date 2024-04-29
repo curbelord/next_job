@@ -133,10 +133,11 @@ export default {
 
                 $.post('http://next-job.lan/build/assets/php/anhadir_estado_inscripcion.php', parametrosConsulta).done(function (respuesta){
                     console.log(respuesta);
+                }).fail(() => {
+                    this.avisoErrorPeticion();
                 });
             } catch (error){
-                this.avisoErrorPeticion();
-                console.error("Error en la petición", error);
+                console.error("Se ha producido un error", error);
             }
         },
         popUpConfirmaCambioEstado(){
@@ -153,8 +154,8 @@ export default {
         },
         cambiaEstadoFisicamente(nuevoEstado){
             let fechaActual = new Date();
-            let dia = fechaActual.getDay();
-            let mes = fechaActual.getMonth();
+            let dia = fechaActual.getDate();
+            let mes = fechaActual.getMonth() + 1;
             let anho = fechaActual.getFullYear();
 
             $("#subcontainer_datos_ultimo_estado_curriculum h3").text(nuevoEstado);

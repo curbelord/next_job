@@ -55,7 +55,7 @@ Clone el repositorio
 ~~~
 git clone https://github.com/curbelord/next_job.git
 ~~~
-Muévase al directorio ǹext_job
+Muévase al directorio next_job
 ~~~
 cd next_job
 ~~~
@@ -63,7 +63,7 @@ Instale las dependencias con Composer
 ~~~
 composer install
 ~~~
-Haga una copia de `.env.example` y renombrélo como `.env`
+Haga una copia de `.env.example` y renómbrelo como `.env`
 ~~~
 cp .env.example .env
 ~~~
@@ -96,7 +96,7 @@ php artisan serve
 
 **[Diagrama de caso de Uso](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=sharing)**
 
-**[Diagrama de caso de Uso](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=sharing)**
+**[Diagrama de clases](https://docs.google.com/document/d/1k_FPWJaiBh6g11-L8nAPHnMrsvgE6CryUoKjP_H95-E/edit?usp=sharing)**
 
 **[Guía de instalación de los recursos necesarios](https://docs.google.com/document/d/1bUNrxmiI227XMSrMRrBsugIw1gLHGQecDdysPuhjTB4/edit?usp=sharing)**
 
@@ -108,7 +108,7 @@ php artisan serve
 
 ## Presentación YouTube
 
-- Enlace a vídeo de YouTube
+**[Enlace a vídeo de YouTube](https://www.youtube.com/watch?v=NIFciuI63CE)**
 
 ## Otros recursos
 

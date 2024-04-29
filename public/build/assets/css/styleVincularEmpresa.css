@@ -14,9 +14,10 @@
 
 .vincular_empresa {
     margin-top: 100px;
+    margin-bottom: 200px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-gap: 10px;
 }
 
@@ -63,6 +64,14 @@
     margin: 10px 0;
     cursor: pointer;
     font-weight: bold;
+}
+
+#enlace_registrar_empresa{
+    grid-column: 6 / 8;
+    grid-row: 5;
+    margin-top: 10px;
+    color: var(--azul);
+    text-decoration: none;
 }
 
 @media (max-width: 720px) {

@@ -132,11 +132,12 @@ export default {
                 $.post('http://next-job.lan/build/assets/php/gestion_procesos/edicion/editar_proceso.php', parametrosConsulta).done(function (respuesta){
                     console.log(respuesta);
                     console.log("Proceso editado");
+                }).fail(() => {
+                    this.avisoErrorPeticion();
                 });
 
             } catch(error){
-                this.avisoErrorPeticion();
-                console.error("Error en la petición", error);
+                console.error("Se ha producido un error", error);
             }
         },
         async popUpEditarProceso(){

@@ -50,16 +50,17 @@ class RegistroController extends Controller
     {
 
         $empresa = Empresa::find($request->id_empresa);
-        
+
         if (Hash::check($request->clave_acceso, $empresa->password)) {
             $seleccionador = Seleccionador::find($request->user()->id);
             $seleccionador->id_empresa = $empresa->id;
             $seleccionador->save();
 
             $request->session()->flash('mensajeVincularEmpresa', 'Se ha vinculado a su empresa correctamente.');
-            
-            return redirect(RouteServiceProvider::HOME);
-        
+
+            // return redirect(RouteServiceProvider::HOME);
+            return redirect()->route('vue.principal_procesos');
+
         } else {
             $request->session()->flash('mensajeEmpresaNoVinculada', 'No se ha podido vincular a su empresa.');
         }

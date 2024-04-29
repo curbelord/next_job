@@ -95,18 +95,21 @@ const app = Vue.createApp({
         },
         async obtenerAutocandidatura(){
             try {
-                let datosAutocandidatura = await $.get('http://next-job.lan/build/assets/php/gestion_autocandidaturas/obtener_autocandidatura.php?id_seleccionador=' + this.idSeleccionador);
+                let datosAutocandidatura = await $.get('http://next-job.lan/build/assets/php/gestion_autocandidaturas/obtener_autocandidatura.php?id_seleccionador=' + this.idSeleccionador).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 let objeto = '{"autocandidatura":[' + datosAutocandidatura.substring(0, datosAutocandidatura.length - 1) + "]}";
 
-                objeto = JSON.parse(objeto);
-                console.log(objeto["autocandidatura"]);
-                this.almacenaAutocandidatura(objeto["autocandidatura"]);
-                await this.obtenerDatosCandidatos(objeto["autocandidatura"][0]["referencia"], objeto["autocandidatura"][0]["curriculums_ciegos"]);
+                if (objeto.indexOf("0 resultados") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["autocandidatura"]);
+                    this.almacenaAutocandidatura(objeto["autocandidatura"]);
+                    await this.obtenerDatosCandidatos(objeto["autocandidatura"][0]["referencia"], objeto["autocandidatura"][0]["curriculums_ciegos"]);
+                }
 
                 return objeto;
             } catch (error) {
-                this.avisoErrorPeticion();
                 console.error('Error al hacer la petición', error);
             }
         },
@@ -226,17 +229,22 @@ const app = Vue.createApp({
             this.edad_o_experiencia_candidatos = [];
             this.id_candidatos = [];
             try {
-                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/proceso_detalle_candidatos.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + '&numero_offset=' + this.numeroOffsetProcesoDetalle);
+                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/proceso_detalle_candidatos.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + '&numero_offset=' + this.numeroOffsetProcesoDetalle).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
-                objeto = JSON.parse(objeto);
-                console.log(objeto["candidatos"]);
-                this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
+                if (objeto.indexOf("0 candidatos") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["candidatos"]);
+                    this.almacenaDatosCandidatosProcesoSeleccionado(objeto["candidatos"]);
+                    return objeto["candidatos"][0]["numero_inscritos"];
+                }
 
                 return objeto;
             } catch (error) {
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         almacenaDatosCandidatosProcesoSeleccionado(arrayDatos){
@@ -310,18 +318,18 @@ const app = Vue.createApp({
             parametroConsulta = parametroConsulta.substring(0, parametroConsulta.length - 1);
 
             try {
-                let respuestaServidor = await $.post('http://next-job.lan/build/assets/php/gestion_autocandidaturas/insertar_estado_candidatos_compatibles.php', parametroConsulta);
+                let respuestaServidor = await $.post('http://next-job.lan/build/assets/php/gestion_autocandidaturas/insertar_estado_candidatos_compatibles.php', parametroConsulta).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 if (respuestaServidor == "1"){
                     this.popUpConfirmaAccionInsercionCandidatos("success", `Se han añadido ${cantidadCandidatos} candidatos`);
                 }
 
                 console.log(respuestaServidor);
-
                 console.log("Usuarios insertados correctamente");
             } catch (error) {
-                this.avisoErrorPeticion();
-                console.error("Error al insertar los candidatos:", error);
+                console.error("Error al insertar los candidatos", error);
             }
         },
         async insertarCandidatosCompatiblesBBDD(arrayCandidatos, referenciaProceso){
@@ -334,27 +342,31 @@ const app = Vue.createApp({
             parametroConsulta = parametroConsulta.substring(0, parametroConsulta.length - 1);
 
             try {
-                let respuestaServidor = await $.post('http://next-job.lan/build/assets/php/gestion_autocandidaturas/insertar_candidatos_compatibles.php', parametroConsulta);
+                let respuestaServidor = await $.post('http://next-job.lan/build/assets/php/gestion_autocandidaturas/insertar_candidatos_compatibles.php', parametroConsulta).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
             } catch (error) {
-                this.avisoErrorPeticion();
-                console.error("Error al insertar los candidatos:", error);
+                console.error("Error al insertar los datos", error);
             }
         },
         async obtenerDatosCandidatos(referenciaProceso, curriculumsCiegosSiNo){
             try {
-                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/gestion_autocandidaturas/obtener_candidatos.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + '&numero_offset=' + this.numeroOffsetProcesoDetalle);
+                let datosCandidatos = await $.get('http://next-job.lan/build/assets/php/gestion_autocandidaturas/obtener_candidatos.php?referencia=' + referenciaProceso + "&curriculumsCiegos=" + curriculumsCiegosSiNo + '&numero_offset=' + this.numeroOffsetProcesoDetalle).fail(() => {
+                    this.avisoErrorPeticion();
+                });
 
                 let objeto = '{"candidatos":[' + datosCandidatos.substring(0, datosCandidatos.length - 1) + "]}";
 
-                objeto = JSON.parse(objeto);
-                console.log(objeto["candidatos"]);
-                this.almacenaDatosCandidatos(objeto["candidatos"]);
+                if (objeto.indexOf("0 candidatos") == -1){
+                    objeto = JSON.parse(objeto);
+                    console.log(objeto["candidatos"]);
+                    this.almacenaDatosCandidatos(objeto["candidatos"]);
+                }
 
                 return objeto;
             } catch (error) {
-                this.avisoErrorPeticion();
-                console.error('Error al hacer la petición', error);
+                console.error('Se ha producido un error', error);
             }
         },
         almacenaDatosCandidatos(arrayDatos){

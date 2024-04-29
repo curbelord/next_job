@@ -102,6 +102,7 @@ class OfertasController extends Controller
         }
 
         $ofertas->where('estado', 'Publicada');
+        $ofertas->where('eliminada', '0');
 
         $cantidadTotalOfertas = $ofertas->count();
         $ofertas->limit(10)->offset($offset);
@@ -114,7 +115,7 @@ class OfertasController extends Controller
 
     public function buscaOfertaEInscritos($ofertaId): array
     {
-        $oferta = Oferta::find($ofertaId);
+        $oferta = Oferta::where('eliminada', false)->find($ofertaId);
         $inscripciones = Inscripcion::where('id_oferta', $ofertaId)->count();
 
         return [$oferta, $inscripciones];
@@ -130,6 +131,10 @@ class OfertasController extends Controller
     public function mostrarOferta(string $ofertaId): View
     {
         list($oferta, $inscripciones) = $this->buscaOfertaEInscritos($ofertaId);
+
+        if (empty($oferta)) {
+            return view('principal');
+        }
 
         $oferta->load('seleccionador.empresa');
 
