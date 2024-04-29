@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
 
-class CheckSeleccionadorRole
+class CheckDemandanteRole
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,10 @@ class CheckSeleccionadorRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check() || !Auth::user()->hasRole('seleccionador')) {
+        if (!Auth::check() || !Auth::user()->hasRole('demandante')) {
             // Usuario no autenticado o no tiene el rol correcto
             // return redirect()->route('home')->with('error', 'No tienes permiso para acceder a esta página');
-            return redirect()->route('vue.principal_procesos');
+            return redirect()->route('principal');
         }
 
         return $next($request);

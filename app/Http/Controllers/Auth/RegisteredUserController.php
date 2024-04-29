@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\CV;
 use App\Models\User;
-use App\Models\CV;
 use App\Models\Demandante;
 use App\Models\Seleccionador;
 use App\Providers\RouteServiceProvider;
