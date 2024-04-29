@@ -6,8 +6,6 @@
     Plataforma de búsqueda de empleo
 </p>
 
-___
-
 ## Acerca de Next Job
 
 Next Job es una plataforma de búsqueda de empleo diseñada para simplificar y optimizar los procesos de contratación. Además, ofrece una interfaz sencilla y fácil de usar, con herramientas que mejoran la gestión de los procesos de contratación. Su objetivo es proporcionar una experiencia eficiente y transparente tanto para los demandantes de empleo como para los seleccionadores.
@@ -76,10 +74,12 @@ DB_PASSWORD=password
 ~~~
 Ejecute las migraciones
 ~~~
-php artisan migrate --seed
+php artisan migrate
 ~~~
-Ejecute los seeders
-
+Ejecute el seeder global
+~~~
+php artisan db:seed --class=DatabaseSeeder
+~~~
 Active el servidor
 ~~~
 php artisan serve
@@ -100,7 +100,10 @@ php artisan serve
 
 ## Pruebas Unitarias
 
-- Aquí iría alguna explicación
+Para ejecutar las pruebas unitarias utilice:
+~~~
+php artisan test
+~~~
 
 ## Presentación YouTube
 
