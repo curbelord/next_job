@@ -68,11 +68,6 @@ class PerfilController extends Controller
         return redirect()->route('perfil.ver_demandante', compact('usuario'));
     }
 
-    public function actualizar()
-    {
-
-    }
-
     public function checkin(): RedirectResponse
     {
         $user = Demandante::find(Auth::id());
