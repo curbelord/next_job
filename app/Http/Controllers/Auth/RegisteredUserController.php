@@ -55,6 +55,9 @@ class RegisteredUserController extends Controller
             $demandante->save();
             $user->assignRole('demandante');
 
+            $cv = CV::create(['id_demandante' => $user->id]);
+            $cv->save();
+
         } else {
             $seleccionador = Seleccionador::create(['id' => $user->id]);
             $seleccionador->save();
