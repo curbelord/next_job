@@ -9,7 +9,7 @@
 @section('content')
 
     <div class="content">
-            
+
         <form class="vincular_empresa"  method="POST" action="{{ route('auth.vincular_empresa.almacenar') }}">
 
             @csrf
@@ -21,8 +21,10 @@
 
             <button>Seleccionar empresa</button>
 
+            <a href="{{ route('auth.registrar_empresa') }}" id="enlace_registrar_empresa">¿Tu empresa aún no ha sido registrada?</a>
+
         </form>
-    
+
     </div>
 
     <div class="bloque"></div>

@@ -154,8 +154,8 @@ export default {
         },
         cambiaEstadoFisicamente(nuevoEstado){
             let fechaActual = new Date();
-            let dia = fechaActual.getDay();
-            let mes = fechaActual.getMonth();
+            let dia = fechaActual.getDate();
+            let mes = fechaActual.getMonth() + 1;
             let anho = fechaActual.getFullYear();
 
             $("#subcontainer_datos_ultimo_estado_curriculum h3").text(nuevoEstado);
