@@ -98,6 +98,8 @@ php artisan serve
 
 **[Prototipo Figma](https://www.figma.com/file/IBgdRkwBNz9d0NIPzp5gN9/Next-Job?type=design&mode=design&t=ELzEGLpZiXastLko-1)**
 
+- Nota: El archivo SQL con la estructura de la BBDD se encuentra en la ruta `next_job/database/nextjob.sql`
+
 ## Pruebas Unitarias
 
 Para ejecutar las pruebas unitarias utilice:
