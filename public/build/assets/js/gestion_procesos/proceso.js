@@ -2,7 +2,7 @@ export default {
     props: ['referencia', 'puesto_trabajo', 'ubicacion', 'fecha_creacion', 'numero_candidatos', 'estado'],
     data(){
         return{
-            estadosPosibles: ["Publicada", "Oculta", "Borrador", "Autocandidatura"],
+            estadosPosibles: ["Publicada", "Oculta", "Borrador"],
             estadoSeleccionado: this.estado,
             copiaEstadoEntrante: this.estado,
         }
@@ -30,7 +30,8 @@ export default {
             <div class="datos_mid_mid_proceso">
                 <div class="estado" @change="muestraPopUpEdicionEstado">
                     <select v-model="estadoSeleccionado">
-                        <option v-for="estadoActual in estadosPosibles" :selected="estadoActual == estado" :value="estadoActual">{{ estadoActual }}</option>
+                        <option v-if="estadoSeleccionado === 'Autocandidatura'" :selected="estadoSeleccionado === 'Autocandidatura'" value="Autocandidatura">Autocandidatura</option>
+                        <option v-else v-for="estadoActual in estadosPosibles" :selected="estadoActual == estado" :value="estadoActual">{{ estadoActual }}</option>
                     </select>
                 </div>
             </div>
